@@ -49,23 +49,39 @@
         <tr>
             <td><b>Data</b></td>
             <td><b>Evento</b></td>  
-        </tr>    
+        </tr>
+         <tr>
+            <td>09/08/2022 até 13/08/2022</td>
+            <td>Dinâmica Disruptiva</td>  
+        </tr>
         <tr>
-            <td>14/04/2022 </td>
+            <td>15/08/2022 até 19/08/2022</td>
+            <td>Kick-Off</td>  
+        </tr> 
+        <tr>
+            <td>29/08/2022 até 18/09/2022</td>
             <td>Sprint1 </td>  
         </tr>    
         <tr>
-            <td>15/05/2022 </td>
+            <td>19/09/2022 até 09/10/2022</td>
             <td>Sprint2</td>  
-        </tr>    
+        </tr>
+         <tr>
+            <td>09/10/2022 até 15/10/2022</td>
+            <td>Recesso Escolar</td>  
+        </tr>
         <tr>
-            <td>05/06/2022 </td>
+            <td>17/10/2022 até 06/11/2022</td>
             <td>Sprint3</td>  
         </tr>   
         <tr>
-            <td>05/06/2022 </td>
-            <td>Sprint3</td>  
-        </tr>   
+            <td>07/11/2022 até 27/11/2022</td>
+            <td>Sprint4</td>  
+        </tr>
+        <tr>
+            <td>08/12/2022</td>
+            <td>Feira de Soluções + Apresentação Final</td>  
+        </tr> 
     </table>
     
     
@@ -159,7 +175,7 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 <sub><b>Vitor R. de Lima</b></sub>
 <br />
 </a>
-<sub><b>Product Owner</b></sub>
+<sub><b>Developer</b></sub>
 <sub><b><a href="https://github.com/VilRL"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
 <br />
 </td>
@@ -206,10 +222,10 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 <a href="https://github.com/MrZeroLeft">   
 <img src="https://avatars.githubusercontent.com/u/77200265?v=4" width = "40%"> 
 <br />
-<sub><b>Augusto</b></sub>
+<sub><b>Augusto Torres</b></sub>
 <br />
 </a>
-<sub><b>Developer</b></sub>
+<sub><b>Product Owner</b></sub>
 <sub><b><a href="https://github.com/MrZeroLeft"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
 <br />
 </td>
