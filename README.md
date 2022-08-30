@@ -11,10 +11,10 @@
 - [Equipe Datatech ](#equipe-datatech)
 
 <h2>📝Descrição</h2>
-
+ Site com filtros para a facilitar a vizualização dos dados meteorológicos desejados pelo usuario, utilizando como paramêtros, data/hora, local/região(separado pelas estações), e o tipo do dado requisitado seja ele temperatura, radiação, precipitação, entre outros dados que estão contidos nas planilhas fornecidas. Com esses dados já filtrados e de fácil visualização, o usuário poderá gerar relatórios em pdf ou outro formato que lhe convenha, contendo as informações dos gráficos.
 
 <h2>🎯Objetivo do Projeto</h2>
- Site com filtros para a vizualização dos dados meteorológicos desejados pelo usuario, utilizando como paramêtros, data/hora, local/região(separado pelas estações), e o tipo do dado requisitado seja ele temperatura, radiação, precipitação, entre outros dados que estão contidos nas planilhas fornecidas.
+ Serão utilizados filtros de data, região e tipo de dado, para gerar gráficos que permitam a vizualização dos dados meteorológicos que tem como ultima finalidade gerar relatórios dos usuários, tais relatórios com as informações fornecidas pelos gráficos
  
 <h2>📄Backlog do Produto</h2>
 
