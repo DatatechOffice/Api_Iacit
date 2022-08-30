@@ -38,7 +38,7 @@
         <td></td>
     </tr>
     <tr>
-       <td>Relevante</td>
+       <td>Bom ter</td>
        <td></td>
        <td></td>
        <td></td> 
