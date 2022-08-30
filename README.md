@@ -14,7 +14,8 @@
 
 
 <h2>🎯Objetivo do Projeto</h2>
-
+ Site com filtros para a vizualização dos dados meteorológicos desejados pelo usuario, utilizando como paramêtros, data/hora, local/região(separado pelas estações), e o tipo do dado requisitado seja ele temperatura, radiação, precipitação, entre outros dados que estão contidos nas planilhas fornecidas.
+ 
 <h2>📄Backlog do Produto</h2>
 
 <table border="1">
