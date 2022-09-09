@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IACIT</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+</head>
+
+
+<body style="background-color: rgb(161, 194, 216);">
+
+
+
+
+
+  <div style="margin: 0 auto; width: 50%;">
+
+    <span class="input-group-addon "><img src="img/lupa-pesquisar-50.png" alt="some text" width=60 height=30></span>
+
+
+    <!-- <input name="consulta" list="datalistOptions" id="txt_consulta" placeholder="Consultar" type="date"
+      class="form-control col-sm-4" style="width:30%; float:left">
+
+    <input name="consulta" list="datalistOptions" id="txt_consulta" placeholder="Consultar" type="date"
+      class="form-control col-sm-4" style="width:30%; float:left"> -->
+
+
+
+
+
+
+
+
+    <datalist id="datalistOptions">
+      <option value="Brasilia">
+      <option value="New York">
+      <option value="Seattle">
+      <option value="Los Angeles">
+      <option value="Chicago">
+  </div>
+
+  </div>
+
+
+  <label for="birthday">inicio:</label>
+  <input type="date" id="incioProcura" name="birthday">
+
+  <label for="birthday">fim:</label>
+  <input type="date" id="fimProcura" name="birthday">
+
+
+  <button style="width:10%; height:40%" onclick="sla();">Pesquisa</button>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+
+
+  <div>
+    <input type="text" id="time" placeholder="Time">
+  </div>
+
+
+
+  <div>
+    <input type="text" id="time2" placeholder="Time2">
+  </div>
+
+
+
+
+
+  <br><br><br><br><br><br><br><br><br>
+
+
+
+  <div class="row col-sm-12">
+
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Temp.bulbo secco
+        </label>
+      </div>
+
+      <div class="col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Temp Max
+        </label>
+      </div>
+
+      <div class="col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Temp min
+        </label>
+      </div>
+
+      <div class="col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+          Temperatura
+        </label>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  </div>
+
+
+  <br><br><br><br><br><br><br><br><br>
+
+
+  <div class="container mt-3">
+    <h2>Relatorio</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Temperatura</th>
+          <th>Temp min</th>
+          <th>Temp Max</th>
+          <th>Temp.bulbo secco</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+          <td>
+            <h5 id="texto">Hello IACit</h5>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+  <script>
+    function sla() {
+      document.getElementById("texto").innerHTML = "aaa";
+    }
+
+    var timepicker = new TimePicker('time', {
+        lang: 'en',
+        theme: 'dark'
+      });
+    
+      var timepicker2 = new TimePicker('time2', {
+        lang: 'en',
+        theme: 'dark'
+      });
+
+    $(document).ready(function(){
+			
+      
+      timepicker.on('change', function (evt) {
+
+        var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+        evt.element.value = value;
+
+      });
+
+
+      
+      aaaaa.on('change', function (evt2) {
+
+        var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+        evt.element.value = value;
+        alert(evt);
+
+      });
+
+		});
+
+  </script>
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
