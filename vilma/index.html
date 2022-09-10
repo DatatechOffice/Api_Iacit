@@ -12,15 +12,15 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-
+  
 
 </head>
 
 
-<body style="background-color: rgb(161, 194, 216);">
+<body style="background-color: rgb(161, 194, 216); font-size: 18px;">
 
 
-
+  
 
 
   <div style="margin: 0 auto; width: 50%;">
@@ -134,62 +134,33 @@
 
   <div class="container mt-3">
     <h2>Relatorio</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Temperatura</th>
-          <th>Temp min</th>
-          <th>Temp Max</th>
-          <th>Temp.bulbo secco</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-          <td>
-            <h5 id="texto">Hello IACit</h5>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+      ]);
+
+      var options = {
+        title: 'My Daily Activities'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+ <div id="piechart" style="position: absolute; width: 900px; height: 500px; left: 500px;"></div>
 
 
 
@@ -234,7 +205,7 @@
 
 		});
 
-  </script>
+    </script>
 
 
 
@@ -247,6 +218,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
+ 
 
 </body>
 
