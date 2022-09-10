@@ -1,0 +1,27 @@
+CREATE TABLE estado_e_regiao (
+  eer_id INTEGER PRIMARY KEY,
+  eer_regiao VARCHAR(2),
+  eer_unidade_federativa VARCHAR(2)
+);
+
+CREATE TABLE estacao (
+	est_codigo VARCHAR(5) PRIMARY KEY,
+	est_nome_estacao VARCHAR(30),
+	est_longitude FLOAT,
+  est_latitude FLOAT,
+  est_altitude FLOAT,
+ 	est_data_fundacao DATE,
+  eer_id INTEGER,
+	FOREIGN KEY (eer_id) REFERENCES estado_e_regiao (eer_id)
+);
+
+CREATE TABLE temperatura (
+	tem_id INTEGER PRIMARY KEY,
+	tem_data DATE,
+	tem_max FLOAT,
+ 	tem_min FLOAT,
+  tem_hora FLOAT,
+  tem_ar_bulbo_seco FLOAT,
+  est_codigo VARCHAR(4),
+	FOREIGN KEY (est_codigo) REFERENCES estacao (est_codigo)
+);
