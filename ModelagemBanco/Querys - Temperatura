@@ -17,11 +17,11 @@ CREATE TABLE estacao (
 
 CREATE TABLE temperatura (
 	tem_id INTEGER PRIMARY KEY,
-	tem_data DATE,
-	tem_max FLOAT,
- 	tem_min FLOAT,
-  tem_hora FLOAT,
-  tem_ar_bulbo_seco FLOAT,
-  est_codigo VARCHAR(4),
+	tem_data varchar(10),
+	tem_max numeric,
+ 	tem_min numeric,
+  tem_hora varchar(8),
+  tem_ar_bulbo_seco numeric,
+  est_codigo varchar(4),
 	FOREIGN KEY (est_codigo) REFERENCES estacao (est_codigo)
 );
