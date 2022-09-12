@@ -10,7 +10,7 @@ CREATE TABLE estacao (
 	est_longitude FLOAT,
   est_latitude FLOAT,
   est_altitude FLOAT,
- 	est_data_fundacao DATE,
+ 	est_data_fundacao varchar(10),
   eer_id INTEGER,
 	FOREIGN KEY (eer_id) REFERENCES estado_e_regiao (eer_id)
 );
