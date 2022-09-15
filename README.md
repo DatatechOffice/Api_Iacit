@@ -179,7 +179,7 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 <br />
 </a>
 <sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/jmachadoo"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
+<sub><b><a href="https://github.com/jufaela"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
 <br />
 </td>
 </tr>
