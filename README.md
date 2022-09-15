@@ -59,6 +59,10 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
 </p>
  
  
+ <h2>Burndown</h2>
+<h3> Sprint 1 </h3>
+ 
+ 
  <h2>📄Cronograma das Sprints</h2>
     <table border="1">
         <tr>
@@ -99,11 +103,7 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
         </tr> 
     </table>
     
-    
-<h2>Brundown</h2>
-<h3> Sprint 1 </h3>
-    
-     
+         
 <h2>🛠Tecnologias utilizadas</h2>
 
 AS Tecnologias abaixo foram utilizadas na construção do projeto.
