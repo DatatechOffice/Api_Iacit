@@ -172,7 +172,7 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 </td>
 <td align="center">
     
-<a href="https://github.com/jmachadoo">
+<a href="https://github.com/jufaela">
  <img src="https://avatars.githubusercontent.com/u/88752151?v=4" width = "40%"> 
 <br />
 <sub><b>João Vitor Machado</b></sub>
