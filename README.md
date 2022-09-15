@@ -10,11 +10,11 @@
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Equipe Datatech ](#equipe-datatech)
 
-<h2>📝Descrição</h2>
- Site com filtros para a facilitar a vizualização dos dados meteorológicos desejados pelo usuario, utilizando como paramêtros, data/hora, local/região(separado pelas estações), e o tipo do dado requisitado seja ele temperatura, radiação, precipitação, entre outros dados que estão contidos nas planilhas fornecidas. Com esses dados já filtrados e de fácil visualização, o usuário poderá gerar relatórios em pdf ou outro formato que lhe convenha, contendo as informações dos gráficos.
 
 <h2>🎯Objetivo do Projeto</h2>
- Serão utilizados filtros de data, região e tipo de dado, para gerar gráficos que permitam a vizualização dos dados meteorológicos que tem como ultima finalidade gerar relatórios dos usuários, tais relatórios com as informações fornecidas pelos gráficos
+ Uma página web com as informações da fonte Instituto Nacional de Meteorologia - INMET de 2020 até último mês dos dias atuais, nesta página as estações (Brasília, Brasilândia, Paranoá, entre outras) serão filtradas por uma caixa de texto, o tipo de informação (temperatura, temperatura de orvalho, vento, entre outras) serão filtradas por uma caixa de seleção e depois especificadas por caixas de seleção (temp max, temp min, entre outros) o período das informações serão filtrados por duas caixas de data e hora, exemplo de 01/01/2020 00:00 até 01/02/2021 14:00, às informações filtradas aparecerão na página em forma de gráfico após precionar um botão para confirmação.
+OBS: formas de filtro e visualização estão propostas a mudanças.
+ 
  
 <h2>📄Backlog do Produto</h2>
 
@@ -34,7 +34,7 @@
     <tr>
         <td>Importante</td>
         <td></td>
-        <td> </td>
+        <td></td>
         <td></td>
     </tr>
     <tr>
@@ -44,6 +44,7 @@
        <td></td> 
     </tr>    
 </table>
+
 
 <h2>📄Cronograma das Sprints</h2>
     <table border="1">
@@ -87,57 +88,25 @@
     
     
 <h2>🖼Proposta de Entregas</h2>
-    <table border="1">
-    <tr>
-        <td><b>Sprint 1<src= "https://github.com/DatatechOffice/datatech_api/blob/BranchSprint1/README.md1"></b></td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-     </tr>
-     <tr>
-         <td></td>
-    </tr>
-</table>
-    <tr>
-        <table border="1">
-        <td>Sprint 2</td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-     </tr>
-     <tr>
-         <td></td>
-    </tr>
-</table>
+ <h3>Sprint 1</h3>
+ BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
 
-<table border="1">
-    <td>Sprint 3</td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-     </tr>
-     <tr>
-         <td></td>
-    </tr>
-</table>
-
-
+ 
 <h2>🛠Tecnologias utilizadas</h2>
 
 AS Tecnologias abaixo foram utilizadas na construção do projeto.
 - [GitHub](https://github.com/)
 - [Git](https://github.com/)
 - [Discord](https://discord.com/)
+- [Trello](https://trello.com/pt-BR)
 - [Java](https://www.java.com/pt-BR/)
+- [Maven](https://maven.apache.org/)
+- [Spring Boot](https://spring.io/projects/spring-boot/)
+- [REST](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
+- [Bootstrap](https://getbootstrap.com/)
+- [Python](https://www.python.org/)
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [JavaScript](https://www.javascript.com/)
 - [PostgreSQL](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
 - [JDK(JRE está contido nele)](https://www.oracle.com/java/technologies/downloads/)
     
