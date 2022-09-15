@@ -6,7 +6,7 @@
 - [Objetivo do Projeto](#objetivo-do-projeto)
 - [Proposta de Entregas](#proposta-de-entregas)
 - [Backlog do Produto](#backlog-do-produto)
-- [Proposta de Entregas](#DER)
+- [DER](#der)
 - [Cronograma das Sprints](#cronograma-das-sprints)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Equipe Datatech](#equipe-datatech)
@@ -52,8 +52,11 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
 </table>
 
 
- <h2>DER</h2>
-![Conceitual_Sprint1](https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Sprint1.png)
+<h2>DER</h2>
+ <h3> Sprint 1 </h3>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Sprint1.png">
+</p>
  
  
  <h2>📄Cronograma das Sprints</h2>
