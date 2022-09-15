@@ -4,11 +4,12 @@
 
 - [Descrição](#descrição)
 - [Objetivo do Projeto](#objetivo-do-projeto)
-- [Backlog do Produto](#backlog-do-produto)
 - [Proposta de Entregas](#proposta-de-entregas)
+- [Backlog do Produto](#backlog-do-produto)
+- [Proposta de Entregas](#DER)
 - [Cronograma das Sprints](#cronograma-das-sprints)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
-- [Equipe Datatech ](#equipe-datatech)
+- [Equipe Datatech](#equipe-datatech)
 
 
 <h2>🎯Objetivo do Projeto</h2>
@@ -16,7 +17,12 @@
 OBS: formas de filtro e visualização estão propostas a mudanças.
  
  
-<h2>📄Backlog do Produto</h2>
+<h2>🖼Proposta de Entregas</h2>
+ <h3>Sprint 1</h3>
+ BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
+ 
+ 
+ <h2>📄Backlog do Produto</h2>
 
 <table border="1">
     <tr>
@@ -46,7 +52,11 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
 </table>
 
 
-<h2>📄Cronograma das Sprints</h2>
+ <h2>DER</h2>
+![Conceitual_Sprint1](https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Sprint1.png)
+ 
+ 
+ <h2>📄Cronograma das Sprints</h2>
     <table border="1">
         <tr>
             <td><b>Data</b></td>
@@ -86,12 +96,7 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
         </tr> 
     </table>
     
-    
-<h2>🖼Proposta de Entregas</h2>
- <h3>Sprint 1</h3>
- BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
-
- 
+     
 <h2>🛠Tecnologias utilizadas</h2>
 
 AS Tecnologias abaixo foram utilizadas na construção do projeto.
