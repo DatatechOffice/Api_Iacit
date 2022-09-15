@@ -173,9 +173,9 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 <td align="center">
     
 <a href="https://github.com/jufaela">
- <img src="https://avatars.githubusercontent.com/u/88752151?v=4" width = "40%"> 
+ <img src="https://avatars.githubusercontent.com/u/79148564?v=4" width = "40%"> 
 <br />
-<sub><b>João Vitor Machado</b></sub>
+<sub><b>Julia Rafaela</b></sub>
 <br />
 </a>
 <sub><b>Developer</b></sub>
