@@ -2,7 +2,6 @@
 
 <h2>📜Menu de Navegação</h2>
 
-- [Descrição](#descrição)
 - [Objetivo do Projeto](#objetivo-do-projeto)
 - [Proposta de Entregas](#proposta-de-entregas)
 - [Backlog do Produto](#backlog-do-produto)
