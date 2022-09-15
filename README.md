@@ -6,6 +6,7 @@
 - [Proposta de Entregas](#proposta-de-entregas)
 - [Backlog do Produto](#backlog-do-produto)
 - [DER](#der)
+- [Burndown](#burndown)
 - [Cronograma das Sprints](#cronograma-das-sprints)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Equipe Datatech](#equipe-datatech)
@@ -98,6 +99,10 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
         </tr> 
     </table>
     
+    
+<h2>Brundown</h2>
+<h3> Sprint 1 </h3>
+    
      
 <h2>🛠Tecnologias utilizadas</h2>
 
@@ -116,10 +121,8 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 - [JavaScript](https://www.javascript.com/)
 - [PostgreSQL](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
 - [JDK(JRE está contido nele)](https://www.oracle.com/java/technologies/downloads/)
-    
-    
-    
-    
+
+
 </table>
 <h2>🎲Equipe Datatech</h2>
 <table>
