@@ -66,17 +66,26 @@ BraD = Brasilia.loc[Brasilia["Data"]==("2020/10/10")]
 
 BraDR = Brasilia[Brasilia["Data"].between("2020/01/01", "2020/12/31")]
 
-Replace = BraDR["TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True), \
-          BraDR["TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True), \
-          BraDR["TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)"].replace({',': '.'}, regex=True)
-
 def FeedDB():
+    sql = """INSERT INTO estado_e_regiao
+    (eer_id, eer_regiao, eer_unidade_federativa) 
+    values(1, 'CO', 'DF')
+
+    INSERT INTO estacao
+    (eer_id, est_codigo, est_nome_estacao, est_longitude, est_latitude, est_altitude, est_data_fundacao)
+    values (1, 'A001', 'BRASILIA', -47.925756, -15.789343, 1160.96, '07/05/00')"""
+    inserir_db(sql)
+
     for i in BraDR.index:
+        
         sql = """
         INSERT into temperatura (tem_id, tem_ar_bulbo_seco, tem_data, tem_max, tem_min, tem_hora, est_codigo) 
         values(%s, '%s', %s, %s, '%s', %s, 'A001');
-        """ % (f'{i}', BraDR['Data'][i], BraDR["TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i], BraDR["TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
-               BraDR['Hora UTC'][i], BraDR["TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)"].replace({',': '.'}, regex=True)[i])
+        """ % (f'{i}', BraDR['Data'][i],
+        BraDR["TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
+        BraDR["TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
+        BraDR['Hora UTC'][i],
+        BraDR["TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)"].replace({',': '.'}, regex=True)[i])
         inserir_db(sql)
 
 

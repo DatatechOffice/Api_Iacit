@@ -44,6 +44,6 @@ public class vento {
 	private Timestamp ven_hora;
 	
 	@ManyToOne
-    @JoinColumn(name = "estacao", referencedColumnName = "est_codigo")
+    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private estacao est_codigo;
 }

@@ -34,13 +34,13 @@ public class estacao {
 	@Column(name= "est_data_fundacao")
 	private Timestamp est_data_fundacao;
 	
-	@Column(name= "est_latitud")
+	@Column(name= "est_latitude")
 	private BigDecimal est_latitude;
 	
 	@Column(name= "est_altitude")
 	private BigDecimal est_altitude;
 	
 	@ManyToOne
-    @JoinColumn(name = "estado_regiao", referencedColumnName = "eer_id")
+    @JoinColumn(name = "eer_id", referencedColumnName = "eer_id")
 	private estadoRegiao eer_id;
 }
