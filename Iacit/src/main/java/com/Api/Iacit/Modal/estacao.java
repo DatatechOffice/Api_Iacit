@@ -5,8 +5,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,8 +22,7 @@ import lombok.ToString;
 public class estacao {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "est_codigo")
+	@Column(name= "est_codigo", length = 10)
 	private String est_codigo;
 	
 	@Column(name= "est_longitude")

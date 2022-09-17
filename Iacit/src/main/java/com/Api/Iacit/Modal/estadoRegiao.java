@@ -17,6 +17,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class estadoRegiao {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "eer_id")
