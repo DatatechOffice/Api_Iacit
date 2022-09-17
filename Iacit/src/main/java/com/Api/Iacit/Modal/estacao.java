@@ -22,10 +22,10 @@ import lombok.ToString;
 public class estacao {
 	
 	@Id
-	@Column(name= "est_codigo", length = 10)
+	@Column(name= "est_codigo", length = 4)
 	private String est_codigo;
 	
-	@Column(name= "est_longitude")
+	@Column(name= "est_longitude", length = 10)
 	private BigDecimal est_longitude;
 	
 	@Column(name= "est_nome_estacao", length = 30)
@@ -34,10 +34,10 @@ public class estacao {
 	@Column(name= "est_data_fundacao")
 	private Timestamp est_data_fundacao;
 	
-	@Column(name= "est_latitude")
+	@Column(name= "est_latitude", length = 10)
 	private BigDecimal est_latitude;
 	
-	@Column(name= "est_altitude")
+	@Column(name= "est_altitude", length = 10)
 	private BigDecimal est_altitude;
 	
 	@ManyToOne
