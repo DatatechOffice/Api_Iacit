@@ -37,11 +37,8 @@ public class vento {
 	@Column(name= "ven_velocidade_horaria")
 	private BigDecimal ven_velocidade_horaria;
     
-	@Column(name= "ven_data")
-	private Timestamp ven_data;
-    
-	@Column(name= "ven_hora")
-	private Timestamp ven_hora;
+	@Column(name= "ven_data_hora")
+	private Timestamp ven_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

@@ -34,11 +34,8 @@ public class umidade {
 	@Column(name= "umi_relativa_ar")
 	private BigDecimal umi_relativa_ar;
     
-	@Column(name= "umi_data")
-	private Timestamp umi_data;
-    
-	@Column(name= "umi_hora")
-	private Timestamp umi_hora;
+	@Column(name= "umi_data_hora")
+	private Timestamp umi_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

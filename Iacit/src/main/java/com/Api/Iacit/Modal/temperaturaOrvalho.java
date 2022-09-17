@@ -37,12 +37,9 @@ public class temperaturaOrvalho {
 	@Column(name= "tdo_min")
 	private BigDecimal tdo_min;
     
-	@Column(name= "tdo_data")
-	private Timestamp tdo_data;
-    
-	@Column(name= "tdo_hora")
-	private Timestamp tdo_hora;
-    
+	@Column(name= "tdo_data_hora")
+	private Timestamp tdo_data_hora;
+	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private estacao est_codigo;

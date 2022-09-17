@@ -37,11 +37,8 @@ public class pressaoAtmosferica {
 	@Column(name= "pra_min")
     private BigDecimal pra_min;
 	
-	@Column(name= "pra_data")
-    private Timestamp pra_data;
-	
-	@Column(name= "pra_hora")
-    private Timestamp pra_hora;
+	@Column(name= "pra_data_hora")
+    private Timestamp pra_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

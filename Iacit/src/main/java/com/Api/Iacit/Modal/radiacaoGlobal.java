@@ -31,11 +31,8 @@ public class radiacaoGlobal {
 	@Column(name= "rag_radiacao_global")
     private BigDecimal rag_radiacao_global;
 	
-	@Column(name= "rag_data")
-    private Timestamp rag_data;
-	
-	@Column(name= "rag_hora")
-    private Timestamp rag_hora;
+	@Column(name= "rag_data_hora")
+    private Timestamp rag_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
