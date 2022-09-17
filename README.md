@@ -53,9 +53,8 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
 
 
 <h2>DER</h2>
- <h3> Sprint 1 </h3>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Sprint1.png">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Final.png">
 </p>
  
  
