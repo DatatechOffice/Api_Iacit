@@ -17,7 +17,7 @@
 OBS: formas de filtro e visualização estão propostas a mudanças.
  
  
-<h2>🖼Proposta de Entregas</h2>
+<h2>🖼Propostas de Entregas</h2>
  <h3>Sprint 1</h3>
  BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
  
