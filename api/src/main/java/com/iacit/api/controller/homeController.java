@@ -26,8 +26,8 @@ public class homeController {
         
     	// listaTemperatura
     	List<viewTemperatura> enviarTemperatura = temperatura.listar("BRASILIA", "A001", Timestamp.valueOf("2020-01-01 00:00:00"));
+   
     	modelAndView.addObject("teste_Temperatura", enviarTemperatura);
-    	
         modelAndView.setViewName("index");
         return modelAndView;
 	}
