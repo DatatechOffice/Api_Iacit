@@ -103,7 +103,7 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
     </table>
     
          
-<h2>🛠Tecnologias utilizadas</h2>
+<h2>🛠Tecnologias Utilizadas</h2>
 
 AS Tecnologias abaixo foram utilizadas na construção do projeto.
 - [GitHub](https://github.com/)
