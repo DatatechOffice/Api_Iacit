@@ -3,8 +3,9 @@
 <h2>📜Menu de Navegação</h2>
 
 - [Objetivo do Projeto](#objetivo-do-projeto)
-- [Proposta de Entregas](#proposta-de-entregas)
+- [Propostas de Entregas](#propostas-de-entregas)
 - [Backlog do Produto](#backlog-do-produto)
+- [User Stories](#user-stories)
 - [DER](#der)
 - [Burndown](#burndown)
 - [Cronograma das Sprints](#cronograma-das-sprints)
@@ -21,24 +22,30 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
  <h3>Sprint 1</h3>
  BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
  
+  <h3>Sprint 2</h3>
+ Incremtar ligações back banco e back front, importação do resto das informações de Brasília no ano de 2020.
+ 
  
  <h2>📄Backlog do Produto</h2>
 
 <table border="1">
     <tr>
         <td><b>Nivel de Importância</b></td>
-        <td><b> </b></td>
-        <td><b> </b></td>
-        <td><b> <b></td>
+        <td><b>Sprint 1</b></td>
+        <td><b>Sprint 2</b></td>
+        <td><b>Sprint 3<b></td>
+        <td><b>Sprint 4<b></td>
     </tr>
     <tr>
         <td>Crucial</td>
+        <td>Importação de informações</td>
         <td></td>
         <td></td>
         <td></td>
     </tr>
     <tr>
         <td>Importante</td>
+        <td>Template do front</td>
         <td></td>
         <td></td>
         <td></td>
@@ -47,9 +54,18 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
        <td>Bom ter</td>
        <td></td>
        <td></td>
-       <td></td> 
+       <td></td>
+       <td></td>
     </tr>    
 </table>
+
+
+<h2>📚User Stories</h2>
+<h3>Sprint1</h3>
+
+* Importação de Informações: Como funcionário Iacit eu preciso ter as informações em um lugar fácil  de manuseá-las para conseguir realizar minhas atividades de uma forma eficiente e intuitiva.
+
+* Visualização de informações: Como funcionário Iacit eu preciso ver informações de forma clara para que minhas tomadas de decisão sejam mais fáceis. 
 
 
 <h2>DER</h2>
@@ -102,7 +118,7 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
         </tr> 
     </table>
     
-         
+    
 <h2>🛠Tecnologias Utilizadas</h2>
 
 AS Tecnologias abaixo foram utilizadas na construção do projeto.
@@ -226,9 +242,4 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 </td>
 
 </tr>
-
-
-
-</table>   
-    
-
+</table>
