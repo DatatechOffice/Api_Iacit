@@ -23,7 +23,7 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
  BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
  
   <h3>Sprint 2</h3>
- Visualização de relatórios, importação do resto das informações de Brasília no ano de 2020.
+ Visualização de relatórios(em forma de gráficos), importação do resto das informações de Brasília no ano de 2020.
  
  
  <h2>📄Backlog do Produto</h2>
