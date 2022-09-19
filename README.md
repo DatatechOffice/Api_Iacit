@@ -76,6 +76,9 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
  
  <h2>Burndown</h2>
 <h3> Sprint 1 </h3>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
+</p>
  
  
  <h2>📄Cronograma das Sprints</h2>
