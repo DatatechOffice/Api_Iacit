@@ -3,6 +3,7 @@ package com.iacit.api.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.iacit.api.entity.Temperatura;
@@ -15,23 +16,27 @@ import org.springframework.stereotype.Service;
 public class ServiceTemperatura {
 	
 	@Autowired(required = true)
-
-	private TemperaturaRepository temperatura;
+	private TemperaturaRepository temperaturaRepository;
 	
-	ArrayList<Temperatura> enviarTemperatura = temperatura.listar("A001", Timestamp.valueOf("2020-01-01 00:00:00"));
-	
-	public ServiceTemperatura(ArrayList<Temperatura> enviarTemperatura) {
-		this.enviarTemperatura=enviarTemperatura;
+	public ServiceTemperatura(TemperaturaRepository temperaturaRepository) {
+		this.temperaturaRepository=temperaturaRepository;
 	}
+	List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf("2020-01-01 00:00:00"));
 	
-	
-	StringBuilder toJSON(ArrayList<Temperatura> enviarTemperatura) {
+	StringBuilder toJSON(List<Temperatura> enviarTemperatura) {
 		Gson gson = new Gson();
 		StringBuilder sb = new StringBuilder();
 		for (Temperatura d : enviarTemperatura) {
 			sb.append(gson.toJson(d));
 		}
 		return sb;
+	}
+	
+	public static void Main(String []args) {
+		ServiceTemperatura serviceTemperatura = new ServiceTemperatura(null);
+		List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf("2020-01-01 00:00:00"));
+		
+		serviceTemperatura.toJSON(enviarTemperatura);
 	}
 
 }
