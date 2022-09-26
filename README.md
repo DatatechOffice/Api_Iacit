@@ -26,7 +26,9 @@ OBS: formas de filtro e visualização estão propostas a mudanças.
  
   <h3>Sprint 2</h3>
  Visualização de relatórios(em forma de gráficos), importação do resto das informações de Brasília no ano de 2020.
- Wireframe enrega da sprint 2: https://www.figma.com/file/KkBAFrue9nnVGrA9o044P1/API-IACIT?node-id=0%3A1
+
+<br>
+ Wireframe proposta de entrega da sprint 2: https://www.figma.com/file/KkBAFrue9nnVGrA9o044P1/API-IACIT?node-id=0%3A1
  
  
  <h2>📄Backlog do Produto</h2>
