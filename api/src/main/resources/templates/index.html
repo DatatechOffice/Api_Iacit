@@ -1,6 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
+
   <head>
+    <style type="text/css">
+      
+      .header {
+        position: sticky;
+        top: 5;
+      }
+
+    </style>
     <meta charset="utf-8"/>
     <title>IACT_Datatech</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -27,53 +38,54 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Menu</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#filtros">Filtro</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#tabela">Tabela</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#relatorio">Relatorio</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style=position:sticky top:0;>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Menu</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collaps" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#filtros">Filtro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#tabela">Tabela</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#relatorio">Relatorio</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </nav>
-
+      </nav>
+    </header>
+      
     <div class="container-xxl position-relative bg-white d-flex">
       <!-- Content Start -->
       <div class="content">
         <div id="filtros" class="container-fluid pt-4 px-4">
           <h4 class="mb-0">Selecione o período:</h4>
-
           <form>
             <div>
               <label for="dia">Data inicio:</label>
@@ -92,48 +104,9 @@
 
           <br>
 
-          <button id="btnEnviarDados" class="btn btn-outline-success" type="submit">
-            Buscar data
+          <button id="btnEnviarDados" class="btn btn-outline-success" type="submit" onclick="plotcharts()">
+          Buscar data
           </button>
-
-        </div>
-
-        <br>
-
-        <div class="row align-items-start">
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=" "
-              id="tempBulboSeco"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Temp. Bulbo Seco
-            </label>
-          </div>
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=" "
-              id="tempTempMax"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Temp. Max
-            </label>
-          </div>
-          <div class="form-check col">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=" "
-              id="tempTempMax"
-            />
-            <label class="form-check-label" for="flexCheckDefault">
-              Temp. Min
-            </label>
-          </div>
         </div>
 
         <br>
@@ -141,18 +114,10 @@
         <div class="container mt-3">
           <h2>Relatorio</h2>
         </div>
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <center>
-      <h3>Charts using Google Sheet Data</h3>
-      <button class="btn btn-outline-success" onclick="plotcharts()"> Plot Charts</button>
-    </center>
     <div class="row" style="width:100%">
-      <div class="col-md-6">
-        <canvas id="barchart"></canvas>
-      </div>
       <div class="col-md-6">
         <canvas id="linechart"></canvas>
       </div>
@@ -167,18 +132,15 @@
         fetch(apiUrl).then(response => {
           return response.json();
         }).then(data => {
-            for(let i =0; i <data.length;i++){
-              months.push(data[i]['Data']);
-              cost.push(parseInt(data[i]['TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)']));
-              selling.push(parseInt(data[i]['TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)']));
-            }
-            //For Bar chart
-            dataset=addData('TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)', cost, 'green', 'black');
-            drawchart(dataset, months, 'bar');
-              
-            //For Line chart
-            dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', selling, 'transparent', 'green');
-            drawchart(dataset, months, 'line');
+          for(let i =0; i <data.length;i++){
+            months.push(data[i]['Data']);
+            cost.push(parseInt(data[i]['TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)']));
+            selling.push(parseInt(data[i]['TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)']));
+          }
+            
+          //For Line chart
+          dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', selling, 'transparent', 'green');
+          drawchart(dataset, months, 'line');
               
         }).catch(err => {
           console.log(err);
@@ -214,7 +176,9 @@
           }
         });
       }
-  </script>
+    </script>
+
+    <br>
 
     <table class="table table-striped" cellspacing="0" cellpadding="0">
       <thead>
@@ -242,24 +206,17 @@
       </tbody>
     </table>
 
-        <div id="relatorio"></div>
-
-        <script
-          type="text/javascript"
-          src="https://www.gstatic.com/charts/loader.js"
-        ></script>
-
-        <div
-          id="columnchart_values"
-          style="width: 900px; height: 900px; align-items: center"
-        ></div>
-      </div>
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-        ><i class="bi bi-arrow-up"></i
-      ></a>
+    <div id="relatorio"></div>
+      <script
+        type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"
+      ></script>
     </div>
-
+      <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+    </div>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
