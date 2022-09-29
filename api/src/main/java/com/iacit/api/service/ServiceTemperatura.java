@@ -15,28 +15,35 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceTemperatura {
 	
-	@Autowired(required = true)
+	@Autowired(required=true) 
 	private TemperaturaRepository temperaturaRepository;
 	
-	public ServiceTemperatura(TemperaturaRepository temperaturaRepository) {
-		this.temperaturaRepository=temperaturaRepository;
-	}
-	List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf("2020-01-01 00:00:00"));
-	
+	private String A;
+	private String B;
+
 	StringBuilder toJSON(List<Temperatura> enviarTemperatura) {
 		Gson gson = new Gson();
 		StringBuilder sb = new StringBuilder();
 		for (Temperatura d : enviarTemperatura) {
 			sb.append(gson.toJson(d));
 		}
+		System.out.println(sb);
+		
 		return sb;
 	}
-	
-	public static void Main(String []args) {
-		ServiceTemperatura serviceTemperatura = new ServiceTemperatura(null);
-		List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf("2020-01-01 00:00:00"));
+
+	// tipo da função deve ser TemperaturaRepository
+	public TemperaturaRepository serviceTEntity(String A, String B) {
+
+		ServiceTemperatura RespT = new ServiceTemperatura();
 		
-		serviceTemperatura.toJSON(enviarTemperatura);
+		List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf(A), Timestamp.valueOf(B));
+		
+		System.out.println(RespT.toJSON(enviarTemperatura));
+		
+		//return repository;
+
+		return temperaturaRepository;
 	}
 
 }
