@@ -91,15 +91,15 @@ $(document).ready(function() {
 		debugger;
 
 		$.post(
-			"/hello",
-			JSON.stringify({ name: vDataInicio, name: vDataFim }),
+			"/post",
+			JSON.stringify({ A: vDataInicio, B: vDataFim }),
 			function(data) {
 				if (data[0].status == 0) {
-					window.location.href = "/hello1";
+					window.location.href = "/post";
 				} else {
 					sessionStorage.setItem("userNameADM", data[0].userName);
 
-					window.location.href = "/hello2";
+					window.location.href = "/post";
 				}
 			},
 			"json"
@@ -107,88 +107,36 @@ $(document).ready(function() {
 	});
 
 
-	var OnClickDeletar = function() {
+	var OnClickLeo = function() {
 		$("#relatorio").click(function() {
-			var idFuncao = $(this).attr("data-idElemento");
+			debugger
 
-			Swal.fire({
-				title: 'Tem certeza que deseja deletar alguma Função?',
-				text: "Essa ação não poderá ser revertida!",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Sim, deletar!',
-				cancelButtonText: 'Não, cancelar!',
-			}).then((result) => {
-				if (result.isConfirmed) {
+			$.getJSON({
+				url: "/testeIndex",
+				success: function(data) {
+					//KTApp.unblockPage();
 
 
-					KTApp.blockPage({
-						overlayColor: '#000000',
-						state: 'primary',
-						message: 'Carregando...'
-					});
-
-					$.ajax({
-						async: true,
-						type: "GET",
-						url: "/name",
-						success: function(json) {
-							KTApp.unblockPage();
-
-
-							if (json.resultado == "OK") {
-								Swal.fire(
-									'Deletado!',
-									'Função deletado com sucesso.',
-									'success'
-								);
-								window.location.reload();
-							}
-							if (json.resultado == "ERROR") {
-								Swal.fire(
-									'Erro!',
-									'Houve um erro ao se comunicar com o servido, tente novamente mais tarde.',
-									'error'
-								);
-							}
-						}
-					})
-
-				};
+					if (data.resultado == "OK") {
+						debugger
+						window.location.reload("/testeIndex");
+					}
+					if (data.resultado == "ERROR") {
+						debugger
+						Swal.fire(
+							'Erro!',
+							'Houve um erro ao se comunicar com o servido, tente novamente mais tarde.',
+							'error'
+						);
+					}
+				}
 			})
-		})
+
+		});
 	}
 
 
-	$("#busca").click(function() {
-		var modelo = $("#modelo option:selected").text();
-		var marca = $("#marca option:selected").text();
-		var cor = $("#cor option:selected").text();
+	OnClickLeo();
 
-		$("#dadosCarro").empty();
 
-		var url = "/carro/" + modelo + "/" + marca + "/" + cor + "";
-
-		$.getJSON(url, function(data) {
-			var itens = [];
-
-			$.each(data, function(i) {
-				itens.push(
-					"<tr> <td>" +
-					this.placa +
-					"</td><td>" +
-					this.espc.modelo +
-					"</td><td>" +
-					this.espc.marca +
-					"</td><td>" +
-					this.espc.cor +
-					"</td></tr>"
-				);
-			});
-
-			$("#dadosCarro").append(itens);
-		});
-	});
-});
+})
