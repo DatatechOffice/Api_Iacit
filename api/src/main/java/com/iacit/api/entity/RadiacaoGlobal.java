@@ -1,4 +1,4 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -16,28 +16,25 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name="umidade")
-@Table(name="umidade")
+@Entity(name="radiacao_global")
+@Table(name="radiacao_global")
 @Getter
 @Setter
 @ToString
-public class umidade {
+public class RadiacaoGlobal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "umi_id")
-	private Integer umi_id;
+	@Column(name= "rag_id")
+    private Integer rag_id;
 	
-	@Column(name= "umi_relativa_min")
-	private BigDecimal umi_relativa_min;
-    
-	@Column(name= "umi_relativa_ar")
-	private BigDecimal umi_relativa_ar;
-    
-	@Column(name= "umi_data_hora")
-	private Timestamp umi_data_hora;
+	@Column(name= "rag_radiacao_global")
+    private BigDecimal rag_radiacao_global;
+	
+	@Column(name= "rag_data_hora")
+    private Timestamp rag_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private estacao est_codigo;
+    private Estacao est_codigo;
 }

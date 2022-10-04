@@ -1,4 +1,4 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import java.sql.Timestamp;
 
@@ -11,12 +11,12 @@ import org.hibernate.annotations.Immutable;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity (name = "view_umidade")
+@Entity (name = "view_vento")
 @Immutable
 @Getter
 @Setter
-public class viewUmidade {
-	
+public class ViewVento {
+
 	@Id
 	@Column(name= "est_codigo", length = 10)
 	private String est_codigo;
@@ -24,15 +24,12 @@ public class viewUmidade {
 	@Column(name= "est_nome_estacao", length = 30)
 	private String est_nome_estacao;
 	
-	@Column(name= "umi_id")
-    private String umi_id;
+	@Column(name= "ven_id")
+    private String ven_id;
 	
-	@Column(name= "umi_relativa_min")
-	private String umi_relativa_min;
+	@Column(name= "ven_direcao_horaria")
+	private String ven_direcao_horaria;
 	
-	@Column(name= "umi_relativa_ar")
-	private String umi_relativa_ar;
-	
-	@Column(name= "umi_data_hora")
-	private Timestamp umi_data_hora;
+	@Column(name= "ven_data_hora")
+	private Timestamp ven_data_hora;
 }

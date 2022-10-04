@@ -1,4 +1,4 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -21,7 +21,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class pressaoAtmosferica {
+public class PressaoAtmosferica {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +42,5 @@ public class pressaoAtmosferica {
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private estacao est_codigo;
+    private Estacao est_codigo;
 }
