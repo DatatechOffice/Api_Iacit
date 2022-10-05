@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 		$.post(
 			"/post",
-			JSON.stringify({ A: vDataInicio, B: vDataFim }),
+			JSON.stringify({ dataInicio: vDataInicio, dataFim: vDataFim }),
 			function(data) {
 				if (data[0].status == 0) {
 					window.location.href = "/post";
