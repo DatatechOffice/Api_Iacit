@@ -80,7 +80,7 @@ def inserirTemp():
         inserir_db(sql)
 
 
-
+#Umidade não funciona
 def inserirUmidade():
     for i in BraDR.index:
         sql = """
@@ -138,6 +138,7 @@ def inserirRadGlob():
         )
         inserir_db(sql)
 
+#Pressao Atmosferica não funciona
 def inserirPressaoAt():
     for i in BraDR.index:
         sql = """
