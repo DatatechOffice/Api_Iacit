@@ -1,50 +1,35 @@
 
 package com.iacit.api.service;
 
+
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.iacit.api.entity.Temperatura;
-import com.iacit.api.repository.TemperaturaRepository;
+import com.apiIacit.DatatechApiIacit.entity.Temperatura;
+import com.apiIacit.DatatechApiIacit.repository.TemperaturaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceTemperatura {
-	
+
 	@Autowired(required=true) 
 	private TemperaturaRepository temperaturaRepository;
-	
-	private String A;
-	private String B;
-
-	StringBuilder toJSON(List<Temperatura> enviarTemperatura) {
-		Gson gson = new Gson();
-		StringBuilder sb = new StringBuilder();
-		for (Temperatura d : enviarTemperatura) {
-			sb.append(gson.toJson(d));
-		}
-		System.out.println(sb);
-		
-		return sb;
-	}
 
 	// tipo da função deve ser TemperaturaRepository
-	public TemperaturaRepository serviceTEntity(String A, String B) {
+	public List<Temperatura> getByFilter(String dataInicial, String dataFinal) throws ParseException {
 
 		ServiceTemperatura RespT = new ServiceTemperatura();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
-		List<Temperatura> enviarTemperatura = temperaturaRepository.listar("A001", Timestamp.valueOf(A), Timestamp.valueOf(B));
+		List<Temperatura> entidades = temperaturaRepository.listar("A001", formatter.parse(dataInicial), formatter.parse(dataFinal));
 		
-		System.out.println(RespT.toJSON(enviarTemperatura));
-		
-		RespT.toJSON(enviarTemperatura);
-		//return repository;
-
-		return temperaturaRepository;
+		return entidades;
 	}
 
 }
