@@ -1,5 +1,4 @@
-package com.iacit.api.modal;
-
+package com.iacit.api.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -16,31 +15,31 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name="temperatura")
-@Table(name="temperatura")
+@Entity(name="vento")
+@Table(name="vento")
 @Getter
 @Setter
 @ToString
-public class temperatura {
+public class Vento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "tem_id")
-    private Integer tem_id;
+	@Column(name= "ven_id")
+	private Integer ven_id;
 	
-	@Column(name= "tem_ar_bulbo_seco")
-	private BigDecimal tem_ar_bulbo_seco;
-	
-	@Column(name= "tem_max")
-	private BigDecimal tem_max;
-	
-	@Column(name= "tem_min")
-	private BigDecimal tem_min;
-	
-	@Column(name= "tem_data_hora")
-	private Timestamp tem_data_hora;
+	@Column(name= "ven_direcao_horaria")
+	private BigDecimal ven_direcao_horaria;
+    
+	@Column(name= "ven_rajada_max")
+	private BigDecimal ven_rajada_max;
+    
+	@Column(name= "ven_velocidade_horaria")
+	private BigDecimal ven_velocidade_horaria;
+    
+	@Column(name= "ven_data_hora")
+	private Timestamp ven_data_hora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private estacao est_codigo;
+    private Estacao est_codigo;
 }

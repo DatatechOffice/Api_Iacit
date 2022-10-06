@@ -1,4 +1,4 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,21 +11,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name="estado_regiao")
-@Table(name="estado_regiao")
+
+@Entity(name="regiao")
+@Table(name="regiao")
 @Getter
 @Setter
 @ToString
-public class estadoRegiao {
-	
-	@Id
+public class Regiao{
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "eer_id")
-	private Integer eer_id;
+	@Column(name= "reg_id")
+	private Integer reg_id;
 	
-	@Column(name= "eer_nome_regiao",length = 2)
-    private String eer_nome_regiao;
+	@Column(name= "reg_sigla", length = 2)
+	private String reg_sigla;
 	
-	@Column(name= "eer_unidade_federativa",length = 2)
-    private String eer_unidade_federativa;
 }

@@ -3,19 +3,19 @@ package com.iacit.api.repository;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.iacit.api.entity.Temperatura;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-import com.iacit.api.modal.viewTemperatura;
-
-
-public interface temperaturaRepository extends JpaRepository<viewTemperatura, String> {
-	@Query("SELECT vt FROM view_temperatura vt WHERE vt.est_nome_estacao = :est_nome_estacao AND "
-			+ "vt.est_codigo = :est_codigo AND vt.tem_data_hora = :tem_data_hora")
-	public List<viewTemperatura> listar(
-			@Param("est_nome_estacao") String est_nome_estacao,
+@Repository
+public interface TemperaturaRepository extends JpaRepository<Temperatura, Integer> {
+	@Query(value = "SELECT * FROM temperatura WHERE est_codigo = '?' AND tem_data_hora BETWEEN '?' AND '?'", nativeQuery = true)
+	public List<Temperatura> listar(
 			@Param("est_codigo") String est_codigo,
-			@Param("tem_data_hora") Timestamp tem_data_hora
+			@Param("tem_data_hora") Timestamp tem_data_hora,
+			@Param("tem_data_hora")Timestamp tem_data_hora1
 			);
 }

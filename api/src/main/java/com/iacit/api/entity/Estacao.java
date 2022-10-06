@@ -1,13 +1,16 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -19,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class estacao {
+public class Estacao {
 	
 	@Id
 	@Column(name= "est_codigo", length = 4)
@@ -41,6 +44,7 @@ public class estacao {
 	private BigDecimal est_altitude;
 	
 	@ManyToOne
-    @JoinColumn(name = "eer_id", referencedColumnName = "eer_id")
-	private estadoRegiao eer_id;
+    @JoinColumn(name = "etd_id", referencedColumnName = "etd_id")
+	private Estado etd_id;
+	
 }

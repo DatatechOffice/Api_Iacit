@@ -1,4 +1,4 @@
-package com.iacit.api.modal;
+package com.iacit.api.entity;
 
 import java.sql.Timestamp;
 
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Immutable
 @Getter
 @Setter
-public class viewTemperatura {
+public class ViewTemperatura {
 	
 	@Id
 	@Column(name= "est_codigo", length = 10)
