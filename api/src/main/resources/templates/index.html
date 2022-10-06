@@ -66,44 +66,35 @@
       <div class="content">
         <!-- Filtro de datas-->
         <div id="filtros" class="container-fluid pt-4 px-4">
-          <h4 class="mb-0">Selecione o período:</h4>
           <!-- Seleção da data que se inicia o relatorio-->
-          <form>
-            <div>
+        <form class="row g-3">
+            <div class="col-md-3">
+              <h4 class="mb-0">Selecione o Período:</h4>
               <label for="dia">Data inicio:</label>
-              <input type="date" id="dataInicio" name="dia" />
+              <input type="date" class="form-control"  id="dataInicio" name="dia" />
             </div>
-          </form>
-
-          <br>
           <!-- Seleção da data que se finaliza o relatorio-->
-          <form>
-            <div>
-              <label for="dia">Data Fim :</label>
-              <input type="date" id="dataFim" name="dia" />
-            </div>
-          </form>
           <!--Inicio das textbox-->
-          <table>
-            <tr>
-              <div>
-                <h4 class="mb-0">Selecione as Regiões</h4>
-                <td>Região:</td>
-                <td><input type="text" name="regiao" size="20"></td>
-              </div>
-            </tr>
-            <tr>
-              <h4 class="mb-0">Selecione as Estações</h4>
-              <td>Estação:</td>
-              <td><input type="text" name="estacao" size="20"></td>
-            </tr>
-            <tr>
-              <h4 class="mb-0">Selecione os Dados</h4>
-              <td>Dados:</td>
-              <td><input type="text" name="dados" size="20"></td>
-            </tr>
-           </table>
+            <div class="col-md-3">
+              <h4 class="mb-4">Selecione as Regiões:</h4>
+              <input type="text" class="form-control" placeholder="região" aria-label="região">
+            </div>
+            <div class="col-md-3">
+              <h4 class="mb-4">Selecione o Estado:</h4>
+              <input type="text" class="form-control" placeholder="estado" aria-label="estado">
+            </div>
+            <div class="col-md-3">
+              <h4 class="mb-4">Selecione as Variaveis:</h4>
+              <input type="text" class="form-control" placeholder="variavel" aria-label="variavel">
+            </div>
+          
+            <div class="col-md-3">
+              <label for="dia">Data Fim :</label>
+              <input type="date" class="form-control" id="dataFim" name="dia" />
+            </div>
            <!--Fim das textbox-->
+          </form>
+          
           <br>
 
           <button id="btnEnviarDados" class="btn btn-outline-success"
