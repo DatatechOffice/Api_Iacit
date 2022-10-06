@@ -91,15 +91,18 @@ $(document).ready(function() {
 		debugger;
 
 		$.post(
-			"/post",
-			JSON.stringify({ dataInicio: vDataInicio, dataFim: vDataFim }),
+			"/temperatura/dataHora",
+			//corpo da requisição <body> == {}
+			JSON.stringify({ dataInicio: vDataInicio, dataFinal: vDataFim }),
 			function(data) {
 				if (data[0].status == 0) {
-					window.location.href = "/post";
+					debugger;
+					window.location.href = "/index";
 				} else {
+					debugger;
 					sessionStorage.setItem("userNameADM", data[0].userName);
 
-					window.location.href = "/post";
+					window.location.href = "/temperatura";
 				}
 			},
 			"json"
@@ -140,3 +143,35 @@ $(document).ready(function() {
 
 
 })
+
+/*
+ $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/api/search",
+        data: JSON.stringify(search),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+
+            var json = "<h4>Ajax Response</h4><pre>"
+                + JSON.stringify(data, null, 4) + "</pre>";
+            $('#feedback').html(json);
+
+            console.log("SUCCESS : ", data);
+            $("#btn-search").prop("disabled", false);
+
+        },
+        error: function (e) {
+
+            var json = "<h4>Ajax Response</h4><pre>"
+                + e.responseText + "</pre>";
+            $('#feedback').html(json);
+
+            console.log("ERROR : ", e);
+            $("#btn-search").prop("disabled", false);
+
+        }
+    });
+*/
