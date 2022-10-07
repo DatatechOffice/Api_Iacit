@@ -1,4 +1,4 @@
-package com.apiIacit.DatatechApiIacit.controller;
+package com.iacit.api.controller;
 
 import lombok.Data;
 
