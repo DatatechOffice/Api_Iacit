@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.apiIacit.DatatechApiIacit.entity.Temperatura;
-import com.apiIacit.DatatechApiIacit.repository.TemperaturaRepository;
-import com.apiIacit.DatatechApiIacit.service.ServiceTemperatura;
+import com.iacit.api.entity.Temperatura;
+import com.iacit.api.repository.TemperaturaRepository;
+import com.iacit.api.service.ServiceTemperatura;
 
 import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 

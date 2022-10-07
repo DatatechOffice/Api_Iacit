@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.apiIacit.DatatechApiIacit.entity.Temperatura;
-import com.apiIacit.DatatechApiIacit.service.ServiceTemperatura;
+import com.iacit.api.entity.Temperatura;
+import com.iacit.api.service.ServiceTemperatura;
 
 //O @ controller indica que essa classe ´fai ter rotas de endpoint
 @Controller
