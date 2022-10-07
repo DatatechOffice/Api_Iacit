@@ -13,10 +13,7 @@ import com.iacit.api.entity.Temperatura;
 
 @Repository
 public interface TemperaturaRepository extends JpaRepository<Temperatura, Integer> {
-	//@Query(value = "SELECT * FROM temperatura WHERE est_codigo = ?1 AND tem_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
-	@Query(value = "SELECT * FROM temperatura WHERE est_codigo = ?1 AND tem_data_hora '?2'", nativeQuery = true)
+	@Query(value = "SELECT * FROM temperatura WHERE est_codigo = ?1 AND tem_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
 	
-	public List<Temperatura> listar(String estCodigo, Timestamp dataInicial);
-	//public List<Temperatura> listar(@Param("estCodigo")String estCodigo, @Param("dataInicial")String dataInicial, @Param("dataFinal")String dataFinal);
-	
+	public List<Temperatura> findByest_codigoAndtem_data_hora(String estCodigo, Timestamp dataInicial, Timestamp dataFinal);
 }

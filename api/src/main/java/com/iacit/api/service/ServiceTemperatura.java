@@ -23,8 +23,7 @@ public class ServiceTemperatura {
 	public List<Temperatura> getByFilter(String dataInicial, String dataFinal) throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 		
-		//List<Temperatura> entidades = temperaturaRepository.listar("A001", formatter.parse(dataInicial));
-		List<Temperatura> entidades = temperaturaRepository.listar("A001", Timestamp.valueOf(dataInicial));
+		List<Temperatura> entidades = temperaturaRepository.findByest_codigoAndtem_data_hora("A001", Timestamp.valueOf(dataInicial), Timestamp.valueOf(dataFinal));
 		
 		return entidades;
 	}
