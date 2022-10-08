@@ -18,7 +18,7 @@ import com.iacit.api.service.ServiceTemperatura;
 //O @ controller indica que essa classe ´fai ter rotas de endpoint
 @Controller
 
-// Nomeando a rota até a controller nesse a ro
+
 @RequestMapping (value={"/temperatura"})
 // Aqui é controller de temperatura onde será inseridas os metodosda API(GET, POST, PUT, DELETE ENTRE OUTROS)
 public class TemperaturaController {
