@@ -13,7 +13,7 @@ def removeA(s):
 
 def conecta_db():
   con = psycopg2.connect(host='localhost',
-                         database='Jorge',
+                         database='Api_Iacit',
                          user='postgres',
                          password='123')
   return con
@@ -56,13 +56,7 @@ Brasilia = pd.read_csv('BRASILIA2020.CSV', sep=';', encoding='ISO-8859-1', skipr
 #Brasilia2 = pd.DataFrame(Brasilia, index=[0,1,2,3,4,5,6,7])
 #Brasilia2 = Brasilia.head(7)
 
-SAOPAULOINTERLAGOS = pd.read_csv('SAOPAULOINTERLAGOS2020.CSV', sep=';', encoding='ISO-8859-1', skiprows=8)
-# BraV = BraD.loc[BraD["RADIACAO GLOBAL (Kj/m²)"] == ("155,7")]
-
-
 BraDR = Brasilia[Brasilia["Data"].between("2020/01/01", "2020/12/31")]
-
-SPINT = SAOPAULOINTERLAGOS[SAOPAULOINTERLAGOS["Data"].between("2020/01/01", "2020/12/31")]
 
 def inserirTemp():
     for i in BraDR.index:
@@ -173,31 +167,6 @@ def FeedDB():
         (etd_id, est_codigo, est_nome_estacao, est_longitude, est_latitude, est_altitude, est_data_fundacao)
         values (1, 'A001', 'BRASILIA', -47.925756, -15.789343, 1160.96, '07-05-2000')"""
     inserir_db(sql)
-
-    sql = """INSERT INTO regiao
-            (reg_id, reg_sigla) 
-            values(2, 'SE')"""
-    inserir_db(sql)
-
-    sql = """INSERT INTO estado
-                (etd_id, etd_unidade_federativa, reg_id) 
-                values(2, 'SP', 2)"""
-    inserir_db(sql)
-
-    sql = """
-            INSERT INTO estacao
-            (etd_id, est_codigo, est_nome_estacao, est_longitude, est_latitude, est_altitude, est_data_fundacao)
-            values (2, 'A771', 'SAO PAULO - INTERLAGOS', -46.677501, -23.724501, 771, '14-03-2018')"""
-    inserir_db(sql)
-
-
-
-
-
-
-#for loop para o index ir de 1 até o 365
-
-#inserirtemp= inserir_db(f'insert into temperatura(tem_data) values({BraDR2})')
 
 def Escolher():
     x = str(input(
