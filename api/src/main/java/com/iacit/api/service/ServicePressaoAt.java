@@ -21,7 +21,7 @@ public class ServicePressaoAt {
 	// tipo da função deve ser TemperaturaRepository
 	public List<PressaoAtmosferica> getByFilter(String dataInicial, String dataFinal) throws ParseException {
 
-		List<PressaoAtmosferica> entidades = atmosfericaRepository.findByest_codigoAndpra_data_hora("A001", Timestamp.valueOf(dataInicial), Timestamp.valueOf(dataFinal));
+		List<PressaoAtmosferica> entidades = atmosfericaRepository.findByest_codigoAndpra_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
 		
 		return entidades;
 	}

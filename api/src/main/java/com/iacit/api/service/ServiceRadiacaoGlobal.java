@@ -22,7 +22,7 @@ public class ServiceRadiacaoGlobal {
 	// tipo da função deve ser TemperaturaRepository
 	public List<RadiacaoGlobal> getByFilter(String dataInicial, String dataFinal) throws ParseException {
 		
-		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora("A001", Timestamp.valueOf(dataInicial), Timestamp.valueOf(dataFinal));
+		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
 		
 		return entidades;
 	}
