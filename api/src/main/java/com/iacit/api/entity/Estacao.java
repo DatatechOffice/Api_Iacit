@@ -26,25 +26,25 @@ public class Estacao {
 	
 	@Id
 	@Column(name= "est_codigo", length = 4)
-	private String est_codigo;
+	private String estCodigo;
 	
 	@Column(name= "est_longitude", length = 10)
-	private BigDecimal est_longitude;
+	private BigDecimal estLongitude;
 	
 	@Column(name= "est_nome_estacao", length = 30)
-	private String est_nome_estacao;
+	private String estNomeEstacao;
 	
 	@Column(name= "est_data_fundacao")
-	private Timestamp est_data_fundacao;
+	private Timestamp estDataFundacao;
 	
 	@Column(name= "est_latitude", length = 10)
-	private BigDecimal est_latitude;
+	private BigDecimal estLatitude;
 	
 	@Column(name= "est_altitude", length = 10)
-	private BigDecimal est_altitude;
+	private BigDecimal estAltitude;
 	
 	@ManyToOne
     @JoinColumn(name = "etd_id", referencedColumnName = "etd_id")
-	private Estado etd_id;
+	private Estado etdId;
 	
 }

@@ -47,7 +47,7 @@ public class Temperatura {
 	private BigDecimal tem_min;
 	
 	@Column(name= "tem_data_hora")
-	private Timestamp tem_data_hora;
+	private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

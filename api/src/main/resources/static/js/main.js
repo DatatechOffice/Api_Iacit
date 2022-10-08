@@ -88,10 +88,11 @@ $(document).ready(function() {
 		// Valores da data de inico e fim que foram inseridas nas entradas de data.
 		var vDataInicio = $("#dataInicio").val();
 		var vDataFim = $("#dataFim").val();
+		var vDadoDesejado = "";
 		debugger;
 
 		$.post(
-			"/temperatura/dataHora",
+			"/filtrar/vDadoDesejado",
 			//corpo da requisição <body> == {}
 			JSON.stringify({ dataInicio: vDataInicio, dataFinal: vDataFim }),
 			function(data) {

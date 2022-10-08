@@ -10,28 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.service.ServiceTemperatura;
 
-//O @ controller indica que essa classe ´fai ter rotas de endpoint
 @Controller
-
-
-@RequestMapping (value={"/temperatura"})
-// Aqui é controller de temperatura onde será inseridas os metodosda API(GET, POST, PUT, DELETE ENTRE OUTROS)
 public class TemperaturaController {
-	
-// fazendo a injeção de depedencia, tudo do ServiceTemperatura vira para o temperaturaService	
+
 	@Autowired(required = true)
 	private ServiceTemperatura temperaturaService;
 
-// Metodo post onde Data é uma clase que recebe o valor do fronte e data minusculo é onde eu vou pegar os dados para fazer tratamentos.	
-	@PostMapping(value = { "/filtrar" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Temperatura>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
-		
-		System.out.println(data.getDataInicio());
+	@PostMapping(value = { "/temperatura" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Temperatura>> postFiltroPorDataTemp(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Temperatura> listTemperatura = temperaturaService.getByFilter(data.getDataInicio(), data.getDataFim());
 		

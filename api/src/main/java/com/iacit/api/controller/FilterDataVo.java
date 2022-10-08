@@ -6,4 +6,7 @@ import lombok.Data;
 public class FilterDataVo {
 	String dataInicio;
 	String dataFim;
+	String regiao;
+	String estado;
+	String variavel;
 }

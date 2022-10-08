@@ -32,7 +32,7 @@ public class RadiacaoGlobal {
     private BigDecimal rag_radiacao_global;
 	
 	@Column(name= "rag_data_hora")
-    private Timestamp rag_data_hora;
+    private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
