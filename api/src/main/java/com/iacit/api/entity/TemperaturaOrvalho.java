@@ -26,21 +26,21 @@ public class TemperaturaOrvalho {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "tdo_id")
-	private Integer tdo_id;
+	private Integer tdoId;
 	
 	@Column(name= "tdo_ponto")
-	private BigDecimal tdo_ponto;
+	private BigDecimal tdoPonto;
     
 	@Column(name= "tdo_max")
-	private BigDecimal tdo_max;
+	private BigDecimal tdoMax;
     
 	@Column(name= "tdo_min")
-	private BigDecimal tdo_min;
+	private BigDecimal tdoMin;
     
 	@Column(name= "tdo_data_hora")
 	private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao est_codigo;
+    private Estacao estCodigo;
 }

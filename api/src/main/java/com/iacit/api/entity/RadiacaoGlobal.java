@@ -26,15 +26,15 @@ public class RadiacaoGlobal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "rag_id")
-    private Integer rag_id;
+    private Integer ragId;
 	
 	@Column(name= "rag_radiacao_global")
-    private BigDecimal rag_radiacao_global;
+    private BigDecimal ragRadiacaoGlobal;
 	
 	@Column(name= "rag_data_hora")
     private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao est_codigo;
+    private Estacao estCodigo;
 }

@@ -22,9 +22,9 @@ public class Regiao{
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "reg_id")
-	private Integer reg_id;
+	private Integer regId;
 	
 	@Column(name= "reg_sigla", length = 2)
-	private String reg_sigla;
+	private String regSigla;
 	
 }

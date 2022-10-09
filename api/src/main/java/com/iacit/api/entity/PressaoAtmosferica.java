@@ -26,21 +26,21 @@ public class PressaoAtmosferica {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "pra_id")
-	private Integer pra_id;
+	private Integer praId;
 	
 	@Column(name= "pra_nivel_estacao")
-    private BigDecimal pra_nivel_estacao;
+    private BigDecimal praNivelEstacao;
 	
 	@Column(name= "pra_max")
-    private BigDecimal pra_max;
+    private BigDecimal praMax;
 	
 	@Column(name= "pra_min")
-    private BigDecimal pra_min;
+    private BigDecimal praMin;
 	
 	@Column(name= "pra_data_hora")
     private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao est_codigo;
+    private Estacao estCodigo;
 }

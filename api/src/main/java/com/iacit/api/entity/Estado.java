@@ -27,14 +27,14 @@ public class Estado{
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "etd_id")
-	private Integer etd_id;
+	private Integer etdId;
 	
 	@Column(name= "etd_unidade_federativa", length = 2)
-	private String etd_unidade_federativa;
+	private String etdUnidadeFederativa;
 
 	@ManyToOne
     @JoinColumn(name = "reg_id", referencedColumnName = "reg_id")
-	private Regiao reg_id;
+	private Regiao regId;
 	
 
 }
