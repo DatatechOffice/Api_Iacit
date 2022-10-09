@@ -1,12 +1,9 @@
 package com.iacit.api.service;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.iacit.api.entity.Umidade;
 import com.iacit.api.repository.UmidadeRepository;
 

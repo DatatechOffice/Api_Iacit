@@ -1,5 +1,4 @@
 package com.iacit.api.controller;
-
 import lombok.Data;
 
 @Data

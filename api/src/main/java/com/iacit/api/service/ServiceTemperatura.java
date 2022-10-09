@@ -1,15 +1,11 @@
-
 package com.iacit.api.service;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.repository.TemperaturaRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,6 @@
 package com.iacit.api.controller;
-
 import java.text.ParseException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +19,7 @@ public class TemperaturaController {
 	private ServiceTemperatura temperaturaService;
 
 	@PostMapping(value = { "/temperatura" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Temperatura>> postFiltroPorDataTemp(@RequestBody FilterDataVo data) throws ParseException {
+	public ResponseEntity<List<Temperatura>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Temperatura> listTemperatura = temperaturaService.getByFilter(data.getDataInicio(), data.getDataFim());
 		

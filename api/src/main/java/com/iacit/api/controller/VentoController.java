@@ -1,8 +1,6 @@
 package com.iacit.api.controller;
-
 import java.text.ParseException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +21,7 @@ public class VentoController {
 	private ServiceVento ventoService;
 
 	@PostMapping(value = { "/vento" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Vento>> postFiltroPorDataTemp(@RequestBody FilterDataVo data) throws ParseException {
+	public ResponseEntity<List<Vento>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Vento> listVento = ventoService.getByFilter(data.getDataInicio(), data.getDataFim());
 		
