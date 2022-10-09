@@ -14,12 +14,12 @@ import com.iacit.api.service.ServicePressaoAt;
 import com.iacit.api.service.ServiceTemperatura;
 
 @Controller
-public class PressaoAtmosfericaController {
+public class PressaoAtmosfericaMaximaController {
 	
 	@Autowired(required = true)
 	private ServicePressaoAt atmosfericaService;
 
-	@PostMapping(value = { "/pressaoAtmosferica" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/pressaoAtmosfericaMaxima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PressaoAtmosferica>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<PressaoAtmosferica> listPressaoAtm = atmosfericaService.getByFilter(data.getDataInicio(), data.getDataFim());

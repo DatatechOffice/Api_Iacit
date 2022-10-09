@@ -14,12 +14,12 @@ import com.iacit.api.service.ServiceTemperatura;
 import com.iacit.api.service.ServiceUmidade;
 
 @Controller
-public class UmidadeController {
+public class UmidadeRelativaMinimaController {
 
 	@Autowired(required = true)
 	private ServiceUmidade umidadeService;
 
-	@PostMapping(value = { "/umidade" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/umidadeRelativaMinima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Umidade>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Umidade> listUmidade = umidadeService.getByFilter(data.getDataInicio(), data.getDataFim());

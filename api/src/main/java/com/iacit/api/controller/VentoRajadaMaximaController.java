@@ -15,12 +15,12 @@ import com.iacit.api.service.ServiceTemperatura;
 import com.iacit.api.service.ServiceVento;
 
 @Controller
-public class VentoController {
+public class VentoRajadaMaximaController {
 
 	@Autowired(required = true)
 	private ServiceVento ventoService;
 
-	@PostMapping(value = { "/vento" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/ventoRajadaMaxima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Vento>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Vento> listVento = ventoService.getByFilter(data.getDataInicio(), data.getDataFim());
