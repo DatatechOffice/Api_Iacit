@@ -2,143 +2,17 @@
 
 <h2>📜Menu de Navegação</h2>
 
+- [Equipe Datatech](#equipe-datatech)
+- [Desafio](#desafio)
+- [Cronograma das Sprints](#cronograma-das-sprints)
 - [Objetivo do Projeto](#objetivo-do-projeto)
-- [Propostas de Entregas](#propostas-de-entregas)
 - [Backlog do Produto](#backlog-do-produto)
+- [Personas](#personas)
 - [User Stories](#user-stories)
+- [Wireframes](#wireframes)
 - [DER](#der)
 - [Burndown](#burndown)
-- [Cronograma das Sprints](#cronograma-das-sprints)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
-- [Equipe Datatech](#equipe-datatech)
-
-
-<h2>🎯Objetivo do Projeto</h2>
- Uma página web com as informações da fonte Instituto Nacional de Meteorologia - INMET de 2020 até último mês dos dias atuais, nesta página as estações (Brasília, Brasilândia, Paranoá, entre outras) serão filtradas por uma caixa de texto, o tipo de informação (temperatura, temperatura de orvalho, vento, entre outras) serão filtradas por uma caixa de seleção e depois especificadas por caixas de seleção (temp max, temp min, entre outros) o período das informações serão filtrados por duas caixas de data e hora, exemplo de 01/01/2020 00:00 até 01/02/2021 14:00, às informações filtradas aparecerão na página em forma de gráfico após precionar um botão para confirmação.
-OBS: formas de filtro e visualização estão propostas a mudanças.
- 
- 
-<h2>🖼Propostas de Entregas</h2>
- <h3>Sprint 1</h3>
- BD com as informações de temperatura de Brasília em 2020, ligação do banco com back end, e o template a nossa visão para o front end.
- 
-  <h3>Sprint 2</h3>
- Visualização de relatórios(em forma de gráficos), importação do resto das informações de Brasília no ano de 2020.
- 
- 
- <h2>📄Backlog do Produto</h2>
-
-<table border="1">
-    <tr>
-        <td><b>Nivel de Importância</b></td>
-        <td><b>Sprint 1</b></td>
-        <td><b>Sprint 2</b></td>
-        <td><b>Sprint 3<b></td>
-        <td><b>Sprint 4<b></td>
-    </tr>
-    <tr>
-        <td>Crucial</td>
-        <td>Importação de informações</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Importante</td>
-        <td>Template do front</td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-       <td>Bom ter</td>
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-    </tr>    
-</table>
-
-
-<h2>📚User Stories</h2>
-<h3>Sprint1</h3>
-
-* Importação de Informações: Como funcionário Iacit eu preciso ter as informações em um lugar fácil  de manuseá-las para conseguir realizar minhas atividades de uma forma eficiente e intuitiva.
-
-* Visualização de informações: Como funcionário Iacit eu preciso ver informações de forma clara para que minhas tomadas de decisão sejam mais fáceis. 
-
-
-<h2>DER</h2>
-<p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual_Final.png">
-</p>
- 
- 
- <h2>Burndown</h2>
-<h3> Sprint 1 </h3>
-<p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
-</p>
- 
- 
- <h2>📄Cronograma das Sprints</h2>
-    <table border="1">
-        <tr>
-            <td><b>Data</b></td>
-            <td><b>Evento</b></td>  
-        </tr>
-         <tr>
-            <td>09/08/2022 até 13/08/2022</td>
-            <td>Dinâmica Disruptiva</td>  
-        </tr>
-        <tr>
-            <td>15/08/2022 até 19/08/2022</td>
-            <td>Kick-Off</td>  
-        </tr> 
-        <tr>
-            <td>29/08/2022 até 18/09/2022</td>
-            <td>Sprint1 </td>  
-        </tr>    
-        <tr>
-            <td>19/09/2022 até 09/10/2022</td>
-            <td>Sprint2</td>  
-        </tr>
-         <tr>
-            <td>09/10/2022 até 15/10/2022</td>
-            <td>Recesso Escolar</td>  
-        </tr>
-        <tr>
-            <td>17/10/2022 até 06/11/2022</td>
-            <td>Sprint3</td>  
-        </tr>   
-        <tr>
-            <td>07/11/2022 até 27/11/2022</td>
-            <td>Sprint4</td>  
-        </tr>
-        <tr>
-            <td>08/12/2022</td>
-            <td>Feira de Soluções + Apresentação Final</td>  
-        </tr> 
-    </table>
-    
-    
-<h2>🛠Tecnologias Utilizadas</h2>
-
-AS Tecnologias abaixo foram utilizadas na construção do projeto.
-- [GitHub](https://github.com/)
-- [Git](https://github.com/)
-- [Discord](https://discord.com/)
-- [Trello](https://trello.com/pt-BR)
-- [Java](https://www.java.com/pt-BR/)
-- [Maven](https://maven.apache.org/)
-- [Spring Boot](https://spring.io/projects/spring-boot/)
-- [REST](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
-- [Bootstrap](https://getbootstrap.com/)
-- [Python](https://www.python.org/)
-- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-- [JavaScript](https://www.javascript.com/)
-- [PostgreSQL](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
-- [JDK(JRE está contido nele)](https://www.oracle.com/java/technologies/downloads/)
 
 
 </table>
@@ -246,3 +120,168 @@ AS Tecnologias abaixo foram utilizadas na construção do projeto.
 
 </tr>
 </table>
+
+
+<h2>🧩Desafio</h2>
+Somos uma empresa de consultoria meteorológica, e hoje, um dos nossos serviços é fornecer aos nossos clientes relatórios customizados de dados meteorológicos.
+Como trabalhamos processando muitas informações manualmente, acabamos perdendo tempo e desperdiçando recursos.
+Por isso, precisamos de um sistema que nos permita realizar a importação dos dados meteorológicos, bem como armazená-los em uma base de dados, para posteriormente gerar os relatórios desejados por nossos clientes.
+ 
+
+<h2>⚙️Requisitos</h2>
+<h3>Funcionais</h3>
+Cadastro de Estações <br>
+Cadastro de Estato e Regiões <br>
+Importação de Dados <br>
+Geração de Relatórios <br>
+
+<h3>Não Funcionais</h3>
+Sistema Web <br>
+Linguagem Java <br>
+Banco de Dados Relacional <br>
+Documentações <br>
+
+
+ <h2>📄Cronograma das Sprints</h2>
+    <table border="1">
+        <tr>
+            <td><b>Data</b></td>
+            <td><b>Evento</b></td>  
+        </tr>
+         <tr>
+            <td>09/08/2022 até 13/08/2022</td>
+            <td>Dinâmica Disruptiva</td>  
+        </tr>
+        <tr>
+            <td>15/08/2022 até 19/08/2022</td>
+            <td>Kick-Off</td>  
+        </tr> 
+        <tr>
+            <td>29/08/2022 até 18/09/2022</td>
+            <td>Sprint1 </td>  
+        </tr>    
+        <tr>
+            <td>19/09/2022 até 09/10/2022</td>
+            <td>Sprint2</td>  
+        </tr>
+         <tr>
+            <td>09/10/2022 até 15/10/2022</td>
+            <td>Recesso Escolar</td>  
+        </tr>
+        <tr>
+            <td>17/10/2022 até 06/11/2022</td>
+            <td>Sprint3</td>  
+        </tr>   
+        <tr>
+            <td>07/11/2022 até 27/11/2022</td>
+            <td>Sprint4</td>  
+        </tr>
+        <tr>
+            <td>08/12/2022</td>
+            <td>Feira de Soluções + Apresentação Final</td>  
+        </tr> 
+    </table>
+ 
+
+<h2>🎯Objetivo do Projeto</h2>
+ Uma página web com as informações da fonte: Instituto Nacional de Meteorologia - INMET, de 2020 até último mês dos dias atuais, onde funcionários Iacit poderão filtrar as informações meteorológicas por data, região, estado, estação e variavel de uma forma rápida e intuitiva, e com os filtros gerar  e salvar relatórios compostos por gráficos de linhas e planilhas. Além disso alguns funcionários Iacit terão a função de administrador da plataforma e setão capazes de permitir o acesso de outras pessoas a plataforma, alterar usuários normais para administradores e administrar relatórios.
+ 
+ 
+ <h2>📄Backlog do Produto</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Backlog.png">
+</p>
+
+
+<h2>👤Personas</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Personas.png">
+</p>
+
+ 
+<h2>📚User Stories</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/FIltro%20de%20Dados.png">
+</p>
+
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Gr%C3%A1fico%20de%20Linhas.png">
+</p>
+
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Planilhas.png">
+</p>
+
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/FIltro%20de%20Dados.png">
+</p>
+
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Acessar%20Ferramenta.png">
+</p>
+
+
+<h2>Wireframes</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Wireframe_Home.png">
+</p>
+
+
+<h2>DER</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Banco/Imagens/Conceitual.png">
+</p>
+
+
+<h2>🛠️Arquitetura do Sistema</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Arquitetura%20do%20Sistema.png">
+</p>
+
+
+<h2> 🛣 Caminhos do Usuario</h2>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Caminhos%20do%20Usuario.png">
+</p>
+ 
+ 
+ <h2>🔥Burndown</h2>
+<h3>Sprint 1</h3>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
+</p>
+
+<h3>Sprint 2</h3>
+<p align="center">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Burndown_2.png">
+</p>
+
+
+<h2>🛠Tecnologias Utilizadas</h2>
+
+AS Tecnologias abaixo foram utilizadas na construção do projeto.
+<h3>Front</h3>
+
+- [Bootstrap](https://getbootstrap.com/)
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [JavaScript](https://www.javascript.com/)
+- [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+
+<h3>Back</h3>
+
+- [Java](https://www.java.com/pt-BR/)
+- [Maven](https://maven.apache.org/)
+- [Spring Boot](https://spring.io/projects/spring-boot/)
+- [REST](https://www.redhat.com/pt-br/topics/api/what-is-a-rest-api)
+- [Python](https://www.python.org/)
+
+<h3>Banco</h3
+
+- [PostgreSQL](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)
+- [brModelo](https://sourceforge.net/projects/brmodelo/)
+
+<h3>Outras</h3>
+
+- [GitHub](https://github.com/)
+- [Git](https://github.com/)
+- [Discord](https://discord.com/)

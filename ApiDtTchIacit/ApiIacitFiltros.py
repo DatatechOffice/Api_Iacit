@@ -3,7 +3,6 @@ import pandas as pd
 from unidecode import unidecode
 import matplotlib.pyplot as plt
 import json
-import pandas as pd
 import psycopg2
 import datetime
 
@@ -57,50 +56,117 @@ Brasilia = pd.read_csv('BRASILIA2020.CSV', sep=';', encoding='ISO-8859-1', skipr
 #Brasilia2 = pd.DataFrame(Brasilia, index=[0,1,2,3,4,5,6,7])
 #Brasilia2 = Brasilia.head(7)
 
-
-BraD = Brasilia.loc[Brasilia["Data"]==("2020/10/10")]
-
-
-# BraV = BraD.loc[BraD["RADIACAO GLOBAL (Kj/m²)"] == ("155,7")]
-
-
 BraDR = Brasilia[Brasilia["Data"].between("2020/01/01", "2020/12/31")]
 
-def FeedDB():
-    sql = """INSERT INTO estado_regiao
-        (eer_id, eer_nome_regiao, eer_unidade_federativa) 
-        values(1, 'CO', 'DF')"""
-    inserir_db(sql)
-
-    sql = """
-        INSERT INTO estacao
-        (eer_id, est_codigo, est_nome_estacao, est_longitude, est_latitude, est_altitude, est_data_fundacao)
-        values (1, 'A001', 'BRASILIA', -47.925756, -15.789343, 1160.96, '07-05-2000')"""
-    inserir_db(sql)
-
+def inserirTemp():
     for i in BraDR.index:
-        
         sql = """
         INSERT into temperatura (tem_id, tem_ar_bulbo_seco, tem_data_hora, tem_max, tem_min, est_codigo) 
         values(%s, %s, '%s %s', %s, %s, 'A001');
         """ % (
-        f'{i}',
-        BraDR["TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)"].replace({',': '.'}, regex=True)[i],
-        BraDR['Data'].replace({'/': '-'}, regex=True)[i],
-        BraDR['Hora UTC'][i],
-        BraDR["TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
-        BraDR["TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i]
+            f'{i}',
+            BraDR["TEMPERATURA DO AR - BULBO SECO, HORARIA (°C)"].replace({',': '.'}, regex=True)[i],
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
+            BraDR["TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i]
+        )
+        inserir_db(sql)
+
+
+#Umidade não funciona
+def inserirUmidade():
+    for i in BraDR.index:
+        sql = """
+        INSERT into umidade (umi_id, umi_data_hora, umi_relativa_ar, umi_relativa_min, est_codigo) 
+        values(%s, '%s %s', %s, %s, 'A001');
+        """ % (
+            f'{i}',
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["UMIDADE RELATIVA DO AR, HORARIA (%)"].replace({',': '.'}, regex=True)[i],
+            BraDR["UMIDADE REL. MIN. NA HORA ANT. (AUT) (%)"].replace({',': '.'}, regex=True)[i]
+        )
+        inserir_db(sql)
+
+def inserirTempOrv():
+    for i in BraDR.index:
+        sql = """
+        INSERT into temperatura_orvalho (tdo_id, tdo_data_hora, tdo_max, tdo_min, tdo_ponto, est_codigo) 
+        values(%s, '%s %s', %s, %s, %s, 'A001');
+        """ % (
+            f'{i}',
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["TEMPERATURA ORVALHO MAX. NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
+            BraDR["TEMPERATURA ORVALHO MIN. NA HORA ANT. (AUT) (°C)"].replace({',': '.'}, regex=True)[i],
+            BraDR["TEMPERATURA DO PONTO DE ORVALHO (°C)"].replace({',': '.'}, regex=True)[i]
+        )
+        inserir_db(sql)
+
+def inserirVento():
+    for i in BraDR.index:
+        sql = """
+        INSERT into vento (ven_id, ven_data_hora, ven_direcao_horaria, ven_rajada_max, ven_velocidade_horaria, est_codigo) 
+        values(%s, '%s %s', %s, %s, %s, 'A001');
+        """ % (
+            f'{i}',
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["VENTO, DIREÇÃO HORARIA (gr) (° (gr))"].replace({',': '.'}, regex=True)[i],
+            BraDR["VENTO, RAJADA MAXIMA (m/s)"].replace({',': '.'}, regex=True)[i],
+            BraDR["VENTO, VELOCIDADE HORARIA (m/s)"].replace({',': '.'}, regex=True)[i]
+        )
+        inserir_db(sql)
+
+def inserirRadGlob():
+    for i in BraDR.index:
+        sql = """
+        INSERT into radiacao_global (rag_id, rag_data_hora, rag_radiacao_global, est_codigo) 
+        values(%s, '%s %s', %s, 'A001');
+        """ % (
+            f'{i}',
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["RADIACAO GLOBAL (Kj/m²)"].replace({',': '.'}, regex=True)[i]
+        )
+        inserir_db(sql)
+
+#Pressao Atmosferica não funciona
+def inserirPressaoAt():
+    for i in BraDR.index:
+        sql = """
+        INSERT into pressao_atmosferica (pra_id, pra_data_hora, pra_max, pra_min, pra_nivel_estacao, est_codigo) 
+        values(%s, '%s %s', %s, %s, %s, 'A001');
+        """ % (
+            f'{i}',
+            BraDR['Data'].replace({'/': '-'}, regex=True)[i],
+            BraDR['Hora UTC'][i],
+            BraDR["PRESSÃO ATMOSFERICA MAX.NA HORA ANT. (AUT) (mB)"].replace({',': '.'}, regex=True)[i],
+            BraDR["PRESSÃO ATMOSFERICA MIN. NA HORA ANT. (AUT) (mB)"].replace({',': '.'}, regex=True)[i],
+            BraDR["PRESSAO ATMOSFERICA AO NIVEL DA ESTACAO"].replace({',': '.'}, regex=True)[i]
         )
         inserir_db(sql)
 
 
 
+def FeedDB():
 
+    sql = """INSERT INTO regiao
+        (reg_id, reg_sigla) 
+        values(1, 'CO')"""
+    inserir_db(sql)
 
+    sql = """INSERT INTO estado
+            (etd_id, etd_unidade_federativa, reg_id) 
+            values(1, 'DF', 1)"""
+    inserir_db(sql)
 
-#for loop para o index ir de 1 até o 365
-
-#inserirtemp= inserir_db(f'insert into temperatura(tem_data) values({BraDR2})')
+    sql = """
+        INSERT INTO estacao
+        (etd_id, est_codigo, est_nome_estacao, est_longitude, est_latitude, est_altitude, est_data_fundacao)
+        values (1, 'A001', 'BRASILIA', -47.925756, -15.789343, 1160.96, '07-05-2000')"""
+    inserir_db(sql)
 
 def Escolher():
     x = str(input(
@@ -199,6 +265,12 @@ al_filtrar = input("Digite 1 para alimentar o banco, 2 para filtrar os dados(Gr�
 while al_filtrar != "x":
     if al_filtrar == "1":
         FeedDB()
+        inserirTemp()
+        inserirVento()
+        inserirTempOrv()
+        inserirRadGlob()
+        inserirPressaoAt()
+        inserirUmidade()
         break
     elif al_filtrar == "2":
         Escolher()

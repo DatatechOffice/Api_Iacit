@@ -13,8 +13,11 @@
     z-index: 99;
 }
 
-
-
+.header {
+    width: 100%;
+    position: sticky;
+     top: 0;
+}
 
 
 /*** Button ***/
@@ -57,7 +60,8 @@
 
 
 .content {
-    margin-left: 250px;
+    margin-right: auto;
+    margin-left: auto;
     min-height: 100vh;
     background: #FFFFFF;
     transition: 0.5s;
