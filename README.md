@@ -131,7 +131,7 @@ Por isso, precisamos de um sistema que nos permita realizar a importação dos d
 <h2>⚙️Requisitos</h2>
 <h3>Funcionais</h3>
 Cadastro de Estações <br>
-Cadastro de Estato e Regiões <br>
+Cadastro de Estado e Regiões <br>
 Importação de Dados <br>
 Geração de Relatórios <br>
 
