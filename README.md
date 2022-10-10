@@ -184,7 +184,7 @@ Documentações <br>
  
 
 <h2>🎯Objetivo do Projeto</h2>
- Uma página web com as informações da fonte: Instituto Nacional de Meteorologia - INMET, de 2020 até último mês dos dias atuais, onde funcionários Iacit poderão filtrar as informações meteorológicas por data, região, estado, estação e variavel de uma forma rápida e intuitiva, e com os filtros gerar  e salvar relatórios compostos por gráficos de linhas e planilhas. Além disso alguns funcionários Iacit terão a função de administrador da plataforma e setão capazes de permitir o acesso de outras pessoas a plataforma, alterar usuários normais para administradores e administrar relatórios.
+ Criar um website com as informações do Instituto Nacional de Meteorologia - INMET, de 2020 até o último mês dos dias atuais, onde funcionários da Iacit poderão filtrar as informações meteorológicas por data, região, estado, estação e variavel de uma forma rápida e intuitiva, e com os filtros gerar e salvar relatórios compostos por gráficos de linhas e planilhas. Além disso alguns funcionários da Iacit terão a função de administrador da plataforma sendo capazes de permitir o acesso de outras pessoas a plataforma, alterar usuários normais para administradores e gerenciar relatórios.
  
  
  <h2>📄Backlog do Produto</h2>
