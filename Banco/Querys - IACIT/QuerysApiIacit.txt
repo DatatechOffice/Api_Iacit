@@ -1,0 +1,222 @@
+CREATE TABLE estado (
+    etd_id SERIAL PRIMARY KEY,
+    etd_unidade_federativa VARCHAR(2),
+    reg_id VARCHAR(2)
+);
+
+CREATE TABLE estacao (
+    est_longitude NUMERIC,
+    est_nome_estacao VARCHAR(30),
+    est_data_fundacao DATE,
+    est_latitude NUMERIC,
+    est_altitude NUMERIC,
+    est_codigo VARCHAR(5) PRIMARY KEY,
+    etd_id INTEGER
+);
+
+CREATE TABLE temperatura_ar_bulbo_seco (
+    tbs_id SERIAL PRIMARY KEY,
+    tbs_ar_bulbo_seco NUMERIC,
+    tbs_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE temperatura_ponto_orvalho (
+    tpo_id SERIAL PRIMARY KEY,
+    tpo_temperatura_ponto_orvalho NUMERIC,
+    tpo_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE pressao_atmosferica_minima (
+    pmi_id SERIAL PRIMARY KEY,
+    pmi_pressao_atmosferica_minima NUMERIC,
+    pmi_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE radiacao_global (
+    rag_id SERIAL PRIMARY KEY,
+    rag_radiacao_global NUMERIC,
+    rag_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE umidade_relativa_ar (
+    uar_id SERIAL PRIMARY KEY,
+    uar_umidade_relativa_ar NUMERIC,
+    uar_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE vento_direcao_horaria (
+    vdh_id SERIAL PRIMARY KEY,
+    vdh_vento_direcao_horaria NUMERIC,
+    vdh_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE regiao (
+    reg_id VARCHAR(2) PRIMARY KEY,
+    reg_sigla VARCHAR(2)
+);
+
+CREATE TABLE temperatura_maxima (
+    tma_id SERIAL PRIMARY KEY,
+    tma_temperatura_maxima NUMERIC,
+    tma_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE temperatura_minima (
+    tmi_id SERIAL PRIMARY KEY,
+    tmi_temperatura_minima NUMERIC,
+    tmi_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE umidade_relativa_maxima (
+    uma_id SERIAL PRIMARY KEY,
+    uma_umidade_relativa_maxima NUMERIC,
+    uma_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE umidade_relativa_minima (
+    umi_id SERIAL PRIMARY KEY,
+    umii_umidade_relativa_minima NUMERIC,
+    umi_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE vento_velocidade_horaria (
+    vvh_vento_velocidade_maxima NUMERIC,
+    vvh_data_hora TIMESTAMP,
+    vvh_id SERIAL PRIMARY KEY,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE vento_rajada_maxima (
+    vrm_id SERIAL PRIMARY KEY,
+    vrm_vento_rajada_maxima NUMERIC,
+    vrm_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE pressao_atmosferica_maxima (
+    pma_id SERIAL PRIMARY KEY,
+    pma_pressao_atmosferica_maxima NUMERIC,
+    pma_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE pressao_atmosferica_nivel_estacao (
+    pne_data_hora TIMESTAMP,
+    pne_pressao_atmosferica_nivel_estacao NUMERIC,
+    pne_id SERIAL PRIMARY KEY,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE temperatura_orvalho_maxima (
+    toa_id SERIAL PRIMARY KEY,
+    toa_temperatura_orvalho_maxima NUMERIC,
+    toa_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+
+CREATE TABLE temperatura_orvalho_minima (
+    toi_id SERIAL PRIMARY KEY,
+    toi_temperatura_orvalh_minima NUMERIC,
+    toi_data_hora TIMESTAMP,
+    est_codigo VARCHAR(5)
+);
+ 
+ALTER TABLE estado ADD CONSTRAINT FK_estado_2
+    FOREIGN KEY (reg_id)
+    REFERENCES regiao (reg_id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE estacao ADD CONSTRAINT FK_estacao_2
+    FOREIGN KEY (etd_id)
+    REFERENCES estado (etd_id)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE temperatura_ar_bulbo_seco ADD CONSTRAINT FK_temperatura_ar_bulbo_seco_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE temperatura_ponto_orvalho ADD CONSTRAINT FK_temperatura_ponto_orvalho_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE pressao_atmosferica_minima ADD CONSTRAINT FK_pressao_atmosferica_minima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE radiacao_global ADD CONSTRAINT FK_radiacao_global_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE umidade_relativa_ar ADD CONSTRAINT FK_umidade_relativa_ar_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE vento_direcao_horaria ADD CONSTRAINT FK_vento_direcao_horaria_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE temperatura_maxima ADD CONSTRAINT FK_temperatura_maxima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE temperatura_minima ADD CONSTRAINT FK_temperatura_minima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE umidade_relativa_maxima ADD CONSTRAINT FK_umidade_relativa_maxima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE umidade_relativa_minima ADD CONSTRAINT FK_umidade_relativa_minima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE vento_velocidade_horaria ADD CONSTRAINT FK_vento_velocidade_horaria_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE vento_rajada_maxima ADD CONSTRAINT FK_vento_rajada_maxima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE pressao_atmosferica_maxima ADD CONSTRAINT FK_pressao_atmosferica_maxima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE pressao_atmosferica_nivel_estacao ADD CONSTRAINT FK_pressao_atmosferica_nivel_estacao_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE temperatura_orvalho_maxima ADD CONSTRAINT FK_temperatura_orvalho_maxima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE temperatura_orvalho_minima ADD CONSTRAINT FK_temperatura_orvalho_minima_2
+    FOREIGN KEY (est_codigo)
+    REFERENCES estacao (est_codigo)
+    ON DELETE SET NULL;
