@@ -229,7 +229,7 @@ Documentações <br>
 
 <h2>DER</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Banco/Imagens/Conceitual.png">
+<img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Banco/Imagens/Conceitual.png">
 </p>
 
 
