@@ -147,6 +147,7 @@ $(document).ready(function() {
 
 function salvarUsuario(){
 
+	alert("ola");
 	var vRegiao = $("#Regiao").val();
 	var vEstado = $("#Estado").val();
 	var vVariavel = $("#Variavel").val();
