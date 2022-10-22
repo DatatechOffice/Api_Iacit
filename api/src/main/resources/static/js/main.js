@@ -145,34 +145,23 @@ $(document).ready(function() {
 
 })
 
-/*
- $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "/api/search",
-        data: JSON.stringify(search),
-        dataType: 'json',
-        cache: false,
-        timeout: 600000,
-        success: function (data) {
+function salvarUsuario(){
 
-            var json = "<h4>Ajax Response</h4><pre>"
-                + JSON.stringify(data, null, 4) + "</pre>";
-            $('#feedback').html(json);
-
-            console.log("SUCCESS : ", data);
-            $("#btn-search").prop("disabled", false);
-
-        },
-        error: function (e) {
-
-            var json = "<h4>Ajax Response</h4><pre>"
-                + e.responseText + "</pre>";
-            $('#feedback').html(json);
-
-            console.log("ERROR : ", e);
-            $("#btn-search").prop("disabled", false);
-
-        }
-    });
-*/
+	var vRegiao = $("#Regiao").val();
+	var vEstado = $("#Estado").val();
+	var vVariavel = $("#Variavel").val();
+	var vDataInicio = $("#DataInicio").val();
+	var vDataFim = $("#DataFim").val();
+	
+	$.ajax({
+		method: "POST",
+		url: "salvar",
+		data: JSON.stringify({regiao : vRegiao , estado : vEstado , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim}),
+		contentType: "application/json; charset=utf-8",
+		sucess: function (response){
+			alert("Salvo com Sucesso!");
+		}
+	}).fail(function(xhr, status, errorThrow){
+		alert("Erro ao Salvar: " + xhr.responseText);
+	});
+}
