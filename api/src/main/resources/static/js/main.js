@@ -145,20 +145,25 @@ $(document).ready(function() {
 
 })
 
+
+//Metodo script responsavel por receber e enviar os dados do front para o back atraves de um JSON
 function salvarUsuario(){
 
-	alert("ola");
+	//Recebendo as informações dos filtros e armazenando em variaveis
 	var vRegiao = $("#Regiao").val();
 	var vEstado = $("#Estado").val();
 	var vVariavel = $("#Variavel").val();
 	var vDataInicio = $("#DataInicio").val();
 	var vDataFim = $("#DataFim").val();
 	
+	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
-		method: "POST",
-		url: "salvar",
-		data: JSON.stringify({regiao : vRegiao , estado : vEstado , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim}),
-		contentType: "application/json; charset=utf-8",
+		method: "POST", //Especificando qual o metodo
+		url: "salvar", //Definindo a url que conecta no mapeamento
+		//Passando os atribuyos da classe e quais variaveis representa eles no front
+		data: JSON.stringify({regiao : vRegiao , estado : vEstado , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim}), 
+		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
+		//Alerta de sucesso ou falha no envio do JSON
 		sucess: function (response){
 			alert("Salvo com Sucesso!");
 		}

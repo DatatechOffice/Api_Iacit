@@ -27,6 +27,7 @@ import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 @RequestMapping(value={"/"})
 public class HomeController {
 
+	//Metodo para receber as informaçõs dos filtros vindo do front
 	@PostMapping(value = "salvar") /*mapeia a url*/
 	@ResponseBody /*Descricao da respsota*/
 	public ResponseEntity<FilterDataVo> salvar(@RequestBody FilterDataVo filtro){ /* Recebe os dados para salvar */
