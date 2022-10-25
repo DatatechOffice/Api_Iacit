@@ -71,37 +71,33 @@
             <div class="col-md-3">
               <h4 class="mb-0">Selecione o Período:</h4>
               <label for="dia">Data inicio:</label>
-              <input type="date" class="form-control"  id="DataInicio" name="dia" />
+              <input type="date" class="form-control"  id="dataInicio" name="dia" />
             </div>
           <!-- Seleção da data que se finaliza o relatorio-->
           <!--Inicio das textbox-->
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Regiões:</h4>
-              <input type="text" class="form-control" id="Regiao" placeholder="região" aria-label="região">
+              <input type="text" class="form-control" placeholder="região" aria-label="região">
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione o Estado:</h4>
-              <input type="text" class="form-control" id="Estado" placeholder="estado" aria-label="estado">
+              <input type="text" class="form-control" placeholder="estado" aria-label="estado">
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Variaveis:</h4>
-              <input type="text" class="form-control" id="Variavel" placeholder="variavel" aria-label="variavel">
+              <input type="text" class="form-control" placeholder="variavel" aria-label="variavel">
             </div>
           
             <div class="col-md-3">
               <label for="dia">Data Fim :</label>
-              <input type="date" class="form-control" id="DataFim" name="dia" />
+              <input type="date" class="form-control" id="dataFim" name="dia" />
             </div>
            <!--Fim das textbox-->
           </form>
           
           <br>
-          <button id="filtro" class="btn btn-outline-success"
-          type="submit" onclick="salvarUsuario()">
-          Enviar 
-          </button>
 
-         <button id="btnEnviarDados" class="btn btn-outline-success"
+          <button id="btnEnviarDados" class="btn btn-outline-success"
             type="submit" onclick="plotcharts()">
             Buscar dados 
           </button>
