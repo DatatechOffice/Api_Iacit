@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.iacit.api.entity.PressaoAtmosferica;
 import com.iacit.api.entity.Temperatura;
-import com.iacit.api.service.ServicePressaoAt;
+import com.iacit.api.service.PressaoAtmosfericaMinimaService;
 import com.iacit.api.service.ServiceTemperatura;
 
 @Controller
 public class PressaoAtmosfericaMaximaController {
 	
 	@Autowired(required = true)
-	private ServicePressaoAt atmosfericaService;
+	private PressaoAtmosfericaMinimaService atmosfericaService;
 
 	@PostMapping(value = { "/pressaoAtmosfericaMaxima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PressaoAtmosferica>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {

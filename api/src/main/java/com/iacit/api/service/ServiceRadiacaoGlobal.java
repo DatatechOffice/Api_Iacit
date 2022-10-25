@@ -25,3 +25,9 @@ public class ServiceRadiacaoGlobal {
 	}
 
 }
+
+/*
+if variavel.index(1) != null
+junção
+else 
+*/
