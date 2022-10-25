@@ -22,7 +22,7 @@ public class PressaoAtmosfericaMaximaController {
 	@PostMapping(value = { "/pressaoAtmosfericaMaxima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PressaoAtmosferica>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
-		List<PressaoAtmosferica> listPressaoAtm = atmosfericaService.getByFilter(data.getDataInicio(), data.getDataFim());
+		List<PressaoAtmosferica> listPressaoAtm = atmosfericaService.getByFilter(data.getDataInicio(), data.getDataFim(), data.getVariavel());
 		
 		return listPressaoAtm != null && listPressaoAtm.size() > 0 ? new ResponseEntity<List<PressaoAtmosferica>>(listPressaoAtm, HttpStatus.CREATED)
 				: new ResponseEntity<List<PressaoAtmosferica>>(listPressaoAtm, HttpStatus.BAD_REQUEST);

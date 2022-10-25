@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.RadiacaoGlobal;
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.repository.RadiacaoGlobalRepository;
-import com.iacit.api.repository.TemperaturaRepository;
+import com.iacit.api.repository.TemperaturaMaximaRepository;
 
 @Service
 public class ServiceRadiacaoGlobal {

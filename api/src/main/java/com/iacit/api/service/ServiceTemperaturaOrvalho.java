@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.iacit.api.entity.PressaoAtmosferica;
 import com.iacit.api.entity.TemperaturaOrvalho;
-import com.iacit.api.repository.PressaoAtmosfericaRepository;
-import com.iacit.api.repository.TemperaturaOrvalhoRepository;
+import com.iacit.api.repository.PressaoAtmosfericaMinimaRepository;
+import com.iacit.api.repository.TemperaturaOrvalhoMaximaRepository;
 
 @Service
 public class ServiceTemperaturaOrvalho {
 	@Autowired(required=true) 
-	private TemperaturaOrvalhoRepository orvalhoRepository;
+	private TemperaturaOrvalhoMaximaRepository orvalhoRepository;
 
 	// tipo da função deve ser TemperaturaRepository
 	public List<TemperaturaOrvalho> getByFilter(String dataInicial, String dataFinal) throws ParseException {
