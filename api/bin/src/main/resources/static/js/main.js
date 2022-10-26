@@ -158,7 +158,7 @@ function salvarUsuario(){
 		url: "salvar",
 		data: JSON.stringify({regiao : vRegiao , estado : vEstado , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim}),
 		contentType: "application/json; charset=utf-8",
-		sucess: function (response){
+		sucess: function (data){
 			alert("Salvo com Sucesso!");
 		}
 	}).fail(function(xhr, status, errorThrow){
