@@ -7,8 +7,10 @@ def conecta_db():
                                user='postgres',
                                password='123')
   return conexao
-banco = conexao.cursor()
-banco.execute("insert into")
+# banco = conexao.cursor()
+# banco.execute("""INSERT into temperatura (tem_id, tem_ar_bulbo_seco, tem_data_hora, tem_max, tem_min, est_codigo)
+#         values(%s, %s, '%s %s', %s, %s, 'A001');
+#         """ % ()
 # class Temperartura:
 #     def __init__(self, temperaturaDoAr, temperaturaMaxima, temperaturaMinima):
 #         self.temperaturaDoAr = temperaturaDoAr
