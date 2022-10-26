@@ -231,12 +231,12 @@ function salvarUsuario(){
 	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
 		method: "POST", //Especificando qual o metodo
-		url: "salvar", //Definindo a url que conecta no mapeamento
+		url: "/temperatura", //Definindo a url que conecta no mapeamento
 		//Passando os atribuyos da classe e quais variaveis representa eles no front
 		data: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
 		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
 		//Alerta de sucesso ou falha no envio do JSON
-		sucess: function (data){
+		success: function (data){
 			alert("Salvo com Sucesso!");
 		}
 	}).fail(function(xhr, status, errorThrow){
