@@ -8,4 +8,5 @@ public class FilterDataVo {
 	String regiao;
 	String estado;
 	String variavel;
+	String estacao;
 }

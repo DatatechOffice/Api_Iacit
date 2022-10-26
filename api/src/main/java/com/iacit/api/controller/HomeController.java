@@ -34,7 +34,7 @@ public class HomeController {
 		 
 		System.out.println(filtro);
 		
-		return null;
+		return new ResponseEntity<FilterDataVo>(filtro, HttpStatus.OK);
 	}
 	
 	// Método para inicialização de página
