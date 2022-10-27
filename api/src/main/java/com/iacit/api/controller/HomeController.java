@@ -26,16 +26,20 @@ import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 @RestController
 @RequestMapping(value={"/"})
 public class HomeController {
+/*
+	@Autowired(required = true)
+	private ServiceTemperatura temperaturaService;
 
-	@PostMapping(value = "salvar") /*mapeia a url*/
-	@ResponseBody /*Descricao da respsota*/
-	public ResponseEntity<FilterDataVo> salvar(@RequestBody FilterDataVo filtro){ /* Recebe os dados para salvar */
-		 
-		System.out.println(filtro);
+	@PostMapping(value = { "salvar" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Temperatura>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
+
+		List<Temperatura> listTemperatura = temperaturaService.getByFilter(data.getDataInicio(), data.getDataFim());
 		
-		return null;
+		return listTemperatura != null && listTemperatura.size() > 0 ? new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.CREATED)
+				: new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.BAD_REQUEST);
+
 	}
-	
+	*/
 	// Método para inicialização de página
 	@GetMapping(value = { "/index" })
 	public ModelAndView Index() {
