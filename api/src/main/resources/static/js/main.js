@@ -207,7 +207,7 @@ function salvarUsuario(){
 		data: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
 		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
 		//Alerta de sucesso ou falha no envio do JSON
-		sucess: function (response){
+		success: function (data){
 			alert("Salvo com Sucesso!");
 		}
 	}).fail(function(xhr, status, errorThrow){
