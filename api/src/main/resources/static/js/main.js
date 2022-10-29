@@ -1,73 +1,44 @@
-//Lista armazenando as sugestões
-let names = [
-  "Ayla",
-  "Jake",
-  "Sean",
-  "Henry",
-  "Brad",
-  "Stephen",
-  "Taylor",
-  "Timmy",
-  "Cathy",
-  "John",
-  "Amanda",
-  "Amara",
-  "Sam",
-  "Sandy",
-  "Danny",
-  "Ellen",
-  "Camille",
-  "Chloe",
-  "Emily",
-  "Nadia",
-  "Mitchell",
-  "Harvey",
-  "Lucy",
-  "Amy",
-  "Glen",
-  "Peter",
-];
-//Organizando os nomes em ordem alfabetica
-let sortedNames = names.sort();
-//Referencia
-let input = document.getElementById("Regiao");
-//Executando a informação através do teclado
-input.addEventListener("keyup", (e) => {
-  //laço de repetição dentro da lista
-  //Inicialmente removendo as sugestões conforme o usuario digita ou exclui uma letra
-  removeElements();
-  for (let i of sortedNames) {
-    //convertendo oque for digitado em minusculo
-    if (
-      i.toLowerCase().startsWith(input.value.toLowerCase()) &&
-      input.value != ""
-    ) {
-      //criando o elemento li
-      let listItem = document.createElement("li");
-      //One common class name
-      listItem.classList.add("list-items");
-      listItem.style.cursor = "pointer";
-      listItem.setAttribute("onclick", "displayNames('" + i + "')");
-      //Mostrando as letras que se igualam em negrito
-      let word = "<b>" + i.substr(0, input.value.length) + "</b>";
-      word += i.substr(input.value.length);
-      //mostra o valor da array
-      listItem.innerHTML = word;
-      document.querySelector(".list").appendChild(listItem);
-    }
-  }
-});
-function displayNames(value) {
-  input.value = value;
-  removeElements();
-}
-function removeElements() {
-  //limpando todos os items
-  let items = document.querySelectorAll(".list-items");
-  items.forEach((item) => {
-    item.remove();
-  });
-}
+const UF = document.getElementById('UF');
+const combinaUF = document.getElementById('combina-UF');
+
+//busscando o arquivo json
+const BuscarUF = async searchText => {
+	const res = await fetch('../data/estados.json');
+	const estados = await res.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinacao = estados.filter(estado => {
+		const regex = new RegExp(`^${searchText}`, 'gi');
+		return estado.name.match(regex) || estado.abbr.match(regex);
+	});
+
+	//se o campo estiver vazio não tem resultado
+	if (searchText.length == 0){
+		combinacao = [];
+		combinaUF.innerHTML = '';
+	}
+	outputHtml(combinacao);
+	console.log(combinacao);
+};
+
+//|Mostra o resultado no html
+const outputHtml = combinacao => {
+	if (combinacao.length > 0){
+		const html = combinacao.map(match => `
+		<div class="card card-body mb-1">
+			<h4>${match.name} (${match.abbr}) <span class="text-primary">${match.capital}</span></h4>
+			<small>Lat: ${match.lat} / Long:${match.long}</small>
+			</div>
+		`)
+		.join('');
+		
+		
+		combinaUF.innerHTML = html;
+	}
+};
+
+UF.addEventListener('input', () => BuscarUF(UF.value))
+;
 
 (function($) {
 	"use strict";
@@ -194,7 +165,7 @@ function salvarUsuario(){
 	var vDataInicio = $("#DataInicio").val();
 	var vDataFim = $("#DataFim").val();
 	var vEstacao = $("#Estacao").val();
-	
+	debugger;
 	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
 		method: "POST", //Especificando qual o metodo
