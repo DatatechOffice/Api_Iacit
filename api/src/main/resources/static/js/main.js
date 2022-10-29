@@ -95,45 +95,12 @@ function removeElements() {
 	});
 })(jQuery);
 
-function lista() { }
-
-google.charts.load("current", { packages: ["corechart"] });
+function lista() {
+	google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
+ }
 
-function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-		["Element", "Density", { role: "style" }],
-		["Temp Bulbo Seco", 20.94, "#b87333"],
-		["Temp Max", 10.49, "silver"],
-		["Temp Min", 19.3, "gold"],
-	]);
 
-	var view = new google.visualization.DataView(data);
-	view.setColumns([
-		0,
-		1,
-		{
-			calc: "stringify",
-			sourceColumn: 1,
-			type: "string",
-			role: "annotation",
-		},
-		2,
-	]);
-
-	var options = {
-		title: "Temperatura",
-		width: 600,
-		height: 400,
-		bar: { groupWidth: "95%" },
-		legend: { position: "none" },
-	};
-
-	var chart = new google.visualization.ColumnChart(
-		document.getElementById("columnchart_values")
-	);
-	chart.draw(view, options);
-}
 
 var getData1 = function() {
 	var dataHoje = new Date();
@@ -238,8 +205,46 @@ function salvarUsuario(){
 		//Alerta de sucesso ou falha no envio do JSON
 		success: function (data){
 			alert("Salvo com Sucesso!");
+			
+			plotcharts(data);
+			
+			
+			
+			
+			/*function plotcharts(){
+            	
+              var apiUrl = data;
+              var datas=[];
+              var valor=[];
+              fetch(apiUrl).then(response => {
+                return response.json();
+              }).then(data => {
+                for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+                //For Line chart
+                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
+                drawchart(dataset, datas, 'line');
+              }).catch(err => {
+                console.log(err);
+              });
+          }*/
 		}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
+
+function plotcharts(data){
+			var datas=[];
+            var valor=[];
+			for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+			//For Line chart
+			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
+                drawchart(dataset, datas, 'line');
+                }
+                
