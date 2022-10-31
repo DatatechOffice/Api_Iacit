@@ -5,13 +5,14 @@ Filtragem dos Dados
 <br>
 
 <h2>Story</h2>
-<h1>Filtro de Período e Variável</h1>
+<h3>Filtro de Período e Variável</h3>
 Como funcionário Iacit eu preciso ser capaz de filtrar de forma fácil e rápida os dados por período e tipo de variável para que não perca tempo procurando informações irrelevantes no momento.
 
 ---
 <br>
 
 <h2>Critérios de Aceite</h2>
+
 * O campo de período deve poder ser selecionado apenas com cliquei ou digitando data e horário.
 O campo precisará conter data: dd/mm/aaaa e hora: hh
 

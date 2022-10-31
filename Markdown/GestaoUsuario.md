@@ -5,13 +5,14 @@ Auditoria da Plataforma
 <br>
 
 <h2>Story</h2>
-<h1>Gestão de Usuário</h1>
+<h3>Gestão de Usuário</h3>
 Como administrador da página web desenvolvida para a Iacit eu preciso criar, alterar e apagar usuários para que a Iacit tenha controle total da plataforma e as informações não sejam comprometidas.
 
 ---
 <br>
 
 <h2>Critérios de Aceite</h2>
+
 * Uma nova tela precisará ser feita para essas funções.
 
 * Essa nova tela deve ser apenas acessível apenas por administradores da plataforma.

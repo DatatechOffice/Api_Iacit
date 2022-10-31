@@ -5,13 +5,14 @@ Geração de Relatórios
 <br>
 
 <h2>Story</h2>
-<h1>Gráfico de Linhas</h1>
+<h3>Gráfico de Linhas</h3>
 Como funcionário Iacit eu preciso de uma visão dos parâmetros selecionados no filtro em formato de gráfico de linhas para que possa ter uma visão do relatório a ser gerado de forma rápida e clara de dados.
 
 ---
 <br>
 
 <h2>Critérios de Aceite</h2>
+
 * O gráfico deve ser de linhas.
 
 * O gráfico precisa ter legenda sobre as informações exibidas.

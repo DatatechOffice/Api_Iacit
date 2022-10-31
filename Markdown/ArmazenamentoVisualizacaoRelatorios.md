@@ -5,13 +5,14 @@ Geração de Relatórios
 <br>
 
 <h2>Story</h2>
-<h1>Armazenamento e Visualização de Relatórios</h1>
+<h3>Armazenamento e Visualização de Relatórios</h3>
 Como funcionário Iacit eu preciso armazenar relatórios gerados para que possa acessar e mostrar aos meus clientes futuramente sem a necessidade de repetir o processo de filtro.
 
 ---
 <br>
 
 <h2>Critérios de Aceite</h2>
+
 * Outro botão precisará ser feito para confirmar e salvar o relatório.
 
 * Esse botão só poderá ser usado assim que um gráfico e a planilha estiverem na tela.
