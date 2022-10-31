@@ -200,7 +200,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 
 <h2>📚User Stories</h2>
-<details open>
+<details>
 <summary>User Stories</summary>
 <br>
 links para mds aqui
@@ -232,7 +232,7 @@ links para mds aqui
 
 
 <h2>🔥Burndown</h2>
-<details open>
+<details>
 <summary>Burndown</summary>
 <br>
 
