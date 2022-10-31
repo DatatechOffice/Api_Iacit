@@ -2,123 +2,113 @@
 
 <h2>📜Menu de Navegação</h2>
 
-- [Equipe Datatech](#equipe-datatech)
-- [Desafio](#desafio)
-- [Cronograma das Sprints](#cronograma-das-sprints)
-- [Objetivo do Projeto](#objetivo-do-projeto)
-- [Backlog do Produto](#backlog-do-produto)
-- [Personas](#personas)
-- [User Stories](#user-stories)
-- [Wireframes](#wireframes)
-- [DER](#der)
-- [Burndown](#burndown)
-- [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Equipe Datatech](#equipe-datatech)
+* [Desafio](#desafio)
+* [Cronograma das Sprints](#cronograma-das-sprints)
+* [Objetivo do Projeto](#objetivo-do-projeto)
+* [Backlog do Produto](#backlog-do-produto)
+* [Personas](#personas)
+* [User Stories](#user-stories)
+* [Wireframes](#wireframes)
+* [DER](#der)
+* [Burndown](#burndown)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
 
 
-</table>
 <h2>🎲Equipe Datatech</h2>
 <table>
-<tr>
-<td align="center">
-
-<a href="https://github.com/DatatechOffice">    
-<img src="https://avatars.githubusercontent.com/u/100881194?v=4" width = "40%">            
-<br />
-<sub><b>Git Equipe Datatech</b></sub>
-<br />
-</a>
-<sub><b>Equipe</b></sub>
-<sub><b><a href="https://github.com/DatatechOffice"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
-
-<td align="center">
-
-<a href="https://github.com/LeoAdlerr">
-<img src="https://avatars.githubusercontent.com/u/88751032?v=4" width = "40%">            
-<br />
-<sub><b>Leonardo Adler da Silva</b></sub>
-<br />
-</a>
-<sub><b>Scrum Master</b></sub>
-<sub><b><a href="https://github.com/LeoAdlerr"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
-<td align="center">
-    
-<a href="https://github.com/VilRL">
-<img src="https://avatars.githubusercontent.com/u/56142288?v=4" width = "40%"> 
-<br />
-<sub><b>Vitor R. de Lima</b></sub>
-<br />
-</a>
-<sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/VilRL"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
-<br />
-</td>
-<td align="center">
-
-<a href="https://github.com/jufaela">
-<img src="https://avatars.githubusercontent.com/u/79148564?v=4" width = "40%"> 
-<br />
-<sub><b>Julia Rafaela</b></sub>
-<br />
-</a>
-<sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/jufaela"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
-<br />
-</td>
-</tr>
-<tr>
-<td align="center">
-
-<a href="https://github.com/Daniloel">
-<img src="https://avatars.githubusercontent.com/u/88066389?v=4" width = "40%"> 
-<br />
-<sub><b>Danilo Verginio</b></sub>
-<br />
-</a>
-<sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/Daniloel"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
-<br />
-</td>
-<td align="center">
-
-<a href="https://github.com/MrZeroLeft">   
-<img src="https://avatars.githubusercontent.com/u/77200265?v=4" width = "40%"> 
-<br />
-<sub><b>Augusto Torres</b></sub>
-<br />
-</a>
-<sub><b>Product Owner</b></sub>
-<sub><b><a href="https://github.com/MrZeroLeft"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
-<br />
-</td>
-
-<td align="center">
-
-<a href="https://github.com/NeyDiniz">
-<img src="https://avatars.githubusercontent.com/u/80933376?v=4" width = "40%"> 
-<br />
-<sub><b>Neylkson Diniz</b></sub>
-<br /> 
-</a>
-<sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/NeyDiniz"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
-<br />
-</td>
-
-
-<td align="center">
-
-<a href="https://github.com/GabrielDepiro">
-<img src="https://avatars.githubusercontent.com/u/90358435?v=4" width = "40%"> 
-<br />
-<sub><b>Gabriel D'Epiro</b></sub>
-<br /> 
-</a>
-<sub><b>Developer</b></sub>
-<sub><b><a href="https://github.com/GabrielDepiro"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
-<br />
-</td>
-
-</tr>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/DatatechOffice">    
+                <img src="https://avatars.githubusercontent.com/u/100881194?v=4" width = "40%">            
+                <br />
+                <sub><b>Git Equipe Datatech</b></sub>
+                <br />
+            </a>
+            <sub><b>Equipe</b></sub>
+            <sub><b><a href="https://github.com/DatatechOffice"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/LeoAdlerr">
+                <img src="https://avatars.githubusercontent.com/u/88751032?v=4" width = "40%">            
+                <br />
+                <sub><b>Leonardo Adler da Silva</b></sub>
+                <br />
+            </a>
+            <sub><b>Scrum Master</b></sub>
+            <sub><b><a href="https://github.com/LeoAdlerr"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/VilRL">
+                <img src="https://avatars.githubusercontent.com/u/56142288?v=4" width = "40%"> 
+                <br />
+                <sub><b>Vitor R. de Lima</b></sub>
+                <br />
+            </a>
+            <sub><b>Developer</b></sub>
+            <sub><b><a href="https://github.com/VilRL"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/jufaela">
+                <img src="https://avatars.githubusercontent.com/u/79148564?v=4" width = "40%"> 
+                <br />
+                <sub><b>Julia Rafaela</b></sub>
+                <br />
+            </a>
+            <sub><b>Developer</b></sub>
+            <sub><b><a href="https://github.com/jufaela"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub> 
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/Daniloel">
+                <img src="https://avatars.githubusercontent.com/u/88066389?v=4" width = "40%"> 
+                <br />
+                <sub><b>Danilo Verginio</b></sub>
+                <br />
+            </a>
+            <sub><b>Developer</b></sub>
+            <sub><b><a href="https://github.com/Daniloel"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/MrZeroLeft">   
+                <img src="https://avatars.githubusercontent.com/u/77200265?v=4" width = "40%"> 
+                <br />
+                <sub><b>Augusto Torres</b></sub>
+                <br />
+                </a>
+            <sub><b>Product Owner</b></sub>
+            <sub><b><a href="https://github.com/MrZeroLeft"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/NeyDiniz">
+                <img src="https://avatars.githubusercontent.com/u/80933376?v=4" width = "40%"> 
+                <br />
+                <sub><b>Neylkson Diniz</b></sub>
+                <br /> 
+            </a>
+            <sub><b>Developer</b></sub>
+            <sub><b><a href="https://github.com/NeyDiniz"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+        <td align="center">
+            <a href="https://github.com/GabrielDepiro">
+                <img src="https://avatars.githubusercontent.com/u/90358435?v=4" width = "40%"> 
+                <br />
+                <sub><b>Gabriel D'Epiro</b></sub>
+                <br /> 
+            </a>
+            <sub><b>Developer</b></sub>
+            <sub><b><a href="https://github.com/GabrielDepiro"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 8px;">github</button></a></b></sub>
+            <br />
+        </td>
+    </tr>
 </table>
 
 
@@ -189,13 +179,13 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 <h2>📄Backlog do Produto</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Backlog.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Backlog.png">
 </p>
 
 
 <h2>👤Personas</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Personas.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Personas.png">
 </p>
 
 
@@ -222,58 +212,55 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 <h2>Wireframes</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Wireframe_Home.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Wireframe_Home.png">
 </p>
 
 
 <h2>DER</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Banco/Imagens/Conceitual.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Banco/Imagens/Conceitual.png">
 </p>
 
 
 <h2>🛠️Arquitetura do Sistema</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Arquitetura%20do%20Sistema.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Arquitetura%20do%20Sistema.png">
 </p>
 
 
 <h2> 🛣 Caminhos do Usuario</h2>
 <p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Caminhos%20do%20Usuario.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Caminhos%20do%20Usuario.png">
 </p>
 
 
 <h2>🔥Burndown</h2>
 <details>
-<summary>Sprint 1</summary>
-<br>
-
-<p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
-</p>
+    <summary>Sprint 1</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
+    </p>
 </details>
 
 <br>
 
 <details>
-<summary>Sprint 2</summary>
-<br>
-
-<p align="center">
-<img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Burndown_2.png">
-</p>
+    <summary>Sprint 2</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Burndown_2.png">
+    </p>
 </details>
 
 <br>
 
 <details>
-<summary>Sprint 3</summary>
-<br>
-
-<p align="center">
-<img src="">
-</p>
+    <summary>Sprint 3</summary>
+    <br>
+    <p align="center">
+        <img src="">
+    </p>
 </details>
 
 
