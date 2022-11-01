@@ -1,9 +1,9 @@
-package TestSpark;
+package TestSpark2;
 
 import java.io.FileReader;  
 import com.opencsv.CSVReader;
 
-public class ReadCSV {
+public class FuncionaPFV {
 	  
 	   
 	public String leitor()  
@@ -17,24 +17,24 @@ public class ReadCSV {
 	reader = new CSVReader(new FileReader("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Nova pasta\\database.csv"));  
 	
 	//reads one line at a time  
-	while ((nextLine = reader.readNext()) != null)  
-	{  
-	for(String token : nextLine)  
-	{  
+	while ((nextLine = reader.readNext()) != null){  
+	for(String token : nextLine){  
 	System.out.print(token);
-	if (token != null) {
-		tokenn = token;
+	if (token != null){
+		tokenn = token; 
 	}
-	else {
+	else{
 		break;
 	}
 	}  
 	System.out.print("\n");  
 	}  
 	}  
-	catch (Exception e)   
-	{  
+	catch (Exception e){  
 	e.printStackTrace();  
+	}
+	finally {
+		
 	}
 	return tokenn;  
 	}  
