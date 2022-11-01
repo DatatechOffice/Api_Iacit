@@ -1,16 +1,20 @@
 package TestSpark2;
 
-import java.io.FileReader;  
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.CSVReader;
 
 public class FuncionaPFV {
 	  
 	   
-	public String leitor()  
+	public List<String> leitor()  
 	{
+	ArrayList<String> Jorge = new ArrayList<String>();
 	String tokenn = null;
 	CSVReader reader = null;  
-	String[] nextLine;
+	String[] nextLine = null;
 	try  
 	{  
 	//parsing a CSV file into CSVReader class constructor  
@@ -19,24 +23,21 @@ public class FuncionaPFV {
 	//reads one line at a time  
 	while ((nextLine = reader.readNext()) != null){  
 	for(String token : nextLine){  
-	System.out.print(token);
+//	System.out.print(token);
 	if (token != null){
 		tokenn = token; 
 	}
 	else{
-		break;
+		continue;
 	}
 	}  
-	System.out.print("\n");  
+//	System.out.print("\n");  
 	}  
 	}  
 	catch (Exception e){  
 	e.printStackTrace();  
 	}
-	finally {
-		
-	}
-	return tokenn;  
+	return Jorge = ((ArrayList<String>)nextLine);  
 	}  
 	}  
 
