@@ -1,7 +1,12 @@
+//Lendo os inputs e o divs  de demonstração
 const UF = document.getElementById('UF');
 const combinaUF = document.getElementById('combina-UF');
 
-//busscando o arquivo json
+const Estacao = document.getElementById('Estacao');
+const CombinaEstacao = document.getElementById('Combina-Estacao');
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//busscando o arquivo json e combinando com UF
 const BuscarUF = async searchText => {
 	const res = await fetch('../data/estados.json');
 	const estados = await res.json();
@@ -20,7 +25,27 @@ const BuscarUF = async searchText => {
 	outputHtml(combinacao);
 	console.log(combinacao);
 };
+//buscando o arquivo json e combinando com Estacao
+const BuscarEstacao = async searchText => {
+	const resEs = await fetch('../data/estados.json');
+	const EstacaJson = await resEs.json();
 
+	//pegando as combinações tendo com base digitado
+	let CombinaEstacao = EstacaJson.filter(Estacaov => {
+		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
+		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
+	});
+	
+	//se o campo estiver vazio não tem resultado
+	if (searchText.length == 0){
+		CombinaEstacao = [];
+		CombinaEstacao.innerHTML = '';
+	}
+	
+	outputHtmlEstacao(CombinaEstacao);
+	console.log(CombinaEstacao);
+};
+//-----------------------------------------------------------------------------------------------------------------------------------------
 //|Mostra o resultado no html
 const outputHtml = combinacao => {
 	if (combinacao.length > 0){
@@ -28,7 +53,7 @@ const outputHtml = combinacao => {
 		<div class="card card-body mb-1">
 			<h4>${match.name} (${match.abbr}) <span class="text-primary">${match.capital}</span></h4>
 			<small>Lat: ${match.lat} / Long:${match.long}</small>
-			</div>
+		</div>
 		`)
 		.join('');
 		
@@ -37,8 +62,23 @@ const outputHtml = combinacao => {
 	}
 };
 
-UF.addEventListener('input', () => BuscarUF(UF.value))
-;
+const outputHtmlEstacao = CombinaEstacao => {
+	if(CombinaEstacao.length > 0){
+		const htmlEs = CombinaEstacao.map(matchEs => `
+		<div class="card card-body mb-1">
+			<h4>${matchEs.name} (${matchEs.abbr}) <span class="text-primary">${matchEs.capital}</span></h4>
+			<small>Lat: ${matchEs.lat} / Long:${matchEs.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		
+		CombinaEstacao.innerHTML = htmlEs;
+	}
+};
+//-----------------------------------------------------------------------------------------------------------------------------------------
+UF.addEventListener('input', () => BuscarUF(UF.value));
+Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
 
 (function($) {
 	"use strict";
