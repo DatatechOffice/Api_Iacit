@@ -11,8 +11,8 @@ import com.iacit.api.entity.Regiao;
 import com.iacit.api.entity.Temperatura;
 
 public interface RegiaoRepository extends JpaRepository<Regiao, Integer> {
-@Query(value = "insert into regiao ", nativeQuery = true)
+@Query(value = "insert into regiao(reg_sigla) values('?')", nativeQuery = true)
 	
-	public List<Regiao> insertByreg_sigla(String regSigla);
+	public List<Regiao> insertBySegSigla(String regSigla);
 
 }
