@@ -11,11 +11,12 @@ xf = df[df["Data"] == ("2020/01/01")]
 x = xf[xf["Hora UTC"] == ("0000 UTC")]
 xx = x[x["DATA DE FUNDACAO"] == ("07/05/00")]
 xd = xx["REGIAO"]
+jorge = Regiao(reg_id, reg_sigla)
 for i in xd:
-    print(i)
+    jorge = Regiao.setRegSigla(i)
 
-Regiao.setRegSigla(self=Regiao, reg_sigla=i)
-print(Regiao.getSigla)
+d = jorge.getSigla()
+print(d)
 
 dfData = df[df["Data"].between("2020/01/01", "2020/12/31")]
 print(dfData)
