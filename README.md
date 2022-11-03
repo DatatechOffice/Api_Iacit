@@ -211,10 +211,76 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 
 <h2>Wireframes</h2>
-<p align="center">
-    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Wireframe_Home.png">
-</p>
-
+<details>
+    <summary>Tela Home</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/Home.png">
+    </p>
+</details>
+<details>
+    <summary>Filtro Data</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeCalendario.png">
+    </p>
+</details>
+<details>
+    <summary>Filtro Hora</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeHoras.png">
+    </p>
+</details>
+<details>
+    <summary>Navegação do Usuario</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeUsuario.png">
+    </p>
+</details>
+<details>
+    <summary>Navegação do ADM</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeAdm.png">
+    </p>
+</details>
+<details>
+    <summary>Relatórios</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/VisualizacaoRelatorio.png">
+    </p>
+</details>
+<details>
+    <summary>Apagar Relatório</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/ApagarRelatorio.png">
+    </p>
+</details>
+<details>
+    <summary>Usuários</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/GestaoUsuario.png">
+    </p>
+</details>
+<details>
+    <summary>Apagar Usuário</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/ApagarUsuario.png">
+    </p>
+</details>
+<details>
+    <summary>Login</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/Login.png">
+    </p>
+</details>
 
 <h2>DER</h2>
 <p align="center">
