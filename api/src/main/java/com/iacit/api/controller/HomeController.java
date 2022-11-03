@@ -1,6 +1,7 @@
 package com.iacit.api.controller;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class HomeController {
 	public ModelAndView Index() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
-		Regiao reg = new Regiao();
+		ArrayList<String> reg = new ArrayList<String>();
 		TableSaw tb = new TableSaw();
 		reg = tb.insereRegiaoBanco();
 		serviceInsereRegiao.insBancoService(reg);
