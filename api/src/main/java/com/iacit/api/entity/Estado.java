@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,6 +22,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Component
 public class Estado{
     
     @Id
