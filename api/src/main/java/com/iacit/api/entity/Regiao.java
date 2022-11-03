@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,8 +18,8 @@ import lombok.ToString;
 @Table(name="regiao")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
+@Component
 public class Regiao{
 
     @Id
