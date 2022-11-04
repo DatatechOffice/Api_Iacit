@@ -22,7 +22,11 @@ import lombok.ToString;
 @Component
 public class Regiao{
 
-    @Id
+    public Regiao(String regSigla) {
+		this.regSigla=regSigla;
+	}
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "reg_id")
 	private Integer regId;

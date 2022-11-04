@@ -42,10 +42,12 @@ public class HomeController {
 	public ModelAndView Index() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
+		
 		ArrayList<String> reg = new ArrayList<String>();
 		TableSaw tb = new TableSaw();
 		reg = tb.insereRegiaoBanco();
 		serviceInsereRegiao.insBancoService(reg);
+		
 		return modelAndView;
 	}
 }

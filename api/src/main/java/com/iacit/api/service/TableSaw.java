@@ -26,7 +26,7 @@ public class TableSaw {
 		ArrayList<String> regis = new ArrayList();
 		
 		CsvReadOptions.Builder builder = CsvReadOptions
-				.builder("C:\\Users\\Jooj\\Desktop\\MainIacit\\Api_Iacit\\ApiIacit\\database.CSV")
+				.builder("C:\\Users\\admin\\Desktop\\Api_Iacit-PersistenciaSpark\\Api_Iacit\\database.CSV")
 				.separator(';') // table is tab-delimited
 				.header(false) // no header
 				.dateFormat("yyyy.MM.dd"); // the date format to use.
