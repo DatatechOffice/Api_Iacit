@@ -4,6 +4,7 @@
 
 * [Equipe Datatech](#equipe-datatech)
 * [Desafio](#desafio)
+* [Requisitos](#requisitos)
 * [Cronograma das Sprints](#cronograma-das-sprints)
 * [Objetivo do Projeto](#objetivo-do-projeto)
 * [Backlog do Produto](#backlog-do-produto)
@@ -11,6 +12,8 @@
 * [User Stories](#user-stories)
 * [Wireframes](#wireframes)
 * [DER](#der)
+* [Arquitetura do Sistema](#arquitetura-do-sistema)
+* [Caminhos do Usuário](#caminhos-do-usuario)
 * [Burndown](#burndown)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 
@@ -119,17 +122,26 @@ Por isso, precisamos de um sistema que nos permita realizar a importação dos d
 
 
 <h2>⚙️Requisitos</h2>
-<h3>Funcionais</h3>
-Cadastro de Estações <br>
-Cadastro de Estado e Regiões <br>
-Importação de Dados <br>
-Geração de Relatórios <br>
-
-<h3>Não Funcionais</h3>
-Sistema Web <br>
-Linguagem Java <br>
-Banco de Dados Relacional <br>
-Documentações <br>
+<details>
+    <summary>Funcionais</summary>
+    <br>
+    <p align="left">
+        Cadastro de Estações <br>
+        Cadastro de Estado e Regiões <br>
+        Importação de Dados <br>
+        Geração de Relatórios <br>
+    </p>
+</details>
+<details>
+    <summary>Não Funcionais</summary>
+    <br>
+    <p align="left">
+        Sistema Web <br>
+        Linguagem Java <br>
+        Banco de Dados Relacional <br>
+        Documentações <br>
+    </p>
+</details>
 
 
 <h2>📄Cronograma das Sprints</h2>
@@ -191,23 +203,23 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 <h2>📚User Stories</h2>
 
-* [Persistência de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/PersistenciaDados.md)
+* [Persistência de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/PersistenciaDados.md)
 
-* [Filtro de Período e Variável](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/FiltroPeriodoVariavel.md)
+* [Filtro de Período e Variável](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/FiltroPeriodoVariavel.md)
 
-* [Filtro de Região, Estado e Estação](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/FiltroRegiaoEstadoEstacao.md)
+* [Filtro de Região, Estado e Estação](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/FiltroRegiaoEstadoEstacao.md)
 
-* [Gráfico de Linhas](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/GraficoLinhas.md)
+* [Gráfico de Linhas](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GraficoLinhas.md)
 
-* [Planilhas](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/Planilhas.md)
+* [Planilhas](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/Planilhas.md)
 
-* [Armazenamento e Visualização de Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/ArmazenamentoVisualizacaoRelatorios.md)
+* [Armazenamento e Visualização de Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/ArmazenamentoVisualizacaoRelatorios.md)
 
-* [Gestão de Usuário](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/GestaoUsuario.md)
+* [Gestão de Usuário](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GestaoUsuario.md)
 
-* [Login](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/Login.md)
+* [Login](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/Login.md)
 
-* [Gerenciar Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_readme/Markdown/GerenciarRelatorios.md)
+* [Gerenciar Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GerenciarRelatorios.md)
 
 
 <h2>Wireframes</h2>
@@ -215,49 +227,49 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Tela Home</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/Home.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/Home.png">
     </p>
 </details>
 <details>
     <summary>Filtro Data</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeCalendario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeCalendario.png">
     </p>
 </details>
 <details>
     <summary>Filtro Hora</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeHoras.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeHoras.png">
     </p>
 </details>
 <details>
     <summary>Navegação do Usuario</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeUsuario.png">
     </p>
 </details>
 <details>
     <summary>Navegação do ADM</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/HomeAdm.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeAdm.png">
     </p>
 </details>
 <details>
     <summary>Relatórios</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/VisualizacaoRelatorio.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/VisualizacaoRelatorio.png">
     </p>
 </details>
 <details>
     <summary>Apagar Relatório</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/ApagarRelatorio.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/ApagarRelatorio.png">
     </p>
 </details>
 <details>
@@ -271,20 +283,20 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Apagar Usuário</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/ApagarUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
     </p>
 </details>
 <details>
     <summary>Login</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/Login.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/Login.png">
     </p>
 </details>
 
 <h2>DER</h2>
 <p align="center">
-    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Banco/Imagens/Conceitual.png">
+    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual.png">
 </p>
 
 
@@ -305,7 +317,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Sprint 1</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndown_1.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndowns/Burndown_1.png">
     </p>
 </details>
 
