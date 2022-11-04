@@ -27,6 +27,7 @@ import com.iacit.api.service.ServiceTemperatura;
 import com.iacit.api.service.TableSaw;
 
 import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+import tech.tablesaw.api.Table;
 
 @Controller
 @RestController
@@ -43,9 +44,8 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 		
-		ArrayList<String> reg = new ArrayList<String>();
 		TableSaw tb = new TableSaw();
-		reg = tb.insereRegiaoBanco();
+		ArrayList<String> reg = tb.listaRegiao(tb.insereRegiaoBanco());
 		serviceInsereRegiao.insBancoService(reg);
 		
 		return modelAndView;

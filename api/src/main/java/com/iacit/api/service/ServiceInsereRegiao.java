@@ -10,32 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
-@SpringBootApplication
 @Service
 public class ServiceInsereRegiao {
 
 	@Autowired(required = true)
 	private RegiaoRepository regiaoRepository;
 
-	private ArrayList<String> regis;
+	private ArrayList<String> tabela;
 
-	public ServiceInsereRegiao(ArrayList<String> regis) {
-		this.regis = regis;
+	public ServiceInsereRegiao(ArrayList<String> tabela) {
+		this.tabela = tabela;
+	}
+	
+	public Regiao returnRegiao(String reg) {
+		Regiao regid = regiaoRepository.selectBySegSigla(reg);
+		return regid;
 	}
 
-	public void insBancoService(ArrayList<String> regis) {
-		int ii = regis.size();
+	public void insBancoService(ArrayList<String> tabela) {
+		int ii = tabela.size();
 		for (int i = 1; i < ii; i++) {
-			String xx = regis.get(i);
+			String regiaoS = tabela.get(i);
 			// System.out.println(xx);
-			if (i - 1 >= 0 && regis.get(i - 1) != xx) {
-		        Regiao regiao = new Regiao(xx);
+			if (i - 1 >= 0 && tabela.get(i - 1) != regiaoS) {
+		        Regiao regiao = new Regiao(regiaoS);
 		        regiaoRepository.save(regiao);
 				//List<Regiao> regioe = regiaoRepository.insertBySegSigla(xx);
 			} else {
 				continue;
 			}
-
 		}
 	}
 }

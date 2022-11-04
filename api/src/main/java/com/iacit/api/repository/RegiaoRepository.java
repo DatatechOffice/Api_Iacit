@@ -9,8 +9,8 @@ import com.iacit.api.entity.Regiao;
 
 @Repository
 public interface RegiaoRepository extends JpaRepository<Regiao, Integer> {
-@Query(value = "insert into regiao(reg_sigla) values(?)", nativeQuery = true)
+@Query(value = "select reg_id from regiao where reg_sigla = ?", nativeQuery = true)
 	
-	public List<Regiao> insertBySegSigla(String regSigla);
+	public Regiao selectBySegSigla(String regSigla);
 
 }

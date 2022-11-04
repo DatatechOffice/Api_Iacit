@@ -21,9 +21,9 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 @Service
 public class TableSaw {
 	
-	public ArrayList<String> insereRegiaoBanco() {
+	public Table insereRegiaoBanco() {
 		
-		ArrayList<String> regis = new ArrayList();
+		ArrayList<String> tabela = new ArrayList();
 		
 		CsvReadOptions.Builder builder = CsvReadOptions
 				.builder("C:\\Users\\admin\\Desktop\\Api_Iacit-PersistenciaSpark\\Api_Iacit\\database.CSV")
@@ -34,39 +34,37 @@ public class TableSaw {
 		CsvReadOptions options = builder.build();
 
 		Table t1 = Table.read().usingOptions(options);
-		//System.out.println(t1);
-
-		Table t2 = t1.selectColumns("C20");
-		//System.out.println(t2);
 		
-		
-		Regiao regiaoCO = new Regiao();
-		
-		regiaoCO.setRegSigla(t2.getString(1, "C20"));
-		
-		
+		return t1;
+	}
+	
+	public ArrayList<String> listaRegiao(Table t1) {
 		int i = 0;
-		i = t2.rowCount();
+		i = t1.rowCount();
+		ArrayList<String> tabela = new ArrayList();
 		//System.out.println(i);
 		for (int ii = 0; ii < i; ii++) {
-			String x;
-			
-			x = t2.getString(ii, "C20");
-			regis.add(x);
+			String reg;
+			reg = t1.getString(ii, "C20");
+			tabela.add(reg); 
 		}
-		
-		
-		
-		
-
-		
-		
-		
-
-		//		ColumnType[] types = {};
-//		Table t = Table.read().usingOptions(CsvReadOptions
-//		    .builder("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Nova pasta\\database - Copia.csv")
-//		    .columnTypes(types));
-		return regis;
+		return tabela;
+	}
+	
+	public ArrayList<String> listaEstadoRegiao(Table t1) {
+		int i = 0;
+		i = t1.rowCount();
+		ArrayList<String> tabela = new ArrayList();
+		for (int ii = 0; ii < i; ii++) {
+			
+			String reg;
+			reg = t1.getString(ii, "C20");
+			tabela.add(reg);
+			
+			String etd;
+			etd = t1.getString(ii, "C21");
+			tabela.add(etd);  
+		}	
+		return tabela;
 	}
 }
