@@ -1,7 +1,31 @@
-const UF = document.getElementById('UF');
-const combinaUF = document.getElementById('combina-UF');
+//Lendo os inputs e o divs  de demonstração
+const Regiao = document.getElementById('Regiao');
+const CombinaRegiao = document.getElementById('combina-Regiao');
 
-//busscando o arquivo json
+const UF = document.getElementById('UF');
+const CombinaUF = document.getElementById('combina-UF');
+
+const Estacao = document.getElementById('Estacao');
+const CombinaEstacao = document.getElementById('combina-Estacao');
+
+const Variavel = document.getElementById('Variavel');
+const CombinaVariavel = document.getElementById('combina-Variavel');
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//buscando o arquivo json e combinando com Regiao
+const BuscarRegiao = async searchText => {
+	const resReg = await fetch('../data/estados.json');
+	const RegiaoJson = await resReg.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaRegiao = RegiaoJson.filter(Reg => {
+		const regexReg = new RegExp(`^${searchText}`, 'gi');
+		return Reg.name.match(regexReg) || Reg.abbr.match(regexReg);
+	});
+
+	console.log(combinaRegiao);
+};
+//busscando o arquivo json e combinando com UF
 const BuscarUF = async searchText => {
 	const res = await fetch('../data/estados.json');
 	const estados = await res.json();
@@ -15,12 +39,38 @@ const BuscarUF = async searchText => {
 	//se o campo estiver vazio não tem resultado
 	if (searchText.length == 0){
 		combinacao = [];
-		combinaUF.innerHTML = '';
+		CombinaUF.innerHTML = '';
 	}
 	outputHtml(combinacao);
 	console.log(combinacao);
 };
+//buscando o arquivo json e combinando com Estacao
+const BuscarEstacao = async searchText => {
+	const resEs = await fetch('../data/estados.json');
+	const EstacaJson = await resEs.json();
 
+	//pegando as combinações tendo com base digitado
+	let combinaEstacao = EstacaJson.filter(Estacaov => {
+		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
+		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
+	});
+	console.log(combinaEstacao);
+}
+//buscando o arquivo json e combinando com Variavel
+const BuscarVariavel = async searchText => {
+	const resVar = await fetch('../data/estados.json');
+	const VariavelJson = await resVar.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaVariavel = VariavelJson.filter(Variavel => {
+		const regexVariavel = new RegExp(`^${searchText}`, 'gi');
+		return Variavel.name.match(regexVariavel) || Variavel.abbr.match(regexVariavel);
+	});
+
+	console.log(combinaVariavel);
+};
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
 //|Mostra o resultado no html
 const outputHtml = combinacao => {
 	if (combinacao.length > 0){
@@ -33,12 +83,18 @@ const outputHtml = combinacao => {
 		.join('');
 		
 		
-		combinaUF.innerHTML = html;
+		CombinaUF.innerHTML = html;
 	}
 };
 
-UF.addEventListener('input', () => BuscarUF(UF.value))
-;
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
+UF.addEventListener('input', () => BuscarUF(UF.value));
+Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
+Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
+
+
 
 (function($) {
 	"use strict";
