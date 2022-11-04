@@ -1,11 +1,30 @@
 //Lendo os inputs e o divs  de demonstração
+const Regiao = document.getElementById('Regiao');
+const CombinaRegiao = document.getElementById('combina-Regiao');
+
 const UF = document.getElementById('UF');
-const combinaUF = document.getElementById('combina-UF');
+const CombinaUF = document.getElementById('combina-UF');
 
 const Estacao = document.getElementById('Estacao');
-const CombinaEstacao = document.getElementById('Combina-Estacao');
+const CombinaEstacao = document.getElementById('combina-Estacao');
+
+const Variavel = document.getElementById('Variavel');
+const CombinaVariavel = document.getElementById('combina-Variavel');
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
+//buscando o arquivo json e combinando com Regiao
+const BuscarRegiao = async searchText => {
+	const resReg = await fetch('../data/estados.json');
+	const RegiaoJson = await resReg.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaRegiao = RegiaoJson.filter(Reg => {
+		const regexReg = new RegExp(`^${searchText}`, 'gi');
+		return Reg.name.match(regexReg) || Reg.abbr.match(regexReg);
+	});
+
+	console.log(combinaRegiao);
+};
 //busscando o arquivo json e combinando com UF
 const BuscarUF = async searchText => {
 	const res = await fetch('../data/estados.json');
@@ -20,7 +39,7 @@ const BuscarUF = async searchText => {
 	//se o campo estiver vazio não tem resultado
 	if (searchText.length == 0){
 		combinacao = [];
-		combinaUF.innerHTML = '';
+		CombinaUF.innerHTML = '';
 	}
 	outputHtml(combinacao);
 	console.log(combinacao);
@@ -31,20 +50,26 @@ const BuscarEstacao = async searchText => {
 	const EstacaJson = await resEs.json();
 
 	//pegando as combinações tendo com base digitado
-	let CombinaEstacao = EstacaJson.filter(Estacaov => {
+	let combinaEstacao = EstacaJson.filter(Estacaov => {
 		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
 		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
 	});
-	
-	//se o campo estiver vazio não tem resultado
-	if (searchText.length == 0){
-		CombinaEstacao = [];
-		CombinaEstacao.innerHTML = '';
-	}
-	
-	outputHtmlEstacao(CombinaEstacao);
-	console.log(CombinaEstacao);
+	console.log(combinaEstacao);
+}
+//buscando o arquivo json e combinando com Variavel
+const BuscarVariavel = async searchText => {
+	const resVar = await fetch('../data/estados.json');
+	const VariavelJson = await resVar.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaVariavel = VariavelJson.filter(Variavel => {
+		const regexVariavel = new RegExp(`^${searchText}`, 'gi');
+		return Variavel.name.match(regexVariavel) || Variavel.abbr.match(regexVariavel);
+	});
+
+	console.log(combinaVariavel);
 };
+
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //|Mostra o resultado no html
 const outputHtml = combinacao => {
@@ -58,27 +83,18 @@ const outputHtml = combinacao => {
 		.join('');
 		
 		
-		combinaUF.innerHTML = html;
+		CombinaUF.innerHTML = html;
 	}
 };
 
-const outputHtmlEstacao = CombinaEstacao => {
-	if(CombinaEstacao.length > 0){
-		const htmlEs = CombinaEstacao.map(matchEs => `
-		<div class="card card-body mb-1">
-			<h4>${matchEs.name} (${matchEs.abbr}) <span class="text-primary">${matchEs.capital}</span></h4>
-			<small>Lat: ${matchEs.lat} / Long:${matchEs.long}</small>
-		</div>
-		`)
-		.join('');
-		
-		
-		CombinaEstacao.innerHTML = htmlEs;
-	}
-};
+
 //-----------------------------------------------------------------------------------------------------------------------------------------
+Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
 UF.addEventListener('input', () => BuscarUF(UF.value));
 Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
+Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
+
+
 
 (function($) {
 	"use strict";
@@ -106,45 +122,12 @@ Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
 	});
 })(jQuery);
 
-function lista() { }
-
-google.charts.load("current", { packages: ["corechart"] });
+function lista() {
+	google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
+ }
 
-function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-		["Element", "Density", { role: "style" }],
-		["Temp Bulbo Seco", 20.94, "#b87333"],
-		["Temp Max", 10.49, "silver"],
-		["Temp Min", 19.3, "gold"],
-	]);
 
-	var view = new google.visualization.DataView(data);
-	view.setColumns([
-		0,
-		1,
-		{
-			calc: "stringify",
-			sourceColumn: 1,
-			type: "string",
-			role: "annotation",
-		},
-		2,
-	]);
-
-	var options = {
-		title: "Temperatura",
-		width: 600,
-		height: 400,
-		bar: { groupWidth: "95%" },
-		legend: { position: "none" },
-	};
-
-	var chart = new google.visualization.ColumnChart(
-		document.getElementById("columnchart_values")
-	);
-	chart.draw(view, options);
-}
 
 var getData1 = function() {
 	var dataHoje = new Date();
@@ -249,8 +232,46 @@ function salvarUsuario(){
 		//Alerta de sucesso ou falha no envio do JSON
 		success: function (data){
 			alert("Salvo com Sucesso!");
+			
+			plotcharts(data);
+			
+			
+			
+			
+			/*function plotcharts(){
+            	
+              var apiUrl = data;
+              var datas=[];
+              var valor=[];
+              fetch(apiUrl).then(response => {
+                return response.json();
+              }).then(data => {
+                for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+                //For Line chart
+                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
+                drawchart(dataset, datas, 'line');
+              }).catch(err => {
+                console.log(err);
+              });
+          }*/
 		}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
+
+function plotcharts(data){
+			var datas=[];
+            var valor=[];
+			for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+			//For Line chart
+			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
+                drawchart(dataset, datas, 'line');
+                }
+                
