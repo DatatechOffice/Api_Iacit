@@ -36,7 +36,6 @@ public class HomeController {
 	
 	@Autowired(required=true) 
 	private ServiceInsereRegiao serviceInsereRegiao;
-	
 
 	// Método para inicialização de página
 	@GetMapping(value = { "index" })
@@ -45,8 +44,11 @@ public class HomeController {
 		modelAndView.setViewName("index");
 		
 		TableSaw tb = new TableSaw();
-		ArrayList<String> reg = tb.listaRegiao(tb.insereRegiaoBanco());
+		ArrayList<String> reg = tb.listaRegiao(tb.tableCsv());
 		serviceInsereRegiao.insBancoService(reg);
+		
+		ArrayList<String> regEtd = tb.listaEstadoRegiao(tb.tableCsv());
+		serviceInsereRegiao.insBancoService(regEtd);
 		
 		return modelAndView;
 	}

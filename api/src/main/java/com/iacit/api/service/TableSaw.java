@@ -21,12 +21,12 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 @Service
 public class TableSaw {
 	
-	public Table insereRegiaoBanco() {
+	public Table tableCsv() {
 		
 		ArrayList<String> tabela = new ArrayList();
 		
 		CsvReadOptions.Builder builder = CsvReadOptions
-				.builder("C:\\Users\\admin\\Desktop\\Api_Iacit-PersistenciaSpark\\Api_Iacit\\database.CSV")
+				.builder("C:\\Users\\Jooj\\Desktop\\MainIacit\\Api_Iacit\\ApiIacit\\database.CSV")
 				.separator(';') // table is tab-delimited
 				.header(false) // no header
 				.dateFormat("yyyy.MM.dd"); // the date format to use.

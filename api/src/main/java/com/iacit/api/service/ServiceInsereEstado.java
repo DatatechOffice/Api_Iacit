@@ -16,7 +16,6 @@ public class ServiceInsereEstado {
 	@Autowired
 	EstadoRepository estadoRepository;
 	ServiceInsereRegiao serviceInsereRegiao;
-	
 
 	private ArrayList<String> tabela;
 
@@ -25,21 +24,8 @@ public class ServiceInsereEstado {
 	}
 
 	public void insBancoService(ArrayList<String> tabela) {
-		int ii = tabela.size();
-		for (int i = 1; i < ii; i++) {
-			String xx = tabela.get(i);
-			// System.out.println(xx);
-			if (i - 1 >= 0 && tabela.get(i - 1) != xx) {
-				if(xx == "CO" && xx != null) {
-					Estado estado = new Estado(serviceInsereRegiao.returnRegiao(xx),xx);
-			        estadoRepository.save(estado);
-				}
-		        
-				//List<Regiao> regioe = regiaoRepository.insertBySegSigla(xx);
-			} else {
-				continue;
-			}
-		}
+		//fazer lógica do zero pois a que estava aqui não estava ajudando
+		//if tabela indice contém regiao == ? e uf == ? no mesmo indice, logo pesquisar qual o id da regiao e com o Id em mãos inserir o estado
 	}
 }
 

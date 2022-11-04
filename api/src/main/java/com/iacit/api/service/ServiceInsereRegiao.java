@@ -35,7 +35,6 @@ public class ServiceInsereRegiao {
 			if (i - 1 >= 0 && tabela.get(i - 1) != regiaoS) {
 		        Regiao regiao = new Regiao(regiaoS);
 		        regiaoRepository.save(regiao);
-				//List<Regiao> regioe = regiaoRepository.insertBySegSigla(xx);
 			} else {
 				continue;
 			}
