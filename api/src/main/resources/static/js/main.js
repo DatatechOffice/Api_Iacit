@@ -22,8 +22,11 @@ const BuscarRegiao = async searchText => {
 		const regexReg = new RegExp(`^${searchText}`, 'gi');
 		return Reg.name.match(regexReg) || Reg.abbr.match(regexReg);
 	});
-
-	console.log(combinaRegiao);
+	if (searchText.length == 0){
+		combinaRegiao = [];
+		CombinaRegiao.innerHTML = '';
+	}
+	outputHtmlReg(combinaRegiao);
 };
 //busscando o arquivo json e combinando com UF
 const BuscarUF = async searchText => {
@@ -42,7 +45,6 @@ const BuscarUF = async searchText => {
 		CombinaUF.innerHTML = '';
 	}
 	outputHtml(combinacao);
-	console.log(combinacao);
 };
 //buscando o arquivo json e combinando com Estacao
 const BuscarEstacao = async searchText => {
@@ -54,7 +56,11 @@ const BuscarEstacao = async searchText => {
 		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
 		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
 	});
-	console.log(combinaEstacao);
+	if (searchText.length == 0){
+		combinaEstacao = [];
+		CombinaEstacao.innerHTML = '';
+	}
+	outputHtmlEs(combinaEstacao);
 }
 //buscando o arquivo json e combinando com Variavel
 const BuscarVariavel = async searchText => {
@@ -66,17 +72,22 @@ const BuscarVariavel = async searchText => {
 		const regexVariavel = new RegExp(`^${searchText}`, 'gi');
 		return Variavel.name.match(regexVariavel) || Variavel.abbr.match(regexVariavel);
 	});
-
-	console.log(combinaVariavel);
+	if (searchText.length == 0){
+		combinaVariavel = [];
+		CombinaVariavel.innerHTML = '';
+	}
+	outputHtmlVar(combinaVariavel);
 };
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //|Mostra o resultado no html
+
+//resultado das UF
 const outputHtml = combinacao => {
 	if (combinacao.length > 0){
 		const html = combinacao.map(match => `
 		<div class="card card-body mb-1">
-			<h4>${match.name} (${match.abbr}) <span class="text-primary">${match.capital}</span></h4>
+			<h4>${match.name}</h4>
 			<small>Lat: ${match.lat} / Long:${match.long}</small>
 		</div>
 		`)
@@ -86,7 +97,48 @@ const outputHtml = combinacao => {
 		CombinaUF.innerHTML = html;
 	}
 };
-
+//resultado das regiões
+const outputHtmlReg = combinaRegiao => {
+	if (combinaRegiao.length > 0){
+		const htmlReg = combinaRegiao.map(matchReg => `
+		<div class="card card-body mb-1">
+			<h4>${matchReg.name}</h4>
+			<small>Lat: ${matchReg.lat} / Long:${matchReg.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaRegiao.innerHTML = htmlReg;
+	}
+};
+//Resultado dos estados
+const outputHtmlEs = combinaEstacao => {
+	if (combinaEstacao.length > 0){
+		const htmlEs = combinaEstacao.map(matchEs => `
+		<div class="card card-body mb-1">
+			<h4>${matchEs.name}</h4>
+			<small>Lat: ${matchEs.lat} / Long:${matchEs.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaEstacao.innerHTML = htmlEs;
+	}
+};
+//Resultado das variaveis
+const outputHtmlVar = combinaVariavel => {
+	if (combinaVariavel.length > 0){
+		const htmlVar = combinaVariavel.map(matchVar => `
+		<div class="card card-body mb-1">
+			<h4>${matchVar.name}</h4>
+			<small>Lat: ${matchVar.lat} / Long:${matchVar.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaVariavel.innerHTML = htmlVar;
+	}
+};
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
