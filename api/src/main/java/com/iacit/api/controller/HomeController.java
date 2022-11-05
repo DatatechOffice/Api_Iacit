@@ -22,6 +22,7 @@ import com.iacit.api.entity.Regiao;
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.repository.RegiaoRepository;
 import com.iacit.api.repository.TemperaturaRepository;
+import com.iacit.api.service.ServiceInsereEstado;
 import com.iacit.api.service.ServiceInsereRegiao;
 import com.iacit.api.service.ServiceTemperatura;
 import com.iacit.api.service.TableSaw;
@@ -36,6 +37,9 @@ public class HomeController {
 	
 	@Autowired(required=true) 
 	private ServiceInsereRegiao serviceInsereRegiao;
+	
+	@Autowired(required=true)
+	private ServiceInsereEstado serviceInsereEstado;
 
 	// Método para inicialização de página
 	@GetMapping(value = { "index" })
@@ -47,8 +51,8 @@ public class HomeController {
 		ArrayList<String> reg = tb.listaRegiao(tb.tableCsv());
 		serviceInsereRegiao.insBancoService(reg);
 		
-		ArrayList<String> regEtd = tb.listaEstadoRegiao(tb.tableCsv());
-		serviceInsereRegiao.insBancoService(regEtd);
+		ArrayList<String> regEtd = tb.listaEstado(tb.tableCsv());
+		serviceInsereEstado.insBancoService(reg, regEtd);
 		
 		return modelAndView;
 	}

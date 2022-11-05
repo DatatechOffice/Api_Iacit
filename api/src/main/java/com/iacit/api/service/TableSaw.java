@@ -23,48 +23,42 @@ public class TableSaw {
 	
 	public Table tableCsv() {
 		
-		ArrayList<String> tabela = new ArrayList();
-		
 		CsvReadOptions.Builder builder = CsvReadOptions
-				.builder("C:\\Users\\Jooj\\Desktop\\MainIacit\\Api_Iacit\\ApiIacit\\database.CSV")
+				.builder("C:\\Users\\admin\\Desktop\\Api_Iacit-PersistenciaSpark\\Api_Iacit\\database.CSV")
 				.separator(';') // table is tab-delimited
 				.header(false) // no header
 				.dateFormat("yyyy.MM.dd"); // the date format to use.
 
 		CsvReadOptions options = builder.build();
 
-		Table t1 = Table.read().usingOptions(options);
+		//tabela csv é a tabela que contém todos os dados 
+		Table tabelaCSV = Table.read().usingOptions(options);
 		
-		return t1;
+		return tabelaCSV;
 	}
 	
-	public ArrayList<String> listaRegiao(Table t1) {
+	public ArrayList<String> listaRegiao(Table tabelaCSV) {
 		int i = 0;
-		i = t1.rowCount();
-		ArrayList<String> tabela = new ArrayList();
+		i = tabelaCSV.rowCount();
+		ArrayList<String> regiaoLista = new ArrayList();
 		//System.out.println(i);
 		for (int ii = 0; ii < i; ii++) {
 			String reg;
-			reg = t1.getString(ii, "C20");
-			tabela.add(reg); 
+			reg = tabelaCSV.getString(ii, "C20");//C20 é a coluna para Região no arquivo csv
+			regiaoLista.add(reg); 
 		}
-		return tabela;
+		return regiaoLista;
 	}
 	
-	public ArrayList<String> listaEstadoRegiao(Table t1) {
+	public ArrayList<String> listaEstado(Table tabelaCSV) {
 		int i = 0;
-		i = t1.rowCount();
-		ArrayList<String> tabela = new ArrayList();
+		i = tabelaCSV.rowCount();
+		ArrayList<String> estadoLista = new ArrayList();
 		for (int ii = 0; ii < i; ii++) {
-			
-			String reg;
-			reg = t1.getString(ii, "C20");
-			tabela.add(reg);
-			
 			String etd;
-			etd = t1.getString(ii, "C21");
-			tabela.add(etd);  
+			etd = tabelaCSV.getString(ii, "C21");
+			estadoLista.add(etd);  
 		}	
-		return tabela;
+		return estadoLista;
 	}
 }

@@ -9,7 +9,7 @@ import com.iacit.api.entity.Regiao;
 
 @Repository
 public interface RegiaoRepository extends JpaRepository<Regiao, Integer> {
-@Query(value = "select reg_id from regiao where reg_sigla = ?", nativeQuery = true)
+@Query(value = "select reg_id from regiao where reg_sigla = ?1", nativeQuery = true)
 	
 	public Regiao selectBySegSigla(String regSigla);
 
