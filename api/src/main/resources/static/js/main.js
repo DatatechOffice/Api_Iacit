@@ -12,7 +12,9 @@ const Variavel = document.getElementById('Variavel');
 const CombinaVariavel = document.getElementById('combina-Variavel');
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
-//buscando o arquivo json e combinando com Regiao
+//-----------------------------------------//buscando o arquivo json e combinando com Regiao-----------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
 const BuscarRegiao = async searchText => {
 	const resReg = await fetch('../data/estados.json');
 	const RegiaoJson = await resReg.json();
@@ -80,7 +82,8 @@ const BuscarVariavel = async searchText => {
 };
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
-//|Mostra o resultado no html
+//----------------------------------------------------Mostra o resultado no html-----------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 //resultado das UF
 const outputHtml = combinacao => {
@@ -141,10 +144,57 @@ const outputHtmlVar = combinaVariavel => {
 };
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Adicionando o evento aos inputs---------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
 Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
 UF.addEventListener('input', () => BuscarUF(UF.value));
 Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
 Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+var Codigo = ['elemento0', 'elemento1', 'elemento2'];
+var Estaçao = ['elemento0', 'elemento1', 'elemento2'];
+var Id = ['elemento0', 'elemento1', 'elemento2'];
+var TempBulbo = ['elemento0', 'elemento1', 'elemento2'];
+var TempMax = ['elemento0', 'elemento1', 'elemento2',];
+var TempMin = ['elemento0', 'elemento1', 'elemento2',];
+var DataH = ['elemento0', 'elemento1', 'elemento2',];
+
+
+var corpoTabela = document.querySelector('tbody');
+
+for (let i = 0; i < 3; i++){
+
+	var tr= document.createElement('tr');
+	var tdCodigo= document.createElement('td');
+	var tdEstacao= document.createElement('td');
+	var tdId= document.createElement('td');
+	var tdTempBulbo= document.createElement('td');
+	var tdTempMax= document.createElement('td');
+	var tdTempMin= document.createElement('td');
+	var tdDataH= document.createElement('td');
+	
+	tdCodigo.textContent = Codigo[i];
+	tdEstacao.textContent =  Estaçao[i];
+	tdId.textContent = Id[i];
+	tdTempBulbo.textContent = TempBulbo[i]; 
+	tdTempMax.textContent = TempMax[i];
+	tdTempMin.textContent = TempMin[i];
+	tdDataH.textContent =  DataH[i];
+	
+	tr.appendChild(tdCodigo);
+	tr.appendChild(tdEstacao);
+	tr.appendChild(tdId);
+	tr.appendChild(tdTempBulbo);
+	tr.appendChild(tdTempMax);
+	tr.appendChild(tdTempMin);
+	tr.appendChild(tdDataH);
+	corpoTabela.appendChild(tr);
+	
+}
 
 
 

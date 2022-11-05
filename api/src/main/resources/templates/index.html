@@ -202,16 +202,8 @@
               <th scope="col">Data e Hora</th>
             </tr>
           </thead>
-          <tbody>
-            <tr th:each="temp : ${teste_Temperatura}">
-              <td>[[${temp.est_codigo}]]</td>
-              <td>[[${temp.est_nome_estacao}]]</td>
-              <td>[[${temp.tem_id}]]</td>
-              <td>[[${temp.tem_ar_bulbo_seco}]]</td>
-              <td>[[${temp.tem_max}]]</td>
-              <td>[[${temp.tem_min}]]</td>
-              <td>[[${temp.tem_data_hora}]]</td>
-            </tr>
+          <tbody id="tbody">
+
           </tbody>
         </table>
       </div>
