@@ -154,50 +154,46 @@ Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
+fetch('../data/estados.json')
+	.then(response => response.json())
+	.then(data => {
+		
+		var corpoTabela = document.querySelector('tbody');
 
-var Codigo = ['elemento0', 'elemento1', 'elemento2'];
-var Estaçao = ['elemento0', 'elemento1', 'elemento2'];
-var Id = ['elemento0', 'elemento1', 'elemento2'];
-var TempBulbo = ['elemento0', 'elemento1', 'elemento2'];
-var TempMax = ['elemento0', 'elemento1', 'elemento2',];
-var TempMin = ['elemento0', 'elemento1', 'elemento2',];
-var DataH = ['elemento0', 'elemento1', 'elemento2',];
+		for (let i = 1; i < data.length; i++){
 
+			var tr= document.createElement('tr');
+			var tdCodigo= document.createElement('td');
+			var tdEstacao= document.createElement('td');
+			var tdId= document.createElement('td');
+			var tdTempBulbo= document.createElement('td');
+			var tdTempMax= document.createElement('td');
+			var tdTempMin= document.createElement('td');
+			var tdDataH= document.createElement('td');
+			
+			tdCodigo.textContent = data[i].name;
+			tdEstacao.textContent =  data[i].capital;
+			tdId.textContent = data[i].abbr;
+			tdTempBulbo.textContent = data[i].lat; 
+			tdTempMax.textContent = data[i].lat;
+			tdTempMin.textContent = data[i].long;
+			tdDataH.textContent =  data[i].abbr;
+			
+			tr.appendChild(tdCodigo);
+			tr.appendChild(tdEstacao);
+			tr.appendChild(tdId);
+			tr.appendChild(tdTempBulbo);
+			tr.appendChild(tdTempMax);
+			tr.appendChild(tdTempMin);
+			tr.appendChild(tdDataH);
+			corpoTabela.appendChild(tr);
 
-var corpoTabela = document.querySelector('tbody');
+		};
+	});
 
-for (let i = 0; i < 3; i++){
-
-	var tr= document.createElement('tr');
-	var tdCodigo= document.createElement('td');
-	var tdEstacao= document.createElement('td');
-	var tdId= document.createElement('td');
-	var tdTempBulbo= document.createElement('td');
-	var tdTempMax= document.createElement('td');
-	var tdTempMin= document.createElement('td');
-	var tdDataH= document.createElement('td');
-	
-	tdCodigo.textContent = Codigo[i];
-	tdEstacao.textContent =  Estaçao[i];
-	tdId.textContent = Id[i];
-	tdTempBulbo.textContent = TempBulbo[i]; 
-	tdTempMax.textContent = TempMax[i];
-	tdTempMin.textContent = TempMin[i];
-	tdDataH.textContent =  DataH[i];
-	
-	tr.appendChild(tdCodigo);
-	tr.appendChild(tdEstacao);
-	tr.appendChild(tdId);
-	tr.appendChild(tdTempBulbo);
-	tr.appendChild(tdTempMax);
-	tr.appendChild(tdTempMin);
-	tr.appendChild(tdDataH);
-	corpoTabela.appendChild(tr);
-	
-}
-
-
-
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
 (function($) {
 	"use strict";
 
