@@ -327,7 +327,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Sprint 2</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Burndown_2.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndowns/Burndown_2.png">
     </p>
 </details>
 
