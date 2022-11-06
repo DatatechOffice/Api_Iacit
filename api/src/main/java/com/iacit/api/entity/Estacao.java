@@ -10,7 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -18,9 +22,20 @@ import lombok.ToString;
 @Table(name="estacao")
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@Component
 public class Estacao {
 	
+	public Estacao(String estCodigo, BigDecimal estLongitude, String estNomeEstacao, Timestamp estDataFundacao, 
+			BigDecimal estLatitude, BigDecimal estAltitude) {
+		this.estCodigo=estCodigo;
+		this.estLongitude=estLongitude;
+		this.estNomeEstacao=estNomeEstacao;
+		this.estDataFundacao=estDataFundacao;
+		this.estLatitude=estLatitude;
+		this.estAltitude=estAltitude;
+	}
+	 
 	@Id
 	@Column(name= "est_codigo", length = 4)
 	private String estCodigo;
@@ -28,7 +43,7 @@ public class Estacao {
 	@Column(name= "est_longitude", length = 10)
 	private BigDecimal estLongitude;
 	
-	@Column(name= "est_nome_estacao", length = 30)
+	@Column(name= "est_nome_estacao", length = 50)
 	private String estNomeEstacao;
 	
 	@Column(name= "est_data_fundacao")

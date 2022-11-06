@@ -25,8 +25,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Component
 public class Estado{
-	public Estado(Regiao regId, String etdUnidadeFederativa) {
-		this.regId=regId;
+	public Estado(String etdUnidadeFederativa) {
 		this.etdUnidadeFederativa=etdUnidadeFederativa;
 	}
     @Id

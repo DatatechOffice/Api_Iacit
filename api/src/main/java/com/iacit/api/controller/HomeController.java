@@ -22,6 +22,7 @@ import com.iacit.api.entity.Regiao;
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.repository.RegiaoRepository;
 import com.iacit.api.repository.TemperaturaRepository;
+import com.iacit.api.service.ServiceInsereEstacao;
 import com.iacit.api.service.ServiceInsereEstado;
 import com.iacit.api.service.ServiceInsereRegiao;
 import com.iacit.api.service.ServiceTemperatura;
@@ -40,6 +41,9 @@ public class HomeController {
 	
 	@Autowired(required=true)
 	private ServiceInsereEstado serviceInsereEstado;
+	
+	@Autowired(required=true)
+	private ServiceInsereEstacao serviceInsereEstacao;
 
 	// Método para inicialização de página
 	@GetMapping(value = { "index" })
@@ -53,6 +57,15 @@ public class HomeController {
 		
 		ArrayList<String> regEtd = tb.listaEstado(tb.tableCsv());
 		serviceInsereEstado.insBancoService(reg, regEtd);
+		
+		ArrayList<String> regEstN = tb.listaEstacaoNome(tb.tableCsv());
+		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(tb.tableCsv());
+		ArrayList<String> regEstLA = tb.listaEstacaoLatitude(tb.tableCsv());
+		ArrayList<String> regEstAL = tb.listaEstacaoAltitude(tb.tableCsv());
+		ArrayList<String> regEstD = tb.listaEstacaoDataFund(tb.tableCsv());
+		ArrayList<String> regEstC = tb.listaEstacaoCodigo(tb.tableCsv());
+		serviceInsereEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
+		
 		
 		return modelAndView;
 	}
