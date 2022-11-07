@@ -128,20 +128,3 @@
 .bootstrap-datetimepicker-widget table td.today::before {
     border-bottom-color: var(--primary);
 }
-
-/*Sytle do autocomplete*/
-
-ul {
-    list-style: none;
-  }
-  .list {
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 0 0 5px 5px;
-  }
-  .list-items {
-    padding: 10px 5px;
-  }
-  .list-items:hover {
-    background-color: #dddddd;
-  }
