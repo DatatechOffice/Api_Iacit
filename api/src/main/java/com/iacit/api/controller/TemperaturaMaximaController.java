@@ -18,13 +18,12 @@ public class TemperaturaMaximaController {
 	@Autowired(required = true)
 	private ServiceTemperatura temperaturaService;
 
-	@PostMapping(value = { "/temperaturaMaxima" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/temperatura" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Temperatura>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
 		List<Temperatura> listTemperatura = temperaturaService.getByFilter(data.getDataInicio(), data.getDataFim());
 		
 		return listTemperatura != null && listTemperatura.size() > 0 ? new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.CREATED)
 				: new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.BAD_REQUEST);
-
 	}
 }
