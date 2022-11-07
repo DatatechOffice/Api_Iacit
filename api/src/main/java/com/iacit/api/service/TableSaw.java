@@ -1,13 +1,22 @@
 package com.iacit.api.service;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.google.common.collect.Range;
 import com.iacit.api.entity.Regiao;
 import com.iacit.api.repository.RegiaoRepository;
+import com.ibm.icu.text.DateTimePatternGenerator.FormatParser;
+import com.univocity.parsers.conversions.DateConversion;
 
 import org.apache.commons.math3.analysis.function.Add;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +30,12 @@ import tech.tablesaw.io.csv.CsvReadOptions;
 
 @Service
 public class TableSaw {
+	
+	public String addChar(String str, String string, int position) {
+	    StringBuilder sb = new StringBuilder(str);
+	    sb.insert(position, string);
+	    return sb.toString();
+	}
 	
 	public Table tableCsv() {
 		
@@ -133,5 +148,56 @@ public class TableSaw {
 			estacaoDataFundLista.add(est);  
 		}	
 		return estacaoDataFundLista;
+	}
+	
+	public ArrayList<String> listaTempData(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempDataLista = new ArrayList();
+		for (int ii = 0; ii < i; ii++) {
+			String est;
+			String hora = (tabelaCSV.getString(ii, "C2")).replace(" UTC", "");
+			 TableSaw tb = new TableSaw();
+			 String horat = tb.addChar(hora, ":", 2);
+			est = tabelaCSV.getString(ii, "C1")+" "+ horat;
+			tempDataLista.add(est);  
+		}	
+		return tempDataLista;
+	}
+	
+	public ArrayList<String> listaBulboSeco(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> bulboSecoLista = new ArrayList();
+		for (int ii = 0; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C8")).replace(",", ".");
+			bulboSecoLista.add(est);  
+		}	
+		return bulboSecoLista;
+	}
+	
+	public ArrayList<String> listaTempMax(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempMaxLista = new ArrayList();
+		for (int ii = 0; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C10")).replace(",", ".");
+			tempMaxLista.add(est);  
+		}	
+		return tempMaxLista;
+	}
+	
+	public ArrayList<String> listaTempMin(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempMinLista = new ArrayList();
+		for (int ii = 0; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C11")).replace(",", ".");
+			tempMinLista.add(est);  
+		}	
+		return tempMinLista;
 	}
 }

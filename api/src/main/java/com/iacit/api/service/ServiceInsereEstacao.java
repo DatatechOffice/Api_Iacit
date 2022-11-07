@@ -55,7 +55,7 @@ public class ServiceInsereEstacao {
 	public void insBancoService(ArrayList<String> listaEstacaoNome, ArrayList<String> listaEstacaoCodigo, ArrayList<String> listaEstacaoLatitude, 
 			ArrayList<String> listaEstacaoLongitude, ArrayList<String> listaEstacaoAltitude, ArrayList<String> listaEstacaoData, ArrayList<String> listaEstado) {
 		// qual o id da regiao e com o Id em mãos inserir o estado
-		int ii = listaEstacaoNome.size();
+		int ii = listaEstacaoCodigo.size();
 		for (int i = 1; i < ii; i++) {
 			String estacaoNS = listaEstacaoNome.get(i);
 			String estacaoCS = listaEstacaoCodigo.get(i);

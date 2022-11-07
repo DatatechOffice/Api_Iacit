@@ -44,6 +44,9 @@ public class HomeController {
 	
 	@Autowired(required=true)
 	private ServiceInsereEstacao serviceInsereEstacao;
+	
+	@Autowired(required=true)
+	private ServiceTemperatura serviceTemperatura;
 
 	// Método para inicialização de página
 	@GetMapping(value = { "index" })
@@ -52,19 +55,31 @@ public class HomeController {
 		modelAndView.setViewName("index");
 		
 		TableSaw tb = new TableSaw();
-		ArrayList<String> reg = tb.listaRegiao(tb.tableCsv());
-		serviceInsereRegiao.insBancoService(reg);
+		Table t = tb.tableCsv();
+		/*
+		 * ArrayList<String> reg = tb.listaRegiao(t);
+		 * serviceInsereRegiao.insBancoService(reg);
+		 * 
+		 * ArrayList<String> regEtd = tb.listaEstado(t);
+		 * serviceInsereEstado.insBancoService(reg, regEtd);
+		 * 
+		 * ArrayList<String> regEstN = tb.listaEstacaoNome(t); ArrayList<String>
+		 * regEstLO = tb.listaEstacaoLongitude(t); ArrayList<String> regEstLA =
+		 * tb.listaEstacaoLatitude(t); ArrayList<String> regEstAL =
+		 * tb.listaEstacaoAltitude(t); ArrayList<String> regEstD =
+		 * tb.listaEstacaoDataFund(t); ArrayList<String> regEstC =
+		 * tb.listaEstacaoCodigo(t); serviceInsereEstacao.insBancoService(regEstN,
+		 * regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
+		 */
 		
-		ArrayList<String> regEtd = tb.listaEstado(tb.tableCsv());
-		serviceInsereEstado.insBancoService(reg, regEtd);
+		ArrayList<String> estTdata = tb.listaTempData(t);
+		ArrayList<String> estTbulbo = tb.listaBulboSeco(t);
+		ArrayList<String> estTmax = tb.listaTempMax(t);
+		ArrayList<String> estTmin = tb.listaTempMin(t);
+		serviceTemperatura.insBancoService(estTdata, estTbulbo, estTmax, estTmin);
 		
-		ArrayList<String> regEstN = tb.listaEstacaoNome(tb.tableCsv());
-		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(tb.tableCsv());
-		ArrayList<String> regEstLA = tb.listaEstacaoLatitude(tb.tableCsv());
-		ArrayList<String> regEstAL = tb.listaEstacaoAltitude(tb.tableCsv());
-		ArrayList<String> regEstD = tb.listaEstacaoDataFund(tb.tableCsv());
-		ArrayList<String> regEstC = tb.listaEstacaoCodigo(tb.tableCsv());
-		serviceInsereEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
+		
+		
 		
 		
 		return modelAndView;

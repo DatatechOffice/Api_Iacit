@@ -35,6 +35,9 @@ public class Estacao {
 		this.estLatitude=estLatitude;
 		this.estAltitude=estAltitude;
 	}
+	public Estacao(String estCodigo) {
+		this.estCodigo=estCodigo;
+	}
 	 
 	@Id
 	@Column(name= "est_codigo", length = 4)
