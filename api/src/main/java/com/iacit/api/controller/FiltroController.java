@@ -14,7 +14,7 @@ import com.iacit.api.entity.Temperatura;
 import com.iacit.api.service.ServiceTemperatura;
 
 @Controller
-public class TemperaturaMaximaController {
+public class FiltroController {
 
 	
 	@Autowired(required = true)
@@ -27,6 +27,5 @@ public class TemperaturaMaximaController {
 		
 		return listTemperatura != null && listTemperatura.size() > 0 ? new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.CREATED)
 				: new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.BAD_REQUEST);
-
 	}
 }
