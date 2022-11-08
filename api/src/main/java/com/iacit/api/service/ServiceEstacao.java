@@ -66,16 +66,11 @@ public class ServiceEstacao {
 			String estacaoLOS = listaEstacaoLongitude.get(i);
 			String estacaoAS = listaEstacaoAltitude.get(i);
 			String estacaoDS = listaEstacaoData.get(i);
-			if (i - 1 >= 0 && listaEstacaoNome.get(i - 1) != estacaoNS) {
-				String estacaoDSS = estacaoDS.replace("/", "-");
-				Estacao estacao = new Estacao(estacaoCS, BigDecimal.valueOf(Double.parseDouble(estacaoLOS)), estacaoNS, Timestamp.valueOf("20"+estacaoDSS.replace("00", "01")+" 00:00:00"),
-						BigDecimal.valueOf(Double.parseDouble(estacaoLAS)), BigDecimal.valueOf(Double.parseDouble(estacaoAS)));
-				
-				estacaoRepository.save(estacao);
-				
-			} else {
-				continue;
-			}
+			String estacaoDSS = estacaoDS.replace("/", "-");
+			Estacao estacao = new Estacao(estacaoCS, BigDecimal.valueOf(Double.parseDouble(estacaoLOS)), estacaoNS, Timestamp.valueOf("20"+estacaoDSS.replace("00", "01")+" 00:00:00"),
+					BigDecimal.valueOf(Double.parseDouble(estacaoLAS)), BigDecimal.valueOf(Double.parseDouble(estacaoAS)));
+			
+			estacaoRepository.save(estacao);
 		}
 	}
 }
