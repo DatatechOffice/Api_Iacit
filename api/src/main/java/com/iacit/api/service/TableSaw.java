@@ -40,7 +40,7 @@ public class TableSaw {
 	public Table tableCsv() {
 		
 		CsvReadOptions.Builder builder = CsvReadOptions
-				.builder("C:\\Users\\admin\\Desktop\\database.CSV")
+				.builder("C:\\Users\\Jooj\\Desktop\\database.CSV")
 				.separator(';') // table is tab-delimited
 				.header(false) // no header
 				.dateFormat("yyyy.MM.dd"); // the date format to use.
