@@ -246,7 +246,6 @@ var getData1 = function() {
 
 //Metodo script responsavel por receber e enviar os dados do front para o back atraves de um JSON
 function salvarUsuario(){
-
 	//Recebendo as informações dos filtros e armazenando em variaveis
 	var vRegiao = $("#Regiao").val();
 	var vUF = $("#UF").val();
@@ -268,53 +267,44 @@ function salvarUsuario(){
 			
 			plotcharts(data);
 			
-			
-			
-			
-			/*function plotcharts(){
-            	
-              var apiUrl = data;
-              var datas=[];
-              var valor=[];
-              fetch(apiUrl).then(response => {
+		/*function plotcharts(){
+            var apiUrl = data;
+            var datas=[];
+            var valor=[];
+            fetch(apiUrl).then(response => {
                 return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
-                drawchart(dataset, datas, 'line');
-              }).catch(err => {
+            }).then(data => {
+				for(let i =0; i <data.length;i++){
+					datas.push(data[i]['dataHora']);
+					valor.push(parseInt(data[i]['temMax']));
+				}
+				//For Line chart
+				dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
+				drawchart(dataset, datas, 'line');
+            }).catch(err => {
                 console.log(err);
-              });
-          }*/
-		}
+            });
+        }*/
+	}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
 
 function plotcharts(data){
-			var datas=[];
-            var valor=[];
-			for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-			//For Line chart
-			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
-                drawchart(dataset, datas, 'line');
-                }
-                
-
-})
-
+	var datas=[];
+	var valor=[];
+	for(let i =0; i <data.length;i++){
+		datas.push(data[i]['dataHora']);
+		valor.push(parseInt(data[i]['temMax']));
+	}
+	//For Line chart
+	dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
+		drawchart(dataset, datas, 'line');
+}
 
 //Metodo script responsavel por receber e enviar os dados do front para o back atraves de um JSON
 function salvarUsuario(){
-
 	//Recebendo as informações dos filtros e armazenando em variaveis
 	var vRegiao = $("#Regiao").val();
 	var vUF = $("#UF").val();
@@ -336,43 +326,38 @@ function salvarUsuario(){
 			
 			plotcharts(data);
 			
-			
-			
-			
 			/*function plotcharts(){
-            	
-              var apiUrl = data;
-              var datas=[];
-              var valor=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
+            var apiUrl = data;
+            var datas=[];
+            var valor=[];
+            fetch(apiUrl).then(response => {
+            	return response.json();
+            }).then(data => {
                 for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
+					datas.push(data[i]['dataHora']);
+					valor.push(parseInt(data[i]['temMax']));
                 }
                 //For Line chart
                 dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
                 drawchart(dataset, datas, 'line');
-              }).catch(err => {
+            }).catch(err => {
                 console.log(err);
-              });
-          }*/
-		}
+            });
+        }*/
+	}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
 
 function plotcharts(data){
-			var datas=[];
-            var valor=[];
-			for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-			//For Line chart
-			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
-                drawchart(dataset, datas, 'line');
-                }
-                
+	var datas=[];
+	var valor=[];
+	for(let i =0; i <data.length;i++){
+		datas.push(data[i]['dataHora']);
+		valor.push(parseInt(data[i]['temMax']));
+	}
+	//For Line chart
+	dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
+	drawchart(dataset, datas, 'line');
+}
