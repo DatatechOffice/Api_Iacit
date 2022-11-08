@@ -14,7 +14,7 @@ import com.iacit.api.entity.Temperatura;
 import com.iacit.api.service.ServiceTemperatura;
 
 @Controller
-public class TemperaturaMaximaController {
+public class FiltroController {
 
 	
 	@Autowired(required = true)
