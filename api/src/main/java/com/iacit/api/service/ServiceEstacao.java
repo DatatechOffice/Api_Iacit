@@ -3,19 +3,17 @@ package com.iacit.api.service;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iacit.api.entity.Estacao;
-import com.iacit.api.entity.Estado;
-import com.iacit.api.entity.Regiao;
 import com.iacit.api.repository.EstacaoRepository;
 import com.iacit.api.repository.EstadoRepository;
-import com.iacit.api.repository.RegiaoRepository;
 
 @Service
-public class ServiceInsereEstacao {
+public class ServiceEstacao {
 
 	@Autowired
 	EstadoRepository estadoRepository;
@@ -24,7 +22,7 @@ public class ServiceInsereEstacao {
 	EstacaoRepository estacaoRepository;
 
 	@Autowired
-	ServiceInsereRegiao serviceInsereRegiao;
+	ServiceRegiao serviceInsereRegiao;
 
 	private ArrayList<String> listaEstacaoNome;
 	
@@ -40,7 +38,7 @@ public class ServiceInsereEstacao {
 	
 	private ArrayList<String> listaEstado;
 
-	public ServiceInsereEstacao(ArrayList<String> listaEstacaoNome, ArrayList<String> listaEstacaoCodigo, ArrayList<String> listaEstacaoLatitude, 
+	public ServiceEstacao(ArrayList<String> listaEstacaoNome, ArrayList<String> listaEstacaoCodigo, ArrayList<String> listaEstacaoLatitude, 
 			ArrayList<String> listaEstacaoLongitude, ArrayList<String> listaEstacaoAltitude, ArrayList<String> listaEstacaoData,
 			ArrayList<String> listaEstado) {
 		this.listaEstacaoNome = listaEstacaoNome;
@@ -50,6 +48,11 @@ public class ServiceInsereEstacao {
 		this.listaEstacaoAltitude = listaEstacaoAltitude;
 		this.listaEstacaoData = listaEstacaoData;
 		this.listaEstado = listaEstado;
+	}
+	
+	public List<Estacao> selectEstacao() {
+		List<Estacao> etdLista = estacaoRepository.selectEstacao();
+		return etdLista;
 	}
 
 	public void insBancoService(ArrayList<String> listaEstacaoNome, ArrayList<String> listaEstacaoCodigo, ArrayList<String> listaEstacaoLatitude, 
@@ -63,16 +66,11 @@ public class ServiceInsereEstacao {
 			String estacaoLOS = listaEstacaoLongitude.get(i);
 			String estacaoAS = listaEstacaoAltitude.get(i);
 			String estacaoDS = listaEstacaoData.get(i);
-			if (i - 1 >= 0 && listaEstacaoNome.get(i - 1) != estacaoNS) {
-				String estacaoDSS = estacaoDS.replace("/", "-");
-				Estacao estacao = new Estacao(estacaoCS, BigDecimal.valueOf(Double.parseDouble(estacaoLOS)), estacaoNS, Timestamp.valueOf("20"+estacaoDSS.replace("00", "01")+" 00:00:00"),
-						BigDecimal.valueOf(Double.parseDouble(estacaoLAS)), BigDecimal.valueOf(Double.parseDouble(estacaoAS)));
-				
-				estacaoRepository.save(estacao);
-				
-			} else {
-				continue;
-			}
+			String estacaoDSS = estacaoDS.replace("/", "-");
+			Estacao estacao = new Estacao(estacaoCS, BigDecimal.valueOf(Double.parseDouble(estacaoLOS)), estacaoNS, Timestamp.valueOf("20"+estacaoDSS.replace("00", "01")+" 00:00:00"),
+					BigDecimal.valueOf(Double.parseDouble(estacaoLAS)), BigDecimal.valueOf(Double.parseDouble(estacaoAS)));
+			
+			estacaoRepository.save(estacao);
 		}
 	}
 }

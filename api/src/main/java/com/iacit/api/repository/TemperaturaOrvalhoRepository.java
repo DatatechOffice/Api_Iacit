@@ -1,9 +1,10 @@
 package com.iacit.api.repository;
 import java.sql.Timestamp;
 import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import com.iacit.api.entity.RadiacaoGlobal;
+
 import com.iacit.api.entity.TemperaturaOrvalho;
 
 public interface TemperaturaOrvalhoRepository extends JpaRepository<TemperaturaOrvalho, Integer> {

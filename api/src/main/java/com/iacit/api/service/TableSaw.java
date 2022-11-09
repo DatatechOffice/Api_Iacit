@@ -1,31 +1,10 @@
 package com.iacit.api.service;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-import com.google.common.collect.Range;
-import com.iacit.api.entity.Regiao;
-import com.iacit.api.repository.RegiaoRepository;
-import com.ibm.icu.text.DateTimePatternGenerator.FormatParser;
-import com.univocity.parsers.conversions.DateConversion;
-
-import org.apache.commons.math3.analysis.function.Add;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.filtering.predicates.*;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 @Service
@@ -40,7 +19,7 @@ public class TableSaw {
 	public Table tableCsv() {
 		
 		CsvReadOptions.Builder builder = CsvReadOptions
-				.builder("C:\\Users\\Jooj\\Desktop\\database.CSV")
+				.builder("C:\\Users\\admin\\Desktop\\database.CSV")
 				.separator(';') // table is tab-delimited
 				.header(false) // no header
 				.dateFormat("yyyy.MM.dd"); // the date format to use.

@@ -11,20 +11,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ServiceInsereRegiao {
+public class ServiceRegiao {
 
 	@Autowired(required = true)
 	private RegiaoRepository regiaoRepository;
 
 	private ArrayList<String> tabela;
 
-	public ServiceInsereRegiao(ArrayList<String> tabela) {
+	public ServiceRegiao(ArrayList<String> tabela) {
 		this.tabela = tabela;
 	}
 	
 	public Regiao returnRegiao(String reg) {
 		Regiao regid = regiaoRepository.selectBySegSigla(reg);
 		return regid;
+	}
+	
+	public List<Regiao> selectRegiao() {
+		List<Regiao> regLista = regiaoRepository.selectRegiao();
+		return regLista;
 	}
 
 	public void insBancoService(ArrayList<String> tabela) {
