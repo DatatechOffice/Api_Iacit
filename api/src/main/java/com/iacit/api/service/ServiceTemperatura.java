@@ -45,7 +45,7 @@ public class ServiceTemperatura {
 			String estBulbo = estTbulbo.get(i);
 			String estMax = estTmax.get(i);
 			String estMin = estTmin.get(i);
-			if (i - 1 >= 0 && estTdata.get(i - 1) != estData && (estBulbo != "" || estMax != "" || estMin != "")) {
+			if (i - 1 >= 0 && estTdata.get(i - 1) != (estData && estBulbo != "" ) || (estData && estMax != "") || (estData && estMin != "")) {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(listaEstacaoCodigo.get(i));
 				Temperatura temperatura = new Temperatura(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estBulbo)),
