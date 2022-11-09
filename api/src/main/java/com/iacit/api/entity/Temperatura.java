@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.apache.commons.math3.stat.descriptive.rank.Percentile.EstimationType;
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,8 +29,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode
+@Component
 public class Temperatura {
+	
+	public Temperatura(Estacao estCodigo, Timestamp dataHora, BigDecimal temArBulboSeco,BigDecimal temMax, BigDecimal temMin) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.temArBulboSeco=temArBulboSeco;
+		this.temMax=temMax;
+		this.temMin=temMin;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +46,7 @@ public class Temperatura {
     private Integer temId;
 	
 	@Column(name= "tem_ar_bulbo_seco")
-	private BigDecimal tem_ar_bulbo_seco;
+	private BigDecimal temArBulboSeco;
 	
 	@Column(name= "tem_max")
 	private BigDecimal temMax;

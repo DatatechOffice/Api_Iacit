@@ -9,7 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -18,9 +22,12 @@ import lombok.ToString;
 @Table(name="estado")
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@Component
 public class Estado{
-    
+	public Estado(String etdUnidadeFederativa) {
+		this.etdUnidadeFederativa=etdUnidadeFederativa;
+	}
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "etd_id")
@@ -32,6 +39,5 @@ public class Estado{
 	@ManyToOne
     @JoinColumn(name = "reg_id", referencedColumnName = "reg_id")
 	private Regiao regId;
-	
 
 }
