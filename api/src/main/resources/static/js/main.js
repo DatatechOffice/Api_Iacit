@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
 //------------------------------------------------------------------------------------Regiao--------------------------------------------------------------------------------
+
 async function carregar_regiao(valRegiao){
 	if(valRegiao.length >= 1){
 		
@@ -318,31 +319,7 @@ function salvarUsuario(){
 		//Alerta de sucesso ou falha no envio do JSON
 		success: function (data){
 			alert("Salvo com Sucesso!");
-			
 			plotcharts(data);
-			
-			
-			
-			
-			/*function plotcharts(){
-            	
-              var apiUrl = data;
-              var datas=[];
-              var valor=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
-                drawchart(dataset, datas, 'line');
-              }).catch(err => {
-                console.log(err);
-              });
-          }*/
 		}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
