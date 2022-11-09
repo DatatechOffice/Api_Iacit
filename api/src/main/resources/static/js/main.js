@@ -1,74 +1,199 @@
-//Lista armazenando as sugestões
-let names = [
-  "Ayla",
-  "Jake",
-  "Sean",
-  "Henry",
-  "Brad",
-  "Stephen",
-  "Taylor",
-  "Timmy",
-  "Cathy",
-  "John",
-  "Amanda",
-  "Amara",
-  "Sam",
-  "Sandy",
-  "Danny",
-  "Ellen",
-  "Camille",
-  "Chloe",
-  "Emily",
-  "Nadia",
-  "Mitchell",
-  "Harvey",
-  "Lucy",
-  "Amy",
-  "Glen",
-  "Peter",
-];
-//Organizando os nomes em ordem alfabetica
-let sortedNames = names.sort();
-//Referencia
-let input = document.getElementById("Regiao");
-//Executando a informação através do teclado
-input.addEventListener("keyup", (e) => {
-  //laço de repetição dentro da lista
-  //Inicialmente removendo as sugestões conforme o usuario digita ou exclui uma letra
-  removeElements();
-  for (let i of sortedNames) {
-    //convertendo oque for digitado em minusculo
-    if (
-      i.toLowerCase().startsWith(input.value.toLowerCase()) &&
-      input.value != ""
-    ) {
-      //criando o elemento li
-      let listItem = document.createElement("li");
-      //One common class name
-      listItem.classList.add("list-items");
-      listItem.style.cursor = "pointer";
-      listItem.setAttribute("onclick", "displayNames('" + i + "')");
-      //Mostrando as letras que se igualam em negrito
-      let word = "<b>" + i.substr(0, input.value.length) + "</b>";
-      word += i.substr(input.value.length);
-      //mostra o valor da array
-      listItem.innerHTML = word;
-      document.querySelector(".list").appendChild(listItem);
-    }
-  }
-});
-function displayNames(value) {
-  input.value = value;
-  removeElements();
-}
-function removeElements() {
-  //limpando todos os items
-  let items = document.querySelectorAll(".list-items");
-  items.forEach((item) => {
-    item.remove();
-  });
-}
+//Lendo os inputs e o divs  de demonstração
+const Regiao = document.getElementById('Regiao');
+const CombinaRegiao = document.getElementById('combina-Regiao');
 
+const UF = document.getElementById('UF');
+const CombinaUF = document.getElementById('combina-UF');
+
+const Estacao = document.getElementById('Estacao');
+const CombinaEstacao = document.getElementById('combina-Estacao');
+
+const Variavel = document.getElementById('Variavel');
+const CombinaVariavel = document.getElementById('combina-Variavel');
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------//buscando o arquivo json e combinando com Regiao-----------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+const BuscarRegiao = async searchText => {
+	const resReg = await fetch('../data/estados.json');
+	const RegiaoJson = await resReg.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaRegiao = RegiaoJson.filter(Reg => {
+		const regexReg = new RegExp(`^${searchText}`, 'gi');
+		return Reg.name.match(regexReg) || Reg.abbr.match(regexReg);
+	});
+	if (searchText.length == 0){
+		combinaRegiao = [];
+		CombinaRegiao.innerHTML = '';
+	}
+	outputHtmlReg(combinaRegiao);
+};
+//busscando o arquivo json e combinando com UF
+const BuscarUF = async searchText => {
+	const res = await fetch('../data/estados.json');
+	const estados = await res.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinacao = estados.filter(estado => {
+		const regex = new RegExp(`^${searchText}`, 'gi');
+		return estado.name.match(regex) || estado.abbr.match(regex);
+	});
+
+	//se o campo estiver vazio não tem resultado
+	if (searchText.length == 0){
+		combinacao = [];
+		CombinaUF.innerHTML = '';
+	}
+	outputHtml(combinacao);
+};
+//buscando o arquivo json e combinando com Estacao
+const BuscarEstacao = async searchText => {
+	const resEs = await fetch('../data/estados.json');
+	const EstacaJson = await resEs.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaEstacao = EstacaJson.filter(Estacaov => {
+		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
+		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
+	});
+	if (searchText.length == 0){
+		combinaEstacao = [];
+		CombinaEstacao.innerHTML = '';
+	}
+	outputHtmlEs(combinaEstacao);
+}
+//buscando o arquivo json e combinando com Variavel
+const BuscarVariavel = async searchText => {
+	const resVar = await fetch('../data/estados.json');
+	const VariavelJson = await resVar.json();
+
+	//pegando as combinações tendo com base digitado
+	let combinaVariavel = VariavelJson.filter(Variavel => {
+		const regexVariavel = new RegExp(`^${searchText}`, 'gi');
+		return Variavel.name.match(regexVariavel) || Variavel.abbr.match(regexVariavel);
+	});
+	if (searchText.length == 0){
+		combinaVariavel = [];
+		CombinaVariavel.innerHTML = '';
+	}
+	outputHtmlVar(combinaVariavel);
+};
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Mostra o resultado no html-----------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+//resultado das UF
+const outputHtml = combinacao => {
+	if (combinacao.length > 0){
+		const html = combinacao.map(match => `
+		<div class="card card-body mb-1">
+			<h4>${match.name}</h4>
+			<small>Lat: ${match.lat} / Long:${match.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		
+		CombinaUF.innerHTML = html;
+	}
+};
+//resultado das regiões
+const outputHtmlReg = combinaRegiao => {
+	if (combinaRegiao.length > 0){
+		const htmlReg = combinaRegiao.map(matchReg => `
+		<div class="card card-body mb-1">
+			<h4>${matchReg.name}</h4>
+			<small>Lat: ${matchReg.lat} / Long:${matchReg.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaRegiao.innerHTML = htmlReg;
+	}
+};
+//Resultado dos estados
+const outputHtmlEs = combinaEstacao => {
+	if (combinaEstacao.length > 0){
+		const htmlEs = combinaEstacao.map(matchEs => `
+		<div class="card card-body mb-1">
+			<h4>${matchEs.name}</h4>
+			<small>Lat: ${matchEs.lat} / Long:${matchEs.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaEstacao.innerHTML = htmlEs;
+	}
+};
+//Resultado das variaveis
+const outputHtmlVar = combinaVariavel => {
+	if (combinaVariavel.length > 0){
+		const htmlVar = combinaVariavel.map(matchVar => `
+		<div class="card card-body mb-1">
+			<h4>${matchVar.name}</h4>
+			<small>Lat: ${matchVar.lat} / Long:${matchVar.long}</small>
+		</div>
+		`)
+		.join('');
+		
+		CombinaVariavel.innerHTML = htmlVar;
+	}
+};
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------Adicionando o evento aos inputs---------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
+UF.addEventListener('input', () => BuscarUF(UF.value));
+Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
+Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
+fetch('../data/estados.json')
+	.then(response => response.json())
+	.then(data => {
+		
+		var corpoTabela = document.querySelector('tbody');
+
+		for (let i = 1; i < data.length; i++){
+
+			var tr= document.createElement('tr');
+			var tdCodigo= document.createElement('td');
+			var tdEstacao= document.createElement('td');
+			var tdId= document.createElement('td');
+			var tdTempBulbo= document.createElement('td');
+			var tdTempMax= document.createElement('td');
+			var tdTempMin= document.createElement('td');
+			var tdDataH= document.createElement('td');
+			
+			tdCodigo.textContent = data[i].name;
+			tdEstacao.textContent =  data[i].capital;
+			tdId.textContent = data[i].abbr;
+			tdTempBulbo.textContent = data[i].lat; 
+			tdTempMax.textContent = data[i].lat;
+			tdTempMin.textContent = data[i].long;
+			tdDataH.textContent =  data[i].abbr;
+			
+			tr.appendChild(tdCodigo);
+			tr.appendChild(tdEstacao);
+			tr.appendChild(tdId);
+			tr.appendChild(tdTempBulbo);
+			tr.appendChild(tdTempMax);
+			tr.appendChild(tdTempMin);
+			tr.appendChild(tdDataH);
+			corpoTabela.appendChild(tr);
+
+		};
+	});
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------
 (function($) {
 	"use strict";
 
@@ -95,10 +220,12 @@ function removeElements() {
 	});
 })(jQuery);
 
-function lista() { }
-
-google.charts.load("current", { packages: ["corechart"] });
+function lista() {
+	google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
+ }
+
+
 
 var getData1 = function() {
 	var dataHoje = new Date();
@@ -192,7 +319,7 @@ function salvarUsuario(){
 	var vDataInicio = $("#DataInicio").val();
 	var vDataFim = $("#DataFim").val();
 	var vEstacao = $("#Estacao").val();
-	
+	debugger;
 	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
 		method: "POST", //Especificando qual o metodo
@@ -204,17 +331,7 @@ function salvarUsuario(){
 		success: function (data){
 			alert("Salvo com Sucesso!");
 			
-			//function plotcharts(data){
-			var datas=[];
-            var valor=[];
-			for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-			//For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
-                drawchart(dataset, datas, 'line');
-                //}
+			plotcharts(data);
 			
 			
 			
@@ -243,3 +360,16 @@ function salvarUsuario(){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
+
+function plotcharts(data){
+			var datas=[];
+            var valor=[];
+			for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+			//For Line chart
+			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
+                drawchart(dataset, datas, 'line');
+                }
+                

@@ -70,21 +70,24 @@
             <!--Inicio das textbox-->
               <div class="col-md-3">
                 <h4 class="mb-4">Selecione as Regiões:</h4>
-                <input type="text" class="form-control" id="Regiao" placeholder="região" aria-label="região">
-                <ul class="list"></ul>
+                <input type="text" class="form-control" id="Regiao" placeholder="regiao" aria-label="região">
+                <div id="combina-Regiao" class="position-absolute"></div>
               </div>
 
               <div class="col-md-3">
                 <h4 class="mb-4">Selecione UF:</h4>
-                <input type="search" class="form-control" id="UF" placeholder="unidade federativa" aria-label="uf">
+                <input type="text" class="form-control" id="UF" placeholder="unidade federativa" aria-label="uf">
+                <div id="combina-UF" class="position-absolute"></div>
               </div>
               <div class="col-md-3">
                 <h4 class="mb-4">Selecione a Estação:</h4>
                 <input type="search" class="form-control" id="Estacao" placeholder="estação" aria-label="estação">
+                <div id="combina-Estacao" class="position-absolute"></div>
               </div>
               <div class="col-md-3">
                 <h4 class="mb-4">Selecione as Variaveis:</h4>
                 <input type="search" class="form-control" id="Variavel" placeholder="variavel" aria-label="variavel">
+                <div id="combina-Variavel" class="position-absolute"></div>
               </div>
               <div class="col-md-3">
                 <h4 class="mb-0">Selecione o Período:</h4>
@@ -198,16 +201,8 @@
               <th scope="col">Data e Hora</th>
             </tr>
           </thead>
-          <tbody>
-            <tr th:each="temp : ${teste_Temperatura}">
-              <td>[[${temp.est_codigo}]]</td>
-              <td>[[${temp.est_nome_estacao}]]</td>
-              <td>[[${temp.tem_id}]]</td>
-              <td>[[${temp.tem_ar_bulbo_seco}]]</td>
-              <td>[[${temp.tem_max}]]</td>
-              <td>[[${temp.tem_min}]]</td>
-              <td>[[${temp.tem_data_hora}]]</td>
-            </tr>
+          <tbody id="tbody">
+
           </tbody>
         </table>
       </div>

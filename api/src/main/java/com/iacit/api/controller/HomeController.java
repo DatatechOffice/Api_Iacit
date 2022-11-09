@@ -30,16 +30,16 @@ public class HomeController {
 	@Autowired(required = true)
 	private ServiceTemperatura temperaturaService;
 
-	@PostMapping(value = { "salvar" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Temperatura>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
-
-		List<Temperatura> listTemperatura = temperaturaService.getByFilter(data.getDataInicio(), data.getDataFim());
+	//Metodo para receber as informaçõs dos filtros vindo do front
+	@PostMapping(value = "salvar") /*mapeia a url*/
+	@ResponseBody /*Descricao da respsota*/
+	public ResponseEntity<FilterDataVo> salvar(@RequestBody FilterDataVo filtro){ /* Recebe os dados para salvar */
+		 
+		System.out.println(filtro);
 		
-		return listTemperatura != null && listTemperatura.size() > 0 ? new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.CREATED)
-				: new ResponseEntity<List<Temperatura>>(listTemperatura, HttpStatus.BAD_REQUEST);
-
+		return salvar(filtro);
 	}
-	*/
+	
 	// Método para inicialização de página
 	@GetMapping(value = { "/index" })
 	public ModelAndView Index() {
