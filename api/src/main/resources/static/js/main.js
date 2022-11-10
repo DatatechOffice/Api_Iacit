@@ -2,6 +2,16 @@
 //---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
 //------------------------------------------------------------------------------------Regiao--------------------------------------------------------------------------------
 
+
+$.getJSON("/regiao", function(regiao) {
+			console.log(regiao)
+			var itens = [];
+			$.each(regiao, function(i){			
+			//itens.push("<tr> <td>"+ this.placa +"</td><td>"+ this.espc.modelo + "</td><td>"+ this.espc.marca + "</td><td>"+ this.espc.cor + "</td></tr>");				
+			});
+									//$("#dadosCarro").append(itens);				
+			});
+
 async function carregar_regiao(valRegiao){
 	if(valRegiao.length >= 1){
 		
