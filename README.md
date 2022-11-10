@@ -231,14 +231,14 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 <details>
-    <summary>Filtro Data</summary>
+    <summary>Filtro de Data</summary>
     <br>
     <p align="center">
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeCalendario.png">
     </p>
 </details>
 <details>
-    <summary>Filtro Hora</summary>
+    <summary>Filtro de Hora</summary>
     <br>
     <p align="center">
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeHoras.png">
@@ -273,17 +273,17 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 <details>
-    <summary>Usuários</summary>
+    <summary>Novo/Alteração de Usuários</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/GestaoUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
     </p>
 </details>
 <details>
     <summary>Apagar Usuário</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/ApagarUsuario.png">
     </p>
 </details>
 <details>
