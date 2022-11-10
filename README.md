@@ -294,10 +294,28 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 
-<h2>DER</h2>
-<p align="center">
-    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual.png">
-</p>
+<h2>Banco de Dados</h2>
+<details>
+    <summary>Modelo Conceitual</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Conceitual.png">
+    </p>
+</details>
+
+<br>
+
+<details>
+    <summary>Modelo Lógico</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Logico.png">
+    </p>
+</details>
+
+<br>
+
+[Dicionário de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Dicionario%20de%20Dados/Dicionario%20de%20Dados%20-%20P%C3%A1gina1.pdf)
 
 
 <h2>🛠️Arquitetura do Sistema</h2>
