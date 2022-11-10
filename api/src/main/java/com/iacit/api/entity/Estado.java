@@ -28,6 +28,11 @@ public class Estado{
 	public Estado(String etdUnidadeFederativa) {
 		this.etdUnidadeFederativa=etdUnidadeFederativa;
 	}
+	
+	public Estado(Regiao regId, String etdUnidadeFederativa) {
+		this.regId=regId;
+		this.etdUnidadeFederativa=etdUnidadeFederativa;
+	}
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "etd_id")
