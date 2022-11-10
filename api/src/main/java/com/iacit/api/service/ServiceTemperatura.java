@@ -45,16 +45,16 @@ public class ServiceTemperatura {
 			String estBulbo = estTbulbo.get(i);
 			String estMax = estTmax.get(i);
 			String estMin = estTmin.get(i);
-			if (i - 1 >= 0 && estTdata.get(i - 1) != estData && (estBulbo != "" || estMax != "" || estMin != "")) {
+			if (estBulbo.isEmpty() || estMax.isEmpty() || estMin.isEmpty()) {
+				continue;
+			} else {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(listaEstacaoCodigo.get(i));
 				Temperatura temperatura = new Temperatura(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estBulbo)),
 						BigDecimal.valueOf(Float.parseFloat(estMax)), BigDecimal.valueOf(Float.parseFloat(estMin)));
-				
+//				System.out.println(estBulbo + estMax + estMin);
 				temperaturaRepository.save(temperatura);
-				
-			} else {
-				continue;
+
 			}
 		}
 	}
