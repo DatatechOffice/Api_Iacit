@@ -1,37 +1,30 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
 //------------------------------------------------------------------------------------Regiao--------------------------------------------------------------------------------
-
-
-$.getJSON("/regiao", function(regiao) {
-			var itens = [];
-			$.each(regiao, function(i){			
-			//itens.push("<tr> <td>"+ this.placa +"</td><td>"+ this.espc.modelo + "</td><td>"+ this.espc.marca + "</td><td>"+ this.espc.cor + "</td></tr>");				
-			});
-									//$("#dadosCarro").append(itens);				
-			});
-
 async function carregar_regiao(valRegiao){
 	if(valRegiao.length >= 1){
 		
-		const resReg = await fetch('../data/estados.json');
-		const RegiaoJson = await resReg.json();
+		$.getJSON("/regiao", function(RegiaoJson) {
+		
+			var html = "<ul class='list-group' position-fixed>";
 
-		var html = "<ul class='list-group' position-fixed>";
-
-		for(let i = 0; i < RegiaoJson.length; i++){
-			
-			if(RegiaoJson[i].name.toLowerCase().startsWith(valRegiao.toLowerCase())){
-				html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].name)+")'>" + RegiaoJson[i].name + "</li>";
+			for(let i = 0; i < RegiaoJson.length; i++){
+				
+				if(RegiaoJson[i].regSigla.toLowerCase().startsWith(valRegiao.toLowerCase())){
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].regSigla)+
+					")'>" + RegiaoJson[i].regSigla + "</li>";
+				}
 			}
-		}
-		html += "</ul>";
+			html += "</ul>";
 
-		document.getElementById('pesquisa_regiao').innerHTML = html;
+			document.getElementById('pesquisa_regiao').innerHTML = html;
+
+	});
 		
 	}else{
 		document.getElementById('pesquisa_regiao').innerHTML = '';
 	}
+	
 }
 
 function get_name_Regiao(name_regiao){
@@ -53,17 +46,20 @@ document.addEventListener('click', function(eventReg){
 async function carregar_UF(valUF){
 	if(valUF.length >= 1){
 		
-		const resUF = await fetch('../data/estados.json');
-		const UFJson = await resUF.json();
-
-		var html = "<ul class='list-group' position-fixed>";
-		for(let i = 0; i < UFJson.length; i++){
-			if(UFJson[i].name.toLowerCase().startsWith(valUF.toLowerCase())){
-				html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].name)+")'>" + UFJson[i].name + "</li>";
+		$.getJSON("/estado", function(UFJson) {
+			console.log(UFJson);
+	
+			var html = "<ul class='list-group' position-fixed>";
+			for(let i = 0; i < UFJson.length; i++){
+				if(UFJson[i].etdUnidadeFederativa.toLowerCase().startsWith(valUF.toLowerCase())){
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].etdUnidadeFederativa)+
+					")'>" + UFJson[i].etdUnidadeFederativa + "</li>";
+				}
 			}
-		}
-		html += "</ul>";
-		document.getElementById('pesquisa_UF').innerHTML = html;
+			html += "</ul>";
+			document.getElementById('pesquisa_UF').innerHTML = html;
+			});
+
 	}else{
 		document.getElementById('pesquisa_UF').innerHTML = '';
 	}
@@ -87,17 +83,18 @@ document.addEventListener('click', function(eventUF){
 async function carregar_estacao(valestacao){
 	if(valestacao.length >= 1){
 
-		const resestacao = await fetch('../data/estados.json');
-		const estacaoJson = await resestacao.json();
+		$.getJSON("/estacao", function(estacaoJson) {
 
-		var html = "<ul class='list-group' position-fixed>";
-		for(let i = 0; i < estacaoJson.length; i++){
-			if(estacaoJson[i].name.toLowerCase().startsWith(valestacao.toLowerCase())){
-				html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].name)+")'>" + estacaoJson[i].name + "</li>";
+			var html = "<ul class='list-group' position-fixed>";
+			for(let i = 0; i < estacaoJson.length; i++){
+				if(estacaoJson[i].estNomeEstacao.toLowerCase().startsWith(valestacao.toLowerCase())){
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].estNomeEstacao)+")'>" 
+					+ estacaoJson[i].estNomeEstacao + "</li>";
+				}
 			}
-		}
-		html += "</ul>";
-		document.getElementById('pesquisa_estacao').innerHTML = html;
+			html += "</ul>";
+			document.getElementById('pesquisa_estacao').innerHTML = html;
+		});
 	}else{
 		document.getElementById('pesquisa_estacao').innerHTML = '';
 	}
@@ -120,17 +117,20 @@ document.addEventListener('click', function(eventestacao){
 async function carregar_variavel(valvariavel){
 	if(valvariavel.length >= 1){
 		
-		const resvariavel = await fetch('../data/estados.json');
-		const variavelJson = await resvariavel.json();
+		
+		$.getJSON("/regiao", function(variavelJson) {
 
-		var html = "<ul class='list-group' position-fixed>";
-		for(let i = 0; i < variavelJson.length; i++){
-			if(variavelJson[i].name.toLowerCase().startsWith(valvariavel.toLowerCase())){
-				html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].name)+")'>" + variavelJson[i].name + "</li>";
-			}
-		}
-		html += "</ul>";
-		document.getElementById('pesquisa_variavel').innerHTML = html;
+				var html = "<ul class='list-group' position-fixed>";
+				for(let i = 0; i < variavelJson.length; i++){
+					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
+						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla)
+						+")'>" + variavelJson[i].regSigla + "</li>";
+					}
+				}
+				html += "</ul>";
+				document.getElementById('pesquisa_variavel').innerHTML = html;
+		});
+
 	}else{
 		document.getElementById('pesquisa_variavel').innerHTML = '';
 	}	
@@ -152,21 +152,18 @@ document.addEventListener('click', function(eventvariavel){
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------Botão de Filtros GRafico-------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
-function filtra(){
-	fetch('../data/estados.json')
-	.then(response => response.json())
-	.then(data => {
-		
-	
-		const Reg = document.getElementById('Regiao').value;
-		var corpoTabela = document.querySelector('tbody');
-	
-	
+function filtra(){		
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------
-		for (let i = 0; i < data.length; i++){
-			if(data[i].name.toLowerCase().startsWith(Reg.toLowerCase())){
+	const Reg = document.getElementById('Regiao').value;
+	var corpoTabela = document.querySelector('tbody');
+
+	$.getJSON("/estacao", function(DataTabela) {
+		console.log(DataTabela);
+	
+		 for (let i = 0; i < DataTabela.length; i++){
+			if(DataTabela[i].estNomeEstacao.toLowerCase().startsWith(Reg.toLowerCase())){
 				var tr= document.createElement('tr');
 				var tdCodigo= document.createElement('td');
 				var tdEstacao= document.createElement('td');
@@ -176,13 +173,13 @@ function filtra(){
 				var tdTempMin= document.createElement('td');
 				var tdDataH= document.createElement('td');
 				
-				tdCodigo.textContent = data[i].name;
-				tdEstacao.textContent =  data[i].capital;
-				tdId.textContent = data[i].abbr;
-				tdTempBulbo.textContent = data[i].lat; 
-				tdTempMax.textContent = data[i].lat;
-				tdTempMin.textContent = data[i].long;
-				tdDataH.textContent =  data[i].abbr;
+				tdCodigo.textContent = DataTabela[i].estCodigo;
+				tdEstacao.textContent =  DataTabela[i].estNomeEstacao;
+				tdId.textContent = 'null';
+				tdTempBulbo.textContent = 'null'; 
+				tdTempMax.textContent = 'null';
+				tdTempMin.textContent = 'null';
+				tdDataH.textContent =  'null';
 				
 				tr.appendChild(tdCodigo);
 				tr.appendChild(tdEstacao);
@@ -195,6 +192,8 @@ function filtra(){
 	
 			};
 		}
+			
+		});
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a Grafico--------------------------------------------------------------
@@ -205,32 +204,31 @@ function filtra(){
 	
 	$.getJSON("/regiao", function(DataGrafico) {
 	console.log(DataGrafico);
+
 	 //Status que fica na linha y
 	var labels = DataGrafico.map(function(e) {
 		return e.regSigla;
 	 });
+
 	 //Status que fica na linha y
 	 var data = DataGrafico.map(function(e) {
 		return e.regId;
 	 });
+
 	//Criando a isntancia do objeto chart
 	new Chart(plots, {
 		type: 'line', //declara o tipo do grafico
 		data: {
 			labels: labels, //Data do alinhamento X
 			datasets: [{
+				label: 'Hakuna',
 				data: data, //Data do alinhamento y
-				backgroundColor: '#5e440f',
-				borderColor: 'white',
-				fill: false, //Preenche as curvas abaixo da linha com a cor do fundo, normalmente por padrão é true
+				backgroundColor: 'white',
+				borderColor: 'rgb(255, 99, 132)',
 			}]
 		},
-	});
 		
 	});
-
-
-
-});
-	
+		
+	});	
 }
