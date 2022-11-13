@@ -24,6 +24,9 @@ g<!DOCTYPE html>
       rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js">
+    </script>
   </head>
 
   <body style="padding-top: fixed">
@@ -99,96 +102,26 @@ g<!DOCTYPE html>
             </div>
             <!--Fim das textbox-->
             </form>
-            <script src="/main.js"></script>
           
           <!--Botão responsavel por fazzer a requisição dos filtros-->
           <br>
           <button id="filtro" class="btn btn-outline-success"
-          type="submit" onclick="salvarUsuario()">
+          type="submit" onclick="filtra()">
           Enviar 
           </button>
           <!-- Fim do botão-->
 
-         <button id="btnEnviarDados" class="btn btn-outline-success"
-            type="submit" onclick="plotcharts()">
-            Buscar dados 
-          </button>
-
         </div>
-
-        <br>
-
-        <div class="container mt-3">
-          <h2>Relatorio</h2>
+        <div>
+          <canvas id="plots" style="width:100%;max-width:700px"></canvas>
+          <script src="/main.js"></script>
         </div>
-
-        <br>
-
-        <div class="row" style="width:100%">
-          <div class="col-md-6">
-            <canvas id="barchart"></canvas>
-          </div>
-          <div class="col-md-6">
-            <canvas id="linechart"></canvas>
-          </div>
-        </div>
-    
-        <script type="text/javascript">
-            function plotcharts(){
-              var apiUrl = 'https://sheetdb.io/api/v1/smarsr6psjmu9';
-              var months=[]
-              var cost=[];
-              var selling=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  months.push(data[i]['Data']);
-                  cost.push(parseInt(data[i]['TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)']));
-                  selling.push(parseInt(data[i]['TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', selling, 'black', 'green');
-                drawchart(dataset, months, 'line');
-              }).catch(err => {
-                console.log(err);
-              });
-          }
-        
-          function addData(title, Data, bgcolor, bordercolor){
-            return [{
-              label: title,
-              data: Data,
-              backgroundColor: bgcolor,
-              borderColor: bordercolor,
-              borderWidth: 1.5
-            }];
-          }
-            
-          function drawchart(dataset, Labels, type){
-            const ctx = document.getElementById(type+'chart').getContext('2d');
-            const myChart = new Chart(ctx, {
-              type: type,
-              data: {
-                labels: Labels,
-                datasets: dataset
-              },
-              options: {
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }]
-                }
-              }
-            });
-          }
-        </script>
-
-        <br>
 
         <div id="relatorio"></div>
+
+          <div class="container mt-3">
+            <h2>Relatorio</h2>
+          </div>
 
         <table class="table table-striped" cellspacing="0" cellpadding="0">
           <thead>
