@@ -37,7 +37,7 @@ public class TableSaw {
 		i = tabelaCSV.rowCount();
 		ArrayList<String> regiaoLista = new ArrayList();
 		//System.out.println(i);
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String reg;
 			reg = tabelaCSV.getString(ii, "C20");//C20 é a coluna para Região no arquivo csv
 			regiaoLista.add(reg); 
@@ -49,7 +49,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estadoLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String etd;
 			etd = tabelaCSV.getString(ii, "C21");
 			estadoLista.add(etd);  
@@ -61,7 +61,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoNomeLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C22");
 			estacaoNomeLista.add(est);  
@@ -73,7 +73,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoCodigoLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C23");
 			estacaoCodigoLista.add(est);  
@@ -85,7 +85,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoLatitudeLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C24");
 			estacaoLatitudeLista.add(est);  
@@ -97,7 +97,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoLongitudeLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C25");
 			estacaoLongitudeLista.add(est);  
@@ -109,7 +109,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoAltitudeLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C26");
 			estacaoAltitudeLista.add(est);  
@@ -121,7 +121,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> estacaoDataFundLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = tabelaCSV.getString(ii, "C27");
 			estacaoDataFundLista.add(est);  
@@ -133,7 +133,7 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> tempDataLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			String hora = (tabelaCSV.getString(ii, "C2")).replace(" UTC", "");
 			 TableSaw tb = new TableSaw();
@@ -172,11 +172,179 @@ public class TableSaw {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> tempMinLista = new ArrayList();
-		for (int ii = 0; ii < i; ii++) {
+		for (int ii = 1; ii < i; ii++) {
 			String est;
 			est = (tabelaCSV.getString(ii, "C11")).replace(",", ".");
 			tempMinLista.add(est);  
 		}	
 		return tempMinLista;
+	}
+	
+	public ArrayList<String> listaPrecipitacao(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> precipitacaoLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C3")).replace(",", ".");
+			precipitacaoLista.add(est);  
+		}	
+		return precipitacaoLista;
+	}
+	
+	public ArrayList<String> listaPressaoAtNivelEst(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> pressaoAtNivelEstLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C4")).replace(",", ".");
+			pressaoAtNivelEstLista.add(est);  
+		}	
+		return pressaoAtNivelEstLista;
+	}
+	
+	public ArrayList<String> listaPressaoAtMax(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> pressaoAtMaxLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C5")).replace(",", ".");
+			pressaoAtMaxLista.add(est);  
+		}	
+		return pressaoAtMaxLista;
+	}
+	
+	public ArrayList<String> listaPressaoAtMin(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> pressaoAtMinLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C6")).replace(",", ".");
+			pressaoAtMinLista.add(est);  
+		}	
+		return pressaoAtMinLista;
+	}
+	
+	public ArrayList<String> listaRadiacaoGlobal(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> radiacaoGlobalLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C7")).replace(",", ".");
+			radiacaoGlobalLista.add(est);  
+		}	
+		return radiacaoGlobalLista;
+	}
+	
+	public ArrayList<String> listaTempPontoOrvalho(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempPontoOrvalhoLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C9")).replace(",", ".");
+			tempPontoOrvalhoLista.add(est);  
+		}	
+		return tempPontoOrvalhoLista;
+	}
+	
+	public ArrayList<String> listaTempOrvalhoMax(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempOrvalhoMaxLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C12")).replace(",", ".");
+			tempOrvalhoMaxLista.add(est);  
+		}	
+		return tempOrvalhoMaxLista;
+	}
+	
+	public ArrayList<String> listaTempOrvalhoMin(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> tempOrvalhoMinLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C13")).replace(",", ".");
+			tempOrvalhoMinLista.add(est);  
+		}	
+		return tempOrvalhoMinLista;
+	}
+	
+	public ArrayList<String> listaUmiRelativaMax(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> umiRelativaMaxLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C14")).replace(",", ".");
+			umiRelativaMaxLista.add(est);  
+		}	
+		return umiRelativaMaxLista;
+	}
+	
+	public ArrayList<String> listaUmiRelativaMin(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> umiRelativaMinLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C15")).replace(",", ".");
+			umiRelativaMinLista.add(est);  
+		}	
+		return umiRelativaMinLista;
+	}
+	
+	public ArrayList<String> listaUmiRelativaAr(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> umiRelativaArLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C16")).replace(",", ".");
+			umiRelativaArLista.add(est);  
+		}	
+		return umiRelativaArLista;
+	}
+	
+	public ArrayList<String> listaVentoDirecaoHor(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> ventoDirecaoHorLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C17")).replace(",", ".");
+			ventoDirecaoHorLista.add(est);  
+		}	
+		return ventoDirecaoHorLista;
+	}
+	
+	public ArrayList<String> listaVentoRajadaMax(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> ventoRajadaMaxLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C18")).replace(",", ".");
+			ventoRajadaMaxLista.add(est);  
+		}	
+		return ventoRajadaMaxLista;
+	}
+	
+	public ArrayList<String> listaVentoVelocidadeHor(Table tabelaCSV) {
+		int i = 0;
+		i = tabelaCSV.rowCount();
+		ArrayList<String> ventoVelocidadeHorLista = new ArrayList();
+		for (int ii = 1; ii < i; ii++) {
+			String est;
+			est = (tabelaCSV.getString(ii, "C19")).replace(",", ".");
+			ventoVelocidadeHorLista.add(est);  
+		}	
+		return ventoVelocidadeHorLista;
 	}
 }

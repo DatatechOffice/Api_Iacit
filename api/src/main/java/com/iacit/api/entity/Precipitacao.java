@@ -13,29 +13,23 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name="umidade")
-@Table(name="umidade")
+@Entity(name="precipitacao")
+@Table(name="precipitacao")
 @Getter
 @Setter
 @ToString
-public class Umidade {
+public class Precipitacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "umi_id")
-	private Integer umiId;
+	@Column(name= "pre_id")
+	private Integer preId;
 	
-	@Column(name= "umi_relativa_min")
-	private BigDecimal umiRelativaMin;
+	@Column(name= "pre_valor")
+    private BigDecimal preValor;
 	
-	@Column(name= "umi_relativa_max")
-	private BigDecimal umiRelativaMax;
-    
-	@Column(name= "umi_relativa_ar")
-	private BigDecimal umiRelativaAr;
-    
-	@Column(name= "umi_data_hora")
-	private Timestamp dataHora;
+	@Column(name= "pre_data_hora")
+    private Timestamp dataHora;
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
