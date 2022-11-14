@@ -44,31 +44,63 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 
+		return modelAndView;
+	}
+	
+	@GetMapping(value = { "persistir" })
+	public void persistir() {
+
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();
-//
-//		ArrayList<String> reg = tb.listaRegiao(t);
-//		serviceRegiao.insBancoService(reg);
-//
-//		ArrayList<String> regEtd = tb.listaEstado(t);
-//		serviceEstado.insBancoService(reg, regEtd);
-//
-//		ArrayList<String> regEstN = tb.listaEstacaoNome(t);
-//		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(t);
-//		ArrayList<String> regEstLA = tb.listaEstacaoLatitude(t);
-//		ArrayList<String> regEstAL = tb.listaEstacaoAltitude(t);
-//		ArrayList<String> regEstD = tb.listaEstacaoDataFund(t);
+
+		ArrayList<String> reg = tb.listaRegiao(t);
+		serviceRegiao.insBancoService(reg);
+
+		ArrayList<String> regEtd = tb.listaEstado(t);
+		serviceEstado.insBancoService(reg, regEtd);
+
+		ArrayList<String> regEstN = tb.listaEstacaoNome(t);
+		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(t);
+		ArrayList<String> regEstLA = tb.listaEstacaoLatitude(t);
+		ArrayList<String> regEstAL = tb.listaEstacaoAltitude(t);
+		ArrayList<String> regEstD = tb.listaEstacaoDataFund(t);
+		
 		ArrayList<String> regEstC = tb.listaEstacaoCodigo(t);
-//		serviceEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
+		
+		serviceEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
 
 		ArrayList<String> estTdata = tb.listaTempData(t);
+		
 		ArrayList<String> estTbulbo = tb.listaBulboSeco(t);
 		ArrayList<String> estTmax = tb.listaTempMax(t);
 		ArrayList<String> estTmin = tb.listaTempMin(t);
 		serviceTemperatura.insBancoService(regEstC, estTdata, estTbulbo, estTmax, estTmin);
-		temperaturaRepository.delete();
-
-		return modelAndView;
+		
+		ArrayList<String> estPrecipitacao = tb.listaPrecipitacao(t);
+		servicePrecipitacao.insBancoService(regEstC, estTdata, estPrecipitacao);
+		
+		ArrayList<String> estPrAtMax = tb.listaPressaoAtMax(t);
+		ArrayList<String> estPrAtMin = tb.listaPressaoAtMin(t);
+		ArrayList<String> estPrAtNivelEst = tb.listaPressaoAtNivelEst(t);
+		servicePressaoAtmosferica.insBancoService(regEstC, estTdata, estPrAtMax, estPrAtMin, estPrAtNivelEst);
+		
+		ArrayList<String> estRadiacaoGlobal = tb.listaRadiacaoGlobal(t);
+		serviceRadiacaoGlobal.insBancoService(regEstC, estTdata, estRadiacaoGlobal);
+		
+		ArrayList<String> estToPontoOrvalho = tb.listaTempPontoOrvalho(t);
+		ArrayList<String> estToOrvalhoMax = tb.listaTempOrvalhoMax(t);
+		ArrayList<String> estToOrvalhoMin = tb.listaTempOrvalhoMin(t);
+		serviceTemperaturaOrvalho.insBancoService(regEstC, estTdata, estToPontoOrvalho, estToOrvalhoMax, estToOrvalhoMin);
+		
+		ArrayList<String> estUmiRelAr = tb.listaUmiRelativaAr(t);
+		ArrayList<String> estUmiRelMax = tb.listaUmiRelativaMax(t);
+		ArrayList<String> estUmiRelMin = tb.listaUmiRelativaMin(t);
+		serviceUmidade.insBancoService(regEstC, estTdata, estUmiRelAr, estUmiRelMax, estUmiRelMin);
+		
+		ArrayList<String> estVentoDirHor = tb.listaVentoDirecaoHor(t);
+		ArrayList<String> estVentoRajMax = tb.listaVentoRajadaMax(t);
+		ArrayList<String> estVentoVelHor = tb.listaVentoVelocidadeHor(t);
+		serviceVento.insBancoService(regEstC, estTdata, estVentoDirHor, estVentoRajMax, estVentoVelHor);
+		
 	}
 }
-

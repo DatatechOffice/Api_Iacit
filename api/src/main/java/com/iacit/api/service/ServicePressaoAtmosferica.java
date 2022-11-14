@@ -11,7 +11,7 @@ import com.iacit.api.repository.PressaoAtmosfericaRepository;
 import com.iacit.api.repository.TemperaturaRepository;
 
 @Service
-public class ServicePressaoAt {
+public class ServicePressaoAtmosferica {
 	@Autowired(required=true) 
 	private PressaoAtmosfericaRepository atmosfericaRepository;
 
