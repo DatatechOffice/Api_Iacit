@@ -160,7 +160,6 @@ function filtra(){
 	var corpoTabela = document.querySelector('tbody');
 
 	$.getJSON("/estacao", function(DataTabela) {
-		console.log(DataTabela);
 	
 		 for (let i = 0; i < DataTabela.length; i++){
 			if(DataTabela[i].estNomeEstacao.toLowerCase().startsWith(Reg.toLowerCase())){
@@ -202,7 +201,7 @@ function filtra(){
 	//Pegando o elemnento canvas do HTML pelo id
 	plots = document.getElementById("plots");
 	
-	$.getJSON("/regiao", function(DataGrafico) {
+	$.getJSON("/temperatura", function(DataGrafico) {
 	console.log(DataGrafico);
 
 	 //Status que fica na linha y
@@ -214,6 +213,8 @@ function filtra(){
 	 var data = DataGrafico.map(function(e) {
 		return e.regId;
 	 });
+
+
 
 	//Criando a isntancia do objeto chart
 	new Chart(plots, {

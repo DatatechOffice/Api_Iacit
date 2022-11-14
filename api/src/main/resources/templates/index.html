@@ -1,9 +1,8 @@
-g<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
-
   <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -28,7 +27,6 @@ g<!DOCTYPE html>
      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js">
     </script>
   </head>
-
   <body style="padding-top: fixed">
     <!-- Aqui começa a barra de menu-->
     <header>
@@ -73,13 +71,13 @@ g<!DOCTYPE html>
             <!--Inicio das textbox-->
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Regiões:</h4>
-              <input type="text" name="regiao" class="form-control" id="Regiao" placeholder="Região" aria-label="região" onkeyup="carregar_regiao(this.value)">
+              <input type="search" name="regiao" class="form-control" id="Regiao" placeholder="Região" aria-label="região" onkeyup="carregar_regiao(this.value)">
               <spann id="pesquisa_regiao" class="position-absolute"></spann>
             </div>
 
             <div class="col-md-3">
               <h4 class="mb-4">Selecione UF:</h4>
-              <input type="text" name="UF" class="form-control" id="UF" placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
+              <input type="search" name="UF" class="form-control" id="UF" placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
               <spann id="pesquisa_UF" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
@@ -110,18 +108,21 @@ g<!DOCTYPE html>
           Consultar 
           </button>
           <!-- Fim do botão-->
-
         </div>
+
+        <br>
+
         <div>
-          <canvas id="plots" style="width:100%;max-width:700px"></canvas>
+          <canvas id="plots" style="width:100%; max-width:750px" position="center"></canvas>
           <script src="/main.js"></script>
         </div>
 
         <div id="relatorio"></div>
+        <div class="container mt-3">
+          <h2>Relatorio</h2>
+        </div>
 
-          <div class="container mt-3">
-            <h2>Relatorio</h2>
-          </div>
+        <br>
 
         <table class="table table-striped" cellspacing="0" cellpadding="0">
           <thead>
