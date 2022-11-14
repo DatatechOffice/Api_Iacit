@@ -9,11 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iacit.api.repository.TemperaturaRepository;
 import com.iacit.api.service.ServiceEstacao;
 import com.iacit.api.service.ServiceEstado;
+import com.iacit.api.service.ServicePrecipitacao;
+import com.iacit.api.service.ServicePressaoAtmosferica;
+import com.iacit.api.service.ServiceRadiacaoGlobal;
 import com.iacit.api.service.ServiceRegiao;
 import com.iacit.api.service.ServiceTemperatura;
+import com.iacit.api.service.ServiceTemperaturaOrvalho;
+import com.iacit.api.service.ServiceUmidade;
+import com.iacit.api.service.ServiceVento;
 import com.iacit.api.service.TableSaw;
 
 import tech.tablesaw.api.Table;
@@ -34,9 +39,24 @@ public class HomeController {
 
 	@Autowired(required = true)
 	private ServiceTemperatura serviceTemperatura;
-
+	
 	@Autowired(required = true)
-	private TemperaturaRepository temperaturaRepository;
+	private ServicePrecipitacao servicePrecipitacao;
+	
+	@Autowired(required = true)
+	private ServicePressaoAtmosferica servicePressaoAtmosferica;
+	
+	@Autowired(required = true)
+	private ServiceRadiacaoGlobal serviceRadicaoGlobal;
+	
+	@Autowired(required = true)
+	private ServiceTemperaturaOrvalho serviceTemperaturaOrvalho;
+	
+	@Autowired(required = true)
+	private ServiceUmidade serviceUmidade;
+	
+	@Autowired(required = true)
+	private ServiceVento serviceVento;
 
 	// Método para inicialização de página
 	@GetMapping(value = { "index" })
@@ -64,11 +84,20 @@ public class HomeController {
 		ArrayList<String> regEstLA = tb.listaEstacaoLatitude(t);
 		ArrayList<String> regEstAL = tb.listaEstacaoAltitude(t);
 		ArrayList<String> regEstD = tb.listaEstacaoDataFund(t);
-		
 		ArrayList<String> regEstC = tb.listaEstacaoCodigo(t);
 		
 		serviceEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
 
+		
+	}
+	
+	@GetMapping(value = { "persistirVariavel" })
+	public void persistirVariavel() {
+		TableSaw tb = new TableSaw();
+		Table t = tb.tableCsv();
+		
+		ArrayList<String> regEstC = tb.listaEstacaoCodigo(t);
+		
 		ArrayList<String> estTdata = tb.listaTempData(t);
 		
 		ArrayList<String> estTbulbo = tb.listaBulboSeco(t);
@@ -85,7 +114,7 @@ public class HomeController {
 		servicePressaoAtmosferica.insBancoService(regEstC, estTdata, estPrAtMax, estPrAtMin, estPrAtNivelEst);
 		
 		ArrayList<String> estRadiacaoGlobal = tb.listaRadiacaoGlobal(t);
-		serviceRadiacaoGlobal.insBancoService(regEstC, estTdata, estRadiacaoGlobal);
+		serviceRadicaoGlobal.insBancoService(regEstC, estTdata, estRadiacaoGlobal);
 		
 		ArrayList<String> estToPontoOrvalho = tb.listaTempPontoOrvalho(t);
 		ArrayList<String> estToOrvalhoMax = tb.listaTempOrvalhoMax(t);
@@ -101,6 +130,6 @@ public class HomeController {
 		ArrayList<String> estVentoRajMax = tb.listaVentoRajadaMax(t);
 		ArrayList<String> estVentoVelHor = tb.listaVentoVelocidadeHor(t);
 		serviceVento.insBancoService(regEstC, estTdata, estVentoDirHor, estVentoRajMax, estVentoVelHor);
-		
 	}
+			
 }
