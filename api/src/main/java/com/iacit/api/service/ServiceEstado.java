@@ -3,35 +3,30 @@ package com.iacit.api.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.iacit.api.entity.Estado;
 import com.iacit.api.entity.Regiao;
 import com.iacit.api.repository.EstadoRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class ServiceEstado {
 
-	@Autowired
+	@Autowired(required = true)
 	EstadoRepository estadoRepository;
 
 	@Autowired
 	ServiceRegiao serviceRegiao;
-
-	private ArrayList<String> listaRegiao;
-
-	private ArrayList<String> listaEstado;
-
-	public ServiceEstado(ArrayList<String> listaRegiao, ArrayList<String> listaEstado) {
-		
-		this.listaRegiao = listaRegiao;
-		this.listaEstado = listaEstado;
-	}
 	
 	public List<Estado> selectEstado() {
 		List<Estado> etdLista = estadoRepository.selectEstado();
 		return etdLista;
+	}
+	
+	public Estado returnEstado(String etd) {
+		Estado etdId = estadoRepository.selectBySigla(etd);
+		return etdId;
 	}
 
 	public void insBancoService(ArrayList<String> listaRegiao, ArrayList<String> listaEstado) {

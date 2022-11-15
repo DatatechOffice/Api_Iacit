@@ -59,5 +59,5 @@ public class Temperatura {
 	
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;	
+    private Estacao estCodigo;
 }

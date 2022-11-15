@@ -72,12 +72,12 @@ public class HomeController {
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();
-
+		
 		ArrayList<String> reg = tb.listaRegiao(t);
 		serviceRegiao.insBancoService(reg);
-
-		ArrayList<String> regEtd = tb.listaEstado(t);
-		serviceEstado.insBancoService(reg, regEtd);
+		 
+		ArrayList<String> etd = tb.listaEstado(t);
+		serviceEstado.insBancoService(reg, etd);
 
 		ArrayList<String> regEstN = tb.listaEstacaoNome(t);
 		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(t);
@@ -86,7 +86,7 @@ public class HomeController {
 		ArrayList<String> regEstD = tb.listaEstacaoDataFund(t);
 		ArrayList<String> regEstC = tb.listaEstacaoCodigo(t);
 		
-		serviceEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, regEtd);
+		serviceEstacao.insBancoService(regEstN, regEstC, regEstLA, regEstLO, regEstAL, regEstD, etd);
 
 		
 	}

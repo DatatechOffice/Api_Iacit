@@ -16,12 +16,6 @@ public class ServiceRegiao {
 	@Autowired(required = true)
 	private RegiaoRepository regiaoRepository;
 
-	private ArrayList<String> tabela;
-
-	public ServiceRegiao(ArrayList<String> tabela) {
-		this.tabela = tabela;
-	}
-	
 	public Regiao returnRegiao(String reg) {
 		Regiao regid = regiaoRepository.selectBySegSigla(reg);
 		return regid;

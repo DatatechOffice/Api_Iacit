@@ -26,7 +26,7 @@ import lombok.ToString;
 @Component
 public class Estacao {
 	
-	public Estacao(String estCodigo, BigDecimal estLongitude, String estNomeEstacao, Timestamp estDataFundacao, 
+	public Estacao(Estado etdId, String estCodigo, BigDecimal estLongitude, String estNomeEstacao, Timestamp estDataFundacao, 
 			BigDecimal estLatitude, BigDecimal estAltitude) {
 		this.estCodigo=estCodigo;
 		this.estLongitude=estLongitude;
@@ -34,11 +34,12 @@ public class Estacao {
 		this.estDataFundacao=estDataFundacao;
 		this.estLatitude=estLatitude;
 		this.estAltitude=estAltitude;
+		this.etdId=etdId;
 	}
 	public Estacao(String estCodigo) {
 		this.estCodigo=estCodigo;
 	}
-	 
+
 	@Id
 	@Column(name= "est_codigo", length = 4)
 	private String estCodigo;
