@@ -3,12 +3,12 @@ package com.iacit.api.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.iacit.api.entity.Estado;
 import com.iacit.api.entity.Regiao;
 import com.iacit.api.repository.EstadoRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceEstado {

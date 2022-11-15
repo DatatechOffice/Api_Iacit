@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.Estado;
 import com.iacit.api.repository.EstacaoRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ServiceEstacao {

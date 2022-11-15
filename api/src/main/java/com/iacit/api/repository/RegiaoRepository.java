@@ -2,11 +2,11 @@ package com.iacit.api.repository;
 
 import java.util.List;
 
-import com.iacit.api.entity.Regiao;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.iacit.api.entity.Regiao;
 
 @Repository
 public interface RegiaoRepository extends JpaRepository<Regiao, Integer> {
