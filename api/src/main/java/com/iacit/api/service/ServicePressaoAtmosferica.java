@@ -44,7 +44,7 @@ public class ServicePressaoAtmosferica {
 			String estPrMin = estPrAtMin.get(i);
 			String estPrNEst = estPrAtNivelEst.get(i);
 			String codigo = listaEstacaoCodigo.get(i);
-			if (estPrAtMax.isEmpty() || estPrAtMin.isEmpty() || estPrAtNivelEst.isEmpty()) {
+			if (estPrMax.isEmpty() || estPrMin.isEmpty() || estPrNEst.isEmpty()) {
 				continue;
 			} else {
 				String estData_ = estData.replace("/", "-");
