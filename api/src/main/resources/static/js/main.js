@@ -160,7 +160,7 @@ function filtra(){
 	var corpoTabela = document.querySelector('tbody');
 
 	$.getJSON("/estacao", function(DataTabela) {
-	
+		
 		 for (let i = 0; i < DataTabela.length; i++){
 			if(DataTabela[i].estNomeEstacao.toLowerCase().startsWith(Reg.toLowerCase())){
 				var tr= document.createElement('tr');
@@ -191,7 +191,7 @@ function filtra(){
 	
 			};
 		}
-			
+		
 		});
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------
@@ -199,37 +199,55 @@ function filtra(){
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 
 	//Pegando o elemnento canvas do HTML pelo id
-	plots = document.getElementById("plots");
 	
-	$.getJSON("/temperatura", function(DataGrafico) {
+	$.getJSON("/regiao", function(DataGrafico) {
 	console.log(DataGrafico);
 
 	 //Status que fica na linha y
-	var labels = DataGrafico.map(function(e) {
-		return e.regSigla;
-	 });
+	//var labels = DataGrafico.map(function(e) {
+		//return e.regSigla;
+	// });
 
 	 //Status que fica na linha y
-	 var data = DataGrafico.map(function(e) {
-		return e.regId;
-	 });
+	 //var data = DataGrafico.map(function(e) {
+	//	return e.regId;
+	// });
 
-
-
-	//Criando a isntancia do objeto chart
-	new Chart(plots, {
-		type: 'line', //declara o tipo do grafico
-		data: {
-			labels: labels, //Data do alinhamento X
+	    // setup 
+		const data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 			datasets: [{
-				label: 'Hakuna',
-				data: data, //Data do alinhamento y
-				backgroundColor: 'white',
-				borderColor: 'rgb(255, 99, 132)',
-			}]
-		},
-		
-	});
-		
+			  label: 'Maxima',
+			  data: [18, 12, 6, 9, 12, 3, 9],
+			  backgroundColor: 'white',
+			  borderColor: 'rgba(0,0,255)',
+			  tension: 0.5,
+			},{
+				label: 'Minima',
+				data: [10, 5, 3, 7, 4, 3, 1],
+				backgroundColor: 'White',
+				borderColor: 'rgba(255,0,0)',
+				tension: 0.5,
+			  }]
+		  };
+	  
+		  // config 
+		  const config = {
+			type: 'line',
+			data,
+			options: {
+			  scales: {
+				y: {
+				  beginAtZero: true
+				}
+			  }
+			}
+		  };
+	  
+		  // render init block
+		  const myChart = new Chart(
+			document.getElementById('plots'),
+			config
+		  );		
 	});	
 }
