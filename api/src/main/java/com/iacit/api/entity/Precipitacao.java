@@ -24,7 +24,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class Precipitacao {
-	
 	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
@@ -35,13 +34,13 @@ public class Precipitacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "pre_id")
 	private Integer preId;
-	
+
 	@Column(name= "pre_valor")
     private BigDecimal preValor;
-	
+
 	@Column(name= "pre_data_hora")
     private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;

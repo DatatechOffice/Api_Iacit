@@ -8,8 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import com.iacit.api.entity.RadiacaoGlobal;
 
 public interface RadiacaoGlobalRepository extends JpaRepository<RadiacaoGlobal, Integer> {
-@Query(value = "SELECT * FROM radiacao_global WHERE est_codigo = ?1 AND rag_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
-	
-	public List<RadiacaoGlobal> findByest_codigoAndrag_data_hora(String estCodigo, Timestamp dataInicial, Timestamp dataFinal);
-
+	@Query(
+		value = "SELECT * FROM radiacao_global WHERE est_codigo = ?1 AND rag_data_hora BETWEEN ?2 AND ?3",
+		nativeQuery = true
+	)
+	public List<RadiacaoGlobal> findByest_codigoAndrag_data_hora(
+		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
+	);
 }

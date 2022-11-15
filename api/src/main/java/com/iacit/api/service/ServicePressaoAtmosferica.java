@@ -18,15 +18,24 @@ public class ServicePressaoAtmosferica {
 	private PressaoAtmosfericaRepository atmosfericaRepository;
 
 	// tipo da função deve ser TemperaturaRepository
-	public List<PressaoAtmosferica> getByFilter(String dataInicial, String dataFinal) throws ParseException {
-
-		List<PressaoAtmosferica> entidades = atmosfericaRepository.findByest_codigoAndpra_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
-		
+	public List<PressaoAtmosferica> getByFilter(
+		String dataInicial, 
+		String dataFinal
+	) throws ParseException {
+		List<PressaoAtmosferica> entidades = atmosfericaRepository.findByest_codigoAndpra_data_hora(
+			"A001", 
+			Timestamp.valueOf(dataInicial+" 00:00:00"), 
+			Timestamp.valueOf(dataFinal+" 00:00:00")
+		);
 		return entidades;
 	}
-	
-	public void insBancoService(ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estPrAtMax,
-			ArrayList<String> estPrAtMin, ArrayList<String> estPrAtNivelEst) {
+
+	public void insBancoService(
+		ArrayList<String> listaEstacaoCodigo, 
+		ArrayList<String> estTdata, 
+		ArrayList<String> estPrAtMax,
+		ArrayList<String> estPrAtMin, 
+		ArrayList<String> estPrAtNivelEst) {
 		// qual o id da regiao e com o Id em mãos inserir o estado
 		int ii = estTdata.size();
 		for (int i = 1; i < ii; i++) {
@@ -40,14 +49,16 @@ public class ServicePressaoAtmosferica {
 			} else {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
-				PressaoAtmosferica pressaoAtmosferica = new PressaoAtmosferica(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estPrMax)),
-						BigDecimal.valueOf(Float.parseFloat(estPrMin)), BigDecimal.valueOf(Float.parseFloat(estPrNEst)));
-//				System.out.println(estBulbo + estMax + estMin);
+				PressaoAtmosferica pressaoAtmosferica = new PressaoAtmosferica(
+					estacao,
+					Timestamp.valueOf(estData_+":00"), 
+					BigDecimal.valueOf(Float.parseFloat(estPrMax)),
+					BigDecimal.valueOf(Float.parseFloat(estPrMin)),
+					BigDecimal.valueOf(Float.parseFloat(estPrNEst))
+				);
+				//System.out.println(estBulbo + estMax + estMin);
 				atmosfericaRepository.save(pressaoAtmosferica);
-
 			}
 		}
 	}
-
-
 }

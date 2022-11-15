@@ -24,24 +24,23 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class RadiacaoGlobal {
-	
 	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal ragRadiacaoGlobal) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.ragRadiacaoGlobal=ragRadiacaoGlobal;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "rag_id")
     private Integer ragId;
-	
+
 	@Column(name= "rag_radiacao_global")
     private BigDecimal ragRadiacaoGlobal;
-	
+
 	@Column(name= "rag_data_hora")
     private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;

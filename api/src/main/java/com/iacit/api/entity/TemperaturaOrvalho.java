@@ -24,9 +24,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class TemperaturaOrvalho {
-	
-	public TemperaturaOrvalho(Estacao estCodigo, Timestamp dataHora, BigDecimal tdoPonto, BigDecimal tdoMax,
-			BigDecimal tdoMin) {
+	public TemperaturaOrvalho(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal tdoPonto, 
+		BigDecimal tdoMax,
+		BigDecimal tdoMin
+	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.tdoPonto=tdoPonto;
@@ -38,19 +42,19 @@ public class TemperaturaOrvalho {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "tdo_id")
 	private Integer tdoId;
-	
+
 	@Column(name= "tdo_ponto")
 	private BigDecimal tdoPonto;
-    
+
 	@Column(name= "tdo_max")
 	private BigDecimal tdoMax;
-    
+
 	@Column(name= "tdo_min")
 	private BigDecimal tdoMin;
-    
+
 	@Column(name= "tdo_data_hora")
 	private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;

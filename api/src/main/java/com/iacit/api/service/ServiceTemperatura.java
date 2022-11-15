@@ -14,20 +14,24 @@ import com.iacit.api.repository.TemperaturaRepository;
 
 @Service
 public class ServiceTemperatura {
-
 	@Autowired(required=true) 
 	private TemperaturaRepository temperaturaRepository;
-
 	// tipo da função deve ser TemperaturaRepository
-	public List<Temperatura> getByFilter(String dataInicial, String dataFinal) throws ParseException {
-		
-		List<Temperatura> entidades = temperaturaRepository.findByest_codigoAndtem_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
-		
+	public List<Temperatura> getByFilter(String dataInicial, String dataFinal) throws ParseException {	
+		List<Temperatura> entidades = temperaturaRepository.findByest_codigoAndtem_data_hora(
+			"A001",
+			Timestamp.valueOf(dataInicial+" 00:00:00"), 
+			Timestamp.valueOf(dataFinal+" 00:00:00")
+		);
 		return entidades;
 	}
-	
-	public void insBancoService(ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estTbulbo, ArrayList<String> estTmax, 
-			ArrayList<String> estTmin) {
+
+	public void insBancoService(
+		ArrayList<String> listaEstacaoCodigo, 
+		ArrayList<String> estTdata, 
+		ArrayList<String> estTbulbo, 
+		ArrayList<String> estTmax, 
+		ArrayList<String> estTmin) {
 		// qual o id da regiao e com o Id em mãos inserir o estado
 		int ii = estTdata.size();
 		for (int i = 1; i < ii; i++) {
@@ -41,13 +45,15 @@ public class ServiceTemperatura {
 			} else {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
-				Temperatura temperatura = new Temperatura(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estBulbo)),
-						BigDecimal.valueOf(Float.parseFloat(estMax)), BigDecimal.valueOf(Float.parseFloat(estMin)));
-//				System.out.println(estBulbo + estMax + estMin);
+				Temperatura temperatura = new Temperatura(
+					estacao, Timestamp.valueOf(estData_+":00"), 
+					BigDecimal.valueOf(Float.parseFloat(estBulbo)),
+					BigDecimal.valueOf(Float.parseFloat(estMax)), 
+					BigDecimal.valueOf(Float.parseFloat(estMin))
+				);
+				//System.out.println(estBulbo + estMax + estMin);
 				temperaturaRepository.save(temperatura);
-
 			}
 		}
 	}
-
 }

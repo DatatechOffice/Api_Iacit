@@ -18,14 +18,21 @@ public class ServiceTemperaturaOrvalho {
 	private TemperaturaOrvalhoRepository orvalhoRepository;
 
 	public List<TemperaturaOrvalho> getByFilter(String dataInicial, String dataFinal) throws ParseException {
-
-		List<TemperaturaOrvalho> entidades = orvalhoRepository.findByest_codigoAndTOrv_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
-		
+		List<TemperaturaOrvalho> entidades = orvalhoRepository.findByest_codigoAndTOrv_data_hora(
+			"A001",
+			Timestamp.valueOf(dataInicial+" 00:00:00"),
+			Timestamp.valueOf(dataFinal+" 00:00:00")
+		);
 		return entidades;
 	}
 
-	public void insBancoService(ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estToPontoOrvalho, ArrayList<String> estToOrvalhoMax, 
-			ArrayList<String> estToOrvalhoMin) {
+	public void insBancoService(
+		ArrayList<String> listaEstacaoCodigo,
+		ArrayList<String> estTdata, 
+		ArrayList<String> estToPontoOrvalho, 
+		ArrayList<String> estToOrvalhoMax, 
+		ArrayList<String> estToOrvalhoMin
+	) {
 		int ii = estTdata.size();
 		for (int i = 1; i < ii; i++) {
 			String estData = estTdata.get(i);
@@ -33,17 +40,16 @@ public class ServiceTemperaturaOrvalho {
 			String estOrvalhoMax = estToOrvalhoMax.get(i);
 			String estOrvalhoMin = estToOrvalhoMin.get(i);
 			String codigo = listaEstacaoCodigo.get(i);
+			
 			if (estPoOrvalho.isEmpty() || estOrvalhoMax.isEmpty() || estOrvalhoMin.isEmpty()) {
 				continue;
 			} else {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
 				TemperaturaOrvalho temperaturaOrvalho = new TemperaturaOrvalho(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estPoOrvalho)),
-						BigDecimal.valueOf(Float.parseFloat(estOrvalhoMax)), BigDecimal.valueOf(Float.parseFloat(estOrvalhoMin)));
+				BigDecimal.valueOf(Float.parseFloat(estOrvalhoMax)), BigDecimal.valueOf(Float.parseFloat(estOrvalhoMin)));
 				orvalhoRepository.save(temperaturaOrvalho);
-
 			}
 		}
 	}
-
 }

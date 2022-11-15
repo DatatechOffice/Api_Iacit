@@ -10,11 +10,14 @@ import com.iacit.api.entity.Temperatura;
 
 @Repository
 public interface TemperaturaRepository extends JpaRepository<Temperatura, Integer> {
-	@Query(value = "select * from temperatura where est_codigo = ?1 AND tem_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
+	@Query(
+		value = "SELECT * FROM temperatura WHERE est_codigo = ?1 AND tem_data_hora BETWEEN ?2 AND ?3", 
+		nativeQuery = true
+	)
+	public List<Temperatura> findByest_codigoAndtem_data_hora(
+		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
+	);
 	
-	public List<Temperatura> findByest_codigoAndtem_data_hora(String estCodigo, Timestamp dataInicial, Timestamp dataFinal);
-	
-	@Query(value = "delete from temperatura where tem_id > 8973", nativeQuery = true)
-	
+	@Query(value = "DELETE FROM temperatura WHERE tem_id > 8973", nativeQuery = true)
 		public void delete();
 }

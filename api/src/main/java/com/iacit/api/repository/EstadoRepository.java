@@ -10,11 +10,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EstadoRepository extends JpaRepository<Estado, Integer> {
-
-	@Query(value = "select * from estado where etd_unidade_federativa = ?1", nativeQuery = true)
+	@Query(value = "SELECT * FROM estado WHERE etd_unidade_federativa = ?1", nativeQuery = true)
 	public Estado selectBySigla(String etd);
 
-	@Query(value = "select * from estado", nativeQuery = true)
+	@Query(value = "SELECT * FROM estado", nativeQuery = true)
 	public List<Estado> selectEstado();
-
 }

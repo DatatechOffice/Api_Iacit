@@ -19,13 +19,16 @@ public class ServicePrecipitacao {
 	private PrecipitacaoRepository precipitacaoRepository;
 
 	public List<Precipitacao> getByFilter(String dataInicial, String dataFinal) throws ParseException {
-		
-		List<Precipitacao> entidades = precipitacaoRepository.findByest_codigoAndrag_data_hora("A001", Timestamp.valueOf(dataInicial+" 00:00:00"), Timestamp.valueOf(dataFinal+" 00:00:00"));
-		
+		List<Precipitacao> entidades = precipitacaoRepository.findByest_codigoAndrag_data_hora(
+			"A001", Timestamp.valueOf(dataInicial+" 00:00:00"),
+			Timestamp.valueOf(dataFinal+" 00:00:00")
+		);
 		return entidades;
 	}
-	
-	public void insBancoService(ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estPrecipitacao) {
+
+	public void insBancoService(
+		ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estPrecipitacao
+	) {
 		int ii = estTdata.size();
 		for (int i = 1; i < ii; i++) {
 			String codigo = listaEstacaoCodigo.get(i);
@@ -37,11 +40,13 @@ public class ServicePrecipitacao {
 			} else {
 				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
-				Precipitacao precipitacao = new Precipitacao(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estPrec)));
+				Precipitacao precipitacao = new Precipitacao(
+					estacao, 
+					Timestamp.valueOf(estData_+":00"), 
+					BigDecimal.valueOf(Float.parseFloat(estPrec))
+				);
 				precipitacaoRepository.save(precipitacao);
-
 			}
 		}
 	}
-
 }

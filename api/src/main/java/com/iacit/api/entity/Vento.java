@@ -24,8 +24,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class Vento {
-	
-	public Vento(Estacao estCodigo, Timestamp dataHora, BigDecimal venDirecaoHoraria, BigDecimal venRajadaMax, BigDecimal venVelocidadeHoraria) {
+	public Vento(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal venDirecaoHoraria, 
+		BigDecimal venRajadaMax, BigDecimal
+		venVelocidadeHoraria
+	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.venDirecaoHoraria=venDirecaoHoraria;
@@ -37,19 +42,19 @@ public class Vento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "ven_id")
 	private Integer venId;
-	
+
 	@Column(name= "ven_direcao_horaria")
 	private BigDecimal venDirecaoHoraria;
-    
+
 	@Column(name= "ven_rajada_max")
 	private BigDecimal venRajadaMax;
-    
+
 	@Column(name= "ven_velocidade_horaria")
 	private BigDecimal venVelocidadeHoraria;
-    
+
 	@Column(name= "ven_data_hora")
 	private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;

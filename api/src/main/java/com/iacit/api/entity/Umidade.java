@@ -24,7 +24,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class Umidade {
-	public Umidade(Estacao estCodigo, Timestamp dataHora, BigDecimal umiRelativaAr, BigDecimal umiRelativaMax, BigDecimal umiRelativaMin) {
+	public Umidade(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal umiRelativaAr, 
+		BigDecimal umiRelativaMax, 
+		BigDecimal umiRelativaMin
+	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.umiRelativaAr=umiRelativaAr;
@@ -36,19 +42,19 @@ public class Umidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "umi_id")
 	private Integer umiId;
-	
+
 	@Column(name= "umi_relativa_min")
 	private BigDecimal umiRelativaMin;
-	
+
 	@Column(name= "umi_relativa_max")
 	private BigDecimal umiRelativaMax;
-    
+
 	@Column(name= "umi_relativa_ar")
 	private BigDecimal umiRelativaAr;
-    
+
 	@Column(name= "umi_data_hora")
 	private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;
