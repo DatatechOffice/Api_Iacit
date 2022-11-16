@@ -1,6 +1,7 @@
 package com.iacit.api.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,46 +16,30 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@Entity(name="temperatura")
-@Table(name="temperatura")
-@ToString
+@Entity(name="precipitacao")
+@Table(name="precipitacao")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
-public class Temperatura {
-	public Temperatura(
-		Estacao estCodigo, 
-		Timestamp dataHora, 
-		BigDecimal temArBulboSeco,
-		BigDecimal temMax, 
-		BigDecimal temMin
-	) {
+public class Precipitacao {
+	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.temArBulboSeco=temArBulboSeco;
-		this.temMax=temMax;
-		this.temMin=temMin;
+		this.preValor=preValor;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "tem_id")
-    private Integer temId;
+	@Column(name= "pre_id")
+	private Integer preId;
 
-	@Column(name= "tem_ar_bulbo_seco")
-	private BigDecimal temArBulboSeco;
+	@Column(name= "pre_valor")
+    private BigDecimal preValor;
 
-	@Column(name= "tem_max")
-	private BigDecimal temMax;
-
-	@Column(name= "tem_min")
-	private BigDecimal temMin;
-
-	@Column(name= "tem_data_hora")
-	private Timestamp dataHora;
+	@Column(name= "pre_data_hora")
+    private Timestamp dataHora;
 
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

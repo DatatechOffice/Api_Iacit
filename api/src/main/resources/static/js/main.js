@@ -1,155 +1,143 @@
-//Lendo os inputs e o divs  de demonstração
-const Regiao = document.getElementById('Regiao');
-const CombinaRegiao = document.getElementById('combina-Regiao');
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------------Regiao--------------------------------------------------------------------------------
+async function carregar_regiao(valRegiao){
+	if(valRegiao.length >= 1){
+		
+		const resReg = await fetch('../data/estados.json');
+		const RegiaoJson = await resReg.json();
 
-const UF = document.getElementById('UF');
-const CombinaUF = document.getElementById('combina-UF');
+		var html = "<ul class='list-group' position-fixed>";
 
-const Estacao = document.getElementById('Estacao');
-const CombinaEstacao = document.getElementById('combina-Estacao');
+		for(let i = 0; i < RegiaoJson.length; i++){
+			
+			if(RegiaoJson[i].name.toLowerCase().startsWith(valRegiao.toLowerCase())){
+				html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].name)+")'>" + RegiaoJson[i].name + "</li>";
+			}
+		}
+		html += "</ul>";
 
-const Variavel = document.getElementById('Variavel');
-const CombinaVariavel = document.getElementById('combina-Variavel');
-
-//-----------------------------------------------------------------------------------------------------------------------------------------
-//-----------------------------------------//buscando o arquivo json e combinando com Regiao-----------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------------------------------
-
-const BuscarRegiao = async searchText => {
-	const resReg = await fetch('../data/estados.json');
-	const RegiaoJson = await resReg.json();
-
-	//pegando as combinações tendo com base digitado
-	let combinaRegiao = RegiaoJson.filter(Reg => {
-		const regexReg = new RegExp(`^${searchText}`, 'gi');
-		return Reg.name.match(regexReg) || Reg.abbr.match(regexReg);
-	});
-	if (searchText.length == 0){
-		combinaRegiao = [];
-		CombinaRegiao.innerHTML = '';
+		document.getElementById('pesquisa_regiao').innerHTML = html;
+		
+	}else{
+		document.getElementById('pesquisa_regiao').innerHTML = '';
 	}
-	outputHtmlReg(combinaRegiao);
-};
-//busscando o arquivo json e combinando com UF
-const BuscarUF = async searchText => {
-	const res = await fetch('../data/estados.json');
-	const estados = await res.json();
-
-	//pegando as combinações tendo com base digitado
-	let combinacao = estados.filter(estado => {
-		const regex = new RegExp(`^${searchText}`, 'gi');
-		return estado.name.match(regex) || estado.abbr.match(regex);
-	});
-
-	//se o campo estiver vazio não tem resultado
-	if (searchText.length == 0){
-		combinacao = [];
-		CombinaUF.innerHTML = '';
-	}
-	outputHtml(combinacao);
-};
-//buscando o arquivo json e combinando com Estacao
-const BuscarEstacao = async searchText => {
-	const resEs = await fetch('../data/estados.json');
-	const EstacaJson = await resEs.json();
-
-	//pegando as combinações tendo com base digitado
-	let combinaEstacao = EstacaJson.filter(Estacaov => {
-		const regexEstacao = new RegExp(`^${searchText}`, 'gi');
-		return Estacaov.name.match(regexEstacao) || Estacaov.abbr.match(regexEstacao);
-	});
-	if (searchText.length == 0){
-		combinaEstacao = [];
-		CombinaEstacao.innerHTML = '';
-	}
-	outputHtmlEs(combinaEstacao);
 }
-//buscando o arquivo json e combinando com Variavel
-const BuscarVariavel = async searchText => {
-	const resVar = await fetch('../data/estados.json');
-	const VariavelJson = await resVar.json();
 
-	//pegando as combinações tendo com base digitado
-	let combinaVariavel = VariavelJson.filter(Variavel => {
-		const regexVariavel = new RegExp(`^${searchText}`, 'gi');
-		return Variavel.name.match(regexVariavel) || Variavel.abbr.match(regexVariavel);
-	});
-	if (searchText.length == 0){
-		combinaVariavel = [];
-		CombinaVariavel.innerHTML = '';
-	}
-	outputHtmlVar(combinaVariavel);
-};
+function get_name_Regiao(name_regiao){
+	document.getElementById("Regiao").value = name_regiao;
+}
 
-//-----------------------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------------------Mostra o resultado no html-----------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------------------------------
+const fecharReg = document.getElementById('Regiao');
 
-//resultado das UF
-const outputHtml = combinacao => {
-	if (combinacao.length > 0){
-		const html = combinacao.map(match => `
-		<div class="card card-body mb-1">
-			<h4>${match.name}</h4>
-			<small>Lat: ${match.lat} / Long:${match.long}</small>
-		</div>
-		`)
-		.join('');
-		
-		
-		CombinaUF.innerHTML = html;
+document.addEventListener('click', function(eventReg){
+	const validar_regiao = fecharReg.contains(eventReg.target);
+	if(!validar_regiao){
+		document.getElementById('pesquisa_regiao').innerHTML = '';
 	}
-};
-//resultado das regiões
-const outputHtmlReg = combinaRegiao => {
-	if (combinaRegiao.length > 0){
-		const htmlReg = combinaRegiao.map(matchReg => `
-		<div class="card card-body mb-1">
-			<h4>${matchReg.name}</h4>
-			<small>Lat: ${matchReg.lat} / Long:${matchReg.long}</small>
-		</div>
-		`)
-		.join('');
-		
-		CombinaRegiao.innerHTML = htmlReg;
-	}
-};
-//Resultado dos estados
-const outputHtmlEs = combinaEstacao => {
-	if (combinaEstacao.length > 0){
-		const htmlEs = combinaEstacao.map(matchEs => `
-		<div class="card card-body mb-1">
-			<h4>${matchEs.name}</h4>
-			<small>Lat: ${matchEs.lat} / Long:${matchEs.long}</small>
-		</div>
-		`)
-		.join('');
-		
-		CombinaEstacao.innerHTML = htmlEs;
-	}
-};
-//Resultado das variaveis
-const outputHtmlVar = combinaVariavel => {
-	if (combinaVariavel.length > 0){
-		const htmlVar = combinaVariavel.map(matchVar => `
-		<div class="card card-body mb-1">
-			<h4>${matchVar.name}</h4>
-			<small>Lat: ${matchVar.lat} / Long:${matchVar.long}</small>
-		</div>
-		`)
-		.join('');
-		
-		CombinaVariavel.innerHTML = htmlVar;
-	}
-};
+});
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------UF---------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------Adicionando o evento aos inputs---------------------------------------------------------
-//-----------------------------------------------------------------------------------------------------------------------------------------
-Regiao.addEventListener('input', () => BuscarRegiao(Regiao.value));
-UF.addEventListener('input', () => BuscarUF(UF.value));
-Estacao.addEventListener('input', () => BuscarEstacao(Estacao.value));
-Variavel.addEventListener('input', () => BuscarVariavel(Variavel.value));
+async function carregar_UF(valUF){
+	if(valUF.length >= 1){
+		
+		const resUF = await fetch('../data/estados.json');
+		const UFJson = await resUF.json();
+
+		var html = "<ul class='list-group' position-fixed>";
+		for(let i = 0; i < UFJson.length; i++){
+			if(UFJson[i].name.toLowerCase().startsWith(valUF.toLowerCase())){
+				html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].name)+")'>" + UFJson[i].name + "</li>";
+			}
+		}
+		html += "</ul>";
+		document.getElementById('pesquisa_UF').innerHTML = html;
+	}else{
+		document.getElementById('pesquisa_UF').innerHTML = '';
+	}
+}
+
+function get_name_UF(name_UF){
+	document.getElementById("UF").value = name_UF;
+}
+
+const fecharUF = document.getElementById('UF');
+
+document.addEventListener('click', function(eventUF){
+	const validar_UF = fecharUF.contains(eventUF.target);
+	if(!validar_UF){
+		document.getElementById('pesquisa_UF').innerHTML = '';
+	}
+});
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------------Estacação--------------------------------------------------------------------------------
+async function carregar_estacao(valestacao){
+	if(valestacao.length >= 1){
+
+		const resestacao = await fetch('../data/estados.json');
+		const estacaoJson = await resestacao.json();
+
+		var html = "<ul class='list-group' position-fixed>";
+		for(let i = 0; i < estacaoJson.length; i++){
+			if(estacaoJson[i].name.toLowerCase().startsWith(valestacao.toLowerCase())){
+				html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].name)+")'>" + estacaoJson[i].name + "</li>";
+			}
+		}
+		html += "</ul>";
+		document.getElementById('pesquisa_estacao').innerHTML = html;
+	}else{
+		document.getElementById('pesquisa_estacao').innerHTML = '';
+	}
+}
+function get_name_estacao(name_estacao){
+	document.getElementById("Estacao").value = name_estacao;
+}
+
+const fecharestacao = document.getElementById('Estacao');
+
+document.addEventListener('click', function(eventestacao){
+	const validar_estacao = fecharestacao.contains(eventestacao.target);
+	if(!validar_estacao){
+		document.getElementById('pesquisa_estacao').innerHTML = '';
+	}
+});
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------AutoComplete-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------------Variavel-------------------------------------------------------------------------------
+async function carregar_variavel(valvariavel){
+	if(valvariavel.length >= 1){
+		
+		const resvariavel = await fetch('../data/estados.json');
+		const variavelJson = await resvariavel.json();
+
+		var html = "<ul class='list-group' position-fixed>";
+		for(let i = 0; i < variavelJson.length; i++){
+			if(variavelJson[i].name.toLowerCase().startsWith(valvariavel.toLowerCase())){
+				html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].name)+")'>" + variavelJson[i].name + "</li>";
+			}
+		}
+		html += "</ul>";
+		document.getElementById('pesquisa_variavel').innerHTML = html;
+	}else{
+		document.getElementById('pesquisa_variavel').innerHTML = '';
+	}	
+}
+
+function get_name_variavel(name_variavel){
+	document.getElementById("Variavel").value = name_variavel;
+}
+
+const fecharvariavel = document.getElementById('Variavel');
+
+document.addEventListener('click', function(eventvariavel){
+	const validar_variavel = fecharvariavel.contains(eventvariavel.target);
+	if(!validar_variavel){
+		document.getElementById('pesquisa_variavel').innerHTML = '';
+	}
+});
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
@@ -244,70 +232,67 @@ var getData1 = function() {
 	return dataInput;
 };
 
-//Metodo script responsavel por receber e enviar os dados do front para o back atraves de um JSON
-function salvarUsuario(){
+$(document).ready(function() {
+	$(document).on("click", "#btnEnviarDados", function() {
+		//debugger;
 
-	//Recebendo as informações dos filtros e armazenando em variaveis
-	var vRegiao = $("#Regiao").val();
-	var vUF = $("#UF").val();
-	var vVariavel = $("#Variavel").val();
-	var vDataInicio = $("#DataInicio").val();
-	var vDataFim = $("#DataFim").val();
-	var vEstacao = $("#Estacao").val();
-	debugger;
-	//Função ajax de atribuição do front para uma classe no java
-	$.ajax({
-		method: "POST", //Especificando qual o metodo
-		url: "/temperatura", //Definindo a url que conecta no mapeamento
-		//Passando os atribuyos da classe e quais variaveis representa eles no front
-		data: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
-		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
-		//Alerta de sucesso ou falha no envio do JSON
-		success: function (data){
-			alert("Salvo com Sucesso!");
-			
-			plotcharts(data);
-			
-			
-			
-			
-			/*function plotcharts(){
-            	
-              var apiUrl = data;
-              var datas=[];
-              var valor=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
-                drawchart(dataset, datas, 'line');
-              }).catch(err => {
-                console.log(err);
-              });
-          }*/
-		}
-	}).fail(function(xhr, status, errorThrow){
-		alert("Erro ao Salvar: " + xhr.responseText);
+		// Valores da data de inico e fim que foram inseridas nas entradas de data.
+		var vDataInicio = $("#dataInicio").val();
+		var vDataFim = $("#dataFim").val();
+		var vDadoDesejado = "";
+		debugger;
+
+		$.post(
+			"/filtrar/vDadoDesejado",
+			//corpo da requisição <body> == {}
+			JSON.stringify({ dataInicio: vDataInicio, dataFinal: vDataFim }),
+			function(data) {
+				if (data[0].status == 0) {
+					debugger;
+					window.location.href = "/index";
+				} else {
+					debugger;
+					sessionStorage.setItem("userNameADM", data[0].userName);
+
+					window.location.href = "/temperatura";
+				}
+			},
+			"json"
+		);
 	});
-}
 
-function plotcharts(data){
-			var datas=[];
-            var valor=[];
-			for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-			//For Line chart
-			dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', valor, 'black', 'green');
-                drawchart(dataset, datas, 'line');
-                }
-                
+
+	var OnClickLeo = function() {
+		$("#relatorio").click(function() {
+			debugger
+
+			$.getJSON({
+				url: "/testeIndex",
+				success: function(data) {
+					//KTApp.unblockPage();
+
+
+					if (data.resultado == "OK") {
+						debugger
+						window.location.reload("/testeIndex");
+					}
+					if (data.resultado == "ERROR") {
+						debugger
+						Swal.fire(
+							'Erro!',
+							'Houve um erro ao se comunicar com o servido, tente novamente mais tarde.',
+							'error'
+						);
+					}
+				}
+			})
+
+		});
+	}
+
+
+	OnClickLeo();
+
 
 })
 
@@ -363,7 +348,6 @@ function salvarUsuario(){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
 }
-
 function plotcharts(data){
 			var datas=[];
             var valor=[];

@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-
 
 @Entity(name="regiao")
 @Table(name="regiao")
@@ -21,7 +19,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @Component
 public class Regiao{
-
     public Regiao(String regSigla) {
 		this.regSigla=regSigla;
 	}
@@ -30,8 +27,7 @@ public class Regiao{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "reg_id")
 	private Integer regId;
-	
+
 	@Column(name= "reg_sigla", length = 2)
 	private String regSigla;
-	
 }
