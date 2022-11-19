@@ -1,9 +1,9 @@
-g<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
-
   <head>
     <meta charset="utf-8">
     <title>HOME - Iacit</title>
+
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -24,8 +24,10 @@ g<!DOCTYPE html>
       rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <script 
+     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js">
+    </script>
   </head>
-
   <body style="padding-top: fixed">
     <!-- Aqui começa a barra de menu-->
     <header>
@@ -72,23 +74,23 @@ g<!DOCTYPE html>
             <!--Inicio das textbox-->
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Regiões:</h4>
-              <input type="text" name="regiao" class="form-control" id="Regiao" placeholder="regiao" aria-label="região" onkeyup="carregar_regiao(this.value)">
+              <input type="search" name="regiao" class="form-control" id="Regiao" placeholder="Região" aria-label="região" onkeyup="carregar_regiao(this.value)">
               <spann id="pesquisa_regiao" class="position-absolute"></spann>
             </div>
 
             <div class="col-md-3">
               <h4 class="mb-4">Selecione UF:</h4>
-              <input type="text" name="UF" class="form-control" id="UF" placeholder="unidade federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
+              <input type="search" name="UF" class="form-control" id="UF" placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
               <spann id="pesquisa_UF" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione a Estação:</h4>
-              <input type="search" name="estacao" class="form-control" id="Estacao" placeholder="estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
+              <input type="search" name="estacao" class="form-control" id="Estacao" placeholder="Estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
               <spann id="pesquisa_estacao" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Variaveis:</h4>
-              <input type="search" name="variavel" class="form-control" id="Variavel" placeholder="variavel" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
+              <input type="search" name="variavel" class="form-control" id="Variavel" placeholder="Variável" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
               <spann id="pesquisa_variavel" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
@@ -101,96 +103,29 @@ g<!DOCTYPE html>
             </div>
             <!--Fim das textbox-->
             </form>
-            <script src="/main.js"></script>
           
           <!--Botão responsavel por fazzer a requisição dos filtros-->
           <br>
           <button id="filtro" class="btn btn-outline-success"
-          type="submit" onclick="salvarUsuario()">
-          Enviar 
+          type="submit" onclick="filtra()">
+          Consultar 
           </button>
           <!-- Fim do botão-->
-
-         <button id="btnEnviarDados" class="btn btn-outline-success"
-            type="submit" onclick="plotcharts()">
-            Buscar dados 
-          </button>
-
         </div>
 
         <br>
 
+        <div>
+          <canvas id="plots" style="width:100%; max-width:750px" position="center"></canvas>
+          <script src="/main.js"></script>
+        </div>
+
+        <div id="relatorio"></div>
         <div class="container mt-3">
           <h2>Relatorio</h2>
         </div>
 
         <br>
-
-        <div class="row" style="width:100%">
-          <div class="col-md-6">
-            <canvas id="barchart"></canvas>
-          </div>
-          <div class="col-md-6">
-            <canvas id="linechart"></canvas>
-          </div>
-        </div>
-    
-        <script type="text/javascript">
-            function plotcharts(){
-              var apiUrl = 'https://sheetdb.io/api/v1/smarsr6psjmu9';
-              var months=[]
-              var cost=[];
-              var selling=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  months.push(data[i]['Data']);
-                  cost.push(parseInt(data[i]['TEMPERATURA MÁXIMA NA HORA ANT. (AUT) (°C)']));
-                  selling.push(parseInt(data[i]['TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', selling, 'black', 'green');
-                drawchart(dataset, months, 'line');
-              }).catch(err => {
-                console.log(err);
-              });
-          }
-        
-          function addData(title, Data, bgcolor, bordercolor){
-            return [{
-              label: title,
-              data: Data,
-              backgroundColor: bgcolor,
-              borderColor: bordercolor,
-              borderWidth: 1.5
-            }];
-          }
-            
-          function drawchart(dataset, Labels, type){
-            const ctx = document.getElementById(type+'chart').getContext('2d');
-            const myChart = new Chart(ctx, {
-              type: type,
-              data: {
-                labels: Labels,
-                datasets: dataset
-              },
-              options: {
-                scales: {
-                  yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    }
-                  }]
-                }
-              }
-            });
-          }
-        </script>
-
-        <br>
-
-        <div id="relatorio"></div>
 
         <table class="table table-striped" cellspacing="0" cellpadding="0">
           <thead>

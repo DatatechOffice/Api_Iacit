@@ -45,6 +45,7 @@ public class ServiceTemperatura {
 			String estBulbo = estTbulbo.get(i);
 			String estMax = estTmax.get(i);
 			String estMin = estTmin.get(i);
+
 			String codigo = listaEstacaoCodigo.get(i);
 			if (estBulbo.isEmpty() || estMax.isEmpty() || estMin.isEmpty()) {
 				continue;
