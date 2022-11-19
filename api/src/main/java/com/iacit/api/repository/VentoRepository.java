@@ -10,8 +10,11 @@ import com.iacit.api.entity.Vento;
 
 
 public interface VentoRepository extends JpaRepository<Vento, Integer> {
-@Query(value = "select * from vento where est_codigo = ?1 AND ven_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
-	
-	public List<Vento> findByest_codigoAndven_data_hora(String estCodigo, Timestamp dataInicial, Timestamp dataFinal);
-
+	@Query(
+		value = "SELECT * FROM vento WHERE est_codigo = ?1 AND ven_data_hora BETWEEN ?2 AND ?3", 
+		nativeQuery = true
+	)
+	public List<Vento> findByest_codigoAndven_data_hora(
+		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
+	);
 }

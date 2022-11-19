@@ -2,7 +2,8 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>HOME - Iacit</title>
+
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -33,32 +34,34 @@
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
         <!-- Esse Div armazena as opções do -->
         <div class="container-fluid">
-          <a class="navbar-brand">Menu</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="../templates/index.html">Home</a>
+              </li>
               <!-- Encaminha para os filtros-->
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#filtros">Filtro</a>
+                <a class="nav-link" aria-current="page" href="../templates/cadastro.html">Cadastro de Usuário</a>
               </li>
-              <!-- Encaminha para as tabelas-->
-              <li class="nav-item">
-                <a class="nav-link" href="#tabela">Tabela</a>
-              </li>
-              <!--Encaminha para o relatorio-->
-              <li class="nav-item">
-                <a class="nav-link" href="#relatorio">Relatorio</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle me-2" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Configurações de Usuário</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="../templates/login.html">Logout</a></li>
+                </ul>
               </li>
             </ul>
           </div>
         </div>
-        <!-- Final do Div das opções do menu -->
       </nav>
+        <!-- Final do Div das opções do menu -->
+      
       <br><br>
     </header>
     <!-- Aqui acaba a barra de menu-->

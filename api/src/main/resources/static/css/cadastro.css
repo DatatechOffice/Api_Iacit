@@ -1,0 +1,38 @@
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #d6d6d6;
+}
+
+.cadastro {
+    width: 800px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.cadastro h1 {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+
+.cadastro form {
+    font-size: 15px;
+}
+
+#buttonCad {
+    transition: .5s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
