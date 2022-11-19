@@ -16,10 +16,16 @@ import com.iacit.api.repository.VentoRepository;
 public class ServiceVento {
 	@Autowired(required=true) 
 	private VentoRepository ventoRepository;
-	// tipo da função deve ser TemperaturaRepository
-	public List<Vento> getByFilter(String dataInicial, String dataFinal) throws ParseException {
+
+	@Autowired(required = true)
+	private ServiceEstacao serviceEstacao;
+	
+	public List<Vento> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
+		
+		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
+		
 		List<Vento> entidades = ventoRepository.findByest_codigoAndven_data_hora(
-			"A001", 
+			idEstacao.getEstCodigo(), 
 			Timestamp.valueOf(dataInicial+" 00:00:00"), 
 			Timestamp.valueOf(dataFinal+" 00:00:00")
 		);

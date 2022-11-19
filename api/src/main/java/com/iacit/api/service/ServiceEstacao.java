@@ -24,6 +24,12 @@ public class ServiceEstacao {
 		List<Estacao> etdLista = estacaoRepository.selectEstacao();
 		return etdLista;
 	}
+	
+	public Estacao selectEstacaoCodigo(String nomeEstacao) {
+		Estacao Estacao = estacaoRepository.selectCodigoEstacao(nomeEstacao);
+		Estacao idEstacao = new Estacao(Estacao.getEstCodigo());
+		return idEstacao;
+	}
 
 	public void insBancoService(
 		ArrayList<String> regEstN,

@@ -16,10 +16,16 @@ import com.iacit.api.repository.RadiacaoGlobalRepository;
 public class ServiceRadiacaoGlobal {
 	@Autowired(required=true) 
 	private RadiacaoGlobalRepository radiacaoRepository;
-	// tipo da função deve ser TemperaturaRepository
-	public List<RadiacaoGlobal> getByFilter(String dataInicial, String dataFinal) throws ParseException {
+	
+	@Autowired(required=true) 
+	private ServiceEstacao serviceEstacao;
+	
+	public List<RadiacaoGlobal> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
+		
+		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
+		
 		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora(
-			"A001", 
+			idEstacao.getEstCodigo(), 
 			Timestamp.valueOf(dataInicial+" 00:00:00"), 
 			Timestamp.valueOf(dataFinal+" 00:00:00")
 		);

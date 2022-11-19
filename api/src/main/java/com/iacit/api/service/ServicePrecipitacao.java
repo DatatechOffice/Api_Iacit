@@ -17,10 +17,16 @@ public class ServicePrecipitacao {
 
 	@Autowired(required=true) 
 	private PrecipitacaoRepository precipitacaoRepository;
+	
+	@Autowired(required = true)
+	private ServiceEstacao serviceEstacao;
 
-	public List<Precipitacao> getByFilter(String dataInicial, String dataFinal) throws ParseException {
+	public List<Precipitacao> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
+		
+		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
+		
 		List<Precipitacao> entidades = precipitacaoRepository.findByest_codigoAndrag_data_hora(
-			"A001", Timestamp.valueOf(dataInicial+" 00:00:00"),
+			idEstacao.getEstCodigo(), Timestamp.valueOf(dataInicial+" 00:00:00"),
 			Timestamp.valueOf(dataFinal+" 00:00:00")
 		);
 		return entidades;

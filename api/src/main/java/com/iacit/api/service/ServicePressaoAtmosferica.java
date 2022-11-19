@@ -16,14 +16,20 @@ import com.iacit.api.repository.PressaoAtmosfericaRepository;
 public class ServicePressaoAtmosferica {
 	@Autowired(required=true) 
 	private PressaoAtmosfericaRepository atmosfericaRepository;
+	
+	@Autowired(required=true) 
+	private ServiceEstacao serviceEstacao;
 
 	// tipo da função deve ser TemperaturaRepository
-	public List<PressaoAtmosferica> getByFilter(
+	public List<PressaoAtmosferica> getByFilter(String estacao,
 		String dataInicial, 
 		String dataFinal
 	) throws ParseException {
+		
+		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
+		
 		List<PressaoAtmosferica> entidades = atmosfericaRepository.findByest_codigoAndpra_data_hora(
-			"A001", 
+			idEstacao.getEstCodigo(), 
 			Timestamp.valueOf(dataInicial+" 00:00:00"), 
 			Timestamp.valueOf(dataFinal+" 00:00:00")
 		);
