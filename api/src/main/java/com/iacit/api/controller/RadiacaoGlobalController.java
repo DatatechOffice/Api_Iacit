@@ -20,7 +20,7 @@ public class RadiacaoGlobalController {
 	@PostMapping(value = { "/radiacaoGlobal" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<RadiacaoGlobal>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
-		List<RadiacaoGlobal> listRadiacao = serviceRadicaoGlobal.getByFilter(data.getEstacao(), data.getEstacao(), data.getDataInicio(), data.getDataFim());
+		List<RadiacaoGlobal> listRadiacao = serviceRadicaoGlobal.getByFilter(data.getEstacao(), data.getDataInicio(), data.getDataFim());
 		
 		return listRadiacao != null && listRadiacao.size() > 0 ? new ResponseEntity<List<RadiacaoGlobal>>(listRadiacao, HttpStatus.CREATED)
 				: new ResponseEntity<List<RadiacaoGlobal>>(listRadiacao, HttpStatus.BAD_REQUEST);
