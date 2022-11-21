@@ -31,11 +31,25 @@ import lombok.ToString;
 @NoArgsConstructor
 @Component
 public class Temperatura {
+<<<<<<< Updated upstream
 	
 	public Temperatura(Estacao estCodigo, Timestamp dataHora, BigDecimal temArBulboSeco,BigDecimal temMax, BigDecimal temMin) {
+=======
+	public Temperatura(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+<<<<<<< Updated upstream
+		BigDecimal temArBulboSeco,
+=======
+		BigDecimal temperatura,
+>>>>>>> Stashed changes
+		BigDecimal temMax, 
+		BigDecimal temMin
+	) {
+>>>>>>> Stashed changes
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.temArBulboSeco=temArBulboSeco;
+		this.temperatura=temperatura;
 		this.temMax=temMax;
 		this.temMin=temMin;
 	}
@@ -46,8 +60,16 @@ public class Temperatura {
     private Integer temId;
 	
 	@Column(name= "tem_ar_bulbo_seco")
+<<<<<<< Updated upstream
 	private BigDecimal temArBulboSeco;
+<<<<<<< Updated upstream
 	
+=======
+=======
+	private BigDecimal temperatura;
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
 	@Column(name= "tem_max")
 	private BigDecimal temMax;
 	

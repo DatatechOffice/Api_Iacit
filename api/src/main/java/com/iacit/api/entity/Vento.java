@@ -19,7 +19,32 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Vento {
+<<<<<<< Updated upstream
 	
+=======
+	public Vento(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal venDirecaoHoraria, 
+		BigDecimal venRajadaMax, BigDecimal
+<<<<<<< Updated upstream
+		venVelocidadeHoraria
+=======
+		vento
+>>>>>>> Stashed changes
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.venDirecaoHoraria=venDirecaoHoraria;
+		this.venRajadaMax=venRajadaMax;
+<<<<<<< Updated upstream
+		this.venVelocidadeHoraria=venVelocidadeHoraria;
+=======
+		this.vento=vento;
+>>>>>>> Stashed changes
+	}
+
+>>>>>>> Stashed changes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "ven_id")
@@ -32,8 +57,16 @@ public class Vento {
 	private BigDecimal venRajadaMax;
     
 	@Column(name= "ven_velocidade_horaria")
+<<<<<<< Updated upstream
 	private BigDecimal venVelocidadeHoraria;
+<<<<<<< Updated upstream
     
+=======
+=======
+	private BigDecimal vento;
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
 	@Column(name= "ven_data_hora")
 	private Timestamp dataHora;
 	

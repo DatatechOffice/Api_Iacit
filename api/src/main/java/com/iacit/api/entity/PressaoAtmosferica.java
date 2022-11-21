@@ -19,6 +19,30 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PressaoAtmosferica {
+<<<<<<< Updated upstream
+=======
+	public PressaoAtmosferica(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal praMax, 
+		BigDecimal praMin,
+<<<<<<< Updated upstream
+		BigDecimal praNivelEstacao
+=======
+		BigDecimal pressao_atmosferica
+>>>>>>> Stashed changes
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.praMax=praMax;
+		this.praMin=praMin;
+<<<<<<< Updated upstream
+		this.praNivelEstacao=praNivelEstacao;
+=======
+		this.pressao_atmosferica=pressao_atmosferica;
+>>>>>>> Stashed changes
+	}
+>>>>>>> Stashed changes
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +50,16 @@ public class PressaoAtmosferica {
 	private Integer praId;
 	
 	@Column(name= "pra_nivel_estacao")
+<<<<<<< Updated upstream
     private BigDecimal praNivelEstacao;
+<<<<<<< Updated upstream
 	
+=======
+=======
+    private BigDecimal pressao_atmosferica;
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
 	@Column(name= "pra_max")
     private BigDecimal praMax;
 	

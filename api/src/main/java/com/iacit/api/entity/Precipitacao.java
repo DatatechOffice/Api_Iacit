@@ -1,6 +1,7 @@
 package com.iacit.api.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,51 +10,48 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Entity(name="radiacao_global")
-@Table(name="radiacao_global")
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name="precipitacao")
+@Table(name="precipitacao")
 @Getter
 @Setter
-@ToString
-public class RadiacaoGlobal {
+@NoArgsConstructor
+@Component
+public class Precipitacao {
 <<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal ragRadiacaoGlobal) {
+	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.ragRadiacaoGlobal=ragRadiacaoGlobal;
+		this.preValor=preValor;
 =======
-	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal radiacao_global) {
+	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal precipitacao) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.radiacao_global=radiacao_global;
+		this.precipitacao=precipitacao;
 >>>>>>> Stashed changes
 	}
->>>>>>> Stashed changes
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "rag_id")
-    private Integer ragId;
-	
-	@Column(name= "rag_radiacao_global")
+	@Column(name= "pre_id")
+	private Integer preId;
+
+	@Column(name= "pre_valor")
 <<<<<<< Updated upstream
-    private BigDecimal ragRadiacaoGlobal;
-<<<<<<< Updated upstream
-	
+    private BigDecimal preValor;
 =======
-=======
-    private BigDecimal radiacao_global;
+    private BigDecimal precipitacao;
 >>>>>>> Stashed changes
 
->>>>>>> Stashed changes
-	@Column(name= "rag_data_hora")
+	@Column(name= "pre_data_hora")
     private Timestamp dataHora;
-	
+
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;

@@ -19,15 +19,48 @@ import lombok.ToString;
 @Setter
 @ToString
 public class TemperaturaOrvalho {
+<<<<<<< Updated upstream
 	
+=======
+	public TemperaturaOrvalho(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+<<<<<<< Updated upstream
+		BigDecimal tdoPonto, 
+=======
+		BigDecimal temperatura_orvalho, 
+>>>>>>> Stashed changes
+		BigDecimal tdoMax,
+		BigDecimal tdoMin
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+<<<<<<< Updated upstream
+		this.tdoPonto=tdoPonto;
+=======
+		this.temperatura_orvalho=temperatura_orvalho;
+>>>>>>> Stashed changes
+		this.tdoMax=tdoMax;
+		this.tdoMin=tdoMin;
+	}
+
+>>>>>>> Stashed changes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "tdo_id")
 	private Integer tdoId;
 	
 	@Column(name= "tdo_ponto")
+<<<<<<< Updated upstream
 	private BigDecimal tdoPonto;
+<<<<<<< Updated upstream
     
+=======
+=======
+	private BigDecimal temperatura_orvalho;
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
 	@Column(name= "tdo_max")
 	private BigDecimal tdoMax;
     
