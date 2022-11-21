@@ -231,14 +231,14 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 <details>
-    <summary>Filtro Data</summary>
+    <summary>Filtro de Data</summary>
     <br>
     <p align="center">
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeCalendario.png">
     </p>
 </details>
 <details>
-    <summary>Filtro Hora</summary>
+    <summary>Filtro de Hora</summary>
     <br>
     <p align="center">
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeHoras.png">
@@ -273,17 +273,17 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 <details>
-    <summary>Usuários</summary>
+    <summary>Novo/Alteração de Usuários</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint3_att_banco/Imagens/Wireframes/GestaoUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
     </p>
 </details>
 <details>
     <summary>Apagar Usuário</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/ApagarUsuario.png">
     </p>
 </details>
 <details>
@@ -294,10 +294,28 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     </p>
 </details>
 
-<h2>DER</h2>
-<p align="center">
-    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Banco/Imagens/Conceitual.png">
-</p>
+<h2>Banco de Dados</h2>
+<details>
+    <summary>Modelo Conceitual</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Conceitual.png">
+    </p>
+</details>
+
+<br>
+
+<details>
+    <summary>Modelo Lógico</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Logico.png">
+    </p>
+</details>
+
+<br>
+
+[Dicionário de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Dicionario%20de%20Dados/Dicionario%20de%20Dados%20-%20P%C3%A1gina1.pdf)
 
 
 <h2>🛠️Arquitetura do Sistema</h2>
