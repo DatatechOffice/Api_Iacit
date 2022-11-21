@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+g<!DOCTYPE html>
 <html lang="pt-br">
 
   <head>
@@ -64,40 +64,52 @@
     <div class="container-xxl position-relative bg-white d-flex">
       <!-- Começo do filtro e relatorios -->
       <div class="content">
-        <!-- Filtro de datas-->
         <div id="filtros" class="container-fluid pt-4 px-4">
-          <!-- Seleção da data que se inicia o relatorio-->
-        <form class="row g-3">
-            <div class="col-md-3">
-              <h4 class="mb-0">Selecione o Período:</h4>
-              <label for="dia">Data inicio:</label>
-              <input type="date" class="form-control"  id="dataInicio" name="dia" />
-            </div>
-          <!-- Seleção da data que se finaliza o relatorio-->
-          <!--Inicio das textbox-->
+          <form autocomplete="off" class="row g-3" >
+            <!-- Seleção da data que se finaliza o relatorio-->
+            <!--Inicio das textbox-->
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Regiões:</h4>
-              <input type="text" class="form-control" placeholder="região" aria-label="região">
+              <input type="text" name="regiao" class="form-control" id="Regiao" placeholder="regiao" aria-label="região" onkeyup="carregar_regiao(this.value)">
+              <spann id="pesquisa_regiao" class="position-absolute"></spann>
+            </div>
+
+            <div class="col-md-3">
+              <h4 class="mb-4">Selecione UF:</h4>
+              <input type="text" name="UF" class="form-control" id="UF" placeholder="unidade federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
+              <spann id="pesquisa_UF" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
-              <h4 class="mb-4">Selecione o Estado:</h4>
-              <input type="text" class="form-control" placeholder="estado" aria-label="estado">
+              <h4 class="mb-4">Selecione a Estação:</h4>
+              <input type="search" name="estacao" class="form-control" id="Estacao" placeholder="estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
+              <spann id="pesquisa_estacao" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Variaveis:</h4>
-              <input type="text" class="form-control" placeholder="variavel" aria-label="variavel">
+              <input type="search" name="variavel" class="form-control" id="Variavel" placeholder="variavel" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
+              <spann id="pesquisa_variavel" class="position-absolute"></spann>
             </div>
-          
             <div class="col-md-3">
-              <label for="dia">Data Fim :</label>
-              <input type="date" class="form-control" id="dataFim" name="dia" />
-            </div>
-           <!--Fim das textbox-->
-          </form>
-          
-          <br>
+              <h4 class="mb-0">Selecione o Período:</h4>
+              <label for="dia">Data inicio:</label>
+              <input type="date" class="form-control"  id="DataInicio" name="dia" />
 
-          <button id="btnEnviarDados" class="btn btn-outline-success"
+              <label for="dia">Data Fim :</label>
+              <input type="date" class="form-control" id="DataFim" name="dia" />
+            </div>
+            <!--Fim das textbox-->
+            </form>
+            <script src="/main.js"></script>
+          
+          <!--Botão responsavel por fazzer a requisição dos filtros-->
+          <br>
+          <button id="filtro" class="btn btn-outline-success"
+          type="submit" onclick="salvarUsuario()">
+          Enviar 
+          </button>
+          <!-- Fim do botão-->
+
+         <button id="btnEnviarDados" class="btn btn-outline-success"
             type="submit" onclick="plotcharts()">
             Buscar dados 
           </button>
@@ -190,16 +202,8 @@
               <th scope="col">Data e Hora</th>
             </tr>
           </thead>
-          <tbody>
-            <tr th:each="temp : ${teste_Temperatura}">
-              <td>[[${temp.est_codigo}]]</td>
-              <td>[[${temp.est_nome_estacao}]]</td>
-              <td>[[${temp.tem_id}]]</td>
-              <td>[[${temp.tem_ar_bulbo_seco}]]</td>
-              <td>[[${temp.tem_max}]]</td>
-              <td>[[${temp.tem_min}]]</td>
-              <td>[[${temp.tem_data_hora}]]</td>
-            </tr>
+          <tbody id="tbody">
+
           </tbody>
         </table>
       </div>

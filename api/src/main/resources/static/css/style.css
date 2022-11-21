@@ -16,7 +16,7 @@
 .header {
     width: 100%;
     position: sticky;
-     top: 0;
+    top: 0;
 }
 
 
@@ -76,7 +76,7 @@
         margin-left: -250px;
     }
 
-    
+
 
     .content.open {
         width: 100%;
@@ -127,4 +127,23 @@
 
 .bootstrap-datetimepicker-widget table td.today::before {
     border-bottom-color: var(--primary);
+}
+
+#plots {
+    margin: auto;
+    background-color: #2e2d2d;
+}
+
+.only-print {
+    display: none !important;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .only-print {
+        display: block !important;
+    }
 }
