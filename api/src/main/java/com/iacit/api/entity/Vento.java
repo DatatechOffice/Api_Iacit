@@ -29,21 +29,13 @@ public class Vento {
 		Timestamp dataHora, 
 		BigDecimal venDirecaoHoraria, 
 		BigDecimal venRajadaMax, BigDecimal
-<<<<<<< Updated upstream
-		venVelocidadeHoraria
-=======
 		vento
->>>>>>> Stashed changes
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.venDirecaoHoraria=venDirecaoHoraria;
 		this.venRajadaMax=venRajadaMax;
-<<<<<<< Updated upstream
-		this.venVelocidadeHoraria=venVelocidadeHoraria;
-=======
 		this.vento=vento;
->>>>>>> Stashed changes
 	}
 
 	@Id
@@ -58,11 +50,7 @@ public class Vento {
 	private BigDecimal venRajadaMax;
 
 	@Column(name= "ven_velocidade_horaria")
-<<<<<<< Updated upstream
-	private BigDecimal venVelocidadeHoraria;
-=======
 	private BigDecimal vento;
->>>>>>> Stashed changes
 
 	@Column(name= "ven_data_hora")
 	private Timestamp dataHora;

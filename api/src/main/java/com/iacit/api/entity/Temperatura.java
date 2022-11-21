@@ -1,6 +1,7 @@
 package com.iacit.api.entity;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,11 +29,7 @@ public class Temperatura {
 	public Temperatura(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-<<<<<<< Updated upstream
-		BigDecimal temArBulboSeco,
-=======
 		BigDecimal temperatura,
->>>>>>> Stashed changes
 		BigDecimal temMax, 
 		BigDecimal temMin
 	) {
@@ -49,12 +46,7 @@ public class Temperatura {
     private Integer temId;
 
 	@Column(name= "tem_ar_bulbo_seco")
-<<<<<<< Updated upstream
-	private BigDecimal temArBulboSeco;
-=======
 	private BigDecimal temperatura;
->>>>>>> Stashed changes
-
 	@Column(name= "tem_max")
 	private BigDecimal temMax;
 

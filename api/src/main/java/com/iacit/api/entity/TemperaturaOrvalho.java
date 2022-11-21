@@ -27,21 +27,13 @@ public class TemperaturaOrvalho {
 	public TemperaturaOrvalho(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-<<<<<<< Updated upstream
-		BigDecimal tdoPonto, 
-=======
-		BigDecimal temperatura_orvalho, 
->>>>>>> Stashed changes
+		BigDecimal temperatura_orvalho,
 		BigDecimal tdoMax,
 		BigDecimal tdoMin
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-<<<<<<< Updated upstream
-		this.tdoPonto=tdoPonto;
-=======
 		this.temperatura_orvalho=temperatura_orvalho;
->>>>>>> Stashed changes
 		this.tdoMax=tdoMax;
 		this.tdoMin=tdoMin;
 	}
@@ -52,12 +44,8 @@ public class TemperaturaOrvalho {
 	private Integer tdoId;
 
 	@Column(name= "tdo_ponto")
-<<<<<<< Updated upstream
-	private BigDecimal tdoPonto;
-=======
 	private BigDecimal temperatura_orvalho;
->>>>>>> Stashed changes
-
+	
 	@Column(name= "tdo_max")
 	private BigDecimal tdoMax;
 

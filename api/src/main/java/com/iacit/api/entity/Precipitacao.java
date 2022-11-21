@@ -24,17 +24,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class Precipitacao {
-<<<<<<< Updated upstream
-	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
-		this.estCodigo=estCodigo;
-		this.dataHora=dataHora;
-		this.preValor=preValor;
-=======
+
 	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal precipitacao) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
 		this.precipitacao=precipitacao;
->>>>>>> Stashed changes
 	}
 
 	@Id
@@ -43,11 +37,7 @@ public class Precipitacao {
 	private Integer preId;
 
 	@Column(name= "pre_valor")
-<<<<<<< Updated upstream
-    private BigDecimal preValor;
-=======
     private BigDecimal precipitacao;
->>>>>>> Stashed changes
 
 	@Column(name= "pre_data_hora")
     private Timestamp dataHora;

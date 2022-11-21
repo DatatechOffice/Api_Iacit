@@ -1,9 +1,6 @@
 package com.iacit.api.controller;
 
-<<<<<<< Updated upstream
-=======
-import java.util.ArrayList;
->>>>>>> Stashed changes
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +51,7 @@ public class AutoCompleteController {
 		)
 		: new ResponseEntity<List<Estacao>>(listEstacao, HttpStatus.BAD_REQUEST);
 	}
-<<<<<<< Updated upstream
-=======
+
 	@GetMapping(value = { "/variavel" })
 	public ResponseEntity<List<String>> listaVariavel() {
 		List<String> listVariavel = List.of("temperatura", "temperatura_orvalho"
@@ -67,5 +63,5 @@ public class AutoCompleteController {
 		)
 		: new ResponseEntity<List<String>>(listVariavel, HttpStatus.BAD_REQUEST);
 	}
->>>>>>> Stashed changes
+
 }
