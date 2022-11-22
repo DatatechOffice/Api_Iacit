@@ -203,23 +203,17 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
 
 <h2>📚User Stories</h2>
 
+* [Banco de Dados]()
+
 * [Persistência de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/PersistenciaDados.md)
 
-* [Filtro de Período e Variável](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/FiltroPeriodoVariavel.md)
-
-* [Filtro de Região, Estado e Estação](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/FiltroRegiaoEstadoEstacao.md)
+* [Filtro de Período e Estação](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/FiltroPeriodoVariavel.md)
 
 * [Gráfico de Linhas](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GraficoLinhas.md)
 
-* [Planilhas](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/Planilhas.md)
-
-* [Armazenamento e Visualização de Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/ArmazenamentoVisualizacaoRelatorios.md)
-
-* [Gestão de Usuário](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GestaoUsuario.md)
+* [Inicialização de Novo Usuário](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GestaoUsuario.md)
 
 * [Login](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/Login.md)
-
-* [Gerenciar Relatórios](https://github.com/DatatechOffice/Api_Iacit/blob/main/Markdown/GerenciarRelatorios.md)
 
 
 <h2>Wireframes</h2>

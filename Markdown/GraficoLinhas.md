@@ -21,8 +21,6 @@ Como funcionário Iacit eu preciso de uma visão dos parâmetros selecionados no
 
 * As informações aparecerão após a confirmação do filtro pelo botão.
 
-* O usuário deverá poder aproximar informações no gráfico após ele ser gerado.
-
 ---
 <br>
 
