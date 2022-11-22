@@ -26,6 +26,7 @@ async function carregar_regiao(valRegiao){
 	}
 	
 }
+
 function get_name_Regiao(name_regiao){
 	document.getElementById("Regiao").value = name_regiao;
 }
@@ -117,13 +118,13 @@ async function carregar_variavel(valvariavel){
 	if(valvariavel.length >= 1){
 		
 		
-		$.getJSON("/variavel", function(variavelJson) {
+		$.getJSON("/regiao", function(variavelJson) {
 
 				var html = "<ul class='list-group' position-fixed>";
 				for(let i = 0; i < variavelJson.length; i++){
-					if(variavelJson[i].toLowerCase().startsWith(valvariavel.toLowerCase())){
-						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i])
-						+")'>" + variavelJson[i] + "</li>";
+					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
+						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla)
+						+")'>" + variavelJson[i].regSigla + "</li>";
 					}
 				}
 				html += "</ul>";
@@ -151,35 +152,7 @@ document.addEventListener('click', function(eventvariavel){
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------Botão de Filtros GRafico-------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
-function filtra(){
-	
-	//Recebendo as informações dos filtros e armazenando em variaveis
-	var vRegiao = $("#Regiao").val();
-	var vUF = $("#UF").val();
-	var vVariavel = $("#Variavel").val();
-	var vDataInicio = $("#DataInicio").val();
-	var vDataFim = $("#DataFim").val();
-	var vEstacao = $("#Estacao").val();
-	debugger;
-	//Função ajax de atribuição do front para uma classe no java
-	$.ajax({
-		method: "POST", //Especificando qual o metodo
-		url: "/"+vVariavel, //Definindo a url que conecta no mapeamento
-		//Passando os atribuyos da classe e quais variaveis representa eles no front
-		dataJson: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
-		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
-		//Alerta de sucesso ou falha no envio do JSON
-		success: function (dataJson){
-			alert("Salvo com Sucesso!");
-			
-			plotcharts(dataJson);
-			
-
-		}
-	}).fail(function(xhr, status, errorThrow){
-		alert("Erro ao Salvar: " + xhr.responseText);
-	});
-			
+function filtra(){		
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------
@@ -221,60 +194,124 @@ function filtra(){
 		
 		});
 
-
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a Grafico--------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 
 	//Pegando o elemnento canvas do HTML pelo id
 	
+	/*
+	$.getJSON("/regiao", function(DataGrafico) {
+	console.log(DataGrafico);
 
+	 //Status que fica na linha y
+	//var labels = DataGrafico.map(function(e) {
+		//return e.regSigla;
+	// });
 
-	}
+	 //Status que fica na linha y
+	 //var data = DataGrafico.map(function(e) {
+	//	return e.regId;
+	// });
 
-
-
-function plotcharts(dataJson){
+	    // setup 
+		const data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			datasets: [{
+			  label: 'Maxima',
+			  data: [18, 12, 6, 9, 12, 3, 9],
+			  backgroundColor: 'white',
+			  borderColor: 'rgba(0,0,255)',
+			  tension: 0.5,
+			},{
+				label: 'Minima',
+				data: [10, 5, 3, 7, 4, 3, 1],
+				backgroundColor: 'White',
+				borderColor: 'rgba(255,0,0)',
+				tension: 0.5,
+			  }]
+		  };
+	  
+		  // config 
+		  const config = {
+			type: 'line',
+			data,
+			options: {
+			  scales: {
+				y: {
+				  beginAtZero: true
+				}
+			  }
+			}
+		  };
+	  
+		  // render init block
+		  const myChart = new Chart(
+			document.getElementById('plots'),
+			config
+		  );		
+	});	*/
+	
+	
+	//Recebendo as informações dos filtros e armazenando em variaveis
+	var vRegiao = $("#Regiao").val();
+	var vUF = $("#UF").val();
+	var vVariavel = $("#Variavel").val();
+	var vDataInicio = $("#DataInicio").val();
+	var vDataFim = $("#DataFim").val();
+	var vEstacao = $("#Estacao").val();
+	debugger;
+	//Função ajax de atribuição do front para uma classe no java
+	$.ajax({
+		method: "POST", //Especificando qual o metodo
+		url: "/temperatura", //Definindo a url que conecta no mapeamento
+		//Passando os atribuyos da classe e quais variaveis representa eles no front
+		data: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
+		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
+		//Alerta de sucesso ou falha no envio do JSON
+		success: function (data){
+			alert("Salvo com Sucesso!");
+			plotcharts(data);
+			
+			
+			
+			
+			/*function plotcharts(){
+            	
+              var apiUrl = data;
+              var datas=[];
+              var valor=[];
+              fetch(apiUrl).then(response => {
+                return response.json();
+              }).then(data => {
+                for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
+                }
+                //For Line chart
+                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
+                drawchart(dataset, datas, 'line');
+              }).catch(err => {
+                console.log(err);
+              });
+          }*/
+		}
+	}).fail(function(xhr, status, errorThrow){
+		alert("Erro ao Salvar: " + xhr.responseText);
+	});
+	
+function plotcharts(data){
+			console.log(data[1].temperatura);
 			var datas=[];
             var valor=[];
-			for(let i =0; i <dataJson.length;i++){
-                  datas.push(dataJson[i]['dataHora']);
-                  valor.push(parseInt(dataJson[i][vVariavel]));
+			for(let i =0; i <data.length;i++){
+                  datas.push(data[i]['dataHora']);
+                  valor.push(parseInt(data[i]['temMax']));
                 }
-				const data = {
-					labels: datas,
-					datasets: [{
-					  label: vVariavel,
-					  data: valor,
-					  backgroundColor: 'white',
-					  borderColor: 'rgba(0,0,255)',
-					  tension: 0.5,
-					},{
-						label: vVariavel,
-						data: valor,
-						backgroundColor: 'White',
-						borderColor: 'rgba(255,0,0)',
-						tension: 0.5,
-					  }]
-				  };
-			  
-				  // config 
-				  const config = {
-					type: 'line',
-					data,
-					options: {
-					  scales: {
-						y: {
-						  beginAtZero: true
-						}
-					  }
-					}
-				  };
-			  
-				  // render init block
-				  const myChart = new Chart(
-					document.getElementById('plots'),
-					config
-				  );		
+			//For Line chart
+			dataset=addData(vVariavel, valor, 'black', 'green');
+                drawchart(dataset, datas, 'line');
                 }
-            
+	
+	
+}
