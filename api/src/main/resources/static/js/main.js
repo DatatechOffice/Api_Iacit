@@ -117,13 +117,13 @@ async function carregar_variavel(valvariavel){
 	if(valvariavel.length >= 1){
 		
 		
-		$.getJSON("/regiao", function(variavelJson) {
+		$.getJSON("/variavel", function(variavelJson) {
 
 				var html = "<ul class='list-group' position-fixed>";
 				for(let i = 0; i < variavelJson.length; i++){
-					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
-						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla)
-						+")'>" + variavelJson[i].regSigla + "</li>";
+					if(variavelJson[i].toLowerCase().startsWith(valvariavel.toLowerCase())){
+						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i])
+						+")'>" + variavelJson[i] + "</li>";
 					}
 				}
 				html += "</ul>";
