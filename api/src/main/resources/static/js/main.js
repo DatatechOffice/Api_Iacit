@@ -47,7 +47,6 @@ async function carregar_UF(valUF){
 	if(valUF.length >= 1){
 		
 		$.getJSON("/estado", function(UFJson) {
-			console.log(UFJson);
 	
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < UFJson.length; i++){
@@ -118,13 +117,13 @@ async function carregar_variavel(valvariavel){
 	if(valvariavel.length >= 1){
 		
 		
-		$.getJSON("/regiao", function(variavelJson) {
+		$.getJSON("/variavel", function(variavelJson) {
 
 				var html = "<ul class='list-group' position-fixed>";
 				for(let i = 0; i < variavelJson.length; i++){
-					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
-						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla)
-						+")'>" + variavelJson[i].regSigla + "</li>";
+					if(variavelJson[i].toLowerCase().startsWith(valvariavel.toLowerCase())){
+						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i])
+						+")'>" + variavelJson[i] + "</li>";
 					}
 				}
 				html += "</ul>";
@@ -264,7 +263,7 @@ function filtra(){
 	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
 		method: "POST", //Especificando qual o metodo
-		url: "/temperatura", //Definindo a url que conecta no mapeamento
+		url: "/"+vVariavel, //Definindo a url que conecta no mapeamento
 		//Passando os atribuyos da classe e quais variaveis representa eles no front
 		data: JSON.stringify({regiao : vRegiao , estado : vUF , variavel : vVariavel , dataInicio : vDataInicio , dataFim : vDataFim, estacao : vEstacao}), 
 		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
@@ -299,19 +298,54 @@ function filtra(){
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
-	
+ 
+		
 function plotcharts(data){
-			console.log(data[1].temperatura);
+			
 			var datas=[];
             var valor=[];
 			for(let i =0; i <data.length;i++){
                   datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
+                  valor.push(parseInt(data[i][vVariavel]));
                 }
-			//For Line chart
-			dataset=addData(vVariavel, valor, 'black', 'green');
-                drawchart(dataset, datas, 'line');
-                }
+                console.log(datas);
+			console.log(valor);
+			const dataJS = {
+			labels: datas,
+			datasets: [{
+			  label: "Maxima"+vVariavel,
+			  data: valor,
+			  backgroundColor: 'white',
+			  borderColor: 'rgba(0,0,255)',
+			  tension: 0.5,
+			},{
+				label: "Minima"+vVariavel,
+				data: valor,
+				backgroundColor: 'White',
+				borderColor: 'rgba(255,0,0)',
+				tension: 0.5,
+			  }]
+		  };
+	  
+		  // config 
+		  const config = {
+			type: 'line',
+			data,
+			options: {
+			  scales: {
+				y: {
+				  beginAtZero: true
+				}
+			  }
+			}
+		  };
+	  
+		  // render init block
+		  const myChart = new Chart(
+			document.getElementById('plots'),
+			config
+		  );		
+	};
 	
 	
 }
