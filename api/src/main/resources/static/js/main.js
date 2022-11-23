@@ -275,8 +275,54 @@ function filtra(){
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
 	});
- 
-		
+}
+ function plotcharts(dataJS){
+			var datas=[];
+            var valor=[];
+			for(let i =0; i <dataJS.length;i++){
+                  datas.push(dataJS[i]['dataHora']);
+                  valor.push(parseInt(dataJS[i]['temperatura']));
+                }
+                console.log(datas);
+			console.log(valor);
+			const data = {
+			labels: datas,
+			datasets: [{
+			  label: "Maxima ",
+			  data: valor,
+			  backgroundColor: 'white',
+			  borderColor: 'rgba(0,0,255)',
+			  tension: 0.5,
+			}]/*,{
+				label: "Minima ",
+				data: [dataJS.tem_min],
+				backgroundColor: 'White',
+				borderColor: 'rgba(255,0,0)',
+				tension: 0.5,
+			  }*/
+		  };
+	  
+		  // config 
+		  const config = {
+			type: 'line',
+			data,
+			options: {
+			  scales: {
+				y: {
+				  beginAtZero: true
+				}
+			  }
+			}
+		  };
+	  
+		  // render init block
+		  const myChart = new Chart(
+			document.getElementById('plots'),
+			config
+		  );		
+	};
+
+/*		
 function plotcharts(data){
 			
 			var datas=[];
@@ -325,4 +371,5 @@ function plotcharts(data){
 	};
 	
 	
-}
+}}
+*/
