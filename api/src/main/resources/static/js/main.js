@@ -259,7 +259,6 @@ function filtra(){
 	var vDataInicio = $("#DataInicio").val();
 	var vDataFim = $("#DataFim").val();
 	var vEstacao = $("#Estacao").val();
-	debugger;
 	//Função ajax de atribuição do front para uma classe no java
 	$.ajax({
 		method: "POST", //Especificando qual o metodo
@@ -271,29 +270,7 @@ function filtra(){
 		success: function (data){
 			alert("Salvo com Sucesso!");
 			plotcharts(data);
-			
-			
-			
-			
-			/*function plotcharts(){
-            	
-              var apiUrl = data;
-              var datas=[];
-              var valor=[];
-              fetch(apiUrl).then(response => {
-                return response.json();
-              }).then(data => {
-                for(let i =0; i <data.length;i++){
-                  datas.push(data[i]['dataHora']);
-                  valor.push(parseInt(data[i]['temMax']));
-                }
-                //For Line chart
-                dataset=addData('TEMPERATURA MÍNIMA NA HORA ANT. (AUT) (°C)', 'black', 'green');
-                drawchart(dataset, datas, 'line');
-              }).catch(err => {
-                console.log(err);
-              });
-          }*/
+
 		}
 	}).fail(function(xhr, status, errorThrow){
 		alert("Erro ao Salvar: " + xhr.responseText);
