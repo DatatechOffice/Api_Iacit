@@ -11,10 +11,10 @@
 * [Personas](#personas)
 * [User Stories](#user-stories)
 * [Wireframes](#wireframes)
-* [DER](#der)
+* [Banco de Dados](#banco-de-dados)
 * [Arquitetura do Sistema](#arquitetura-do-sistema)
-* [Caminhos do Usuário](#caminhos-do-usuario)
 * [Burndown](#burndown)
+* [Utilização da Plataforma](#utilização-da-plataforma)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 
 
@@ -221,70 +221,28 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Tela Home</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/Home.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Imagens/Wireframes/Home.png">
     </p>
 </details>
 <details>
     <summary>Filtro de Data</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeCalendario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Imagens/Wireframes/HomeCalendario.png">
     </p>
 </details>
 <details>
-    <summary>Filtro de Hora</summary>
+    <summary>Cadastro de Usuário</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeHoras.png">
-    </p>
-</details>
-<details>
-    <summary>Navegação do Usuario</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeUsuario.png">
-    </p>
-</details>
-<details>
-    <summary>Navegação do ADM</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/HomeAdm.png">
-    </p>
-</details>
-<details>
-    <summary>Relatórios</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/VisualizacaoRelatorio.png">
-    </p>
-</details>
-<details>
-    <summary>Apagar Relatório</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/ApagarRelatorio.png">
-    </p>
-</details>
-<details>
-    <summary>Novo/Alteração de Usuários</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/GestaoUsuario.png">
-    </p>
-</details>
-<details>
-    <summary>Apagar Usuário</summary>
-    <br>
-    <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/ApagarUsuario.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Imagens/Wireframes/Cadastro.png">
     </p>
 </details>
 <details>
     <summary>Login</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Wireframes/Login.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Imagens/Wireframes/Login.png">
     </p>
 </details>
 
@@ -317,12 +275,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Arquitetura%20do%20Sistema.png">
 </p>
 
-
-<h2> 🛣 Caminhos do Usuario</h2>
-<p align="center">
-    <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint2/Imagens/Cards/Caminhos%20do%20Usuario.png">
-</p>
-
+<br>
 
 <h2>🔥Burndown</h2>
 <details>
@@ -332,7 +285,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndowns/Burndown_1.png">
     </p>
 </details>
-
+ 
 <br>
 
 <details>
@@ -350,6 +303,16 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <br>
     <p align="center">
         <img src="https://github.com/DatatechOffice/Api_Iacit/blob/main/Imagens/Burndowns/Burndown_3.png">
+    </p>
+</details>
+
+
+<h2> Utilização da Plataforma</h2>
+<details>
+    <summary>Caminhos do Usuario</summary>
+    <br>
+    <p align="center">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Imagens/Cards/Caminhos%20do%20Usuario.png">
     </p>
 </details>
 
