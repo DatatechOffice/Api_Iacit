@@ -1,5 +1,6 @@
 package com.iacit.api.entity;
 
+import javax.annotation.Nonnull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +22,13 @@ import lombok.Setter;
 @Component
 public class Usuario {
     public Usuario(
-        String usuLogin,
-        String usuSenha,
-        String usuEmail
+        @Nonnull String usuNome,
+        @Nonnull String usuEmail,
+        @Nonnull String usuSenha
     ) {
-        this.usuLogin = usuLogin;
-        this.usuSenha = usuSenha;
+        this.usuNome = usuNome;
         this.usuEmail = usuEmail;
+        this.usuSenha = usuSenha;
     }
 
     @Id
@@ -35,12 +36,15 @@ public class Usuario {
 	@Column(name= "usu_id")
 	private Integer usuId;
 
-	@Column(name= "usu_login")
-	private String usuLogin;
+    @Nonnull
+	@Column(name= "usu_nome")
+	private String usuNome;
 
-	@Column(name= "usu_senha")
-	private  String usuSenha;
-
+    @Nonnull
 	@Column(name= "usu_email")
 	private  String usuEmail;
+
+    @Nonnull
+	@Column(name= "usu_senha")
+	private  String usuSenha;
 }

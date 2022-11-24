@@ -30,9 +30,9 @@ CREATE TABLE regiao (
 
 CREATE TABLE usuario (
     usu_id SERIAL PRIMARY KEY,
-    usu_login VARCHAR(20) NOT NULL,
+    usu_nome VARCHAR(20) NOT NULL,
+    usu_email VARCHAR(100) UNIQUE NOU NULL,
     usu_senha VARCHAR(20) NOT NULL,
-    usu_email VARCHAR(100) UNIQUE,
 );
 
 CREATE TABLE temperatura (

@@ -1,3 +1,21 @@
+<?php
+    if(isset($_POST['submit'])) {
+        include_once('conexao.php');
+
+        $inputNome = $_POST['inputNome'];
+        $inputEmail = $_POST['inputEmail'];
+        $inputPassword = $_POST['inputPassword'];
+
+        $result = postgres_query(
+            $conexao, "INSERT INTO usuario(
+                usu_nome, usu_email, usu_senha
+            ) VALUES(
+                '$inputNome', '$inputEmail', '$inputPassword'
+            )"
+        );
+    }
+?>
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -64,7 +82,7 @@
             <!-- Final do Div das opções do menu -->
             <br><br>
         </header>
-        <div class="cadastro">
+        <div class="cadastro" action="cadastro.php" method="POST"> 
             <form class="row g-3">
                 <h1 class="text-center">Cadastro de Usuário</h1>
                 <div class="col-12">
@@ -86,15 +104,10 @@
                         name="inputRepeatPassword" id="inputRepeatPassword"
                     >
                 </div>
-                <div class="col-md-4">
-                    <label for="inputNivel" class="form-label">Nivel de usuário</label>
-                    <select id="inputNivel" class="form-select">
-                        <option selected>Administrador</option>
-                        <option>Comum</option>
-                    </select>
-                </div>
                 <div class="col-12">
-                    <button id="buttonCad" type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button id="buttonCad" name="submit" type="submit" class="btn btn-primary">
+                        Cadastrar
+                    </button>
                 </div>
             </form>
         </div>
