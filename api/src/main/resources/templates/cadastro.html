@@ -46,11 +46,15 @@
                                     Menu
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Configurações de Usuário</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Configurações de Usuário</a>
+                                    </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="../templates/login.html">Logout</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="../templates/login.html">Logout</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -65,19 +69,22 @@
                 <h1 class="text-center">Cadastro de Usuário</h1>
                 <div class="col-12">
                     <label for="inputNome" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" id="inputNome">
+                    <input type="text" class="form-control" name="inputNome" id="inputNome">
                 </div>
                 <div class="col-12">
                     <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <input type="email" class="form-control" name="inputEmail" id="inputEmail">
                 </div>
                 <div class="col-md-4">
                     <label for="inputPassword" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="inputPassword">
+                    <input type="password" class="form-control" name="inputPassword" id="inputPassword">
                 </div>
                 <div class="col-md-4">
                     <label for="inputRepeatPassword" class="form-label">Repetir Senha</label>
-                    <input type="password" class="form-control" id="inputRepeatPassword">
+                    <input
+                        type="password" class="form-control" 
+                        name="inputRepeatPassword" id="inputRepeatPassword"
+                    >
                 </div>
                 <div class="col-md-4">
                     <label for="inputNivel" class="form-label">Nivel de usuário</label>
