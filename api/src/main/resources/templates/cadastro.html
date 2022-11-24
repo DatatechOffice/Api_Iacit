@@ -1,21 +1,3 @@
-<?php
-    if(isset($_POST['submit'])) {
-        include_once('conexao.php');
-
-        $inputNome = $_POST['inputNome'];
-        $inputEmail = $_POST['inputEmail'];
-        $inputPassword = $_POST['inputPassword'];
-
-        $result = postgres_query(
-            $conexao, "INSERT INTO usuario(
-                usu_nome, usu_email, usu_senha
-            ) VALUES(
-                '$inputNome', '$inputEmail', '$inputPassword'
-            )"
-        );
-    }
-?>
-
 <!doctype html>
 <html lang="pt-br">
     <head>
