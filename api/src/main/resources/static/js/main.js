@@ -3,28 +3,20 @@
 //------------------------------------------------------------------------------------Regiao--------------------------------------------------------------------------------
 async function carregar_regiao(valRegiao){
 	if(valRegiao.length >= 1){
-		
 		$.getJSON("/regiao", function(RegiaoJson) {
-		
 			var html = "<ul class='list-group' position-fixed>";
-
-			for(let i = 0; i < RegiaoJson.length; i++){
-				
+			for(let i = 0; i < RegiaoJson.length; i++){			
 				if(RegiaoJson[i].regSigla.toLowerCase().startsWith(valRegiao.toLowerCase())){
 					html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].regSigla)+
 					")'>" + RegiaoJson[i].regSigla + "</li>";
 				}
 			}
 			html += "</ul>";
-
 			document.getElementById('pesquisa_regiao').innerHTML = html;
-
-	});
-		
+		});
 	}else{
 		document.getElementById('pesquisa_regiao').innerHTML = '';
 	}
-	
 }
 
 function get_name_Regiao(name_regiao){
@@ -45,10 +37,8 @@ document.addEventListener('click', function(eventReg){
 
 async function carregar_UF(valUF){
 	if(valUF.length >= 1){
-		
 		$.getJSON("/estado", function(UFJson) {
 			console.log(UFJson);
-	
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < UFJson.length; i++){
 				if(UFJson[i].etdUnidadeFederativa.toLowerCase().startsWith(valUF.toLowerCase())){
@@ -59,7 +49,6 @@ async function carregar_UF(valUF){
 			html += "</ul>";
 			document.getElementById('pesquisa_UF').innerHTML = html;
 			});
-
 	}else{
 		document.getElementById('pesquisa_UF').innerHTML = '';
 	}
@@ -82,9 +71,7 @@ document.addEventListener('click', function(eventUF){
 //----------------------------------------------------------------------------------Estacação--------------------------------------------------------------------------------
 async function carregar_estacao(valestacao){
 	if(valestacao.length >= 1){
-
 		$.getJSON("/estacao", function(estacaoJson) {
-
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < estacaoJson.length; i++){
 				if(estacaoJson[i].estNomeEstacao.toLowerCase().startsWith(valestacao.toLowerCase())){
@@ -116,10 +103,7 @@ document.addEventListener('click', function(eventestacao){
 //------------------------------------------------------------------------------------Variavel-------------------------------------------------------------------------------
 async function carregar_variavel(valvariavel){
 	if(valvariavel.length >= 1){
-		
-		
 		$.getJSON("/regiao", function(variavelJson) {
-
 				var html = "<ul class='list-group' position-fixed>";
 				for(let i = 0; i < variavelJson.length; i++){
 					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
@@ -130,7 +114,6 @@ async function carregar_variavel(valvariavel){
 				html += "</ul>";
 				document.getElementById('pesquisa_variavel').innerHTML = html;
 		});
-
 	}else{
 		document.getElementById('pesquisa_variavel').innerHTML = '';
 	}	
@@ -160,8 +143,7 @@ function filtra(){
 	var corpoTabela = document.querySelector('tbody');
 
 	$.getJSON("/estacao", function(DataTabela) {
-		
-		 for (let i = 0; i < DataTabela.length; i++){
+		for (let i = 0; i < DataTabela.length; i++){
 			if(DataTabela[i].estNomeEstacao.toLowerCase().startsWith(Reg.toLowerCase())){
 				var tr= document.createElement('tr');
 				var tdCodigo= document.createElement('td');
@@ -188,16 +170,12 @@ function filtra(){
 				tr.appendChild(tdTempMin);
 				tr.appendChild(tdDataH);
 				corpoTabela.appendChild(tr);
-	
 			};
 		}
-		
-		});
-
+	});
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a Grafico--------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------
-
 	//Pegando o elemnento canvas do HTML pelo id
 	
 	$.getJSON("/regiao", function(DataGrafico) {
@@ -217,37 +195,35 @@ function filtra(){
 		const data = {
 			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 			datasets: [{
-			  label: 'Maxima',
-			  data: [18, 12, 6, 9, 12, 3, 9],
-			  backgroundColor: 'white',
-			  borderColor: 'rgba(0,0,255)',
-			  tension: 0.5,
+				label: 'Maxima',
+				data: [18, 12, 6, 9, 12, 3, 9],
+				backgroundColor: 'white',
+				borderColor: 'rgba(0,0,255)',
+				tension: 0.5,
 			},{
 				label: 'Minima',
 				data: [10, 5, 3, 7, 4, 3, 1],
 				backgroundColor: 'White',
 				borderColor: 'rgba(255,0,0)',
 				tension: 0.5,
-			  }]
-		  };
-	  
+			}]
+		};
 		  // config 
-		  const config = {
+		const config = {
 			type: 'line',
 			data,
 			options: {
-			  scales: {
-				y: {
-				  beginAtZero: true
+				scales: {
+					y: {
+						beginAtZero: true
+					}
 				}
-			  }
 			}
-		  };
-	  
+		};
 		  // render init block
-		  const myChart = new Chart(
+		const myChart = new Chart(
 			document.getElementById('plots'),
 			config
-		  );		
+		);		
 	});	
 }
