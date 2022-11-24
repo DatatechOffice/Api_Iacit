@@ -1,6 +1,10 @@
 package com.iacit.api.controller;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,30 +22,53 @@ public class UsuarioController {
 	private ServiceUsuario serviceUsuario;
 
 	// CREATE
-
-	
-	@PostMapping
-	public void create(@RequestBody Usuario usuario) {
-		serviceUsuario.save(usuario);
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> create(@RequestBody Usuario usuario) {
+		return serviceUsuario.save(usuario) ? new ResponseEntity<Void>(HttpStatus.CREATED)
+				: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 
 	// READ
-
 	// Traz todos os usuarios
-	/*
-	 * @RequestMapping(value = "/Usuario", method = RequestMethod.GET) public List
-	 * findAll() { return (List) repository.findAll(); }
-	 */
+	@PostMapping(value = "/Usuario")
+	public List findAll() {
+		return (List) serviceUsuario.findAll();
+	}
 
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> read(@RequestBody Usuario usuario) {
+		serviceUsuario.returnUsuario(usuario.getUsuarioLogin(), usuario.getUsuarioSenha());
+		
+		Usuario usuarioRead = serviceUsuario.returnUsuario(usuario.getUsuarioLogin(), usuario.getUsuarioSenha());
+		
+		
+		return usuarioRead  != null ? new ResponseEntity<Void>(HttpStatus.ACCEPTED)
+				:new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		
+		/*
+		 * return serviceUsuario.save(usuario) ? new
+		 * ResponseEntity<Void>(HttpStatus.CREATED) : new
+		 * ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		 */
+	}
+	
+	
 	// Usuario Especifico
-	// @RequestMapping(path = {"/{id}"})
 	/*
-	 * public ResponseEntity findById(@PathVariable long id){ return
-	 * repository.findById(id) .map(record -> ResponseEntity.ok().body(record))
+	 * @RequestMapping(path = {"/{id}"}) public ResponseEntity
+	 * findById(@PathVariable long id) { return
+	 * serviceUsuario.findById(id).map(record -> ResponseEntity.ok().body(record))
 	 * .orElse(ResponseEntity.notFound().build());
+	 * 
+	 * }
 	 */
-	// }
 
+	
+	
+	
+	
+	
 	// UPDATE
 
 	/*

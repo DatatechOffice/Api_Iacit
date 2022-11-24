@@ -1,8 +1,8 @@
 package com.iacit.api.service;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.iacit.api.entity.Usuario;
 import com.iacit.api.repository.UsuarioRepository;
@@ -15,33 +15,42 @@ public class ServiceUsuario {
 
 	public Usuario returnUsuario(String nome, String senha) {
 		// usuarioRepository.findByest_Nome_Senha_Usuario();
-		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario();
-		if( user.getUsuarioLogin().isEmpty() && user.getUsuarioSenha().isEmpty())
-		{
-			
-		}
-		else
-		{
+		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario(nome,senha);
+		if (user.getUsuarioLogin().isEmpty() && user.getUsuarioSenha().isEmpty()) {
+
+		} else {
 			user.getUsuarioAcesso();
 		}
 		return user;
 
-		
 	}
+	
+	/*
+	 * public ResponseEntity findById(@PathVariable long id){ return
+	 * repository.findById(id) .map(record -> ResponseEntity.ok().body(record))
+	 * .orElse(ResponseEntity.notFound().build());
+	 * 
+	 * }
+	 */
+	
+	
 
-	
-	
-	public boolean save (Usuario usuario) {
-		
+	public boolean save(Usuario usuario) {
+
 		Usuario saveUsuario = usuarioRepository.save(usuario);
-		 return saveUsuario != null && saveUsuario.getUsuarioId() !=null;
+		return saveUsuario != null && saveUsuario.getUsuarioId() != null;
+	}
+	
+	
+	
+	public List findAll() {
+		return (List) usuarioRepository.findAll(); 
 		}
 	
 	
 	
 	
-		
 	
 	
-	
+
 }
