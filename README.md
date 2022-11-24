@@ -251,7 +251,7 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Modelo Conceitual</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Conceitual.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Banco/Imagens/Conceitual.png">
     </p>
 </details>
 
@@ -261,13 +261,13 @@ Criar um website com as informações do Instituto Nacional de Meteorologia - IN
     <summary>Modelo Lógico</summary>
     <br>
     <p align="center">
-        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Imagens/Logico.png">
+        <img src="https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Banco/Imagens/Logico.png">
     </p>
 </details>
 
 <br>
 
-[Dicionário de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/sprint4_att_banco/Banco/Dicionario%20de%20Dados/Dicionario%20de%20Dados%20-%20P%C3%A1gina1.pdf)
+[Dicionário de Dados](https://github.com/DatatechOffice/Api_Iacit/blob/Sprint4/Banco/Dicionario%20de%20Dados/Dicionario%20de%20Dados%20-%20P%C3%A1gina1.pdf)
 
 
 <h2>🛠️Arquitetura do Sistema</h2>
