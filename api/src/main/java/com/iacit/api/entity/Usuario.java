@@ -13,34 +13,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="usuario")
-@Table(name="usuario")
+@Entity(name = "usuario")
+@Table(name = "usuario")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 
 public class Usuario {
-	
+
+	public Usuario(String nome, String senha, boolean acesso) {
+
+		this.usuarioLogin = nome;
+		this.usuarioSenha = senha;
+		this.usuarioAcesso = acesso;
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "usu_Id")
-    private Integer usuarioId;
+	@Column(name = "usu_Id")
+	private Integer usuarioId;
 
-	
-	@Column(name= "usu_Login", length = 50)
+	@Column(name = "usu_Login", length = 50)
 	private String usuarioLogin;
 
-	@Column(name= "usu_Senha")
+	@Column(name = "usu_Senha")
 	private String usuarioSenha;
 
-	@Column(name= "usu_Acesso")
+	@Column(name = "usu_Acesso")
 	private Boolean usuarioAcesso;
-	
-	
-
-	
-
-	
 
 }

@@ -13,9 +13,11 @@ public class ServiceUsuario {
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
 
-	public Usuario returnUsuario(String nome, String senha) {
-		// usuarioRepository.findByest_Nome_Senha_Usuario();
-		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario(nome,senha);
+	
+	//Retun de usuario
+	public Usuario returnUsuario(String nome, String senha, Boolean acesso) {
+		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario(nome, senha,acesso);
+
 		if (user.getUsuarioLogin().isEmpty() && user.getUsuarioSenha().isEmpty()) {
 
 		} else {
@@ -24,33 +26,17 @@ public class ServiceUsuario {
 		return user;
 
 	}
-	
-	/*
-	 * public ResponseEntity findById(@PathVariable long id){ return
-	 * repository.findById(id) .map(record -> ResponseEntity.ok().body(record))
-	 * .orElse(ResponseEntity.notFound().build());
-	 * 
-	 * }
-	 */
-	
-	
 
-	public boolean save(Usuario usuario) {
+	//Salvar o usuario ou seja cadastrar
+	public boolean save(String nome, String senha, boolean acesso) {
 
+		Usuario usuario = new Usuario(nome, senha, acesso);
 		Usuario saveUsuario = usuarioRepository.save(usuario);
 		return saveUsuario != null && saveUsuario.getUsuarioId() != null;
 	}
-	
-	
-	
+
 	public List findAll() {
-		return (List) usuarioRepository.findAll(); 
-		}
-	
-	
-	
-	
-	
-	
+		return (List) usuarioRepository.findAll();
+	}
 
 }
