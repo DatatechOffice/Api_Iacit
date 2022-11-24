@@ -83,16 +83,13 @@
               <input type="search" name="UF" class="form-control" id="UF" placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
               <spann id="pesquisa_UF" class="position-absolute"></spann>
             </div>
+            
             <div class="col-md-3">
               <h4 class="mb-4">Selecione a Estação:</h4>
               <input type="search" name="estacao" class="form-control" id="Estacao" placeholder="Estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
               <spann id="pesquisa_estacao" class="position-absolute"></spann>
             </div>
-            <div class="col-md-3">
-              <h4 class="mb-4">Selecione as Variaveis:</h4>
-              <input type="search" name="variavel" class="form-control" id="Variavel" placeholder="Variável" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
-              <spann id="pesquisa_variavel" class="position-absolute"></spann>
-            </div>
+
             <div class="col-md-3">
               <h4 class="mb-0">Selecione o Período:</h4>
               <label for="dia">Data inicio:</label>
@@ -103,14 +100,7 @@
             </div>
             <!--Fim das textbox-->
             </form>
-          
-          <!--Botão responsavel por fazer a requisição dos filtros-->
-          <br>
-          <button id="filtro" class="btn btn-outline-success"
-          type="submit" onclick="filtra()">
-          Consultar 
-          </button>
-          <!-- Fim do botão-->
+        
         </div>
 
         <br>
@@ -122,6 +112,17 @@
           <script src="/main.js"></script>
         </div>
 
+        <div class="form-group col-md-3">
+          <label>Variavel</label>
+          <select id="dataCourse" class="input-large form-control">
+
+              <option value="0" selected="selected">Escolha a variavel</option>
+              <option value="1" >Temperatura</option>
+              <option value="2" >Vento</option>
+
+          </select>
+         </div>
+         <br>
         <button onclick="window.print()" class="btn btn-outline-success no-print"><i
           class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório
         </button>
@@ -129,6 +130,14 @@
         <div id="relatorio"></div>
 
         <br>
+
+           <!--Botão responsavel por fazer a requisição das tabelas-->
+           <br>
+           <button id="filtro" class="btn btn-outline-success"
+           type="submit" onclick="tabela()">
+          Gerar Tabela
+           </button>
+           <!-- Fim do botão--> 
 
         <table class="table table-striped" cellspacing="0" cellpadding="0">
           <thead>
