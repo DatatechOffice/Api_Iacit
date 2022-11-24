@@ -34,7 +34,7 @@ public class Usuario {
 	private String usuarioLogin;
 
 	@Column(name= "usu_Senha")
-	private Timestamp usuarioSenha;
+	private String usuarioSenha;
 
 	@Column(name= "usu_Acesso")
 	private Boolean usuarioAcesso;

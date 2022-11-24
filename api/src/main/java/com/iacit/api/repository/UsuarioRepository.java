@@ -12,7 +12,7 @@ public interface UsuarioRepository  extends JpaRepository <Usuario,Integer> {
 			nativeQuery = true
 		)
 	
-		public Usuario findByest_codigoAndTOrv_data_hora();
+		public Usuario findByest_Nome_Senha_Usuario();
 }
 
 
