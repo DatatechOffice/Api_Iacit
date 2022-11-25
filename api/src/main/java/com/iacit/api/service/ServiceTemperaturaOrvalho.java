@@ -16,10 +16,16 @@ import com.iacit.api.repository.TemperaturaOrvalhoRepository;
 public class ServiceTemperaturaOrvalho {
 	@Autowired(required=true) 
 	private TemperaturaOrvalhoRepository orvalhoRepository;
+	
+	@Autowired(required = true)
+	private ServiceEstacao serviceEstacao;
 
-	public List<TemperaturaOrvalho> getByFilter(String dataInicial, String dataFinal) throws ParseException {
+	public List<TemperaturaOrvalho> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
+		
+		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
+		
 		List<TemperaturaOrvalho> entidades = orvalhoRepository.findByest_codigoAndTOrv_data_hora(
-			"A001",
+			idEstacao.getEstCodigo(),
 			Timestamp.valueOf(dataInicial+" 00:00:00"),
 			Timestamp.valueOf(dataFinal+" 00:00:00")
 		);

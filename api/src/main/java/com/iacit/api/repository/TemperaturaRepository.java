@@ -18,6 +18,4 @@ public interface TemperaturaRepository extends JpaRepository<Temperatura, Intege
 		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
 	);
 	
-	@Query(value = "DELETE FROM temperatura WHERE tem_id > 8973", nativeQuery = true)
-		public void delete();
 }

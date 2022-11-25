@@ -9,34 +9,24 @@ import com.iacit.api.repository.UsuarioRepository;
 
 @Service
 public class ServiceUsuario {
-
 	@Autowired(required = true)
 	private UsuarioRepository usuarioRepository;
 
-	
 	//Retun de usuario
-	public Usuario returnUsuario(String nome, String senha, Boolean acesso) {
-		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario(nome, senha,acesso);
-
-		if (user.getUsuarioLogin().isEmpty() && user.getUsuarioSenha().isEmpty()) {
-
-		} else {
-			user.getUsuarioAcesso();
-		}
+	public Usuario returnUsuario(String email, String senha) {
+		Usuario user = usuarioRepository.findByest_Nome_Senha_Usuario(email, senha);
+		
 		return user;
-
 	}
 
 	//Salvar o usuario ou seja cadastrar
-	public boolean save(String nome, String senha, boolean acesso) {
-
-		Usuario usuario = new Usuario(nome, senha, acesso);
+	public Usuario save(String nome, String email, String senha) {
+		Usuario usuario = new Usuario(nome, email, senha);
 		Usuario saveUsuario = usuarioRepository.save(usuario);
-		return saveUsuario != null && saveUsuario.getUsuarioId() != null;
+		return saveUsuario;
 	}
 
 	public List findAll() {
 		return (List) usuarioRepository.findAll();
 	}
-
 }

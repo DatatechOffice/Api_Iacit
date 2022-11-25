@@ -4,9 +4,7 @@ import lombok.Data;
 
 @Data
 public class DadosUsuario {
-	
 	String nome;
+	String email;
 	String senha;
-	Boolean acessoAdmin;	
-
 }

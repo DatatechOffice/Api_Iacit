@@ -15,51 +15,18 @@ import com.iacit.api.service.ServiceUsuario;
 @RestController
 @RequestMapping({ "/Usuario" })
 public class UsuarioController {
-
 	@Autowired
-
 	private ServiceUsuario serviceUsuario;
-
-	// CREATE
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> create(@RequestBody DadosUsuario usuario) {
-		return serviceUsuario.save(usuario.getNome(), usuario.getSenha(), false)
-				? new ResponseEntity<Void>(HttpStatus.CREATED)
-				: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> read(@RequestBody DadosUsuario usuario) {
-		serviceUsuario.returnUsuario(usuario.getNome(), usuario.getSenha(), usuario.getAcessoAdmin());
+		serviceUsuario.returnUsuario(usuario.getEmail(), usuario.getSenha());
 
-		Usuario usuarioRead = serviceUsuario.returnUsuario(usuario.getNome(), usuario.getSenha(),
-				usuario.getAcessoAdmin());
+		Usuario usuarioRead = serviceUsuario.returnUsuario(
+			usuario.getEmail(), usuario.getSenha()
+		);
 
 		return usuarioRead != null ? new ResponseEntity<Void>(HttpStatus.ACCEPTED)
-				: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-
+			: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
-
-	// UPDATE
-
-	/*
-	 * @PutMapping(value="/{id}") public ResponseEntity update(@PathVariable("id")
-	 * long id,
-	 * 
-	 * @RequestBody Contact contact) { return repository.findById(id) .map(record ->
-	 * { record.setName(contact.getName()); record.setEmail(contact.getEmail());
-	 * record.setPhone(contact.getPhone()); Contact updated =
-	 * repository.save(record); return ResponseEntity.ok().body(updated);
-	 * }).orElse(ResponseEntity.notFound().build()); }
-	 */
-
-	// DELETE
-
-	/*
-	 * @DeleteMapping(path ={"/{id}"}) public ResponseEntity <?>
-	 * delete(@PathVariable long id) { return repository.findById(id) .map(record ->
-	 * { repository.deleteById(id); return ResponseEntity.ok().build();
-	 * }).orElse(ResponseEntity.notFound().build()); }
-	 */
-
 }
