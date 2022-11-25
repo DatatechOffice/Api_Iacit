@@ -12,7 +12,8 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
             crossorigin="anonymous"
         >
-        <link href="../static/css/cadastro.css" rel="stylesheet">
+        <!--<link href="../static/css/cadastro.css" rel="stylesheet">-->
+        <script src="js/cadastro.js"></script>
     </head>
     <body>
         <header>
@@ -64,7 +65,7 @@
             <!-- Final do Div das opções do menu -->
             <br><br>
         </header>
-        <div class="cadastro" action="cadastro.php" method="POST"> 
+        <div class="cadastro"> 
             <form class="row g-3">
                 <h1 class="text-center">Cadastro de Usuário</h1>
                 <div class="col-12">
@@ -87,7 +88,7 @@
                     >
                 </div>
                 <div class="col-12">
-                    <button id="buttonCad" name="submit" type="submit" class="btn btn-primary">
+                    <button id="buttonCad" name="submit" type="submit" class="btn btn-primary" onclick="cadastrar()">
                         Cadastrar
                     </button>
                 </div>

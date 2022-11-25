@@ -22,9 +22,9 @@ import lombok.Setter;
 @Component
 public class Usuario {
     public Usuario(
-        @Nonnull String usuNome,
-        @Nonnull String usuEmail,
-        @Nonnull String usuSenha
+        String usuNome,
+        String usuEmail,
+        String usuSenha
     ) {
         this.usuNome = usuNome;
         this.usuEmail = usuEmail;
@@ -36,15 +36,15 @@ public class Usuario {
 	@Column(name= "usu_id")
 	private Integer usuId;
 
-    @Nonnull
 	@Column(name= "usu_nome")
 	private String usuNome;
 
-    @Nonnull
 	@Column(name= "usu_email")
 	private  String usuEmail;
 
-    @Nonnull
 	@Column(name= "usu_senha")
 	private  String usuSenha;
+
+	public void getUsuarioAcesso() {
+	}
 }
