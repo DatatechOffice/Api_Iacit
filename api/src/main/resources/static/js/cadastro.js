@@ -5,9 +5,9 @@ function cadastrar(){
 	//var usuarioEmail = $("#inputEmail").val();
 	//var usuarioSenha = $("#inputPassword").val();
 
-	var usuarioNome = "inputNome";
+	var usuarioNome = "inpme";
 	var usuarioEmail = "a";
-	var usuarioSenha = "inputPassword";
+	var usuarioSenha = "inputPasswod";
 
 	debugger;
 	//Função ajax de atribuição do front para uma classe no java
@@ -15,7 +15,11 @@ function cadastrar(){
 		method: 'POST', //Especificando qual o metodo
 		url: '/UsuarioCadastro', //Definindo a url que conecta no mapeamento
 		//Passando os atribuyos da classe e quais variaveis representa eles no front
-		data: JSON.stringify({nome : usuarioNome , email : usuarioEmail , senha : usuarioSenha}), 
+		data: JSON.stringify({
+			"nome": usuarioNome, 
+			"email": usuarioEmail, 
+			"senha": usuarioSenha
+		}), 
 		contentType: "application/json; charset=utf-8", //Explicitando que se trata de um conteudo JSON
 		//Alerta de sucesso ou falha no envio do JSON
 		success: function (data){

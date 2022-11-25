@@ -7,8 +7,7 @@ async function carregar_regiao(valRegiao){
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < RegiaoJson.length; i++){			
 				if(RegiaoJson[i].regSigla.toLowerCase().startsWith(valRegiao.toLowerCase())){
-					html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].regSigla)+
-					")'>" + RegiaoJson[i].regSigla + "</li>";
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_Regiao("+JSON.stringify(RegiaoJson[i].regSigla)+")'>" + RegiaoJson[i].regSigla + "</li>";
 				}
 			}
 			html += "</ul>";
@@ -42,8 +41,7 @@ async function carregar_UF(valUF){
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < UFJson.length; i++){
 				if(UFJson[i].etdUnidadeFederativa.toLowerCase().startsWith(valUF.toLowerCase())){
-					html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].etdUnidadeFederativa)+
-					")'>" + UFJson[i].etdUnidadeFederativa + "</li>";
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].etdUnidadeFederativa)+")'>" + UFJson[i].etdUnidadeFederativa + "</li>";
 				}
 			}
 			html += "</ul>";
@@ -75,8 +73,7 @@ async function carregar_estacao(valestacao){
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < estacaoJson.length; i++){
 				if(estacaoJson[i].estNomeEstacao.toLowerCase().startsWith(valestacao.toLowerCase())){
-					html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].estNomeEstacao)+")'>" 
-					+ estacaoJson[i].estNomeEstacao + "</li>";
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].estNomeEstacao)+")'>" + estacaoJson[i].estNomeEstacao + "</li>";
 				}
 			}
 			html += "</ul>";
@@ -107,8 +104,7 @@ async function carregar_variavel(valvariavel){
 				var html = "<ul class='list-group' position-fixed>";
 				for(let i = 0; i < variavelJson.length; i++){
 					if(variavelJson[i].regSigla.toLowerCase().startsWith(valvariavel.toLowerCase())){
-						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla)
-						+")'>" + variavelJson[i].regSigla + "</li>";
+						html += "<li class='list-group-item list-group-item-action' onclick='get_name_variavel("+JSON.stringify(variavelJson[i].regSigla) +")'>" + variavelJson[i].regSigla + "</li>";
 					}
 				}
 				html += "</ul>";

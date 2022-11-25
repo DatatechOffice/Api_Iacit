@@ -27,7 +27,7 @@ function logar(){
 function login() {
     $.ajax({
 		method: 'GET', //Especificando qual o metodo
-		url: '/index', //Definindo a url que conecta no mapeamento
+		url: '/index' //Definindo a url que conecta no mapeamento
 		//Passando os atribuyos da classe e quais variaveis representa eles no front
 		//Alerta de sucesso ou falha no envio do JSON
     })
