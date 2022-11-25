@@ -5,7 +5,7 @@ function logar(){
 	//var usuarioSenha = $("#inputPassword").val();
 
 	var usuarioEmail = "a@a";
-	var usuarioSenha = "123";
+	var usuarioSenha = "1234";
 
 	debugger;
 	//Função ajax de atribuição do front para uma classe no java
