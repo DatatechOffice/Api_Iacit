@@ -2,6 +2,7 @@ package com.iacit.api.controller;
 
 import java.util.ArrayList;
 
+import com.iacit.api.repository.PrecipitacaoRepository;
 import com.iacit.api.service.ServiceEstacao;
 import com.iacit.api.service.ServiceEstado;
 import com.iacit.api.service.ServiceRegiao;
@@ -24,9 +25,12 @@ public class PersistenciaController {
 
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
+	
+	@Autowired(required = true)
+	private PrecipitacaoRepository precipitacaoRepository;
 
 	@GetMapping(value = { "/persistir" })
-	public void persistir() {
+	public void persistir() { precipitacaoRepository.copyPrecipitacao();
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();
