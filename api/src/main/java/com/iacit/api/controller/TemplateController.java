@@ -28,4 +28,12 @@ public class TemplateController {
 
 		return modelAndView;
 	}
+
+	@GetMapping(value = { "login" })
+	public ModelAndView Login() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login.html");
+
+		return modelAndView;
+	}
 }
