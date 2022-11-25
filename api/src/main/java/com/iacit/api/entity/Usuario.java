@@ -1,6 +1,5 @@
 package com.iacit.api.entity;
 
-import javax.annotation.Nonnull;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "usu_id")
 	private Integer usuId;
-
+	
 	@Column(name= "usu_nome")
 	private String usuNome;
 

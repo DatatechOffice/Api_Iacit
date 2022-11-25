@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.iacit.api.entity.Precipitacao;
-import com.iacit.api.entity.Temperatura;
 import com.iacit.api.service.ServicePrecipitacao;
-import com.iacit.api.service.ServiceTemperatura;
 
 @Controller
 public class PrecipitacaoController {
@@ -26,7 +24,7 @@ public class PrecipitacaoController {
 		List<Precipitacao> listPrecipitacao = precipitacaoService.getByFilter(data.getEstacao(), data.getDataInicio(), data.getDataFim());
 		
 		return listPrecipitacao != null && listPrecipitacao.size() > 0 ? new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.CREATED)
-				: new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.BAD_REQUEST);
+		: new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.BAD_REQUEST);
 
 	}
 }

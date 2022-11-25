@@ -79,22 +79,26 @@
             <!--Inicio das textbox-->
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Regiões:</h4>
-              <input type="search" name="regiao" class="form-control" id="Regiao" placeholder="Região" aria-label="região" onkeyup="carregar_regiao(this.value)">
+              <input type="search" name="regiao" class="form-control" id="Regiao" 
+              placeholder="Região" aria-label="região" onkeyup="carregar_regiao(this.value)">
               <spann id="pesquisa_regiao" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione UF:</h4>
-              <input type="search" name="UF" class="form-control" id="UF" placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
+              <input type="search" name="UF" class="form-control" id="UF" 
+              placeholder="Unidade Federativa" aria-label="uf" onkeyup="carregar_UF(this.value)">
               <spann id="pesquisa_UF" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione a Estação:</h4>
-              <input type="search" name="estacao" class="form-control" id="Estacao" placeholder="Estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
+              <input type="search" name="estacao" class="form-control" id="Estacao"
+              placeholder="Estação" aria-label="estação" onkeyup="carregar_estacao(this.value)">
               <spann id="pesquisa_estacao" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
               <h4 class="mb-4">Selecione as Variaveis:</h4>
-              <input type="search" name="variavel" class="form-control" id="Variavel" placeholder="Variável" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
+              <input type="search" name="variavel" class="form-control" id="Variavel" 
+              placeholder="Variável" aria-label="variavel" onkeyup="carregar_variavel(this.value)">
               <spann id="pesquisa_variavel" class="position-absolute"></spann>
             </div>
             <div class="col-md-3">
@@ -123,8 +127,8 @@
           <script src="/main.js"></script>
         </div>
 
-        <button onclick="window.print()" class="btn btn-outline-success no-print"><i
-          class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório
+        <button onclick="window.print()" class="btn btn-outline-success no-print">
+          <i class="fas fa-download fa-sm text-white-50"></i> Gerar Relatório
         </button>
 
         <div id="relatorio"></div>

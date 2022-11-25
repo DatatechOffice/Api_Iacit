@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Cadastro</title>
         <!-- Required meta tags -->
@@ -12,8 +12,7 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
             crossorigin="anonymous"
         >
-        <link href="../static/css/cadastro.css" rel="stylesheet">
-        <script src="js/cadastro.js"></script>
+        <link rel="stylesheet" th:href="@{/css/cadastro.css}">
     </head>
     <body>
         <header>
@@ -70,25 +69,25 @@
                 <h1 class="text-center">Cadastro de Usuário</h1>
                 <div class="col-12">
                     <label for="inputNome" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" name="inputNome" id="inputNome">
+                    <input type="text" class="form-control" id="inputNome">
                 </div>
                 <div class="col-12">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="inputEmail" id="inputEmail">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label for="inputPassword" class="form-label">Senha</label>
-                    <input type="password" class="form-control" name="inputPassword" id="inputPassword">
+                    <input type="password" class="form-control" id="inputPassword">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label for="inputRepeatPassword" class="form-label">Repetir Senha</label>
-                    <input
-                        type="password" class="form-control" 
-                        name="inputRepeatPassword" id="inputRepeatPassword"
-                    >
+                    <input type="password" class="form-control" id="inputRepeatPassword">
                 </div>
                 <div class="col-12">
-                    <button id="buttonCad" name="submit" type="submit" class="btn btn-primary" onclick="cadastrar()">
+                    <button
+                        id="buttonCad" name="submit" type="submit"
+                        class="btn btn-primary" onclick="cadastrar()"
+                    >
                         Cadastrar
                     </button>
                 </div>
@@ -114,5 +113,6 @@
             crossorigin="anonymous">
         </script>
         -->
+        <script src="" th:src="@{/js/cadastro.js}"></script>
     </body>
 </html>    

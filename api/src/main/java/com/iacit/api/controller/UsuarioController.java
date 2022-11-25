@@ -27,6 +27,6 @@ public class UsuarioController {
 		);
 
 		return usuarioRead != null ? new ResponseEntity<Void>(HttpStatus.ACCEPTED)
-			: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		: new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 }
