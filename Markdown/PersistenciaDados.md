@@ -7,8 +7,6 @@ como dev da ferramenta para Iacit eu preciso da persistência dos dados da fonte
 
 <h2>Critérios de Aceite</h2>
 
-* Será por meio de um código orientado a objeto ou spark.
-
 * Região, UF, Estação, Código (WVM), Latitude, Longitude, Altitude e Data de fundação precisam ser passados de linha para coluna.
 
 * Persistência precisa ser feita com base na modelagem do banco
