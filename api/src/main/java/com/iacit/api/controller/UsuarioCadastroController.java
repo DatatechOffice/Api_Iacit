@@ -18,7 +18,6 @@ public class UsuarioCadastroController {
 	@PostMapping(value = "/UsuarioCadastro", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> create(@RequestBody DadosUsuario usuario) {
 		
-		System.out.println("Jorge");
 		return serviceUsuario.save(
 					usuario.getNome(), usuario.getEmail(), usuario.getSenha()
 					) != null
