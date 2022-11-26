@@ -16,7 +16,7 @@ public class TemplateController {
 	@GetMapping(value = { "index" })
 	public ModelAndView Index() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("index.html");
 
 		return modelAndView;
 	}

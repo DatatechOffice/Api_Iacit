@@ -32,10 +32,13 @@
                     <input class="form-check-input" type="checkbox" id="check">
                     <label class="form-check-label" for="check">lembrar</label>
                 </div>
-                <input class="btn btn-success w-100" type="submit" value="Entrar">
+                <input
+                    class="btn btn-success w-100" type="submit" value="Entrar" onclick="logar()" href="/index"
+                >
             </form>
         </div>
 
         <script src="" th:src="@{/js/login.js}"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </body>
 </html>
