@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.opencsv.CSVWriter;
-import com.opencsv.bean.CsvBindAndSplitByPosition;
-import com.opencsv.bean.PositionToBeanField;
 
 import tech.tablesaw.api.Table;
 
@@ -21,31 +19,28 @@ public class precipitacao_TableSaw {
 	ArrayList<String> cod = tb.listaEstacaoCodigo(t);
 	ArrayList<String> pre = tb.listaPrecipitacao(t);
 		
-	public List <String[]> criaLista(){
-	String[] input = new String[pre.size()];{
+	public String[] criaLista(){
+	String[] manuel = new String[pre.size()];{
 
 	// array tem o tamanho da lista, ele é modificado dentro do método
-	pre.toArray(input);
+	pre.toArray(manuel);
+	return manuel;
+	}
+	}
 
-	List <String[]> listPrecipitacao = new ArrayList<String[]>();
-	for (String p : input) {
-		String[] manuel = {p};
-		listPrecipitacao.add(manuel);
-		}
-	return listPrecipitacao;
-	}
-	}
-	
-	public List <String[]> criaLista2(){
+	public List <String[]> criaLista2(String[] listPrecipitacao){
+		
 		String[] input = new String[cod.size()];{
 		// array tem o tamanho da lista, ele é modificado dentro do método
 		pre.toArray(input);
-	List<String[]> listCodigo = new ArrayList<String[]>();
+		List <String[]> fabio = new ArrayList();
 	for(String c : input) {
-		String[] ex = {c};
-		listCodigo.add(ex);
+		for (String p : listPrecipitacao){
+		String[] ex = {c, p};
+		fabio.add(ex);
+		}
 	}
-	return listCodigo;
+	return fabio;
 	}
 	}
 	
@@ -57,13 +52,12 @@ public class precipitacao_TableSaw {
 		CSVWriter csvWriter = new CSVWriter(writer);
 		
 		precipitacao_TableSaw precipitacao_Tablesaw = new precipitacao_TableSaw();
-		csvWriter.writeAll(precipitacao_Tablesaw.criaLista());
-		
-		csvWriter.writeAll(precipitacao_Tablesaw.criaLista2());	
+		csvWriter.writeAll(precipitacao_Tablesaw.criaLista2(precipitacao_Tablesaw.criaLista()));
 		
 		csvWriter.flush();
 		writer.close();
 	}
 	}
+	
 }
 	
