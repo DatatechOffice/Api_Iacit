@@ -1,6 +1,14 @@
 package com.iacit.api.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -115,14 +123,27 @@ public class TableSaw {
 		return estacaoAltitudeLista;
 	}
 
-	public ArrayList<String> listaEstacaoDataFund(Table tabelaCSV) {
+	public ArrayList<String> listaEstacaoDataFund(Table tabelaCSV) throws ParseException {
 		int i = 0;
 		i = tabelaCSV.rowCount();
+		DateFormat formatUS = new SimpleDateFormat("yyyy-MM-dd");
 		ArrayList<String> estacaoDataFundLista = new ArrayList();
 		for (int ii = 0; ii < i; ii++) {
+			TableSaw tb = new TableSaw();
 			String est;
 			est = tabelaCSV.getString(ii, "C27");
-			estacaoDataFundLista.add(est);  
+			if(est.contains("/")) {
+				
+				String estdata = (est.replace("/", "-"));
+				String data2 = tb.addChar(estdata, "20", 6);
+				Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(data2);  	
+				String dataConvertida = formatUS.format(date1);
+				estacaoDataFundLista.add(dataConvertida);
+				
+			}else {
+				System.out.println(est);
+				estacaoDataFundLista.add(est);
+			}
 		}	
 		return estacaoDataFundLista;
 	}
@@ -137,7 +158,8 @@ public class TableSaw {
 			TableSaw tb = new TableSaw();
 			String horat = tb.addChar(hora, ":", 2);
 			est = tabelaCSV.getString(ii, "C1")+" "+ horat;
-			tempDataLista.add(est);  
+			String estdata = est.replace("/", "-");
+			tempDataLista.add(estdata);  
 		}	
 		return tempDataLista;
 	}

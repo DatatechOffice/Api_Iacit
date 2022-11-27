@@ -57,10 +57,11 @@ public class ServiceEstacao {
 				Estado estado = new Estado();
 				estado = serviceEstado.returnEstado(estadoS);
 				Estado estadoID = new Estado(estado.getEtdId());
+				System.out.println(estacaoDSS);
 				Estacao estacao = new Estacao(
 					estadoID, estC,
 					BigDecimal.valueOf(Double.parseDouble(longitude)), estNome,
-					Timestamp.valueOf("20"+estacaoDSS.replace("00", "01")+" 00:00:00"),
+					Timestamp.valueOf(estacaoDSS+" 00:00:00"),
 					BigDecimal.valueOf(Double.parseDouble(latitude)),
 					BigDecimal.valueOf(Double.parseDouble(altitude))
 				);

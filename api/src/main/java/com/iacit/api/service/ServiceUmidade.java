@@ -51,10 +51,9 @@ public class ServiceUmidade {
 			if (estURelAr.isEmpty() || estURelMax.isEmpty() || estURelMin.isEmpty()) {
 				continue;
 			} else {
-				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
 				Umidade umidade = new Umidade(
-					estacao, Timestamp.valueOf(estData_+":00"), 
+					estacao, Timestamp.valueOf(estData+":00"), 
 					BigDecimal.valueOf(Float.parseFloat(estURelAr)),
 					BigDecimal.valueOf(Float.parseFloat(estURelMax)), 
 					BigDecimal.valueOf(Float.parseFloat(estURelMin))

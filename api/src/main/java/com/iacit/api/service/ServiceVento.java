@@ -50,11 +50,10 @@ public class ServiceVento {
 			if (estVenDirHor.isEmpty() || estVenRajMax.isEmpty() || estVenVelHor.isEmpty()) {
 				continue;
 			} else {
-				String estData_ = estData.replace("/", "-");
 				Estacao estacao = new Estacao(codigo);
 				Vento vento = new Vento(
 					estacao, 
-					Timestamp.valueOf(estData_+":00"), 
+					Timestamp.valueOf(estData+":00"), 
 					BigDecimal.valueOf(Float.parseFloat(estVenDirHor)),
 					BigDecimal.valueOf(Float.parseFloat(estVenRajMax)), 
 					BigDecimal.valueOf(Float.parseFloat(estVenVelHor))
