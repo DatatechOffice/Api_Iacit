@@ -157,8 +157,11 @@ document.addEventListener('click', function(eventestacao){
 	//----------------------------------------------------Criando a Grafico-------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------,
 
+	let myChart = null;
+
 
 	$('#dataCourse').on('change', function(){
+
 
 		var selected = $(this).find("option:selected").val();
 
@@ -184,8 +187,6 @@ document.addEventListener('click', function(eventestacao){
 			vVariavel  = 'vento';
 		}
 
-		
-
 		//Recebendo as informações dos filtros e armazenando em variaveis
 		var vRegiao = $("#Regiao").val();
 		var vUF = $("#UF").val();
@@ -209,7 +210,7 @@ document.addEventListener('click', function(eventestacao){
 		}).fail(function(xhr, status, errorThrow){
 			alert("Erro ao comunicar: " + xhr.responseText);
 		});
-		
+
 		function plotcharts(dataJS){
 
 			var datas=[];
@@ -218,8 +219,7 @@ document.addEventListener('click', function(eventestacao){
                   datas.push(dataJS[i]['dataHora']);
                   valor.push(parseInt(dataJS[i][vVariavel]));
                 }
-                console.log(datas);
-			console.log(valor);
+
 			const data = {
 			labels: [1,2,3,4,5,6,7,8,9,10],
 			datasets: [{
@@ -243,15 +243,15 @@ document.addEventListener('click', function(eventestacao){
 			  }
 			}
 		  };
+			
+		  const grafico = document.getElementById('plots').getContext('2d');
 
-		  // render init block
-		  const myChart = new Chart(
-			document.getElementById('plots'),
-			config
-		  );
+		  if(myChart != null){
+			myChart.destroy();
+		  }
 
-		
-		//mychart.destroy(); se colocar aqui VAI destruir o grafico antes mesmo de construir
+		  myChart = new Chart(grafico, config);
+
 	};
 
 
