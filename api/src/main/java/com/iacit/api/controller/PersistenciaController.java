@@ -30,7 +30,8 @@ public class PersistenciaController {
 	private PrecipitacaoRepository precipitacaoRepository;
 
 	@GetMapping(value = { "/persistir" })
-	public void persistir() { precipitacaoRepository.copyPrecipitacao();
+	public void persistir() { 
+		precipitacaoRepository.copyPrecipitacao();
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();

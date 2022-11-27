@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,12 +37,14 @@ public class Precipitacao {
 	@Column(name= "pre_id")
 	private Integer preId;
 
+	@CsvBindByPosition(position = 0)
 	@Column(name= "pre_valor")
     private BigDecimal preValor;
 
 	@Column(name= "pre_data_hora")
     private Timestamp dataHora;
 
+	@CsvBindByPosition(position = 1)
 	@ManyToOne
     @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
     private Estacao estCodigo;
