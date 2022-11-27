@@ -52,16 +52,13 @@ public class ServiceEstacao {
 			String estadoS = etd.get(i);
 
 			if (i - 1 >= 0 && regEstC.get(i - 1) != estC) {
-				String estacaoDSS = dataFundacao.replace("/", "-");
-				
 				Estado estado = new Estado();
 				estado = serviceEstado.returnEstado(estadoS);
 				Estado estadoID = new Estado(estado.getEtdId());
-				System.out.println(estacaoDSS);
 				Estacao estacao = new Estacao(
 					estadoID, estC,
 					BigDecimal.valueOf(Double.parseDouble(longitude)), estNome,
-					Timestamp.valueOf(estacaoDSS+" 00:00:00"),
+					Timestamp.valueOf(dataFundacao+" 00:00:00"),
 					BigDecimal.valueOf(Double.parseDouble(latitude)),
 					BigDecimal.valueOf(Double.parseDouble(altitude))
 				);

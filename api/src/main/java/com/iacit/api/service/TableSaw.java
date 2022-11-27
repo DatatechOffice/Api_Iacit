@@ -3,10 +3,6 @@ package com.iacit.api.service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -141,7 +137,6 @@ public class TableSaw {
 				estacaoDataFundLista.add(dataConvertida);
 				
 			}else {
-				System.out.println(est);
 				estacaoDataFundLista.add(est);
 			}
 		}	
