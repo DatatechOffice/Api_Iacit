@@ -27,15 +27,15 @@ public class TemperaturaOrvalho {
 	public TemperaturaOrvalho(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-		BigDecimal temperatura_orvalho,
-		BigDecimal tdoMax,
-		BigDecimal tdoMin
+		BigDecimal valor, 
+		BigDecimal valorMax,
+		BigDecimal valorMin
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.temperatura_orvalho=temperatura_orvalho;
-		this.tdoMax=tdoMax;
-		this.tdoMin=tdoMin;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
@@ -44,13 +44,13 @@ public class TemperaturaOrvalho {
 	private Integer tdoId;
 
 	@Column(name= "tdo_ponto")
-	private BigDecimal temperatura_orvalho;
-	
+	private BigDecimal valor;
+
 	@Column(name= "tdo_max")
-	private BigDecimal tdoMax;
+	private BigDecimal valorMax;
 
 	@Column(name= "tdo_min")
-	private BigDecimal tdoMin;
+	private BigDecimal valorMin;
 
 	@Column(name= "tdo_data_hora")
 	private Timestamp dataHora;

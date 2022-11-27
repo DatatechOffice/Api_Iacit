@@ -27,16 +27,15 @@ public class PressaoAtmosferica {
 	public PressaoAtmosferica(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-		BigDecimal praMax, 
-		BigDecimal praMin,
-
-		BigDecimal pressao_atmosferica
+		BigDecimal valorMax, 
+		BigDecimal valorMin,
+		BigDecimal valor
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.praMax=praMax;
-		this.praMin=praMin;
-		this.pressao_atmosferica=pressao_atmosferica;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
+		this.valor=valor;
 	}
 	
 	@Id
@@ -45,13 +44,13 @@ public class PressaoAtmosferica {
 	private Integer praId;
 
 	@Column(name= "pra_nivel_estacao")
-    private BigDecimal pressao_atmosferica;
+    private BigDecimal valor;
 
 	@Column(name= "pra_max")
-    private BigDecimal praMax;
+    private BigDecimal valorMax;
 
 	@Column(name= "pra_min")
-    private BigDecimal praMin;
+    private BigDecimal valorMin;
 
 	@Column(name= "pra_data_hora")
     private Timestamp dataHora;

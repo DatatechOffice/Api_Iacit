@@ -27,15 +27,15 @@ public class Vento {
 	public Vento(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-		BigDecimal venDirecaoHoraria, 
-		BigDecimal venRajadaMax, BigDecimal
-		vento
+		BigDecimal valor, 
+		BigDecimal valorMax, BigDecimal
+		valorMin
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.venDirecaoHoraria=venDirecaoHoraria;
-		this.venRajadaMax=venRajadaMax;
-		this.vento=vento;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
@@ -44,14 +44,14 @@ public class Vento {
 	private Integer venId;
 
 	@Column(name= "ven_direcao_horaria")
-	private BigDecimal venDirecaoHoraria;
+	private BigDecimal valor;
 
 	@Column(name= "ven_rajada_max")
-	private BigDecimal venRajadaMax;
+	private BigDecimal valorMax;
 
 	@Column(name= "ven_velocidade_horaria")
-	private BigDecimal vento;
-
+	private BigDecimal valorMin;
+	
 	@Column(name= "ven_data_hora")
 	private Timestamp dataHora;
 

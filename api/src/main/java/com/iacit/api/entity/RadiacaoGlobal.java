@@ -24,10 +24,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class RadiacaoGlobal {
-	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal radiacao_global) {
+	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal valor) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.radiacao_global=radiacao_global;
+		this.valor=valor;
 	}
 	
 	@Id
@@ -36,7 +36,7 @@ public class RadiacaoGlobal {
     private Integer ragId;
 
 	@Column(name= "rag_radiacao_global")
-    private BigDecimal radiacao_global;
+    private BigDecimal valor;
 
 	@Column(name= "rag_data_hora")
     private Timestamp dataHora;

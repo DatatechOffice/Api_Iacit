@@ -27,15 +27,15 @@ public class Umidade {
 	public Umidade(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-		BigDecimal umidade, 
-		BigDecimal umiRelativaMax, 
-		BigDecimal umiRelativaMin
+		BigDecimal valor, 
+		BigDecimal valorMax, 
+		BigDecimal valorMin
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.umidade=umidade;
-		this.umiRelativaMax=umiRelativaMax;
-		this.umiRelativaMin=umiRelativaMin;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
@@ -44,14 +44,14 @@ public class Umidade {
 	private Integer umiId;
 
 	@Column(name= "umi_relativa_min")
-	private BigDecimal umiRelativaMin;
+	private BigDecimal valorMin;
 
 	@Column(name= "umi_relativa_max")
-	private BigDecimal umiRelativaMax;
+	private BigDecimal valorMax;
 
 	@Column(name= "umi_relativa_ar")
-	private BigDecimal umidade;
-	
+	private BigDecimal valor;
+
 	@Column(name= "umi_data_hora")
 	private Timestamp dataHora;
 

@@ -25,10 +25,10 @@ import lombok.Setter;
 @Component
 public class Precipitacao {
 
-	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal precipitacao) {
+	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal valor) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.precipitacao=precipitacao;
+		this.valor=valor;
 	}
 
 	@Id
@@ -37,7 +37,8 @@ public class Precipitacao {
 	private Integer preId;
 
 	@Column(name= "pre_valor")
-    private BigDecimal precipitacao;
+
+    private BigDecimal valor;
 
 	@Column(name= "pre_data_hora")
     private Timestamp dataHora;

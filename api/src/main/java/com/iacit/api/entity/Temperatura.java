@@ -29,15 +29,15 @@ public class Temperatura {
 	public Temperatura(
 		Estacao estCodigo, 
 		Timestamp dataHora, 
-		BigDecimal temperatura,
-		BigDecimal temMax, 
-		BigDecimal temMin
+		BigDecimal valor,
+		BigDecimal valorMax, 
+		BigDecimal valorMin
 	) {
 		this.estCodigo=estCodigo;
 		this.dataHora=dataHora;
-		this.temperatura=temperatura;
-		this.temMax=temMax;
-		this.temMin=temMin;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
@@ -46,12 +46,13 @@ public class Temperatura {
     private Integer temId;
 
 	@Column(name= "tem_ar_bulbo_seco")
-	private BigDecimal temperatura;
+	private BigDecimal valor;
+
 	@Column(name= "tem_max")
-	private BigDecimal temMax;
+	private BigDecimal valorMax;
 
 	@Column(name= "tem_min")
-	private BigDecimal temMin;
+	private BigDecimal valorMin;
 
 	@Column(name= "tem_data_hora")
 	private Timestamp dataHora;
