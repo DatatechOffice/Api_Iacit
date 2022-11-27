@@ -155,19 +155,36 @@ document.addEventListener('click', function(eventestacao){
 	}
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a Grafico-------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------------------------------------------------------------,
+
 
 	$('#dataCourse').on('change', function(){
-						
+
 		var selected = $(this).find("option:selected").val();
 
 		if(selected == 1){
-			vVariavel  = 'temperatura';
-			//mychart.destroy(); se colocar aqui vai dar como mychart não definido
+			vVariavel  = 'pressao_atmosferica';
 		}
 		if(selected == 2){
+			vVariavel  = 'precipitacao';
+		}
+		if(selected == 3){
+			vVariavel  = 'radiacao_global';
+		}
+		if(selected == 4){
+			vVariavel  = 'temperatura';
+		}
+		if(selected == 5){
+			vVariavel  = 'temperatura_orvalho';
+		}
+		if(selected == 6){
+			vVariavel  = 'umidade';
+		}
+		if(selected == 7){
 			vVariavel  = 'vento';
 		}
+
+		
 
 		//Recebendo as informações dos filtros e armazenando em variaveis
 		var vRegiao = $("#Regiao").val();
@@ -192,16 +209,14 @@ document.addEventListener('click', function(eventestacao){
 		}).fail(function(xhr, status, errorThrow){
 			alert("Erro ao comunicar: " + xhr.responseText);
 		});
-
+		
 		function plotcharts(dataJS){
-
-
 
 			var datas=[];
             var valor=[];
 			for(let i =0; i <dataJS.length;i++){
                   datas.push(dataJS[i]['dataHora']);
-                  valor.push(parseInt(dataJS[i]['temperatura']));
+                  valor.push(parseInt(dataJS[i][vVariavel]));
                 }
                 console.log(datas);
 			console.log(valor);
@@ -215,7 +230,7 @@ document.addEventListener('click', function(eventestacao){
 			  tension: 0.5,
 			}]
 		  };
-	  
+
 		  // config 
 		  const config = {
 			type: 'line',
@@ -228,15 +243,17 @@ document.addEventListener('click', function(eventestacao){
 			  }
 			}
 		  };
-	  
+
 		  // render init block
 		  const myChart = new Chart(
 			document.getElementById('plots'),
 			config
 		  );
-		  
+
+		
 		//mychart.destroy(); se colocar aqui VAI destruir o grafico antes mesmo de construir
 	};
+
 
 
 
