@@ -45,15 +45,20 @@ document.addEventListener('click', function(eventReg){
 
 async function carregar_UF(valUF){
 	if(valUF.length >= 1){
-		
+
 		$.getJSON("/estado", function(UFJson) {
-	
+			var vRegiao = $("#Regiao").val();
+
 			var html = "<ul class='list-group' position-fixed>";
+
 			for(let i = 0; i < UFJson.length; i++){
+				if(vRegiao == UFJson[i].regId.regSigla || vRegiao == ""){
 				if(UFJson[i].etdUnidadeFederativa.toLowerCase().startsWith(valUF.toLowerCase())){
-					html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+JSON.stringify(UFJson[i].etdUnidadeFederativa)+
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_UF("+
+					JSON.stringify(UFJson[i].etdUnidadeFederativa)+
+					","+JSON.stringify(UFJson[i].regId.regSigla)+
 					")'>" + UFJson[i].etdUnidadeFederativa + "</li>";
-				}
+				}}
 			}
 			html += "</ul>";
 			document.getElementById('pesquisa_UF').innerHTML = html;
@@ -64,8 +69,9 @@ async function carregar_UF(valUF){
 	}
 }
 
-function get_name_UF(name_UF){
+function get_name_UF(name_UF, regiao_UF){
 	document.getElementById("UF").value = name_UF;
+	document.getElementById("Regiao").value = regiao_UF;
 }
 
 const fecharUF = document.getElementById('UF');
@@ -84,12 +90,19 @@ async function carregar_estacao(valestacao){
 
 		$.getJSON("/estacao", function(estacaoJson) {
 
+			var vUF = $("#UF").val();
+			var vRegiao = $("#Regiao").val();
+
 			var html = "<ul class='list-group' position-fixed>";
 			for(let i = 0; i < estacaoJson.length; i++){
+				if(vUF == estacaoJson[i].etdId.etdUnidadeFederativa || vUF == "" && vRegiao == estacaoJson[i].etdId.regId.regSigla || vRegiao == "" && vUF == ""){
 				if(estacaoJson[i].estNomeEstacao.toLowerCase().startsWith(valestacao.toLowerCase())){
-					html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+JSON.stringify(estacaoJson[i].estNomeEstacao)+")'>" 
+					html += "<li class='list-group-item list-group-item-action' onclick='get_name_estacao("+
+					JSON.stringify(estacaoJson[i].estNomeEstacao)+
+					","+JSON.stringify(estacaoJson[i].etdId.etdUnidadeFederativa)+
+					","+JSON.stringify(estacaoJson[i].etdId.regId.regSigla)+")'>" 
 					+ estacaoJson[i].estNomeEstacao + "</li>";
-				}
+				}}
 			}
 			html += "</ul>";
 			document.getElementById('pesquisa_estacao').innerHTML = html;
@@ -98,8 +111,12 @@ async function carregar_estacao(valestacao){
 		document.getElementById('pesquisa_estacao').innerHTML = '';
 	}
 }
-function get_name_estacao(name_estacao){
+function get_name_estacao(name_estacao, uf_estacao, regiao_estacao){
+
 	document.getElementById("Estacao").value = name_estacao;
+	document.getElementById("UF").value = uf_estacao;
+	document.getElementById("Regiao").value = regiao_estacao;
+
 }
 
 const fecharestacao = document.getElementById('Estacao');
