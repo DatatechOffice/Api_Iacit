@@ -1,6 +1,8 @@
 package com.iacit.api.controller;
+
 import java.text.ParseException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,10 +23,12 @@ public class PrecipitacaoController {
 	@PostMapping(value = { "/precipitacao" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Precipitacao>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
 
-		List<Precipitacao> listPrecipitacao = precipitacaoService.getByFilter(data.getEstacao(), data.getDataInicio(), data.getDataFim());
-		
-		return listPrecipitacao != null && listPrecipitacao.size() > 0 ? new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.CREATED)
-		: new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.BAD_REQUEST);
+		List<Precipitacao> listPrecipitacao = precipitacaoService.getByFilter(data.getEstacao(), data.getDataInicio(),
+				data.getDataFim());
+
+		return listPrecipitacao != null && listPrecipitacao.size() > 0
+				? new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.CREATED)
+				: new ResponseEntity<List<Precipitacao>>(listPrecipitacao, HttpStatus.BAD_REQUEST);
 
 	}
 }

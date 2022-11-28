@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -19,33 +20,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="precipitacao")
-@Table(name="precipitacao")
+@Entity(name = "precipitacao")
+@Table(name = "precipitacao")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 public class Precipitacao {
 	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
-		this.estCodigo=estCodigo;
-		this.dataHora=dataHora;
-		this.preValor=preValor;
+		this.estCodigo = estCodigo;
+		this.dataHora = dataHora;
+		this.preValor = preValor;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "pre_id")
+	@Column(name = "pre_id")
 	private Integer preId;
 
 	@CsvBindByPosition(position = 0)
-	@Column(name= "pre_valor")
-    private BigDecimal preValor;
+	@Column(name = "pre_valor")
+	private BigDecimal preValor;
 
-	@Column(name= "pre_data_hora")
-    private Timestamp dataHora;
+	@Column(name = "pre_data_hora")
+	private Timestamp dataHora;
 
 	@CsvBindByPosition(position = 1)
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

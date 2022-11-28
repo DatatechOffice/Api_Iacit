@@ -1,7 +1,7 @@
 package com.iacit.api.service;
+
 import java.io.IOException;
 import java.io.Writer;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
@@ -19,42 +19,41 @@ import com.opencsv.CSVWriter;
 
 @Service
 public class ServiceRadiacaoGlobal {
-	@Autowired(required=true) 
+	@Autowired(required = true)
 	private RadiacaoGlobalRepository radiacaoRepository;
-	
-	@Autowired(required=true) 
+
+	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
-	
-	public List<RadiacaoGlobal> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
-		
+
+	public List<RadiacaoGlobal> getByFilter(String estacao, String dataInicial, String dataFinal)
+			throws ParseException {
+
 		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
-		
-		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora(
-			idEstacao.getEstCodigo(), 
-			Timestamp.valueOf(dataInicial+" 00:00:00"), 
-			Timestamp.valueOf(dataFinal+" 00:00:00")
-		);
+
+		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora(idEstacao.getEstCodigo(),
+				Timestamp.valueOf(dataInicial + " 00:00:00"), Timestamp.valueOf(dataFinal + " 00:00:00"));
 		return entidades;
 	}
 
-	public void radiacaoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorRadiacao) throws IOException {
+	public void radiacaoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorRadiacao)
+			throws IOException {
 
 		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\radiacao_global.csv"));
-			CSVWriter csvWriter = new CSVWriter(writer);
-			List<String[]> jorgin = new ArrayList<String[]>();
-			int ii = datas.size();
-			for (int i = 0; i < ii; i++) {
-				if (valorRadiacao.get(i).isEmpty()) {
-					continue;
-				}else {
-				String[] jorge = {datas.get(i), valorRadiacao.get(i), estacaoCodigo.get(i)};
+		CSVWriter csvWriter = new CSVWriter(writer);
+		List<String[]> jorgin = new ArrayList<String[]>();
+		int ii = datas.size();
+		for (int i = 0; i < ii; i++) {
+			if (valorRadiacao.get(i).isEmpty()) {
+				continue;
+			} else {
+				String[] jorge = { datas.get(i), valorRadiacao.get(i), estacaoCodigo.get(i) };
 				jorgin.add(jorge);
-				}
 			}
-			csvWriter.writeAll(jorgin);
-			csvWriter.flush();
-			writer.close();	
-			
-			radiacaoRepository.copyRadiacaoGlobal();
+		}
+		csvWriter.writeAll(jorgin);
+		csvWriter.flush();
+		writer.close();
+
+		radiacaoRepository.copyRadiacaoGlobal();
 	}
 }

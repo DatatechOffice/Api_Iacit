@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,45 +18,40 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="umidade")
-@Table(name="umidade")
+@Entity(name = "umidade")
+@Table(name = "umidade")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 public class Umidade {
-	public Umidade(
-		Estacao estCodigo, 
-		Timestamp dataHora, 
-		BigDecimal umiRelativaAr, 
-		BigDecimal umiRelativaMax, 
-		BigDecimal umiRelativaMin
-	) {
-		this.estCodigo=estCodigo;
-		this.dataHora=dataHora;
-		this.umiRelativaAr=umiRelativaAr;
-		this.umiRelativaMax=umiRelativaMax;
-		this.umiRelativaMin=umiRelativaMin;
+	public Umidade(Estacao estCodigo, Timestamp dataHora, BigDecimal umiRelativaAr, BigDecimal umiRelativaMax,
+			BigDecimal umiRelativaMin) {
+		this.estCodigo = estCodigo;
+		this.dataHora = dataHora;
+		this.umiRelativaAr = umiRelativaAr;
+		this.umiRelativaMax = umiRelativaMax;
+		this.umiRelativaMin = umiRelativaMin;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "umi_id")
+	@Column(name = "umi_id")
 	private Integer umiId;
 
-	@Column(name= "umi_relativa_min")
+	@Column(name = "umi_relativa_min")
 	private BigDecimal umiRelativaMin;
 
-	@Column(name= "umi_relativa_max")
+	@Column(name = "umi_relativa_max")
 	private BigDecimal umiRelativaMax;
 
-	@Column(name= "umi_relativa_ar")
+	@Column(name = "umi_relativa_ar")
 	private BigDecimal umiRelativaAr;
 
-	@Column(name= "umi_data_hora")
+	@Column(name = "umi_data_hora")
 	private Timestamp dataHora;
 
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,45 +18,40 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="temperatura_orvalho")
-@Table(name="temperatura_orvalho")
+@Entity(name = "temperatura_orvalho")
+@Table(name = "temperatura_orvalho")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 public class TemperaturaOrvalho {
-	public TemperaturaOrvalho(
-		Estacao estCodigo, 
-		Timestamp dataHora, 
-		BigDecimal tdoPonto, 
-		BigDecimal tdoMax,
-		BigDecimal tdoMin
-	) {
-		this.estCodigo=estCodigo;
-		this.dataHora=dataHora;
-		this.tdoPonto=tdoPonto;
-		this.tdoMax=tdoMax;
-		this.tdoMin=tdoMin;
+	public TemperaturaOrvalho(Estacao estCodigo, Timestamp dataHora, BigDecimal tdoPonto, BigDecimal tdoMax,
+			BigDecimal tdoMin) {
+		this.estCodigo = estCodigo;
+		this.dataHora = dataHora;
+		this.tdoPonto = tdoPonto;
+		this.tdoMax = tdoMax;
+		this.tdoMin = tdoMin;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "tdo_id")
+	@Column(name = "tdo_id")
 	private Integer tdoId;
 
-	@Column(name= "tdo_ponto")
+	@Column(name = "tdo_ponto")
 	private BigDecimal tdoPonto;
 
-	@Column(name= "tdo_max")
+	@Column(name = "tdo_max")
 	private BigDecimal tdoMax;
 
-	@Column(name= "tdo_min")
+	@Column(name = "tdo_min")
 	private BigDecimal tdoMin;
 
-	@Column(name= "tdo_data_hora")
+	@Column(name = "tdo_data_hora")
 	private Timestamp dataHora;
 
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }
