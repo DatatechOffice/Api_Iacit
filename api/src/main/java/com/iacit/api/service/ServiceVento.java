@@ -1,5 +1,9 @@
 package com.iacit.api.service;
+import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.Vento;
 import com.iacit.api.repository.VentoRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServiceVento {
@@ -32,35 +37,25 @@ public class ServiceVento {
 		return entidades;
 	}
 
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo, 
-		ArrayList<String> estTdata, 
-		ArrayList<String> estVentoDirHor, 
-		ArrayList<String> estVentoRajMax, 
-		ArrayList<String> estVentoVelHor
-	) {
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String estData = estTdata.get(i);
-			String estVenDirHor = estVentoDirHor.get(i);
-			String estVenRajMax = estVentoRajMax.get(i);
-			String estVenVelHor = estVentoVelHor.get(i);
-			String codigo = listaEstacaoCodigo.get(i);
+	public void ventoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorMaximoVento,
+			ArrayList<String> valorMinimoVento, ArrayList<String> valorVento) throws IOException {
 
-			if (estVenDirHor.isEmpty() || estVenRajMax.isEmpty() || estVenVelHor.isEmpty()) {
-				continue;
-			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				Vento vento = new Vento(
-					estacao, 
-					Timestamp.valueOf(estData_+":00"), 
-					BigDecimal.valueOf(Float.parseFloat(estVenDirHor)),
-					BigDecimal.valueOf(Float.parseFloat(estVenRajMax)), 
-					BigDecimal.valueOf(Float.parseFloat(estVenVelHor))
-				);
-				ventoRepository.save(vento);
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\vento.csv"));
+			CSVWriter csvWriter = new CSVWriter(writer);
+			List<String[]> csv = new ArrayList<String[]>();
+			int ii = datas.size();
+			for (int i = 0; i < ii; i++) {
+				if (valorMaximoVento.get(i).isEmpty()||valorMinimoVento.get(i).isEmpty()||valorVento.get(i).isEmpty()) {
+					continue;
+				}else {
+				String[] csvLinha = {datas.get(i), valorMaximoVento.get(i), valorMinimoVento.get(i), valorVento.get(i), estacaoCodigo.get(i)};
+				csv.add(csvLinha);
+				}
 			}
-		}
-	} 
+			csvWriter.writeAll(csv);
+			csvWriter.flush();
+			writer.close();	
+			
+			ventoRepository.copyVento();
+	}
 }

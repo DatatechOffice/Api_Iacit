@@ -15,4 +15,12 @@ public interface UmidadeRepository extends JpaRepository<Umidade, Integer> {
 	public List<Umidade> findByest_codigoAndumi_data_hora(
 		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
 	);
+	
+	@Query(
+			value = "copy umidade (umi_data_hora, umi_relativa_max, umi_relativa_min, umi_relativa_ar, est_codigo)"
+					+ " from 'C:\\dataFrame\\umidade.csv' with delimiter ',' csv header encoding 'iso-8859-1'"
+					,
+			nativeQuery = true
+		)
+	public void copyUmidade();
 }

@@ -15,4 +15,12 @@ public interface TemperaturaOrvalhoRepository extends JpaRepository<TemperaturaO
 	public List<TemperaturaOrvalho> findByest_codigoAndTOrv_data_hora(
 		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
 	);
+	
+	@Query(
+			value = "copy temperatura_orvalho (tdo_data_hora, tdo_max, tdo_min, tdo_ponto, est_codigo) from "
+					+ "'C:\\dataFrame\\temperaturaOrvalho.csv' with delimiter ',' csv header encoding 'iso-8859-1'"
+					,
+			nativeQuery = true
+		)
+	public void copyTemperaturaOrvalho();
 }

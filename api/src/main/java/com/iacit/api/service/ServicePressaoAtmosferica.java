@@ -1,5 +1,9 @@
 package com.iacit.api.service;
+import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.PressaoAtmosferica;
 import com.iacit.api.repository.PressaoAtmosfericaRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServicePressaoAtmosferica {
@@ -36,35 +41,25 @@ public class ServicePressaoAtmosferica {
 		return entidades;
 	}
 
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo, 
-		ArrayList<String> estTdata, 
-		ArrayList<String> estPrAtMax,
-		ArrayList<String> estPrAtMin, 
-		ArrayList<String> estPrAtNivelEst) {
-		// qual o id da regiao e com o Id em mãos inserir o estado
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String estData = estTdata.get(i);
-			String estPrMax = estPrAtMax.get(i);
-			String estPrMin = estPrAtMin.get(i);
-			String estPrNEst = estPrAtNivelEst.get(i);
-			String codigo = listaEstacaoCodigo.get(i);
-			if (estPrMax.isEmpty() || estPrMin.isEmpty() || estPrNEst.isEmpty()) {
-				continue;
-			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				PressaoAtmosferica pressaoAtmosferica = new PressaoAtmosferica(
-					estacao,
-					Timestamp.valueOf(estData_+":00"), 
-					BigDecimal.valueOf(Float.parseFloat(estPrMax)),
-					BigDecimal.valueOf(Float.parseFloat(estPrMin)),
-					BigDecimal.valueOf(Float.parseFloat(estPrNEst))
-				);
-				//System.out.println(estBulbo + estMax + estMin);
-				atmosfericaRepository.save(pressaoAtmosferica);
+	public void pressaoAtmosfericaCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorMaximoPressao,
+			ArrayList<String> valorMinimoPressao, ArrayList<String> valorPressao) throws IOException {
+
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\pressao_atmosferica.csv"));
+			CSVWriter csvWriter = new CSVWriter(writer);
+			List<String[]> jorgin = new ArrayList<String[]>();
+			int ii = datas.size();
+			for (int i = 0; i < ii; i++) {
+				if (valorMaximoPressao.get(i).isEmpty()||valorMinimoPressao.get(i).isEmpty()||valorPressao.get(i).isEmpty()) {
+					continue;
+				}else {
+				String[] jorge = {datas.get(i), valorMaximoPressao.get(i), valorMinimoPressao.get(i), valorPressao.get(i), estacaoCodigo.get(i)};
+				jorgin.add(jorge);
+				}
 			}
-		}
+			csvWriter.writeAll(jorgin);
+			csvWriter.flush();
+			writer.close();	
+			
+			atmosfericaRepository.copyPressaoAtmosferica();
 	}
 }

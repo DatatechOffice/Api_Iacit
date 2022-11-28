@@ -1,5 +1,9 @@
 package com.iacit.api.service;
+import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.repository.TemperaturaRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServiceTemperatura {
@@ -32,35 +37,25 @@ public class ServiceTemperatura {
 		return entidades;
 	}
 
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo, 
-		ArrayList<String> estTdata, 
-		ArrayList<String> estTbulbo, 
-		ArrayList<String> estTmax, 
-		ArrayList<String> estTmin) {
-		// qual o id da regiao e com o Id em mãos inserir o estado
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String estData = estTdata.get(i);
-			String estBulbo = estTbulbo.get(i);
-			String estMax = estTmax.get(i);
-			String estMin = estTmin.get(i);
+	public void temperaturaCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorMaximoTemperatura,
+			ArrayList<String> valorMinimoTemperatura, ArrayList<String> valorTemperatura) throws IOException {
 
-			String codigo = listaEstacaoCodigo.get(i);
-			if (estBulbo.isEmpty() || estMax.isEmpty() || estMin.isEmpty()) {
-				continue;
-			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				Temperatura temperatura = new Temperatura(
-					estacao, Timestamp.valueOf(estData_+":00"), 
-					BigDecimal.valueOf(Float.parseFloat(estBulbo)),
-					BigDecimal.valueOf(Float.parseFloat(estMax)), 
-					BigDecimal.valueOf(Float.parseFloat(estMin))
-				);
-				//System.out.println(estBulbo + estMax + estMin);
-				temperaturaRepository.save(temperatura);
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\temperatura.csv"));
+			CSVWriter csvWriter = new CSVWriter(writer);
+			List<String[]> jorgin = new ArrayList<String[]>();
+			int ii = datas.size();
+			for (int i = 0; i < ii; i++) {
+				if (valorMaximoTemperatura.get(i).isEmpty()||valorMinimoTemperatura.get(i).isEmpty()||valorTemperatura.get(i).isEmpty()) {
+					continue;
+				}else {
+				String[] jorge = {datas.get(i), valorMaximoTemperatura.get(i), valorMinimoTemperatura.get(i), valorTemperatura.get(i), estacaoCodigo.get(i)};
+				jorgin.add(jorge);
+				}
 			}
-		}
+			csvWriter.writeAll(jorgin);
+			csvWriter.flush();
+			writer.close();	
+			
+			temperaturaRepository.copyTemperatura();
 	}
 }

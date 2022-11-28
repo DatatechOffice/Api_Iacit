@@ -17,4 +17,12 @@ public interface VentoRepository extends JpaRepository<Vento, Integer> {
 	public List<Vento> findByest_codigoAndven_data_hora(
 		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
 	);
+	
+	@Query(
+			value = "copy vento (ven_data_hora, ven_rajada_max, ven_velocidade_horaria, ven_direcao_horaria, est_codigo) "
+					+ "from 'C:\\dataFrame\\vento.csv' with delimiter ',' csv header encoding 'iso-8859-1'"
+					,
+			nativeQuery = true
+		)
+	public void copyVento();
 }

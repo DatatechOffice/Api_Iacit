@@ -1,7 +1,9 @@
 package com.iacit.api.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
+import com.iacit.api.repository.PrecipitacaoRepository;
 import com.iacit.api.service.ServiceEstacao;
 import com.iacit.api.service.ServiceEstado;
 import com.iacit.api.service.ServiceRegiao;
@@ -24,18 +26,22 @@ public class PersistenciaController {
 
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
+	
+	@Autowired(required = true)
+	private PrecipitacaoRepository precipitacaoRepository;
 
 	@GetMapping(value = { "/persistir" })
-	public void persistir() {
+	public void persistir() throws ParseException { 
+		//precipitacaoRepository.copyPrecipitacao();
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();
 
-		ArrayList<String> reg = tb.listaRegiao(t);
-		serviceRegiao.insBancoService(reg);
+		//ArrayList<String> reg = tb.listaRegiao(t);
+		//serviceRegiao.insBancoService(reg);
 
 		ArrayList<String> etd = tb.listaEstado(t);
-		serviceEstado.insBancoService(reg, etd);
+		//serviceEstado.insBancoService(reg, etd);
 
 		ArrayList<String> regEstN = tb.listaEstacaoNome(t);
 		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(t);
