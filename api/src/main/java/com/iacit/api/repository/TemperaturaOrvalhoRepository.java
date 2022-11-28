@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.iacit.api.entity.TemperaturaOrvalho;
 
 public interface TemperaturaOrvalhoRepository extends JpaRepository<TemperaturaOrvalho, Integer> {
-	@Query(value = "SELECT * FROM radiacao_global WHERE est_codigo = ?1 AND rag_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
+	@Query(value = "SELECT * FROM temperatura_orvalho WHERE est_codigo = ?1 AND tdo_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
 	public List<TemperaturaOrvalho> findByest_codigoAndTOrv_data_hora(String estCodigo, Timestamp dataInicial,
 			Timestamp dataFinal);
 
