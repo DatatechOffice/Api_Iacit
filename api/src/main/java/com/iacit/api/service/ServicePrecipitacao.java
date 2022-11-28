@@ -1,5 +1,9 @@
 package com.iacit.api.service;
+import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -8,9 +12,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tech.tablesaw.api.Table;
+
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.Precipitacao;
 import com.iacit.api.repository.PrecipitacaoRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServicePrecipitacao {
@@ -31,28 +38,25 @@ public class ServicePrecipitacao {
 		);
 		return entidades;
 	}
-
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estPrecipitacao
-	) {
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String codigo = listaEstacaoCodigo.get(i);
-			String estData = estTdata.get(i);
-			String estPrec = estPrecipitacao.get(i);
 	
-			if (estPrec.isEmpty()) {
-				continue;
-			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				Precipitacao precipitacao = new Precipitacao(
-					estacao, 
-					Timestamp.valueOf(estData_+":00"), 
-					BigDecimal.valueOf(Float.parseFloat(estPrec))
-				);
-				precipitacaoRepository.save(precipitacao);
+	public void precipitacaoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorPrecipitacao) throws IOException {
+
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\precipitacao.csv"));
+			CSVWriter csvWriter = new CSVWriter(writer);
+			List<String[]> jorgin = new ArrayList<String[]>();
+			int ii = datas.size();
+			for (int i = 0; i < ii; i++) {
+				if (valorPrecipitacao.get(i).isEmpty()) {
+					continue;
+				}else {
+				String[] jorge = {datas.get(i), valorPrecipitacao.get(i), estacaoCodigo.get(i)};
+				jorgin.add(jorge);
+				}
 			}
-		}
+			csvWriter.writeAll(jorgin);
+			csvWriter.flush();
+			writer.close();	
+			
+			precipitacaoRepository.copyPrecipitacao();
 	}
 }

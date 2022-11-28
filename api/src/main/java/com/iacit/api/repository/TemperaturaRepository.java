@@ -18,4 +18,11 @@ public interface TemperaturaRepository extends JpaRepository<Temperatura, Intege
 		String estCodigo, Timestamp dataInicial, Timestamp dataFinal
 	);
 	
+	@Query(
+			value = "copy temperatura (tem_data_hora, tem_max, tem_min, tem_ar_bulbo_seco, est_codigo)"
+					+ " from 'C:\\dataFrame\\temperatura.csv' with delimiter ',' csv header encoding 'iso-8859-1'"
+					,
+			nativeQuery = true
+		)
+	public void copyTemperatura();
 }

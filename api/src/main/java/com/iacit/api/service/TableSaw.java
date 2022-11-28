@@ -21,7 +21,7 @@ public class TableSaw {
 
 	public Table tableCsv() {
 		CsvReadOptions.Builder builder = CsvReadOptions
-		.builder("C:\\bd\\database.CSV")
+		.builder("C:\\DataFrame\\database.CSV")
 		.separator(';') // table is tab-delimited
 		.header(false) // no header
 		.dateFormat("yyyy.MM.dd"); // the date format to use.
@@ -143,7 +143,7 @@ public class TableSaw {
 		return estacaoDataFundLista;
 	}
 
-	public ArrayList<String> listaTempData(Table tabelaCSV) {
+	public ArrayList<String> listaData(Table tabelaCSV) {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> tempDataLista = new ArrayList();
@@ -151,10 +151,15 @@ public class TableSaw {
 			String est;
 			String hora = (tabelaCSV.getString(ii, "C2")).replace(" UTC", "");
 			TableSaw tb = new TableSaw();
+			est = tabelaCSV.getString(ii, "C1");
+			if (est.contains("/")) {
 			String horat = tb.addChar(hora, ":", 2);
 			est = tabelaCSV.getString(ii, "C1")+" "+ horat;
 			String estdata = est.replace("/", "-");
 			tempDataLista.add(estdata);  
+			}else {
+				tempDataLista.add(est+" "+hora); 
+			}
 		}	
 		return tempDataLista;
 	}

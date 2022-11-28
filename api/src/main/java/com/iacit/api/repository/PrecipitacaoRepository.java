@@ -17,7 +17,7 @@ public interface PrecipitacaoRepository extends JpaRepository<Precipitacao, Inte
 	);
 	
 	@Query(
-			value = "copy precipitacao (pre_data_hora, pre_valor, est_codigo) from 'precipitacao.csv' with delimiter ';' csv header encoding 'ISO-8859-1'",
+			value = "copy precipitacao (pre_data_hora, pre_valor, est_codigo) from 'C:\\dataFrame\\precipitacao.csv' with delimiter ',' csv header encoding 'ISO-8859-1'",
 			nativeQuery = true
 		)
 	public void copyPrecipitacao();
