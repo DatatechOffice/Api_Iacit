@@ -228,5 +228,5 @@ function filtra(){
 function logout() {
 	debugger;
 	
-	window.location.replace("/login");
+	window.location.replace("/index");
 }

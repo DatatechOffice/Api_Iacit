@@ -23,7 +23,11 @@ function logar(){
 }
 
 function login() {
-	debugger;
 	
-	window.location.replace("/index");
+	window.location.replace("/home");
+}
+
+function cadastro2(){		
+	
+	window.location.replace("/cadastro2");
 }

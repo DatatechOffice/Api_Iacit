@@ -12,10 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class TemplateController {
 
 	// Método para inicialização de página
-	@GetMapping(value = { "index" })
-	public ModelAndView Index() {
+	@GetMapping(value = { "home" })
+	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index.html");
+		modelAndView.setViewName("home.html");
 
 		return modelAndView;
 	}
@@ -27,11 +27,19 @@ public class TemplateController {
 
 		return modelAndView;
 	}
-
-	@GetMapping(value = { "login" })
-	public ModelAndView Login() {
+	
+	@GetMapping(value = { "cadastro2" })
+	public ModelAndView Cadastro2() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login.html");
+		modelAndView.setViewName("cadastro2.html");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = { "index" })
+	public ModelAndView index() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index.html");
 
 		return modelAndView;
 	}
