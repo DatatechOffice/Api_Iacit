@@ -16,5 +16,4 @@ public interface RadiacaoGlobalRepository extends JpaRepository<RadiacaoGlobal, 
 	@Query(value = "copy radiacao_global (rag_data_hora, rag_radiacao_global, est_codigo) from "
 			+ "'C:\\dataFrame\\radiacao_global.csv' with delimiter ',' csv header encoding 'iso-8859-1'", nativeQuery = true)
 	public void copyRadiacaoGlobal();
-
 }

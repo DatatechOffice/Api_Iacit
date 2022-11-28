@@ -22,12 +22,10 @@ public class ServiceEstado {
 		List<Estado> etdLista = estadoRepository.selectEstado();
 		return etdLista;
 	}
-
 	public Estado returnEstado(String etd) {
 		Estado etdId = estadoRepository.selectBySigla(etd);
 		return etdId;
 	}
-
 	public void insBancoService(ArrayList<String> listaRegiao, ArrayList<String> listaEstado) {
 		// qual o id da regiao e com o Id em mãos inserir o estado
 		int ii = listaEstado.size();

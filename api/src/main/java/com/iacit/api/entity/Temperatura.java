@@ -27,33 +27,38 @@ import lombok.ToString;
 @NoArgsConstructor
 @Component
 public class Temperatura {
-	public Temperatura(Estacao estCodigo, Timestamp dataHora, BigDecimal temArBulboSeco, BigDecimal temMax,
-			BigDecimal temMin) {
-		this.estCodigo = estCodigo;
-		this.dataHora = dataHora;
-		this.temArBulboSeco = temArBulboSeco;
-		this.temMax = temMax;
-		this.temMin = temMin;
+	public Temperatura(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal valor,
+		BigDecimal valorMax, 
+		BigDecimal valorMin
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "tem_id")
-	private Integer temId;
+	@Column(name= "tem_id")
+    private Integer temId;
 
-	@Column(name = "tem_ar_bulbo_seco")
-	private BigDecimal temArBulboSeco;
+	@Column(name= "tem_ar_bulbo_seco")
+	private BigDecimal valor;
 
-	@Column(name = "tem_max")
-	private BigDecimal temMax;
+	@Column(name= "tem_max")
+	private BigDecimal valorMax;
 
-	@Column(name = "tem_min")
-	private BigDecimal temMin;
+	@Column(name= "tem_min")
+	private BigDecimal valorMin;
 
-	@Column(name = "tem_data_hora")
+	@Column(name= "tem_data_hora")
 	private Timestamp dataHora;
 
 	@ManyToOne
-	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-	private Estacao estCodigo;
+    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+    private Estacao estCodigo;
 }

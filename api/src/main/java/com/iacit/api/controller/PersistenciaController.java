@@ -7,17 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.iacit.api.repository.PrecipitacaoRepository;
+import java.util.ArrayList;
+
 import com.iacit.api.service.ServiceEstacao;
 import com.iacit.api.service.ServiceEstado;
 import com.iacit.api.service.ServiceRegiao;
 import com.iacit.api.service.TableSaw;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import tech.tablesaw.api.Table;
 
 @Controller
 public class PersistenciaController {
-
 	@Autowired(required = true)
 	private ServiceRegiao serviceRegiao;
 
@@ -27,21 +30,18 @@ public class PersistenciaController {
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
 
-	@Autowired(required = true)
-	private PrecipitacaoRepository precipitacaoRepository;
-
 	@GetMapping(value = { "/persistir" })
 	public void persistir() throws ParseException {
-		// precipitacaoRepository.copyPrecipitacao();
+
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();
 
-		// ArrayList<String> reg = tb.listaRegiao(t);
-		// serviceRegiao.insBancoService(reg);
+		ArrayList<String> reg = tb.listaRegiao(t);
+		serviceRegiao.insBancoService(reg);
 
 		ArrayList<String> etd = tb.listaEstado(t);
-		// serviceEstado.insBancoService(reg, etd);
+		serviceEstado.insBancoService(reg, etd);
 
 		ArrayList<String> regEstN = tb.listaEstacaoNome(t);
 		ArrayList<String> regEstLO = tb.listaEstacaoLongitude(t);

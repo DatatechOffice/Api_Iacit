@@ -18,6 +18,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "umidade")
 @Table(name = "umidade")
 @Getter
@@ -25,13 +31,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class Umidade {
-	public Umidade(Estacao estCodigo, Timestamp dataHora, BigDecimal umiRelativaAr, BigDecimal umiRelativaMax,
-			BigDecimal umiRelativaMin) {
-		this.estCodigo = estCodigo;
-		this.dataHora = dataHora;
-		this.umiRelativaAr = umiRelativaAr;
-		this.umiRelativaMax = umiRelativaMax;
-		this.umiRelativaMin = umiRelativaMin;
+	public Umidade(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal valor, 
+		BigDecimal valorMax, 
+		BigDecimal valorMin
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
 	}
 
 	@Id
@@ -39,16 +50,16 @@ public class Umidade {
 	@Column(name = "umi_id")
 	private Integer umiId;
 
-	@Column(name = "umi_relativa_min")
-	private BigDecimal umiRelativaMin;
+	@Column(name= "umi_relativa_min")
+	private BigDecimal valorMin;
 
-	@Column(name = "umi_relativa_max")
-	private BigDecimal umiRelativaMax;
+	@Column(name= "umi_relativa_max")
+	private BigDecimal valorMax;
 
-	@Column(name = "umi_relativa_ar")
-	private BigDecimal umiRelativaAr;
+	@Column(name= "umi_relativa_ar")
+	private BigDecimal valor;
 
-	@Column(name = "umi_data_hora")
+	@Column(name= "umi_data_hora")
 	private Timestamp dataHora;
 
 	@ManyToOne

@@ -41,7 +41,7 @@ public class TemplateController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index.html");
 
+
 		return modelAndView;
 	}
-
 }

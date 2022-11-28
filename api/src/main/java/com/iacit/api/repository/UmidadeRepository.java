@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.iacit.api.entity.Umidade;
 
 public interface UmidadeRepository extends JpaRepository<Umidade, Integer> {
+
 	@Query(value = "SELECT * FROM umidade WHERE est_codigo = ?1 AND umi_data_hora BETWEEN ?2 AND ?3", nativeQuery = true)
 	public List<Umidade> findByest_codigoAndumi_data_hora(String estCodigo, Timestamp dataInicial, Timestamp dataFinal);
 

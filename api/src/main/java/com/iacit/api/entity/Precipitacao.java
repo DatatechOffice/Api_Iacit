@@ -14,39 +14,37 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import com.opencsv.bean.CsvBindByPosition;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "precipitacao")
-@Table(name = "precipitacao")
+@Entity(name="precipitacao")
+@Table(name="precipitacao")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 public class Precipitacao {
-	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal preValor) {
-		this.estCodigo = estCodigo;
-		this.dataHora = dataHora;
-		this.preValor = preValor;
+
+	public Precipitacao(Estacao estCodigo, Timestamp dataHora, BigDecimal valor) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.valor=valor;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pre_id")
+	@Column(name= "pre_id")
 	private Integer preId;
 
-	@CsvBindByPosition(position = 0)
-	@Column(name = "pre_valor")
-	private BigDecimal preValor;
+	@Column(name= "pre_valor")
 
-	@Column(name = "pre_data_hora")
-	private Timestamp dataHora;
+    private BigDecimal valor;
 
-	@CsvBindByPosition(position = 1)
+	@Column(name= "pre_data_hora")
+    private Timestamp dataHora;
+
 	@ManyToOne
-	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-	private Estacao estCodigo;
+    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+    private Estacao estCodigo;
 }

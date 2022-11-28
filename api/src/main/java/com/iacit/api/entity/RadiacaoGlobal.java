@@ -18,6 +18,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "radiacao_global")
 @Table(name = "radiacao_global")
 @Getter
@@ -25,22 +31,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class RadiacaoGlobal {
-	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal ragRadiacaoGlobal) {
-		this.estCodigo = estCodigo;
-		this.dataHora = dataHora;
-		this.ragRadiacaoGlobal = ragRadiacaoGlobal;
+	public RadiacaoGlobal(Estacao estCodigo, Timestamp dataHora, BigDecimal valor) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.valor=valor;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "rag_id")
-	private Integer ragId;
+	@Column(name= "rag_id")
+    private Integer ragId;
 
-	@Column(name = "rag_radiacao_global")
-	private BigDecimal ragRadiacaoGlobal;
+	@Column(name= "rag_radiacao_global")
+    private BigDecimal valor;
 
-	@Column(name = "rag_data_hora")
-	private Timestamp dataHora;
+	@Column(name= "rag_data_hora")
+    private Timestamp dataHora;
 
 	@ManyToOne
 	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")

@@ -16,19 +16,18 @@ import com.iacit.api.service.ServiceRadiacaoGlobal;
 
 @Controller
 public class RadiacaoGlobalController {
-
+	
 	@Autowired(required = true)
 	private ServiceRadiacaoGlobal serviceRadicaoGlobal;
 
-	@PostMapping(value = { "/radiacaoGlobal" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<RadiacaoGlobal>> postFiltroPorData(@RequestBody FilterDataVo data)
-			throws ParseException {
 
-		List<RadiacaoGlobal> listRadiacao = serviceRadicaoGlobal.getByFilter(data.getEstacao(), data.getDataInicio(),
-				data.getDataFim());
+	@PostMapping(value = { "/radiacao_global" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 
-		return listRadiacao != null && listRadiacao.size() > 0
-				? new ResponseEntity<List<RadiacaoGlobal>>(listRadiacao, HttpStatus.CREATED)
+	public ResponseEntity<List<RadiacaoGlobal>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
+
+		List<RadiacaoGlobal> listRadiacao = serviceRadicaoGlobal.getByFilter(data.getEstacao(), data.getDataInicio(), data.getDataFim());
+		
+		return listRadiacao != null && listRadiacao.size() > 0 ? new ResponseEntity<List<RadiacaoGlobal>>(listRadiacao, HttpStatus.CREATED)
 				: new ResponseEntity<List<RadiacaoGlobal>>(listRadiacao, HttpStatus.BAD_REQUEST);
 
 	}

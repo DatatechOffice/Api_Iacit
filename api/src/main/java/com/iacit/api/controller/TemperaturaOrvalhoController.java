@@ -1,5 +1,4 @@
 package com.iacit.api.controller;
-
 import java.text.ParseException;
 import java.util.List;
 
@@ -20,15 +19,13 @@ public class TemperaturaOrvalhoController {
 	@Autowired(required = true)
 	private ServiceTemperaturaOrvalho orvalhoService;
 
-	@PostMapping(value = { "/temperaturaOrvalho" }, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<TemperaturaOrvalho>> postFiltroPorDataTemp(@RequestBody FilterDataVo data)
-			throws ParseException {
+	@PostMapping(value = { "/temperatura_orvalho" }, consumes = MediaType.APPLICATION_JSON_VALUE)
+	
+	public ResponseEntity<List<TemperaturaOrvalho>> postFiltroPorDataTemp(@RequestBody FilterDataVo data) throws ParseException {
 
-		List<TemperaturaOrvalho> listTempOrvalho = orvalhoService.getByFilter(data.getEstacao(), data.getDataInicio(),
-				data.getDataFim());
-
-		return listTempOrvalho != null && listTempOrvalho.size() > 0
-				? new ResponseEntity<List<TemperaturaOrvalho>>(listTempOrvalho, HttpStatus.CREATED)
+		List<TemperaturaOrvalho> listTempOrvalho = orvalhoService.getByFilter(data.getEstacao(), data.getDataInicio(), data.getDataFim());
+		
+		return listTempOrvalho != null && listTempOrvalho.size() > 0 ? new ResponseEntity<List<TemperaturaOrvalho>>(listTempOrvalho, HttpStatus.CREATED)
 				: new ResponseEntity<List<TemperaturaOrvalho>>(listTempOrvalho, HttpStatus.BAD_REQUEST);
 
 	}

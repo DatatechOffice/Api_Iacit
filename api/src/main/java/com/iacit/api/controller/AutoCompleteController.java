@@ -33,20 +33,21 @@ public class AutoCompleteController {
 				? new ResponseEntity<List<Regiao>>(listRegiao, HttpStatus.ACCEPTED)
 				: new ResponseEntity<List<Regiao>>(listRegiao, HttpStatus.BAD_REQUEST);
 	}
-
 	@GetMapping(value = { "/estado" })
 	public ResponseEntity<List<Estado>> listaEstado() {
 		List<Estado> listEstado = estadoService.selectEstado();
-		return listEstado != null && listEstado.size() > 0
-				? new ResponseEntity<List<Estado>>(listEstado, HttpStatus.CREATED)
-				: new ResponseEntity<List<Estado>>(listEstado, HttpStatus.BAD_REQUEST);
+		return listEstado != null && listEstado.size() > 0 ? new ResponseEntity<List<Estado>>(
+			listEstado, HttpStatus.CREATED
+		)
+		: new ResponseEntity<List<Estado>>(listEstado, HttpStatus.BAD_REQUEST);
 	}
-
 	@GetMapping(value = { "/estacao" })
 	public ResponseEntity<List<Estacao>> listaEstacao() {
 		List<Estacao> listEstacao = estacaoService.selectEstacao();
-		return listEstacao != null && listEstacao.size() > 0
-				? new ResponseEntity<List<Estacao>>(listEstacao, HttpStatus.ACCEPTED)
-				: new ResponseEntity<List<Estacao>>(listEstacao, HttpStatus.BAD_REQUEST);
+		return listEstacao != null && listEstacao.size() > 0 ? new ResponseEntity<List<Estacao>>(
+			listEstacao, HttpStatus.ACCEPTED
+		)
+		: new ResponseEntity<List<Estacao>>(listEstacao, HttpStatus.BAD_REQUEST);
 	}
+
 }

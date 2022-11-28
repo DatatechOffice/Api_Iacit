@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.iacit.api.entity.Precipitacao;
+
+import com.iacit.api.service.ServicePrecipitacao;
+
 import com.iacit.api.service.ServicePrecipitacao;
 
 @Controller
@@ -22,7 +25,6 @@ public class PrecipitacaoController {
 
 	@PostMapping(value = { "/precipitacao" }, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Precipitacao>> postFiltroPorData(@RequestBody FilterDataVo data) throws ParseException {
-
 		List<Precipitacao> listPrecipitacao = precipitacaoService.getByFilter(data.getEstacao(), data.getDataInicio(),
 				data.getDataFim());
 

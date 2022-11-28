@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Regiao;
 import com.iacit.api.repository.RegiaoRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 @Service
 public class ServiceRegiao {
 	@Autowired(required = true)

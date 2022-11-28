@@ -21,6 +21,9 @@ import com.opencsv.CSVWriter;
 public class ServiceTemperaturaOrvalho {
 	@Autowired(required = true)
 	private TemperaturaOrvalhoRepository orvalhoRepository;
+	
+	@Autowired(required = true)
+	private ServiceEstacao serviceEstacao;
 
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
