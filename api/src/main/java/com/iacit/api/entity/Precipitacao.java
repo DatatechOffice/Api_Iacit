@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 

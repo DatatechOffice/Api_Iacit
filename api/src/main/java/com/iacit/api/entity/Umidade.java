@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,8 +18,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="umidade")
-@Table(name="umidade")
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name = "umidade")
+@Table(name = "umidade")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,7 +47,7 @@ public class Umidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "umi_id")
+	@Column(name = "umi_id")
 	private Integer umiId;
 
 	@Column(name= "umi_relativa_min")
@@ -56,6 +63,6 @@ public class Umidade {
 	private Timestamp dataHora;
 
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

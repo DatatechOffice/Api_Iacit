@@ -1,6 +1,10 @@
 package com.iacit.api.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +21,7 @@ public class TableSaw {
 
 	public Table tableCsv() {
 		CsvReadOptions.Builder builder = CsvReadOptions
-		.builder("C:\\bd\\database.CSV")
+		.builder("C:\\DataFrame\\database.CSV")
 		.separator(';') // table is tab-delimited
 		.header(false) // no header
 		.dateFormat("yyyy.MM.dd"); // the date format to use.
@@ -115,19 +119,31 @@ public class TableSaw {
 		return estacaoAltitudeLista;
 	}
 
-	public ArrayList<String> listaEstacaoDataFund(Table tabelaCSV) {
+	public ArrayList<String> listaEstacaoDataFund(Table tabelaCSV) throws ParseException {
 		int i = 0;
 		i = tabelaCSV.rowCount();
+		DateFormat formatUS = new SimpleDateFormat("yyyy-MM-dd");
 		ArrayList<String> estacaoDataFundLista = new ArrayList();
 		for (int ii = 0; ii < i; ii++) {
+			TableSaw tb = new TableSaw();
 			String est;
 			est = tabelaCSV.getString(ii, "C27");
-			estacaoDataFundLista.add(est);  
+			if(est.contains("/")) {
+				
+				String estdata = (est.replace("/", "-"));
+				String data2 = tb.addChar(estdata, "20", 6);
+				Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(data2);  	
+				String dataConvertida = formatUS.format(date1);
+				estacaoDataFundLista.add(dataConvertida);
+				
+			}else {
+				estacaoDataFundLista.add(est);
+			}
 		}	
 		return estacaoDataFundLista;
 	}
 
-	public ArrayList<String> listaTempData(Table tabelaCSV) {
+	public ArrayList<String> listaData(Table tabelaCSV) {
 		int i = 0;
 		i = tabelaCSV.rowCount();
 		ArrayList<String> tempDataLista = new ArrayList();
@@ -135,9 +151,15 @@ public class TableSaw {
 			String est;
 			String hora = (tabelaCSV.getString(ii, "C2")).replace(" UTC", "");
 			TableSaw tb = new TableSaw();
+			est = tabelaCSV.getString(ii, "C1");
+			if (est.contains("/")) {
 			String horat = tb.addChar(hora, ":", 2);
 			est = tabelaCSV.getString(ii, "C1")+" "+ horat;
-			tempDataLista.add(est);  
+			String estdata = est.replace("/", "-");
+			tempDataLista.add(estdata);  
+			}else {
+				tempDataLista.add(est+" "+hora); 
+			}
 		}	
 		return tempDataLista;
 	}

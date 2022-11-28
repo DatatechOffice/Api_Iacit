@@ -1,4 +1,5 @@
 package com.iacit.api.controller;
+
 import java.text.ParseException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.iacit.api.entity.Temperatura;
 import com.iacit.api.entity.Umidade;
 import com.iacit.api.service.ServiceTemperatura;
+
 import com.iacit.api.service.ServiceUmidade;
 
 @Controller

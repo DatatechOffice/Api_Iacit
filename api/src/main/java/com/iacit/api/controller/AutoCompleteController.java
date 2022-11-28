@@ -1,6 +1,5 @@
 package com.iacit.api.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +29,9 @@ public class AutoCompleteController {
 	@GetMapping(value = { "/regiao" })
 	public ResponseEntity<List<Regiao>> listaRegiao() {
 		List<Regiao> listRegiao = regiaoService.selectRegiao();
-		return listRegiao != null && listRegiao.size() > 0 ? new ResponseEntity<List<Regiao>>(
-			listRegiao, HttpStatus.ACCEPTED
-		)
-		: new ResponseEntity<List<Regiao>>(listRegiao, HttpStatus.BAD_REQUEST);
+		return listRegiao != null && listRegiao.size() > 0
+				? new ResponseEntity<List<Regiao>>(listRegiao, HttpStatus.ACCEPTED)
+				: new ResponseEntity<List<Regiao>>(listRegiao, HttpStatus.BAD_REQUEST);
 	}
 	@GetMapping(value = { "/estado" })
 	public ResponseEntity<List<Estado>> listaEstado() {
@@ -50,18 +48,6 @@ public class AutoCompleteController {
 			listEstacao, HttpStatus.ACCEPTED
 		)
 		: new ResponseEntity<List<Estacao>>(listEstacao, HttpStatus.BAD_REQUEST);
-	}
-
-	@GetMapping(value = { "/variavel" })
-	public ResponseEntity<List<String>> listaVariavel() {
-		List<String> listVariavel = List.of("temperatura", "temperatura_orvalho"
-		, "precipitacao", "umidade", "pressao_atmosferica", "radiacao_global"
-		,"vento");
-		
-		return listVariavel != null && listVariavel.size() > 0 ? new ResponseEntity<List<String>>(
-			listVariavel, HttpStatus.ACCEPTED
-		)
-		: new ResponseEntity<List<String>>(listVariavel, HttpStatus.BAD_REQUEST);
 	}
 
 }

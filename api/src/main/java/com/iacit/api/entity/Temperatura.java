@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -18,8 +19,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity(name="temperatura")
-@Table(name="temperatura")
+@Entity(name = "temperatura")
+@Table(name = "temperatura")
 @ToString
 @Getter
 @Setter

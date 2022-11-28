@@ -1,12 +1,18 @@
 package com.iacit.api.controller;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.ArrayList;
 
 import com.iacit.api.service.ServiceEstacao;
 import com.iacit.api.service.ServiceEstado;
 import com.iacit.api.service.ServiceRegiao;
 import com.iacit.api.service.TableSaw;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +21,6 @@ import tech.tablesaw.api.Table;
 
 @Controller
 public class PersistenciaController {
-	
 	@Autowired(required = true)
 	private ServiceRegiao serviceRegiao;
 
@@ -26,7 +31,8 @@ public class PersistenciaController {
 	private ServiceEstacao serviceEstacao;
 
 	@GetMapping(value = { "/persistir" })
-	public void persistir() {
+	public void persistir() throws ParseException {
+
 
 		TableSaw tb = new TableSaw();
 		Table t = tb.tableCsv();

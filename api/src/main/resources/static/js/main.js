@@ -24,7 +24,7 @@ async function carregar_regiao(valRegiao){
 	}else{
 		document.getElementById('pesquisa_regiao').innerHTML = '';
 	}
-	
+
 }
 
 function get_name_Regiao(name_regiao){
@@ -63,7 +63,6 @@ async function carregar_UF(valUF){
 			html += "</ul>";
 			document.getElementById('pesquisa_UF').innerHTML = html;
 			});
-
 	}else{
 		document.getElementById('pesquisa_UF').innerHTML = '';
 	}
@@ -116,7 +115,6 @@ function get_name_estacao(name_estacao, uf_estacao, regiao_estacao){
 	document.getElementById("Estacao").value = name_estacao;
 	document.getElementById("UF").value = uf_estacao;
 	document.getElementById("Regiao").value = regiao_estacao;
-
 }
 
 const fecharestacao = document.getElementById('Estacao');
@@ -127,7 +125,6 @@ document.addEventListener('click', function(eventestacao){
 		document.getElementById('pesquisa_estacao').innerHTML = '';
 	}
 });
-
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------Criando a tabela de dados------------------------------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------

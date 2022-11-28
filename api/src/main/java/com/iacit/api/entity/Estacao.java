@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -14,13 +15,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="estacao")
-@Table(name="estacao")
+@Entity(name = "estacao")
+@Table(name = "estacao")
 @Getter
 @Setter
 @NoArgsConstructor
 @Component
 public class Estacao {
+
 	public Estacao(
 		Estado etdId, 
 		String estCodigo, 
@@ -38,12 +40,14 @@ public class Estacao {
 		this.estAltitude=estAltitude;
 		this.etdId=etdId;
 	}
+
 	public Estacao(String estCodigo) {
-		this.estCodigo=estCodigo;
+		this.estCodigo = estCodigo;
 	}
-	
+
+
 	@Id
-	@Column(name= "est_codigo", length = 4)
+	@Column(name = "est_codigo", length = 4)
 	private String estCodigo;
 
 	@Column(name= "est_longitude", length = 10)
@@ -62,6 +66,6 @@ public class Estacao {
 	private BigDecimal estAltitude;
 
 	@ManyToOne
-    @JoinColumn(name = "etd_id", referencedColumnName = "etd_id")
+	@JoinColumn(name = "etd_id", referencedColumnName = "etd_id")
 	private Estado etdId;
 }

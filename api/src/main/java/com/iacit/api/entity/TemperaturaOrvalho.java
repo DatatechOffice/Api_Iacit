@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,8 +18,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="temperatura_orvalho")
-@Table(name="temperatura_orvalho")
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name = "temperatura_orvalho")
+@Table(name = "temperatura_orvalho")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,7 +47,7 @@ public class TemperaturaOrvalho {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "tdo_id")
+	@Column(name = "tdo_id")
 	private Integer tdoId;
 
 	@Column(name= "tdo_ponto")
@@ -56,6 +63,6 @@ public class TemperaturaOrvalho {
 	private Timestamp dataHora;
 
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

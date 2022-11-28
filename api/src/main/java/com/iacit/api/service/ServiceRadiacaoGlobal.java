@@ -1,5 +1,9 @@
 package com.iacit.api.service;
-import java.math.BigDecimal;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,47 +15,45 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.RadiacaoGlobal;
 import com.iacit.api.repository.RadiacaoGlobalRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServiceRadiacaoGlobal {
-	@Autowired(required=true) 
+	@Autowired(required = true)
 	private RadiacaoGlobalRepository radiacaoRepository;
-	
-	@Autowired(required=true) 
+
+	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
-	
-	public List<RadiacaoGlobal> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
-		
+
+	public List<RadiacaoGlobal> getByFilter(String estacao, String dataInicial, String dataFinal)
+			throws ParseException {
+
 		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
-		
-		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora(
-			idEstacao.getEstCodigo(), 
-			Timestamp.valueOf(dataInicial+" 00:00:00"), 
-			Timestamp.valueOf(dataFinal+" 00:00:00")
-		);
+
+		List<RadiacaoGlobal> entidades = radiacaoRepository.findByest_codigoAndrag_data_hora(idEstacao.getEstCodigo(),
+				Timestamp.valueOf(dataInicial + " 00:00:00"), Timestamp.valueOf(dataFinal + " 00:00:00"));
 		return entidades;
 	}
 
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo, ArrayList<String> estTdata, ArrayList<String> estRadiacaoGlobal
-	) {
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String estData = estTdata.get(i);
-			String estRadGlobal = estRadiacaoGlobal.get(i);
-			String codigo = listaEstacaoCodigo.get(i);
-			if (estRadGlobal.isEmpty()) {
+	public void radiacaoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo, ArrayList<String> valorRadiacao)
+			throws IOException {
+
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\radiacao_global.csv"));
+		CSVWriter csvWriter = new CSVWriter(writer);
+		List<String[]> jorgin = new ArrayList<String[]>();
+		int ii = datas.size();
+		for (int i = 0; i < ii; i++) {
+			if (valorRadiacao.get(i).isEmpty()) {
 				continue;
 			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				RadiacaoGlobal radiacaoGlobal = new RadiacaoGlobal(
-					estacao, 
-					Timestamp.valueOf(estData_+":00"), 
-					BigDecimal.valueOf(Float.parseFloat(estRadGlobal))
-				);
-				radiacaoRepository.save(radiacaoGlobal);
+				String[] jorge = { datas.get(i), valorRadiacao.get(i), estacaoCodigo.get(i) };
+				jorgin.add(jorge);
 			}
 		}
+		csvWriter.writeAll(jorgin);
+		csvWriter.flush();
+		writer.close();
+
+		radiacaoRepository.copyRadiacaoGlobal();
 	}
 }

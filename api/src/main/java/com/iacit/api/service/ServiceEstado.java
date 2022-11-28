@@ -36,7 +36,7 @@ public class ServiceEstado {
 			if (i - 1 >= 0 && listaEstado.get(i - 1) != estadoS) {
 				Regiao regiao = new Regiao();
 				regiao = serviceRegiao.returnRegiao(regiaoS);
-				Estado estado = new Estado(regiao,estadoS);
+				Estado estado = new Estado(regiao, estadoS);
 				estadoRepository.save(estado);
 			} else {
 				continue;

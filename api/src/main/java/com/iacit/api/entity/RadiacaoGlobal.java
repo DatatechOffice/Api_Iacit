@@ -1,4 +1,5 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,8 +18,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name="radiacao_global")
-@Table(name="radiacao_global")
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name = "radiacao_global")
+@Table(name = "radiacao_global")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -42,6 +49,6 @@ public class RadiacaoGlobal {
     private Timestamp dataHora;
 
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

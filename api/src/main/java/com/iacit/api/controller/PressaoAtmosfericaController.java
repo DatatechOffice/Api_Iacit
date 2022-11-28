@@ -29,5 +29,4 @@ public class PressaoAtmosfericaController {
 				: new ResponseEntity<List<PressaoAtmosferica>>(listPressaoAtm, HttpStatus.BAD_REQUEST);
 
 	}
-	
 }

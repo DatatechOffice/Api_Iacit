@@ -1,5 +1,9 @@
 package com.iacit.api.service;
-import java.math.BigDecimal;
+
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -11,51 +15,52 @@ import org.springframework.stereotype.Service;
 import com.iacit.api.entity.Estacao;
 import com.iacit.api.entity.TemperaturaOrvalho;
 import com.iacit.api.repository.TemperaturaOrvalhoRepository;
+import com.opencsv.CSVWriter;
 
 @Service
 public class ServiceTemperaturaOrvalho {
-	@Autowired(required=true) 
+	@Autowired(required = true)
 	private TemperaturaOrvalhoRepository orvalhoRepository;
 	
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
 
-	public List<TemperaturaOrvalho> getByFilter(String estacao, String dataInicial, String dataFinal) throws ParseException {
-		
+	@Autowired(required = true)
+	private ServiceEstacao serviceEstacao;
+
+	public List<TemperaturaOrvalho> getByFilter(String estacao, String dataInicial, String dataFinal)
+			throws ParseException {
+
 		Estacao idEstacao = serviceEstacao.selectEstacaoCodigo(estacao);
-		
+
 		List<TemperaturaOrvalho> entidades = orvalhoRepository.findByest_codigoAndTOrv_data_hora(
-			idEstacao.getEstCodigo(),
-			Timestamp.valueOf(dataInicial+" 00:00:00"),
-			Timestamp.valueOf(dataFinal+" 00:00:00")
-		);
+				idEstacao.getEstCodigo(), Timestamp.valueOf(dataInicial + " 00:00:00"),
+				Timestamp.valueOf(dataFinal + " 00:00:00"));
 		return entidades;
 	}
 
-	public void insBancoService(
-		ArrayList<String> listaEstacaoCodigo,
-		ArrayList<String> estTdata, 
-		ArrayList<String> estToPontoOrvalho, 
-		ArrayList<String> estToOrvalhoMax, 
-		ArrayList<String> estToOrvalhoMin
-	) {
-		int ii = estTdata.size();
-		for (int i = 1; i < ii; i++) {
-			String estData = estTdata.get(i);
-			String estPoOrvalho = estToPontoOrvalho.get(i);
-			String estOrvalhoMax = estToOrvalhoMax.get(i);
-			String estOrvalhoMin = estToOrvalhoMin.get(i);
-			String codigo = listaEstacaoCodigo.get(i);
-			
-			if (estPoOrvalho.isEmpty() || estOrvalhoMax.isEmpty() || estOrvalhoMin.isEmpty()) {
+	public void temperaturaOrvalhoCopy(ArrayList<String> datas, ArrayList<String> estacaoCodigo,
+			ArrayList<String> valorMaximoOrvalho, ArrayList<String> valorMinimoOrvalho, ArrayList<String> valorOrvalho)
+			throws IOException {
+
+		Writer writer = Files.newBufferedWriter(Paths.get("C:\\DataFrame\\temperaturaOrvalho.csv"));
+		CSVWriter csvWriter = new CSVWriter(writer);
+		List<String[]> jorgin = new ArrayList<String[]>();
+		int ii = datas.size();
+		for (int i = 0; i < ii; i++) {
+			if (valorMaximoOrvalho.get(i).isEmpty() || valorMinimoOrvalho.get(i).isEmpty()
+					|| valorOrvalho.get(i).isEmpty()) {
 				continue;
 			} else {
-				String estData_ = estData.replace("/", "-");
-				Estacao estacao = new Estacao(codigo);
-				TemperaturaOrvalho temperaturaOrvalho = new TemperaturaOrvalho(estacao, Timestamp.valueOf(estData_+":00"), BigDecimal.valueOf(Float.parseFloat(estPoOrvalho)),
-				BigDecimal.valueOf(Float.parseFloat(estOrvalhoMax)), BigDecimal.valueOf(Float.parseFloat(estOrvalhoMin)));
-				orvalhoRepository.save(temperaturaOrvalho);
+				String[] jorge = { datas.get(i), valorMaximoOrvalho.get(i), valorMinimoOrvalho.get(i),
+						valorOrvalho.get(i), estacaoCodigo.get(i) };
+				jorgin.add(jorge);
 			}
 		}
+		csvWriter.writeAll(jorgin);
+		csvWriter.flush();
+		writer.close();
+
+		orvalhoRepository.copyTemperaturaOrvalho();
 	}
 }
