@@ -134,35 +134,38 @@ document.addEventListener('click', function(eventestacao){
 	function tabela(){
 	const Reg = document.getElementById('Regiao').value;
 	var corpoTabela = document.querySelector('tbody');
-
+	var vEstacao = $("#Estacao").val();
 	$.getJSON("/estacao", function(DataTabela) {
-		
+		console.log(DataTabela);
 		 for (let i = 0; i < DataTabela.length; i++){
-			if(DataTabela[i].estNomeEstacao.toLowerCase().startsWith(Reg.toLowerCase())){
+			if(vEstacao == DataTabela[i].estNomeEstacao){
 				var tr= document.createElement('tr');
 				var tdCodigo= document.createElement('td');
 				var tdEstacao= document.createElement('td');
-				var tdId= document.createElement('td');
-				var tdTempBulbo= document.createElement('td');
-				var tdTempMax= document.createElement('td');
-				var tdTempMin= document.createElement('td');
-				var tdDataH= document.createElement('td');
-				
+				var tdAltitude = document.createElement('td');
+				var tdLatitude = document.createElement('td');
+				var tdLongitude = document.createElement('td');
+				var tdEstado = document.createElement('td');
+				var tdRegiao = document.createElement('td');
+
+
 				tdCodigo.textContent = DataTabela[i].estCodigo;
 				tdEstacao.textContent =  DataTabela[i].estNomeEstacao;
-				tdId.textContent = 'null';
-				tdTempBulbo.textContent = 'null'; 
-				tdTempMax.textContent = 'null';
-				tdTempMin.textContent = 'null';
-				tdDataH.textContent =  'null';
-				
+				tdAltitude.textContent = DataTabela[i].estAltitude;
+				tdLatitude.textContent = DataTabela[i].estLatitude;
+				tdLongitude.textContent = DataTabela[i].estLongitude;
+				tdEstado.textContent = DataTabela[i].etdId.etdUnidadeFederativa;
+				tdRegiao.textContent = DataTabela[i].etdId.regId.regSigla;
+
 				tr.appendChild(tdCodigo);
 				tr.appendChild(tdEstacao);
-				tr.appendChild(tdId);
-				tr.appendChild(tdTempBulbo);
-				tr.appendChild(tdTempMax);
-				tr.appendChild(tdTempMin);
-				tr.appendChild(tdDataH);
+				tr.appendChild(tdAltitude);
+				tr.appendChild(tdLatitude);
+				tr.appendChild(tdLongitude);
+				tr.appendChild(tdEstado);
+				tr.appendChild(tdRegiao);
+
+
 				corpoTabela.appendChild(tr);
 	
 			};
