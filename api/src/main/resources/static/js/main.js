@@ -229,25 +229,39 @@ document.addEventListener('click', function(eventestacao){
 		});
 
 		function plotcharts(dataJS){
-
 			var datas=[];
-            var valor=[];
+            var valorMax=[];
+			var valorMin=[];
+			var valor=[];
 			for(let i =0; i <dataJS.length;i++){
-                  datas.push(dataJS[i]['dataHora']);
-                  valor.push(parseInt(dataJS[i][vVariavel]));
+				  datas.push(i);
+                  valorMax.push(parseInt(dataJS[i].valorMax));
+				  valorMin.push(parseInt(dataJS[i].valorMin));
+				  valor.push(parseInt(dataJS[i].valor));
                 }
 
 			const data = {
-			labels: [1,2,3,4,5,6,7,8,9,10],
+			labels: datas,
 			datasets: [{
 			  label: "Maxima ",
-			  data: valor,
+			  data: valorMax,
 			  backgroundColor: 'white',
 			  borderColor: 'rgba(0,0,255)',
 			  tension: 0.5,
-			}]
+			},{
+				label: 'Minima',
+				data: valorMin,
+				backgroundColor: 'White',
+				borderColor: 'rgba(255,0,0)',
+				tension: 0.5,
+			  },{
+				label: 'valor',
+				data: valor,
+				backgroundColor: 'White',
+				borderColor: 'rgba(0,255,0)',
+				tension: 0.5,
+			  }]
 		  };
-
 		  // config 
 		  const config = {
 			type: 'line',
@@ -268,7 +282,6 @@ document.addEventListener('click', function(eventestacao){
 		  }
 
 		  myChart = new Chart(grafico, config);
-
 	};
 
 
