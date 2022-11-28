@@ -25,8 +25,6 @@ public class ServiceTemperaturaOrvalho {
 	@Autowired(required = true)
 	private ServiceEstacao serviceEstacao;
 
-	@Autowired(required = true)
-	private ServiceEstacao serviceEstacao;
 
 	public List<TemperaturaOrvalho> getByFilter(String estacao, String dataInicial, String dataFinal)
 			throws ParseException {
