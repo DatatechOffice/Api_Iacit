@@ -1,6 +1,8 @@
 package com.iacit.api.entity;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,35 +11,58 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Entity(name="temperatura_orvalho")
-@Table(name="temperatura_orvalho")
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import org.springframework.stereotype.Component;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity(name = "temperatura_orvalho")
+@Table(name = "temperatura_orvalho")
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@Component
 public class TemperaturaOrvalho {
-	
+	public TemperaturaOrvalho(
+		Estacao estCodigo, 
+		Timestamp dataHora, 
+		BigDecimal valor, 
+		BigDecimal valorMax,
+		BigDecimal valorMin
+	) {
+		this.estCodigo=estCodigo;
+		this.dataHora=dataHora;
+		this.valor=valor;
+		this.valorMax=valorMax;
+		this.valorMin=valorMin;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "tdo_id")
+	@Column(name = "tdo_id")
 	private Integer tdoId;
-	
+
 	@Column(name= "tdo_ponto")
-	private BigDecimal tdoPonto;
-    
+	private BigDecimal valor;
+
 	@Column(name= "tdo_max")
-	private BigDecimal tdoMax;
-    
+	private BigDecimal valorMax;
+
 	@Column(name= "tdo_min")
-	private BigDecimal tdoMin;
-    
+	private BigDecimal valorMin;
+
 	@Column(name= "tdo_data_hora")
 	private Timestamp dataHora;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
-    private Estacao estCodigo;
+	@JoinColumn(name = "est_codigo", referencedColumnName = "est_codigo")
+	private Estacao estCodigo;
 }

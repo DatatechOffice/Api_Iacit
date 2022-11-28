@@ -1,0 +1,5 @@
+Tutorial Persistencia DataTech
+
+- Criar uma pasta no C: com o nome "DataFrame" e colocar o arquivo "Database.csv" fornecido 
+- Rodar o programa localhost:8080/persistir.
+- Feito isso, rodar todos os endpoints: persistirPrecipitacao, persistirPressao, persistirRadiacao, persistirTemperatura, persistirOrvalho, persistirUmidade, persistirVento.
