@@ -1,5 +1,7 @@
 Tutorial Persistencia DataTech
 
-- Criar uma pasta no C: com o nome "DataFrame" e colocar o arquivo "Database.csv" fornecido 
-- Rodar o programa localhost:8080/persistir.
-- Feito isso, rodar todos os endpoints: persistirPrecipitacao, persistirPressao, persistirRadiacao, persistirTemperatura, persistirOrvalho, persistirUmidade, persistirVento.
+- Baixar dados csv do site https://portal.inmet.gov.br/dadoshistoricos(de qualquer range de data)/
+- Colocar os arquivos descompactados na mesma pasta que o Arquivo em Python para fazer o merge dos dados;
+- Criar uma pasta no C: com o nome "DataFrame" e colocar o arquivo "Database.csv" fornecido pela aplicação em python;
+- Rodar o programa localhost:8080/persistir;
+- Feito isso, rodar todos os endpoints: /persistirPrecipitacao, /persistirPressao, /persistirRadiacao, /persistirTemperatura, /persistirOrvalho, /persistirUmidade, /persistirVento.
