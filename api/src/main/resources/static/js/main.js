@@ -288,3 +288,8 @@ document.addEventListener('click', function(eventestacao){
 
 
 		});
+		
+function logout() {
+	
+	window.location.replace("/index");
+}		
